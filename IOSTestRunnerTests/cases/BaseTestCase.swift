@@ -14,13 +14,16 @@ class BaseTestCaseRun : XCTestCaseRun {
 }
 
 class BaseTestCase : ParametrizedTestCase {
-    static let runnerSetup: RunnerSetup = RunnerSetup.sharedInstance
+    static var allowedTestNames: [_SelectedTestCase] = RunnerSetup.sharedInstance.getTestcaseNames().map{ item in
+        return _SelectedTestCase(name: item.rawValue)
+    }
+    static var testCaseConfigDict: [StockTestCaseName: StockTesting_TestcaseConfig] = RunnerSetup.sharedInstance.getTestCaseConfigDict()
     
-    open var stockTestCaseName: StockTestCaseName {
+    internal var stockTestCaseName: StockTestCaseName {
         fatalError("Must be overridden by subclasses.")
     }
     
-    open override var testName: String {
+    override var testName: String {
         get {
             return self.stockTestCaseName.rawValue
         }
@@ -29,27 +32,40 @@ class BaseTestCase : ParametrizedTestCase {
         }
     }
     
-    open override var testRunClass: AnyClass? {
+    override var testRunClass: AnyClass? {
         return BaseTestCaseRun.self
     }
     
     override func _allowedTestNames() -> [_SelectedTestCase] {
-        var names = [_SelectedTestCase]()
-        let casesCfg = RunnerSetup.sharedInstance.runnerConfig.casesConfig
-        for item in casesCfg {
-            names.append(_SelectedTestCase(name: item.testcaseID))
-        }
-        return names
+        return BaseTestCase.allowedTestNames
     }
     
-//    override class func _qck_testMethodSelectors() -> [_QuickSelectorWrapper] {
-//        return ["a", "b", "c"].map { parameter in
-//            let block: @convention(block) (BaseTestCase) -> Void = { $0.doTest(JSON()) }
-//            let implementation = imp_implementationWithBlock(block)
-//            let selectorName = "test_\(parameter)"
-//            let selector = NSSelectorFromString(selectorName)
-//            class_addMethod(self, selector, implementation, "v@:")
-//            return _QuickSelectorWrapper(selector: selector)
-//        }
+//    override func setUp() {
+//        super.setUp()
 //    }
+//
+//    override func beforeAll() {
+//        super.beforeAll()
+//    }
+    
+    internal var testCaseRoundConfig: TestCaseRoundConfig = TestCaseRoundConfig()
+
+    override func invokeTest() {
+        if let cfg = BaseTestCase.testCaseConfigDict[self.stockTestCaseName] {
+            testCaseRoundConfig = TestCaseRoundConfig(caseCfg: cfg)
+            while testCaseRoundConfig.shouldRun() {
+                super.invokeTest()
+                testCaseRoundConfig.nextRound()
+                sleep(testCaseRoundConfig.sleepIntervalSec)
+            }
+        }
+    }
+    
+    override var continueAfterFailure: Bool {
+        get {
+            return testCaseRoundConfig.continueWhenFailed
+        }
+        set {
+        }
+    }
 }

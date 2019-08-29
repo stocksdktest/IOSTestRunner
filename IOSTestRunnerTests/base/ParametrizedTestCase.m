@@ -19,14 +19,21 @@
 @implementation ParametrizedTestCase
 - (id)initWithInvocation:(NSInvocation *)invocation {
     self = [super initWithInvocation:invocation];
+#ifdef DEBUG
     printf("testName: %s\n", [self.testName UTF8String]);
+#endif
     NSArray<_SelectedTestCase *> *cases = [self _allowedTestNames];
     for (_SelectedTestCase * item in cases) {
         if ([self.testName isEqualToString:item._name]) {
+            [self beforeAll];
             return self;
         }
     }
     return nil;
+}
+
+- (void)beforeAll {
+    
 }
 
 - (NSArray<_SelectedTestCase *> *)_allowedTestNames {

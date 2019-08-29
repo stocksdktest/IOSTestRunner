@@ -33,7 +33,7 @@ class RunnerSetup {
     
     private init() throws {
         #if DEBUG
-        let cfgStr = "CgRUSi0xEipSVU4tQS0xY2Y1MDVkZC00ZGY1LTQ1NDQtYTNjNC0xYmJiN2RmNGQ3ZmEaNQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0QARgBIgECIi4KClRFU1RDQVNFXzAQASIeeyJRVU9URV9OVU1CRVJTIjogIjYwMDAwMC5zaCJ9"
+        let cfgStr = "CgRUSi0xEipSVU4tQS1iYjQ4NmMwYS1mOGZjLTQ1MDQtYTk0NC1mOTU1OWFlMzUxMmEaeAosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SIgoEc2hsMhIaaHR0cDovLzExNC44MC4xNTUuNTA6MjIwMTYaJAoBMhIBMhoBMiIBMioBMjIBMjoBMkIBMlIEaGsxMFIEaGthMSJOCgpURVNUQ0FTRV8wGAMiHnsiUVVPVEVfTlVNQkVSUyI6ICI2MDAwMDAuc2gifSIeeyJRVU9URV9OVU1CRVJTIjogIjYwMDAyOC5zaCJ9"
         #else
             var infoDict: [String: Any]
             if Bundle.main.infoDictionary == nil {
@@ -57,11 +57,22 @@ class RunnerSetup {
     
     public func getTestcaseNames() -> [StockTestCaseName] {
         var names = [StockTestCaseName]()
-        for caseCfg in runnerConfig.casesConfig {
-            if let name = StockTestCaseName.fromString(caseCfg.testcaseID) {
+        for item in runnerConfig.casesConfig {
+            if let name = StockTestCaseName.fromString(item.testcaseID) {
                 names.append(name)
             }
         }
+        Utils.log(tag: "names", str: names)
         return names
+    }
+    
+    public func getTestCaseConfigDict() -> [StockTestCaseName: StockTesting_TestcaseConfig] {
+        var cfgDict = [StockTestCaseName: StockTesting_TestcaseConfig]()
+        for caseCfg in runnerConfig.casesConfig {
+            if let name = StockTestCaseName.fromString(caseCfg.testcaseID) {
+                cfgDict[name] = caseCfg
+            }
+        }
+        return cfgDict
     }
 }

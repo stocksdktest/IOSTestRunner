@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParametrizedTestCase : XCTestCase
 @property(nonatomic) NSString* testName;
+- (void)beforeAll;
 - (NSArray<_SelectedTestCase *> *)_allowedTestNames;
 @end
 

@@ -17,7 +17,6 @@ class ExampleTestCase1: BaseTestCase {
     }
     
     func testExample1() {
-        XCTAssertNotNil(BaseTestCase.runnerSetup)
+        
     }
-    
 }

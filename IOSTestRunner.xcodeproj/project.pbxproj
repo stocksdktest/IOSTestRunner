@@ -12,6 +12,7 @@
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
 		A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869823150A4400F75635 /* ExampleTestCase2.swift */; };
+		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
 		A153910B23113DF3007648F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910A23113DF3007648F4 /* AppDelegate.swift */; };
 		A153910D23113DF3007648F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910C23113DF3007648F4 /* ViewController.swift */; };
 		A153911023113DF3007648F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153910E23113DF3007648F4 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		9DC61FBFB7002141182E1DB4 /* Pods-IOSTestRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunnerTests/Pods-IOSTestRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A11F65822314D3F6000071A2 /* config.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config.pb.swift; sourceTree = "<group>"; };
 		A11F869823150A4400F75635 /* ExampleTestCase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTestCase2.swift; sourceTree = "<group>"; };
+		A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseRoundConfig.swift; sourceTree = "<group>"; };
 		A153910723113DF3007648F4 /* IOSTestRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSTestRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153910A23113DF3007648F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A153910C23113DF3007648F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,8 @@
 		A153912623113DF3007648F4 /* IOSTestRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSTestRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTestRunnerUITests.swift; sourceTree = "<group>"; };
 		A153912C23113DF3007648F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1658D0E2317781700B876D3 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = IOSTestRunner/libMApi.a; sourceTree = "<group>"; };
+		A1658D10231778A400B876D3 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = sdk/libMApi.a; sourceTree = "<group>"; };
 		A1C68386231180E0001F7CD0 /* RunnerSetup.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = RunnerSetup.swift; sourceTree = "<group>"; };
 		A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTestCaseName.swift; sourceTree = "<group>"; };
 		A1C6838B23124596001F7CD0 /* IOSTestRunnerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOSTestRunnerTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A1C68386231180E0001F7CD0 /* RunnerSetup.swift */,
+				A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */,
 			);
 			path = setup;
 			sourceTree = "<group>";
@@ -196,6 +201,8 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1658D0E2317781700B876D3 /* libMApi.a */,
+				A1658D10231778A400B876D3 /* libMApi.a */,
 				D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */,
 				3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */,
 				3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */,
@@ -450,6 +457,7 @@
 				A11F65832314D3F6000071A2 /* config.pb.swift in Sources */,
 				A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */,
 				A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */,
+				A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */,
 				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
 				A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */,
@@ -662,6 +670,11 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IOSTestRunner",
+					"$(PROJECT_DIR)/sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -689,6 +702,11 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IOSTestRunner",
+					"$(PROJECT_DIR)/sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
