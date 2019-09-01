@@ -48,6 +48,19 @@ class BaseTestCase : ParametrizedTestCase {
 //        super.beforeAll()
 //    }
     
+    internal func makeSyncRequest(request: MRequest) -> MResponse {
+        var reqResponse: MResponse? = nil
+        let runLoop = CFRunLoopGetCurrent()
+        MApi.send(request, completionHandler: { resp in
+            reqResponse = resp
+            CFRunLoopStop(runLoop)
+        })
+        let result = CFRunLoopRunInMode(CFRunLoopMode.defaultMode, CFTimeInterval(5.0), false)
+        XCTAssert(result == .stopped)
+        XCTAssertNotNil(reqResponse)
+        return reqResponse!
+    }
+    
     internal var testCaseRoundConfig: TestCaseRoundConfig = TestCaseRoundConfig()
 
     override func invokeTest() {

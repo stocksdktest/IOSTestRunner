@@ -3,3 +3,6 @@
 //
 
 #include "./base/ParametrizedTestCase.h"
+#include "../sdk/MApi/MApi.h"
+#include "../sdk/MApi/MApiObject+Info.h"
+#include "../sdk/MApi/MApiObject.h"

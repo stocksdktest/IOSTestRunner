@@ -20,6 +20,11 @@
 		A153911523113DF3007648F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153911323113DF3007648F4 /* LaunchScreen.storyboard */; };
 		A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153911F23113DF3007648F4 /* ExampleTestCase1.swift */; };
 		A153912B23113DF3007648F4 /* IOSTestRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */; };
+		A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1658D1523177FD100B876D3 /* SDKSetup.swift */; };
+		A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
+		A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D1A2317D4F400B876D3 /* libc++.tbd */; };
+		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
+		A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D3A2318E85900B876D3 /* CoreData.framework */; };
 		A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C68386231180E0001F7CD0 /* RunnerSetup.swift */; };
 		A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */; };
 		A1F7BF41231388DE00687389 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF40231388DE00687389 /* Utils.swift */; };
@@ -66,8 +71,19 @@
 		A153912623113DF3007648F4 /* IOSTestRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSTestRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTestRunnerUITests.swift; sourceTree = "<group>"; };
 		A153912C23113DF3007648F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1658D0E2317781700B876D3 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = IOSTestRunner/libMApi.a; sourceTree = "<group>"; };
 		A1658D10231778A400B876D3 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = sdk/libMApi.a; sourceTree = "<group>"; };
+		A1658D1523177FD100B876D3 /* SDKSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKSetup.swift; sourceTree = "<group>"; };
+		A1658D1A2317D4F400B876D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A1658D362318E84700B876D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A1658D382318E85000B876D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A1658D3A2318E85900B876D3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A1658DA0231A494000B876D3 /* MApiObject+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MApiObject+Info.h"; sourceTree = "<group>"; };
+		A1658DA1231A494000B876D3 /* MApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MApiObject.h; sourceTree = "<group>"; };
+		A1658DA2231A494000B876D3 /* MChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MChartView.h; sourceTree = "<group>"; };
+		A1658DA3231A494000B876D3 /* MApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MApi.h; sourceTree = "<group>"; };
+		A1658DA4231A494000B876D3 /* MIPOCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPOCalendarView.h; sourceTree = "<group>"; };
+		A1658DA5231A494000B876D3 /* MIPODetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPODetailView.h; sourceTree = "<group>"; };
+		A1658DA6231A494000B876D3 /* MTOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTOptionView.h; sourceTree = "<group>"; };
 		A1C68386231180E0001F7CD0 /* RunnerSetup.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = RunnerSetup.swift; sourceTree = "<group>"; };
 		A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTestCaseName.swift; sourceTree = "<group>"; };
 		A1C6838B23124596001F7CD0 /* IOSTestRunnerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOSTestRunnerTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -94,6 +110,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
+				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
+				A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */,
+				A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */,
 				957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,11 +201,27 @@
 			path = IOSTestRunnerUITests;
 			sourceTree = "<group>";
 		};
+		A1658D9F231A494000B876D3 /* MApi */ = {
+			isa = PBXGroup;
+			children = (
+				A1658DA0231A494000B876D3 /* MApiObject+Info.h */,
+				A1658DA1231A494000B876D3 /* MApiObject.h */,
+				A1658DA2231A494000B876D3 /* MChartView.h */,
+				A1658DA3231A494000B876D3 /* MApi.h */,
+				A1658DA4231A494000B876D3 /* MIPOCalendarView.h */,
+				A1658DA5231A494000B876D3 /* MIPODetailView.h */,
+				A1658DA6231A494000B876D3 /* MTOptionView.h */,
+			);
+			name = MApi;
+			path = sdk/MApi;
+			sourceTree = "<group>";
+		};
 		A1C68385231180A6001F7CD0 /* setup */ = {
 			isa = PBXGroup;
 			children = (
 				A1C68386231180E0001F7CD0 /* RunnerSetup.swift */,
 				A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */,
+				A1658D1523177FD100B876D3 /* SDKSetup.swift */,
 			);
 			path = setup;
 			sourceTree = "<group>";
@@ -201,7 +237,11 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1658D0E2317781700B876D3 /* libMApi.a */,
+				A1658D9F231A494000B876D3 /* MApi */,
+				A1658D3A2318E85900B876D3 /* CoreData.framework */,
+				A1658D382318E85000B876D3 /* libz.tbd */,
+				A1658D362318E84700B876D3 /* SystemConfiguration.framework */,
+				A1658D1A2317D4F400B876D3 /* libc++.tbd */,
 				A1658D10231778A400B876D3 /* libMApi.a */,
 				D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */,
 				3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */,
@@ -301,7 +341,7 @@
 				TargetAttributes = {
 					A153910623113DF3007648F4 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					A153911A23113DF3007648F4 = {
 						CreatedOnToolsVersion = 9.2;
@@ -462,6 +502,7 @@
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
 				A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */,
 				A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */,
+				A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */,
 				A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,19 +662,33 @@
 			baseConfigurationReference = 4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Y2VQ245QA;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MY_VAR = st;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunner;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/IOSTestRunner",
+				);
+				MY_VAR = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.CrystalTouch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -642,15 +697,29 @@
 			baseConfigurationReference = 02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Y2VQ245QA;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MY_VAR = st;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunner;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/IOSTestRunner",
+				);
+				MY_VAR = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.CrystalTouch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -659,7 +728,6 @@
 			baseConfigurationReference = 9DC61FBFB7002141182E1DB4 /* Pods-IOSTestRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -674,6 +742,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,6 +755,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSTestRunner.app/IOSTestRunner";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/sdk/MApi";
 			};
 			name = Debug;
 		};
@@ -691,7 +764,6 @@
 			baseConfigurationReference = D926D17FD62EDABC23E51D7A /* Pods-IOSTestRunnerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -707,6 +779,10 @@
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.IOSTestRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -714,6 +790,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSTestRunner.app/IOSTestRunner";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/sdk/MApi";
 			};
 			name = Release;
 		};

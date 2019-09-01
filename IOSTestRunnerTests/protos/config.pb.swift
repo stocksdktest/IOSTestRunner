@@ -26,8 +26,6 @@ struct StockTesting_MarketPermission {
 
   var level: String = String()
 
-  var sseLevel: String = String()
-
   var cffLevel: String = String()
 
   var dceLevel: String = String()
@@ -49,17 +47,34 @@ struct StockTesting_MarketPermission {
   init() {}
 }
 
+struct StockTesting_Site {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var ips: [String] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 struct StockTesting_SDKConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var appKey: String {
-    get {return _storage._appKey}
-    set {_uniqueStorage()._appKey = newValue}
+  var appKeyAndroid: String {
+    get {return _storage._appKeyAndroid}
+    set {_uniqueStorage()._appKeyAndroid = newValue}
   }
 
-  var serverSites: Dictionary<String,String> {
+  var appKeyIos: String {
+    get {return _storage._appKeyIos}
+    set {_uniqueStorage()._appKeyIos = newValue}
+  }
+
+  var serverSites: Dictionary<String,StockTesting_Site> {
     get {return _storage._serverSites}
     set {_uniqueStorage()._serverSites = newValue}
   }
@@ -142,30 +157,28 @@ extension StockTesting_MarketPermission: SwiftProtobuf.Message, SwiftProtobuf._M
   static let protoMessageName: String = _protobuf_package + ".MarketPermission"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "Level"),
-    2: .same(proto: "SseLevel"),
-    3: .same(proto: "CffLevel"),
-    4: .same(proto: "DceLevel"),
-    5: .same(proto: "CzceLevel"),
-    6: .same(proto: "FeLevel"),
-    7: .same(proto: "GILevel"),
-    8: .same(proto: "ShfeLevel"),
-    9: .same(proto: "IneLevel"),
-    10: .same(proto: "HKPerms"),
+    2: .same(proto: "CffLevel"),
+    3: .same(proto: "DceLevel"),
+    4: .same(proto: "CzceLevel"),
+    5: .same(proto: "FeLevel"),
+    6: .same(proto: "GILevel"),
+    7: .same(proto: "ShfeLevel"),
+    8: .same(proto: "IneLevel"),
+    9: .same(proto: "HKPerms"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.level)
-      case 2: try decoder.decodeSingularStringField(value: &self.sseLevel)
-      case 3: try decoder.decodeSingularStringField(value: &self.cffLevel)
-      case 4: try decoder.decodeSingularStringField(value: &self.dceLevel)
-      case 5: try decoder.decodeSingularStringField(value: &self.czceLevel)
-      case 6: try decoder.decodeSingularStringField(value: &self.feLevel)
-      case 7: try decoder.decodeSingularStringField(value: &self.gilevel)
-      case 8: try decoder.decodeSingularStringField(value: &self.shfeLevel)
-      case 9: try decoder.decodeSingularStringField(value: &self.ineLevel)
-      case 10: try decoder.decodeRepeatedStringField(value: &self.hkperms)
+      case 2: try decoder.decodeSingularStringField(value: &self.cffLevel)
+      case 3: try decoder.decodeSingularStringField(value: &self.dceLevel)
+      case 4: try decoder.decodeSingularStringField(value: &self.czceLevel)
+      case 5: try decoder.decodeSingularStringField(value: &self.feLevel)
+      case 6: try decoder.decodeSingularStringField(value: &self.gilevel)
+      case 7: try decoder.decodeSingularStringField(value: &self.shfeLevel)
+      case 8: try decoder.decodeSingularStringField(value: &self.ineLevel)
+      case 9: try decoder.decodeRepeatedStringField(value: &self.hkperms)
       default: break
       }
     }
@@ -175,39 +188,35 @@ extension StockTesting_MarketPermission: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.level.isEmpty {
       try visitor.visitSingularStringField(value: self.level, fieldNumber: 1)
     }
-    if !self.sseLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.sseLevel, fieldNumber: 2)
-    }
     if !self.cffLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.cffLevel, fieldNumber: 3)
+      try visitor.visitSingularStringField(value: self.cffLevel, fieldNumber: 2)
     }
     if !self.dceLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.dceLevel, fieldNumber: 4)
+      try visitor.visitSingularStringField(value: self.dceLevel, fieldNumber: 3)
     }
     if !self.czceLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.czceLevel, fieldNumber: 5)
+      try visitor.visitSingularStringField(value: self.czceLevel, fieldNumber: 4)
     }
     if !self.feLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.feLevel, fieldNumber: 6)
+      try visitor.visitSingularStringField(value: self.feLevel, fieldNumber: 5)
     }
     if !self.gilevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.gilevel, fieldNumber: 7)
+      try visitor.visitSingularStringField(value: self.gilevel, fieldNumber: 6)
     }
     if !self.shfeLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.shfeLevel, fieldNumber: 8)
+      try visitor.visitSingularStringField(value: self.shfeLevel, fieldNumber: 7)
     }
     if !self.ineLevel.isEmpty {
-      try visitor.visitSingularStringField(value: self.ineLevel, fieldNumber: 9)
+      try visitor.visitSingularStringField(value: self.ineLevel, fieldNumber: 8)
     }
     if !self.hkperms.isEmpty {
-      try visitor.visitRepeatedStringField(value: self.hkperms, fieldNumber: 10)
+      try visitor.visitRepeatedStringField(value: self.hkperms, fieldNumber: 9)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: StockTesting_MarketPermission, rhs: StockTesting_MarketPermission) -> Bool {
     if lhs.level != rhs.level {return false}
-    if lhs.sseLevel != rhs.sseLevel {return false}
     if lhs.cffLevel != rhs.cffLevel {return false}
     if lhs.dceLevel != rhs.dceLevel {return false}
     if lhs.czceLevel != rhs.czceLevel {return false}
@@ -221,17 +230,48 @@ extension StockTesting_MarketPermission: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
+extension StockTesting_Site: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".Site"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "ips"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedStringField(value: &self.ips)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.ips.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.ips, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: StockTesting_Site, rhs: StockTesting_Site) -> Bool {
+    if lhs.ips != rhs.ips {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension StockTesting_SDKConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SDKConfig"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "appKey"),
-    2: .same(proto: "serverSites"),
-    3: .same(proto: "marketPerm"),
+    1: .same(proto: "appKeyAndroid"),
+    2: .same(proto: "appKeyIOS"),
+    3: .same(proto: "serverSites"),
+    4: .same(proto: "marketPerm"),
   ]
 
   fileprivate class _StorageClass {
-    var _appKey: String = String()
-    var _serverSites: Dictionary<String,String> = [:]
+    var _appKeyAndroid: String = String()
+    var _appKeyIos: String = String()
+    var _serverSites: Dictionary<String,StockTesting_Site> = [:]
     var _marketPerm: StockTesting_MarketPermission? = nil
 
     static let defaultInstance = _StorageClass()
@@ -239,7 +279,8 @@ extension StockTesting_SDKConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     private init() {}
 
     init(copying source: _StorageClass) {
-      _appKey = source._appKey
+      _appKeyAndroid = source._appKeyAndroid
+      _appKeyIos = source._appKeyIos
       _serverSites = source._serverSites
       _marketPerm = source._marketPerm
     }
@@ -257,9 +298,10 @@ extension StockTesting_SDKConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._appKey)
-        case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &_storage._serverSites)
-        case 3: try decoder.decodeSingularMessageField(value: &_storage._marketPerm)
+        case 1: try decoder.decodeSingularStringField(value: &_storage._appKeyAndroid)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._appKeyIos)
+        case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StockTesting_Site>.self, value: &_storage._serverSites)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._marketPerm)
         default: break
         }
       }
@@ -268,14 +310,17 @@ extension StockTesting_SDKConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._appKey.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._appKey, fieldNumber: 1)
+      if !_storage._appKeyAndroid.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._appKeyAndroid, fieldNumber: 1)
+      }
+      if !_storage._appKeyIos.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._appKeyIos, fieldNumber: 2)
       }
       if !_storage._serverSites.isEmpty {
-        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: _storage._serverSites, fieldNumber: 2)
+        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StockTesting_Site>.self, value: _storage._serverSites, fieldNumber: 3)
       }
       if let v = _storage._marketPerm {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -286,7 +331,8 @@ extension StockTesting_SDKConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
         let rhs_storage = _args.1
-        if _storage._appKey != rhs_storage._appKey {return false}
+        if _storage._appKeyAndroid != rhs_storage._appKeyAndroid {return false}
+        if _storage._appKeyIos != rhs_storage._appKeyIos {return false}
         if _storage._serverSites != rhs_storage._serverSites {return false}
         if _storage._marketPerm != rhs_storage._marketPerm {return false}
         return true

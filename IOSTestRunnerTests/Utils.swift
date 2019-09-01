@@ -9,7 +9,7 @@
 import os.log
 
 class Utils {
-    static func log(tag: String, str: CVarArg...) {
+    static func log(tag: String, str: String) {
         os_log("<%{public}@> %{public}@", log: OSLog.default, type: OSLogType.error, tag, str)
     }
 }
