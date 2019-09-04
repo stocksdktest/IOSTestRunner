@@ -1,16 +1,27 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]];then
+if [[ $# -ne 1 ]] && [[ $# -ne 2 ]];then
     echo "./helper.sh build"
+    echo "./helper.sh build-for-124"
     echo "./helper.sh config"
     echo "./helper.sh run"
+    echo "./helper.sh run-for-124"
     echo "./helper.sh log"
 elif [[ $1 == "build" ]]; then
-    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator11.2 -configuration Release -destination "platform=iOS Simulator,name=iPhone 8 Plus" build-for-testing
+    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator11.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build build-for-testing
+elif [[ $1 == "build-for-124" ]]; then
+    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator12.4 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build build-for-testing
 elif [[ $1 == "config" ]]; then
-    PlistBuddy -c 'Add :runner_config string "CgRUSi0xEipSVU4tQS1kNWRmM2IxYy03YmNiLTQ1M2UtODE1NS1jNDg3Mzc0YTQ2MmEaMwosVlZXMEZubzdCRVp0MWEveTZLTE0zNnVqOXFjanc3Q0FIRHdXWktEbFdEcz0aAwoBMiJOCgpURVNUQ0FTRV8wGAMiHnsiUVVPVEVfTlVNQkVSUyI6ICI2MDAwMDAuc2gifSIeeyJRVU9URV9OVU1CRVJTIjogIjYwMDAyOC5zaCJ9"' ./Build/Products/Release-iphonesimulator/IOSTestRunner.app/Info.plist
+    if [[ $# -ne 2 ]];then
+        echo "need config string"
+        exit
+    fi
+    serializeStr=$2
+    PlistBuddy -c "Add :runner_config string \"${serializeStr}\"" ./Build/Products/Debug-iphonesimulator/IOSTestRunner.app/Info.plist
 elif [[ $1 == "run" ]]; then
-    xctool -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Release -sdk iphonesimulator11.2 -reporter pretty -destination "platform=iOS Simulator,name=iPhone 8 Plus" run-tests -only IOSTestRunnerTests
+    xctool -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Debug -sdk iphonesimulator11.2 -reporter pretty -destination "platform=iOS Simulator,name=iPhone 8 Plus" run-tests -only IOSTestRunnerTests
+elif [[ $1 == "run-for-124" ]]; then
+    xctool -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Debug -sdk iphonesimulator12.4 -reporter pretty -destination "platform=iOS Simulator,name=iPhone 8 Plus" run-tests -only IOSTestRunnerTests
 elif [[ $1 == "log" ]]; then
     xcrun simctl spawn booted log stream --level=debug
 fi

@@ -30,23 +30,20 @@ class RunnerSetup {
     }
     
     public let runnerConfig: StockTesting_RunnerConfig
+    public let resultCollector: TestResultCollector
     
     private init() throws {
-        #if DEBUG
-        let cfgStr = "CgRUSi0xEipSVU4tQS01NTQ2MTBiOS02MjI2LTQ2M2MtYmJjOS01MmMyODU2ZTNiYjMaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATIiLgoKVEVTVENBU0VfMBgDIh57IlFVT1RFX05VTUJFUlMiOiAiNjAwMDI4LnNoIn0="
-        #else
-            var infoDict: [String: Any]
-            if Bundle.main.infoDictionary == nil {
-                throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
-            } else {
-                infoDict = Bundle.main.infoDictionary!
-                if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
-                    || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
-                    throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
-                }
+        var infoDict: [String: Any]
+        if Bundle.main.infoDictionary == nil {
+            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
+        } else {
+            infoDict = Bundle.main.infoDictionary!
+            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
+                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
+                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
             }
-            let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
-        #endif
+        }
+        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {
@@ -60,6 +57,9 @@ class RunnerSetup {
             Utils.log(tag: "RunnerSetup", str: "SDK setup error: \(error)")
             throw RunnerSetupError.SDKSetupError(error.localizedDescription)
         }
+        // Setup has done
+        self.resultCollector = TestResultLogCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID)
+        XCTestObservationCenter.shared.addTestObserver(StockTestObservation(collector: self.resultCollector))
     }
     
     public func getTestcaseNames() -> [StockTestCaseName] {
