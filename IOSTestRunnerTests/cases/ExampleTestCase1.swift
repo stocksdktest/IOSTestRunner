@@ -26,8 +26,13 @@ class ExampleTestCase1: BaseTestCase {
         let quoteResponse = resp as! MQuoteResponse
         XCTAssertNotNil(quoteResponse.stockItems)
         for item in quoteResponse.stockItems! {
-            Utils.log(tag: "ExampleTestCase1", str: "\(item.id),\(item.name),\(item.lastPrice),\(item.openPrice),\(item.highPrice),\(item.lowPrice),\(item.preClosePrice),\(item.averagePrice),\(item.volume),\(item.amount)")
-            Utils.log(tag: "ExampleTestCase1", str: "最新价：\(item.lastPrice),最高价：\(item.highPrice)")
+            print("\(item.id),\(item.name),\(item.lastPrice),\(item.openPrice),\(item.highPrice),\(item.lowPrice),\(item.preClosePrice),\(item.averagePrice),\(item.volume),\(item.amount)")
+            print("最新价：\(item.lastPrice),最高价：\(item.highPrice)")
+//            var resultJSON: JSON = [
+//                "lastPrice": item.lastPrice!,
+//                "highPrice": item.highPrice!
+//            ]
+            onTestResult(param: param, result: JSON())
         }
 //        Utils.log(tag: "ExampleTestCase1", str: "response: \(resp)")
     }

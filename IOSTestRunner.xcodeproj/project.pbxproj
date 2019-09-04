@@ -25,8 +25,11 @@
 		A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D1A2317D4F400B876D3 /* libc++.tbd */; };
 		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
 		A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D3A2318E85900B876D3 /* CoreData.framework */; };
+		A1C0CEA7231F61E0002F1A26 /* record.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0CEA6231F61E0002F1A26 /* record.pb.swift */; };
 		A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C68386231180E0001F7CD0 /* RunnerSetup.swift */; };
 		A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */; };
+		A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA4150231E49750019A5D4 /* TestResultCollector.swift */; };
+		A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */; };
 		A1F7BF41231388DE00687389 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF40231388DE00687389 /* Utils.swift */; };
 		A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF422313D4D800687389 /* BaseTestCase.swift */; };
 		A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */; };
@@ -84,9 +87,12 @@
 		A1658DA4231A494000B876D3 /* MIPOCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPOCalendarView.h; sourceTree = "<group>"; };
 		A1658DA5231A494000B876D3 /* MIPODetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPODetailView.h; sourceTree = "<group>"; };
 		A1658DA6231A494000B876D3 /* MTOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTOptionView.h; sourceTree = "<group>"; };
+		A1C0CEA6231F61E0002F1A26 /* record.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.pb.swift; sourceTree = "<group>"; };
 		A1C68386231180E0001F7CD0 /* RunnerSetup.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = RunnerSetup.swift; sourceTree = "<group>"; };
 		A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTestCaseName.swift; sourceTree = "<group>"; };
 		A1C6838B23124596001F7CD0 /* IOSTestRunnerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOSTestRunnerTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A1DA4150231E49750019A5D4 /* TestResultCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultCollector.swift; sourceTree = "<group>"; };
+		A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTestObservation.swift; sourceTree = "<group>"; };
 		A1F7BF40231388DE00687389 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1F7BF422313D4D800687389 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		A1F7BF442313DB1C00687389 /* ParametrizedTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParametrizedTestCase.h; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				A153912123113DF3007648F4 /* Info.plist */,
 				A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */,
 				A1F7BF40231388DE00687389 /* Utils.swift */,
+				A1DA4150231E49750019A5D4 /* TestResultCollector.swift */,
+				A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */,
 			);
 			path = IOSTestRunnerTests;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 		A1C6838A2312453C001F7CD0 /* protos */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0CEA6231F61E0002F1A26 /* record.pb.swift */,
 				A11F65822314D3F6000071A2 /* config.pb.swift */,
 			);
 			path = protos;
@@ -254,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				A153911F23113DF3007648F4 /* ExampleTestCase1.swift */,
-				A1F7BF422313D4D800687389 /* BaseTestCase.swift */,
 				A11F869823150A4400F75635 /* ExampleTestCase2.swift */,
 			);
 			path = cases;
@@ -263,6 +271,7 @@
 		A1F7BF472313DBD900687389 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				A1F7BF422313D4D800687389 /* BaseTestCase.swift */,
 				A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */,
 				A1F7BF442313DB1C00687389 /* ParametrizedTestCase.h */,
 			);
@@ -496,10 +505,13 @@
 			files = (
 				A11F65832314D3F6000071A2 /* config.pb.swift in Sources */,
 				A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */,
+				A1C0CEA7231F61E0002F1A26 /* record.pb.swift in Sources */,
 				A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */,
 				A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */,
 				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
+				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
+				A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */,
 				A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */,
 				A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */,
 				A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */,

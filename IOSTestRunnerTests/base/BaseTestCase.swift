@@ -10,7 +10,19 @@ import XCTest
 import SwiftyJSON
 
 class BaseTestCaseRun : XCTestCaseRun {
+    override func start() {
+        super.start()
+        print("XCTestRun start")
+    }
     
+    override func stop() {
+        super.stop()
+        print("XCTestRun end")
+    }
+    
+    override func recordFailure(withDescription description: String, inFile filePath: String?, atLine lineNumber: Int, expected: Bool) {
+        super.recordFailure(withDescription: description, inFile: filePath, atLine: lineNumber, expected: expected)
+    }
 }
 
 class BaseTestCase : ParametrizedTestCase {
@@ -80,5 +92,9 @@ class BaseTestCase : ParametrizedTestCase {
         }
         set {
         }
+    }
+    
+    internal func onTestResult(param: JSON, result: JSON) {
+        RunnerSetup.sharedInstance.resultCollector.onTestResult(testName: self.testName, param: param, result: result)
     }
 }
