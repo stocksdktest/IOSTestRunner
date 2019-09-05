@@ -43,14 +43,14 @@ class StockTestObservation : NSObject, XCTestObservation {
     
     func testCaseDidFinish(_ testCase: XCTestCase) {
         if let baseClass = castToBaseClass(testCase) {
-            collector.onTestSuccess(testName: baseClass.testName)
+            collector.onTestEnd(testName: baseClass.testName)
             print("Test case start: \(baseClass.testName)")
         }
     }
     
     func testCase(_ testCase: XCTestCase, didFailWithDescription description: String, inFile filePath: String?, atLine lineNumber: Int) {
         if let baseClass = castToBaseClass(testCase) {
-            collector.onTestError(testName: baseClass.testName, errorDesc: description)
+            collector.onTestError(testName: baseClass.testName, description: description, filePath: filePath == nil ? "unknown" : filePath!, lineNumber: lineNumber)
             print("Test case error: \(baseClass.testName)")
         }
     }
