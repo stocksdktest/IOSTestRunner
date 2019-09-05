@@ -33,7 +33,8 @@
 
 enum StockTestCaseName: String, CaseIterable {
     case QUOTE_REQUEST_EXAMPLE = "TESTCASE_0"
-    case QUOTE_REQUEST_EXAMPLE2 = "TESTCASE_1"
+    case SNAPQUOTE_REQUEST = "TESTCASE_1"
+    case PlateIndexQuote_REQUEST = "TESTCASE_2"
     
     static func fromString(_ str: String) -> StockTestCaseName? {
         return self.allCases.first{ $0.rawValue == str }
