@@ -54,7 +54,7 @@ class TestResultLogCollector : TestResultCollector {
             record.isPass = entry.1
             Utils.log(tag: "TestResultCollector", str: "On test end, encoding record: \(record.textFormatString())")
             do {
-                try Utils.record(data: record.serializedData().base64EncodedData())
+                try Utils.record(recordID: record.recordID, data: record.serializedData().base64EncodedData())
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test end, encoding record (\(record.textFormatString())) error: \(error)")
             }
@@ -69,11 +69,11 @@ class TestResultLogCollector : TestResultCollector {
             record.startTime = entry.0
             record.endTime = Int64(Date().timeIntervalSince1970)
             record.isPass = true
-            record.paramStr = param.rawString([.castNilToNSNull: true])!
-            record.resultStr = result.rawString([.castNilToNSNull: true])!
-            Utils.log(tag: "TestResultCollector", str: "On test result, encoding record: \(record.textFormatString())")
             do {
-                try Utils.record(data: record.serializedData().base64EncodedData())
+                record.paramData = try param.rawData()
+                record.resultData = try result.rawData()
+                Utils.log(tag: "TestResultCollector", str: "On test result, encoding record: \(record.textFormatString())")
+                try Utils.record(recordID: record.recordID, data: record.serializedData().base64EncodedData())
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test result, encoding record (\(record.textFormatString())) error: \(error)")
             }
@@ -93,10 +93,10 @@ class TestResultLogCollector : TestResultCollector {
                 "description": description,
                 "location": "\(filePath):\(lineNumber)"
             ]
-            record.exceptionStr = errorJSON.rawString([.castNilToNSNull: true])!
-            Utils.log(tag: "TestResultCollector", str: "On test error, encoding record: \(record.textFormatString())")
             do {
-                try Utils.record(data: record.serializedData().base64EncodedData())
+                record.exceptionData = try errorJSON.rawData()
+                Utils.log(tag: "TestResultCollector", str: "On test error, encoding record: \(record.textFormatString())")
+                try Utils.record(recordID: record.recordID, data: record.serializedData().base64EncodedData())
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test error, encoding record (\(record.textFormatString())) error: \(error)")
             }

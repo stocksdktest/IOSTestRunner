@@ -38,11 +38,11 @@ struct StockTesting_TestExecutionRecord {
 
   var endTime: Int64 = 0
 
-  var paramStr: String = String()
+  var paramData: Data = SwiftProtobuf.Internal.emptyData
 
-  var resultStr: String = String()
+  var resultData: Data = SwiftProtobuf.Internal.emptyData
 
-  var exceptionStr: String = String()
+  var exceptionData: Data = SwiftProtobuf.Internal.emptyData
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -83,9 +83,9 @@ extension StockTesting_TestExecutionRecord: SwiftProtobuf.Message, SwiftProtobuf
     5: .same(proto: "isPass"),
     6: .same(proto: "startTime"),
     7: .same(proto: "endTime"),
-    8: .same(proto: "paramStr"),
-    9: .same(proto: "resultStr"),
-    10: .same(proto: "exceptionStr"),
+    8: .same(proto: "paramData"),
+    9: .same(proto: "resultData"),
+    10: .same(proto: "exceptionData"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -98,9 +98,9 @@ extension StockTesting_TestExecutionRecord: SwiftProtobuf.Message, SwiftProtobuf
       case 5: try decoder.decodeSingularBoolField(value: &self.isPass)
       case 6: try decoder.decodeSingularInt64Field(value: &self.startTime)
       case 7: try decoder.decodeSingularInt64Field(value: &self.endTime)
-      case 8: try decoder.decodeSingularStringField(value: &self.paramStr)
-      case 9: try decoder.decodeSingularStringField(value: &self.resultStr)
-      case 10: try decoder.decodeSingularStringField(value: &self.exceptionStr)
+      case 8: try decoder.decodeSingularBytesField(value: &self.paramData)
+      case 9: try decoder.decodeSingularBytesField(value: &self.resultData)
+      case 10: try decoder.decodeSingularBytesField(value: &self.exceptionData)
       default: break
       }
     }
@@ -128,14 +128,14 @@ extension StockTesting_TestExecutionRecord: SwiftProtobuf.Message, SwiftProtobuf
     if self.endTime != 0 {
       try visitor.visitSingularInt64Field(value: self.endTime, fieldNumber: 7)
     }
-    if !self.paramStr.isEmpty {
-      try visitor.visitSingularStringField(value: self.paramStr, fieldNumber: 8)
+    if !self.paramData.isEmpty {
+      try visitor.visitSingularBytesField(value: self.paramData, fieldNumber: 8)
     }
-    if !self.resultStr.isEmpty {
-      try visitor.visitSingularStringField(value: self.resultStr, fieldNumber: 9)
+    if !self.resultData.isEmpty {
+      try visitor.visitSingularBytesField(value: self.resultData, fieldNumber: 9)
     }
-    if !self.exceptionStr.isEmpty {
-      try visitor.visitSingularStringField(value: self.exceptionStr, fieldNumber: 10)
+    if !self.exceptionData.isEmpty {
+      try visitor.visitSingularBytesField(value: self.exceptionData, fieldNumber: 10)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -148,9 +148,9 @@ extension StockTesting_TestExecutionRecord: SwiftProtobuf.Message, SwiftProtobuf
     if lhs.isPass != rhs.isPass {return false}
     if lhs.startTime != rhs.startTime {return false}
     if lhs.endTime != rhs.endTime {return false}
-    if lhs.paramStr != rhs.paramStr {return false}
-    if lhs.resultStr != rhs.resultStr {return false}
-    if lhs.exceptionStr != rhs.exceptionStr {return false}
+    if lhs.paramData != rhs.paramData {return false}
+    if lhs.resultData != rhs.resultData {return false}
+    if lhs.exceptionData != rhs.exceptionData {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

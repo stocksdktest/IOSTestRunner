@@ -14,10 +14,31 @@ struct Log {
 }
 
 class Utils {
+    private static let LOG_LINE_LIMIT = 900
+    
     static func log(tag: String, str: String) {
         os_log("<%{public}@> %{public}@", log: Log.normal, type: OSLogType.default, tag, str)
     }
-    static func record(data: Data) {
-        os_log("%{public}@", log: Log.record, type: OSLogType.default, String(data: data, encoding: String.Encoding.utf8) as String!)
+    static func record(recordID: String, data: Data) {
+        if let recordStr = String(data: data, encoding: String.Encoding.utf8) as String! {
+            if recordStr.count < LOG_LINE_LIMIT {
+                os_log("%{public}@", log: Log.record, type: OSLogType.default, recordStr)
+                return
+            }
+            let dataLen = recordStr.count
+            var chunkOffset = 0
+            var logChunkIdx: Int = dataLen / LOG_LINE_LIMIT
+            repeat {
+                let chunkTag = "Chunk.\(recordID).\(logChunkIdx):"
+                let startRangeIdx = recordStr.index(recordStr.startIndex, offsetBy: chunkOffset)
+                var endRangeIdx = recordStr.index(startRangeIdx, offsetBy: LOG_LINE_LIMIT, limitedBy: recordStr.endIndex)
+                if endRangeIdx == nil {
+                    endRangeIdx = recordStr.endIndex
+                }
+                os_log("%{public}@", log: Log.record, type: OSLogType.default, chunkTag + recordStr[startRangeIdx ..< endRangeIdx!])
+                chunkOffset += LOG_LINE_LIMIT;
+                logChunkIdx -= 1;
+            } while chunkOffset < dataLen
+        }
     }
 }
