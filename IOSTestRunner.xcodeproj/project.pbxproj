@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2167B56C2320DCDE00DA35D3 /* Exampletestcase3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2167B56B2320DCDE00DA35D3 /* Exampletestcase3.swift */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
@@ -55,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.release.xcconfig"; sourceTree = "<group>"; };
-		2167B56B2320DCDE00DA35D3 /* Exampletestcase3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exampletestcase3.swift; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			children = (
 				A153911F23113DF3007648F4 /* ExampleTestCase1.swift */,
 				A11F869823150A4400F75635 /* ExampleTestCase2.swift */,
-				2167B56B2320DCDE00DA35D3 /* Exampletestcase3.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -515,7 +512,6 @@
 				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
 				A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */,
-				2167B56C2320DCDE00DA35D3 /* Exampletestcase3.swift in Sources */,
 				A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */,
 				A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */,
 				A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */,

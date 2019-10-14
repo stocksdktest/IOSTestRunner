@@ -13,7 +13,7 @@ import SwiftyJSON
 class ExampleTestCase3: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.PlateIndexQuote_REQUEST
+        return StockTestCaseName.PlateIndexQuoteREQUEST
     }
     
     func testExample3() {
