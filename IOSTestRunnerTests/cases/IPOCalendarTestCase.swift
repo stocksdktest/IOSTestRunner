@@ -242,7 +242,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
                                     "secuabbr": list["SECUABBR"]!,
-                                    "tradingCode": list["TRADINGCODE"]!,
+                                    "tradingCode": list["TRADINGCODE"]!
+                                ]
+                                let update1: JSON = [
                                     "capplyShare": list["CAPPLYSHARE"]!,
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
@@ -254,6 +256,11 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
                                 jsonarr1.append(jsonarr2)
                             }
                         }
@@ -276,7 +283,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "listingDate": list["LISTINGDATE"]!,
@@ -287,6 +296,11 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
                                 jsonarr1.append(jsonarr2)
                             }
                         }
@@ -309,7 +323,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "listingDate": list["LISTINGDATE"]!,
@@ -321,6 +337,11 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
                                 jsonarr1.append(jsonarr2)
                             }
                         }
@@ -343,7 +364,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "peaIssue": list["PEAISSUE"]!,
@@ -354,6 +377,11 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
                                 jsonarr1.append(jsonarr2)
                             }
                         }
@@ -376,7 +404,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "peaIssue": list["PEAISSUE"]!,
                                     "bookStartDateOn": list["BOOKSTARTDATEON"]!,
@@ -387,6 +417,11 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
                                 jsonarr1.append(jsonarr2)
                             }
                         }

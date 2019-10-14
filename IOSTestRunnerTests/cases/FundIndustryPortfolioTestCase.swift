@@ -23,7 +23,7 @@ class FundIndustryPortfolioTestCase: BaseTestCase {
         
         if let typeVal = MF10DataSourceType.init(rawValue:param["SOURCETYPE"].uIntValue) {
             mRequest.sourceType = typeVal
-                                            }
+        }
         
         let resp = self.makeSyncRequest(request: mRequest)
         let fundIndustryPortfolioResponse = resp as! MFundIndustryPortfolioResponse
