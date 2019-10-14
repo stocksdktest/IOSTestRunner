@@ -13,7 +13,7 @@ import SwiftyJSON
 class ExampleTestCase2: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.SNAPQUOTE_REQUEST
+        return StockTestCaseName.QUOTE_REQUEST_EXAMPLE
     }
     
     func testExample2() {
