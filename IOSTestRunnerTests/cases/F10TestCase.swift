@@ -164,7 +164,9 @@ class F10TestCase: BaseTestCase {
                     "MAINBIZINCOMEYOY2":dic1["MAINBIZINCOMEYOY2"]!,
                     "MAINBIZINCOMEYOY3":dic1["MAINBIZINCOMEYOY3"]!,
                     "TNETPROFIT":dic1["TNETPROFIT"]!,
-                    "NNETPROFIT":dic1["NNETPROFIT"]!,
+                    "NNETPROFIT":dic1["NNETPROFIT"]!
+                ]
+                let update1: JSON = [
                     "YANNETPROFIT":dic1["YANNETPROFIT"]!,
                     "NETPROFITYOY1":dic1["NETPROFITYOY1"]!,
                     "NETPROFITYOY2":dic1["NETPROFITYOY2"]!,
@@ -176,7 +178,11 @@ class F10TestCase: BaseTestCase {
                     "NENDDATE":dic1["NENDDATE"]!,
                     "YANENDDATE":dic1["YANENDDATE"]!
                 ]
-                
+                do {
+                    try resultJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }
@@ -419,7 +425,9 @@ class F10TestCase: BaseTestCase {
                                 "INVE":dic2["INVE"]!,
                                 "ACCORECE":dic2["ACCORECE"]!,
                                 "OTHERRECE":dic2["OTHERRECE"]!,
-                                "FIXEDASSENET":dic2["FIXEDASSENET"]!,
+                                "FIXEDASSENET":dic2["FIXEDASSENET"]!
+                            ]
+                            let update1: JSON = [
                                 "AVAISELLASSE":dic2["AVAISELLASSE"]!,
                                 "INTAASSET":dic2["INTAASSET"]!,
                                 "SHORTTERMBORR":dic2["SHORTTERMBORR"]!,
@@ -430,8 +438,13 @@ class F10TestCase: BaseTestCase {
                                 "TOTLIAB":dic2["TOTLIAB"]!,
                                 "PARESHARRIGH":dic2["PARESHARRIGH"]!,
                                 "CAPISURP":dic2["CAPISURP"]!,
-                                "GOODWILL":dic2["GOODWILL"]!,
+                                "GOODWILL":dic2["GOODWILL"]!
                             ]
+                            do {
+                                try jsonarr2.merge(with: update1)
+                            } catch {
+                                // ignore
+                            }
                             jsonarr1.append(jsonarr2)
                         }
                     }
