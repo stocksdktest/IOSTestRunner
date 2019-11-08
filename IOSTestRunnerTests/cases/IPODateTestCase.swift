@@ -33,9 +33,10 @@ class IPODateTestCase: BaseTestCase {
         switch mRequest.type{
             
         case .stock:
+            var resultJSON : JSON = [:]
             for items in iPODateResponse.infos{
                 if let item: NSDictionary = items as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "sg":item["sg"]!,
                         "zq":item["zq"]!,
                         "ss":item["ss"]!,
@@ -43,24 +44,28 @@ class IPODateTestCase: BaseTestCase {
                         "wss":item["wss"]!,
                         "normalDay":item["NORMALDAY"]!,
                         ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(item["NORMALDAY"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         case .bond:
+            var resultJSON : JSON = [:]
             for items in iPODateResponse.infos{
                 if let item: NSDictionary = items as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "sg":item["sg"]!,
                         "jjsg":item["jjsg"]!,
                         "dss":item["dss"]!,
                         "NORMALDAY":item["NORMALDAY"]!,
                         ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(item["NORMALDAY"]!)"] = itemJSON
+                    
                 }
             }
-           
+           print(resultJSON)
+           onTestResult(param: param, result: resultJSON)
         }
     
    }

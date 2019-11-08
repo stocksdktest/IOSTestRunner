@@ -33,8 +33,9 @@ class PlateIndexQuoteTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let plateIndexQuoteResponse = resp as! MPlateIndexQuoteResponse
         XCTAssertNotNil(plateIndexQuoteResponse.plateIndexItems)
+        var resultJSON : JSON = [:]
         for item in plateIndexQuoteResponse.plateIndexItems{
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "blockID" : item.blockId,
                 "dateTime": item.datetime,
                 "blockIndex": item.blockIndex,
@@ -98,16 +99,17 @@ class PlateIndexQuoteTestCase: BaseTestCase {
             switch item.changeState{
                 
             case .flat:
-                resultJSON["indexChg"].string = item.indexChg
+                itemJSON["indexChg"].string = item.indexChg
             case .rise:
-                resultJSON["indexChg"].string = "+"+(item.indexChg)
+                itemJSON["indexChg"].string = "+"+(item.indexChg)
             case .drop:
-                resultJSON["indexChg"].string = "-"+(item.indexChg)
+                itemJSON["indexChg"].string = "-"+(item.indexChg)
             }
-
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
 }
 
 }

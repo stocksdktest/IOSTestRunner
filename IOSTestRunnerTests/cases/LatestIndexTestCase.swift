@@ -48,6 +48,7 @@ class LatestIndexTestCase: BaseTestCase {
                 "operRevenue": record["OPERREVENUE"]!
             ]
             print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
     }
 }

@@ -30,9 +30,10 @@ class ShareHolderHistoryInfoTestCase: BaseTestCase {
         switch mRequest.sourceType{
             
         case .GA:
+            var resultJSON : JSON = [:]
             for records in shareHolderHistoryInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "AVGSHAREM_": record["AVGSHAREM"]!,
                         "CLOSINGPRICE_": record["CLOSINGPRICE"]!,
                         "AVGSHARE_": record["AVGSHARE"]!,
@@ -40,23 +41,28 @@ class ShareHolderHistoryInfoTestCase: BaseTestCase {
                         "TOTALSH_": record["TOTALSH"]!,
                         "ENDDATE_": record["ENDDATE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         case .CH:
+            var resultJSON : JSON = [:]
             for records in shareHolderHistoryInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "CLOSINGPRICE_": record["CLOSINGPRICE"]!,
                         "PCTOFTOTALSH_": record["PCTOFTOTALSH"]!,
                         "TOTALSH_": record["TOTALSH"]!,
                         "ENDDATE_": record["ENDDATE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
         
         

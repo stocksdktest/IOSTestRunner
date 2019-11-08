@@ -29,8 +29,9 @@ class SubnewStockRankingTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let subnewStockRankingResponse = resp as! MSubnewStockRankingResponse
         XCTAssertNotNil(subnewStockRankingResponse.items)
+        var resultJSON : JSON = [:]
         for items in subnewStockRankingResponse.items{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
                 "code":items.code,
                 "name":items.name,
                 "lastestPrice":items.lastPrice,
@@ -41,8 +42,10 @@ class SubnewStockRankingTestCase: BaseTestCase {
                 "rate":items.rate,
                 "allRate":items.totalRate,
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(items.code!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

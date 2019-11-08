@@ -33,11 +33,8 @@ class ForecastRatingTestCase: BaseTestCase {
             "RatingDec": forecastRatingResponse.ratingDescription,
             "DATETITLE_": forecastRatingResponse.dateTitle
         ]
-        var jsonarr1 = [JSON]()
+        var jsonarr1 : JSON = [:]
         for list in forecastRatingResponse.records{
-            
-            
-            
                         if let dic1:NSDictionary = list as! NSDictionary{
                             var jsonarr2: JSON = [
                                 "WRITINGDATE_": dic1["WRITINGDATE"]!,
@@ -45,11 +42,10 @@ class ForecastRatingTestCase: BaseTestCase {
                                 "INVRATINGDESC_": dic1["INVRATINGDESC"]!,
                                 "LAST_INVRATINGDESC_": dic1["LAST_INVRATINGDESC"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            jsonarr1["\(dic1["WRITINGDATE"]!)"] = jsonarr2
                         }
-                        
                     }
-                    resultJSON["list"].arrayObject = jsonarr1
+                    resultJSON["list"] = jsonarr1
         
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)

@@ -26,24 +26,25 @@ class BrokerSeatTestCase: BaseTestCase {
         print(brokerSeatResponse)
         XCTAssertNotNil(brokerSeatResponse.buyBrokerSeatItems)
         XCTAssertNotNil(brokerSeatResponse.sellBrokerSeatItems)
-        
+        var resultJSON : JSON = [:]
         for buyitem in brokerSeatResponse.buyBrokerSeatItems{
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "corp": buyitem.name,
                 "corporation": buyitem.fullName,
                 "state": "1"
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(buyitem.name!)1"] = itemJSON
+            
         }
         for sellitem in brokerSeatResponse.sellBrokerSeatItems{
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "corp": sellitem.name,
                 "corporation": sellitem.fullName,
                 "state": "0"
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(sellitem.name!)0"] = itemJSON
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

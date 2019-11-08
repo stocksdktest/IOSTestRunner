@@ -30,9 +30,9 @@ class DRQuoteListTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let dRQuoteListResponse = resp as! MDRQuoteListResponse
         XCTAssertNotNil(dRQuoteListResponse.items)
-        
+        var resultJSON : JSON = [:]
         for items in dRQuoteListResponse.items {
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
                 "code":items.code,
                 "name":items.name,
                 "subType":items.subtype,
@@ -51,9 +51,10 @@ class DRQuoteListTestCase: BaseTestCase {
                 "baseDateTime":items.baseDatetime,
                 "premium":items.premiumRate,
             ]
+            resultJSON["\(items.datetime!)"] = itemJSON
             
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

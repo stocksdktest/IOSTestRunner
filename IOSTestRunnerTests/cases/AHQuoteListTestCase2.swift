@@ -31,8 +31,9 @@ class AHQuoteListTestCase2: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let AHQuoteListResponse = resp as! MAHQuoteListResponse
         XCTAssertNotNil(AHQuoteListResponse.ahItems)
+        var resultJSON : JSON = [:]
         for item in AHQuoteListResponse.ahItems{
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "name" : item.name,
                 "codeA": item.codeA,
                 "lastPriceA": item.lastPriceA,
@@ -46,9 +47,11 @@ class AHQuoteListTestCase2: BaseTestCase {
                 "changeRateA": item.changeRateA,
                 "changeRateH": item.changeRateH
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetimeA!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
     
 }

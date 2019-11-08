@@ -36,8 +36,9 @@ class SearchTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let searchResponse = resp as! MSearchResponse
         XCTAssertNotNil(searchResponse.resultItems)
+        var resultJSON : JSON = [:]
         for items in searchResponse.resultItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "stockID": items.stockID,
                 "name": items.name,
                 "market": items.market,
@@ -46,10 +47,11 @@ class SearchTestCase: BaseTestCase {
                 "stockType": items.flag.rawValue,
                 "st": items.subtypes
             ]
+            resultJSON["\(items.stockID!)"] = itemJSON
             
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

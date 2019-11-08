@@ -26,18 +26,21 @@ class BidChartTestCase: BaseTestCase {
         let bidChartResponse = resp as! MBidChartResponse
         print(bidChartResponse)
         XCTAssertNotNil(bidChartResponse.bidItems)
-        for items in bidChartResponse.bidItems{
-         var resultJSON: JSON = [
-              "closePrice":items.lastPrice,
-              "referencePrice":items.referencePrice,
-              "time":items.datetime,
-              "sell1":items.buyVolume1,
-              "sell2":items.buyVolume2,
-              "buy1":items.sellVolume1,
-              "buy2":items.sellVolume2,
+        var resultJSON : JSON = [:]
+        for item in bidChartResponse.bidItems{
+         var itemJSON: JSON = [
+              "closePrice":item.lastPrice,
+              "referencePrice":item.referencePrice,
+              "time":item.datetime,
+              "sell1":item.buyVolume1,
+              "sell2":item.buyVolume2,
+              "buy1":item.sellVolume1,
+              "buy2":item.sellVolume2,
             ]
-print(resultJSON)
-onTestResult(param: param, result: resultJSON)
-}
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
+        }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

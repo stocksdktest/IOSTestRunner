@@ -29,7 +29,28 @@ class FinancialSummaryTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let financialSummaryResponse = resp as! MFinancialSummaryResponse
         XCTAssertNotNil(financialSummaryResponse.jsonObject)
-        
+//        switch mRequest.sourceType{
+//        case .GA:
+//            var resultJSON : JSON = [:]
+//            if let dic1: NSDictionary = financialSummaryResponse.jsonObject as? NSDictionary{
+//                var itemJSON : JSON = [
+//                    "REPORTTITLE_": dic1["REPORTTITLE"]!,
+//                    "BasicEPS": dic1["BASICEPS"]!,
+//                    "RESERVEPS_": dic1["RESERVEPS"]!,
+//                    "BVPS_": dic1["BVPS"]!,
+//                    "NETCASHFLOWOPERPS_": dic1["NETCASHFLOWOPERPS"]!,
+//                    "WEIGHTEDROE_": dic1["WEIGHTEDROE"]!,
+//                    "ROA_": dic1["ROA_EBIT"]!,
+//                    "TotalOperRevenue": dic1["TOTALOPERINCOMEPS"]!,
+//                    "OperProfit": dic1["EBITPS"]!,
+//                    "NetProfit": dic1["RETAINEDEARNINGPS"]!,
+//
+//
+//                ]
+//            }
+//        case .CH:
+//            <#code#>
+//        }
     }
 }
 

@@ -35,9 +35,10 @@ class AddValueTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let addvalueResponse = resp as! MAddValueResponse
         XCTAssertNotNil(addvalueResponse.addValueItems)
+        var resultJSON : JSON = [:]
         for addValueitems in addvalueResponse.addValueItems{
             let addValueitem:MAddValueItem = addValueitems as! MAddValueItem
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "code" : addValueitem.code,
                 "date" : addValueitem.date,
                 "time" : addValueitem.time,
@@ -102,9 +103,11 @@ class AddValueTestCase: BaseTestCase {
                 "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                 "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(addValueitem.date!)\(addValueitem.time!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
     
 }

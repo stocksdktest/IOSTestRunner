@@ -28,9 +28,11 @@ class ChartIndexTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let chartIndexResponse = resp as! MChartIndexResponse
         XCTAssertNotNil(chartIndexResponse)
+        var resultJSON : JSON = [:]
+        var j = 1
 //        print(chartIndexResponse)
         for items in chartIndexResponse.ohlcItems{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
              "ddx":items.ddx,
              "ddy":items.ddy,
              "ddz":items.ddz,
@@ -44,11 +46,14 @@ class ChartIndexTestCase: BaseTestCase {
              "bigTradeNum ":items.bigTradeNum,
              "midTradeNum":items.midTradeNum,
              "smallTradeNum":items.smallTradeNum,
-             "bigNetVolume": items.bigNetVolume
+             "bigNetVolume": items.bigNetVolume,
+             
          ]
-print(resultJSON)
-onTestResult(param: param, result: resultJSON)
-      }
+            resultJSON["\(j)"] = itemJSON
+            j = j + 1
 
+      }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

@@ -30,8 +30,9 @@ class SectionSortingTestCase_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let sectionSortingResponse = resp as! MSectionSortingResponse
         XCTAssertNotNil(sectionSortingResponse.sectionSortingItems)
+        var resultJSON : JSON = [:]
         for item in sectionSortingResponse.sectionSortingItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "id": item.id,
                 "name": item.name,
                 "weightedChange": item.weightedChange,
@@ -76,10 +77,11 @@ class SectionSortingTestCase_1: BaseTestCase {
                 "limitUpCount": item.limitUpCount,
                 "limitDownCount": item.limitDownCount
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.id!)"] = itemJSON
+            
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

@@ -29,48 +29,54 @@ class TimeTickTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let timeTickResponse = resp as! MTimeTickResponse
         XCTAssertNotNil(timeTickResponse.items)
+        var resultJSON : JSON = [:]
+//        print(timeTickResponse)
+//        print(timeTickResponse.items.count)
         for item in timeTickResponse.items{
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "type" : item.type.rawValue,
                 "time" : item.time,
                 "tradeVolume" : item.tradeVolume,
                 "tradePrice" : item.tradePrice
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.time!)"] = itemJSON
+            
         }
         
         var ItemsCount = timeTickResponse.items.count
         var EndIndex = timeTickResponse.endIndex!
-
+        
             while ItemsCount == 100{
 
-                timeTickNext(index: &EndIndex , count: &ItemsCount)
+                timeTickNext(index: &EndIndex , count: &ItemsCount , result: &resultJSON)
             }
-
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
-    func timeTickNext( index :  inout String , count : inout Int){
+    func timeTickNext( index :  inout String , count : inout Int , result : inout JSON){
         let param = self.testCaseRoundConfig.getParam()
         let mRequestNext = MTimeTickRequest()
         mRequestNext.code = param["CODE"].stringValue
         mRequestNext.subtype = param["SUBTYPE"].stringValue
         mRequestNext.index = index
         mRequestNext.pageSize = param["PAGESIZE"].uIntValue
-        if let typeValNext = MTimeTickRequestType.init(rawValue: 1){
+        if let typeValNext = MTimeTickRequestType.init(rawValue: param["TYPE"].intValue){
             mRequestNext.type = typeValNext
         }
         let resp = self.makeSyncRequest(request: mRequestNext)
         let timeTickResponseNext = resp as! MTimeTickResponse
         if timeTickResponseNext.items != nil{
+//            print(timeTickResponseNext)
+//            print(timeTickResponseNext.items.count)
             for item in timeTickResponseNext.items{
-                var resultJSON:JSON = [
+                var itemJSON:JSON = [
                     "type" : item.type.rawValue,
                     "time" : item.time,
                     "tradeVolume" : item.tradeVolume,
                     "tradePrice" : item.tradePrice
                 ]
-                                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                result["\(item.time!)"] = itemJSON
+                
             }
             index = timeTickResponseNext.endIndex
             count = timeTickResponseNext.items.count

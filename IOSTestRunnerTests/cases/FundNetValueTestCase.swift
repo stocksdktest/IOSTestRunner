@@ -26,18 +26,21 @@ class FundNetValueTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let fundNetValueResponse = resp as! MFundNetValueResponse
         XCTAssertNotNil(fundNetValueResponse.records)
+        var resultJSON : JSON = [:]
         for records in fundNetValueResponse.records{
             if let record: NSDictionary = records as! NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "ACCUNITNAV": record["ACCUNITNAV"]!,
                     "UNITNAV": record["UNITNAV"]!,
                     "NAVDATE": record["NAVDATE"]!,
                     "GROWRATE": record["GROWRATE"]!
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(record["NAVDATE"]!)"] = itemJSON
+                
             }
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

@@ -32,21 +32,22 @@ class IPOCalendarTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let iPOCalendarResponse = resp as! MIPOCalendarResponse
         XCTAssertNotNil(iPOCalendarResponse.info)
-        var resultJSON: JSON = [ ]
+        
         switch mRequest.type{
             
         case .stock:
             switch mRequest.sourceType{
                 
             case .GA:
+                var resultJSON : JSON = [:]
                 for info in iPOCalendarResponse.info{
                     let key: String = info.key as! String
                     if key == "sglist"{
                         let sglists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日申购"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list:NSDictionary = sglist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -62,19 +63,18 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "peaIssue": list["PEAISSUE"]!
                                     
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["sglist"] = itemJSON
                     }
                     if key == "wsslist"{
                         let wsslists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "未上市"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for wsslist in wsslists{
                             if let list:NSDictionary = wsslist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -102,19 +102,18 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "listingDate": list["LISTINGDATE"]!
                                     
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["wsslist"] = itemJSON
                     }
                     if key == "zqlist"{
                         let zqlists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日中签"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for zqlist in zqlists{
                             if let list:NSDictionary = zqlist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -141,19 +140,18 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "listingDate": list["LISTINGDATE"]!,
                                     "peaIssue": list["PEAISSUE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["zqlist"] = itemJSON
                     }
                     if key == "sslist"{
                         let sslists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日上市"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for sslist in sslists{
                             if let list:NSDictionary = sslist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -179,19 +177,18 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "peaIssue": list["PEAISSUE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["sslist"] = itemJSON
                     }
                     if key == "jjfxlist"{
                         let jjfxlists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "即将发行"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for jjfxlist in jjfxlists{
                             if let list:NSDictionary = jjfxlist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -217,23 +214,25 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "peaIssue": list["PEAISSUE"]!,
                                     "bookStartDateOn": list["BOOKSTARTDATEON"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["jjfxlist"] = itemJSON
                     }
                 }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
             case .CH:
+                var resultJSON : JSON = [:]
                 for info in iPOCalendarResponse.info{
                     let key: String = info.key as! String
                     if key == "sglist"{
                         let sglists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日申购"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list:NSDictionary = sglist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -242,7 +241,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
                                     "secuabbr": list["SECUABBR"]!,
-                                    "tradingCode": list["TRADINGCODE"]!,
+                                    "tradingCode": list["TRADINGCODE"]!
+                                ]
+                                let update1: JSON = [
                                     "capplyShare": list["CAPPLYSHARE"]!,
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
@@ -254,19 +255,23 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["sglist"] = itemJSON
                     }
                     if key == "wsslist"{
                         let wsslists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "未上市"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for wsslist in wsslists{
                             if let list:NSDictionary = wsslist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -276,7 +281,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "listingDate": list["LISTINGDATE"]!,
@@ -287,19 +294,23 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["wsslist"] = itemJSON
                     }
                     if key == "zqlist"{
                         let zqlists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日中签"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for zqlist in zqlists{
                             if let list:NSDictionary = zqlist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -309,7 +320,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "listingDate": list["LISTINGDATE"]!,
@@ -321,19 +334,23 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["zqlist"] = itemJSON
                     }
                     if key == "sslist"{
                         let sslists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "今日上市"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for sslist in sslists{
                             if let list:NSDictionary = sslist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -343,7 +360,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "peaIssue": list["PEAISSUE"]!,
@@ -354,19 +373,23 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["sslist"] = itemJSON
                     }
                     if key == "jjfxlist"{
                         let jjfxlists:NSArray = info.value as! NSArray
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "即将发行"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for jjfxlist in jjfxlists{
                             if let list:NSDictionary = jjfxlist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -376,7 +399,9 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "secuabbr": list["SECUABBR"]!,
                                     "tradingCode": list["TRADINGCODE"]!,
                                     "capplyShare": list["CAPPLYSHARE"]!,
-                                    "capplyPrice": list["CAPPLYPRICE"]!,
+                                    "capplyPrice": list["CAPPLYPRICE"]!
+                                ]
+                                let update1: JSON = [
                                     "applyCode": list["APPLYCODE"]!,
                                     "peaIssue": list["PEAISSUE"]!,
                                     "bookStartDateOn": list["BOOKSTARTDATEON"]!,
@@ -387,24 +412,32 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                do {
+                                    try jsonarr2.merge(with: update1)
+                                } catch {
+                                    // ignore
+                                }
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        resultJSON["dataList"].arrayObject = jsonarr1
-                        print(resultJSON)
-                        onTestResult(param: param, result: resultJSON)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["jjfxlist"] = itemJSON
                     }
                 }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
             }
             
         case .bond:
-            var jsonarr3 = [JSON]()
+            var resultJSON : JSON = [:]
             for info in iPOCalendarResponse.info{
                 let key: String = info.key as! String
                 if key == "sglist"{
                     if let sglists:NSArray = info.value as! NSArray{
-                        
-                        var jsonarr1 = [JSON]()
+                        var itemJSON : JSON = [
+                            "title":"今日申购"
+                        ]
+                        var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list: NSDictionary = sglist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -416,19 +449,19 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
                                     "APPLYCODE": list["APPLYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        var jsonarr4: JSON = [
-                            "sglist": jsonarr1
-                        ]
-                       jsonarr3.append(jsonarr4)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["sglist"] = itemJSON
                     }
                 }
                 if key == "jjsglist"{
                     if let jjsglists:NSArray = info.value as! NSArray{
-                        
-                        var jsonarr1 = [JSON]()
+                        var itemJSON : JSON = [
+                            "title":"即将申购"
+                        ]
+                        var jsonarr1 : JSON = [:]
                         for jjsglist in jjsglists{
                             if let list: NSDictionary = jjsglist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -440,21 +473,19 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
                                     "APPLYCODE": list["APPLYCODE"]!
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
                             }
                         }
-                        var jsonarr4: JSON = [
-                            "jjsglist": jsonarr1
-                        ]
-                        jsonarr3.append(jsonarr4)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["jjsglist"] = itemJSON
                     }
                 }
                 if key == "dsslist"{
                     if let dsslists:NSArray = info.value as! NSArray{
-                        var resultJSON: JSON = [
+                        var itemJSON: JSON = [
                             "title": "当日待上市列表"
                         ]
-                        var jsonarr1 = [JSON]()
+                        var jsonarr1 : JSON = [:]
                         for dsslist in dsslists{
                             if let list: NSDictionary = dsslist as! NSDictionary{
                                 var jsonarr2: JSON = [
@@ -463,19 +494,14 @@ class IPOCalendarTestCase: BaseTestCase {
                                     "SECUABBR": list["SECUABBR"]!,
                                     "ALLOTRATEON": list["ALLOTRATEON"]!,
                                 ]
-                                jsonarr1.append(jsonarr2)
+                                jsonarr1["\(list["TRADINGCODE"]!)"] = jsonarr2
                             }
                         }
-                        var jsonarr4: JSON = [
-                            "dsslist": jsonarr1
-                        ]
-                        jsonarr3.append(jsonarr4)
+                        itemJSON["dataList"] = jsonarr1
+                        resultJSON["dsslist"] = itemJSON
                     }
                 }
             }
-            var resultJSON: JSON = [
-                "item": jsonarr3
-            ]
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
 //            if let info:NSDictionary = iPOCalendarResponse.info as! NSDictionary{

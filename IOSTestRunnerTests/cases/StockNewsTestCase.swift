@@ -28,8 +28,9 @@ class StockNewsTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let stockNewsResponse = resp as! MStockNewsResponse
         XCTAssertNotNil(stockNewsResponse.stockNewsDetailItem)
+        var resultJSON : JSON = [:]
         if let item = stockNewsResponse.stockNewsDetailItem{
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "INIPUBDATE_":item.datetime,
                 "ID_":item.id,
                 "reportTitle":item.title,
@@ -38,8 +39,9 @@ class StockNewsTestCase: BaseTestCase {
                 "ABSTRACTFORMAT_":item.format,
                 "PURL":item.url,
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

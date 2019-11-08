@@ -37,7 +37,7 @@ class BlockTradeTestCase: BaseTestCase {
         if mRequest.requestType == "blocktrade"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                var jsonarr1 = [JSON]()
+                var resultJSON : JSON = [:]
                 for List in Lists{
                     if let dic2 : NSDictionary = List as! NSDictionary{
                         var jsonarr2: JSON = [
@@ -49,12 +49,10 @@ class BlockTradeTestCase: BaseTestCase {
                             "BUYERNAME":dic2["BUYERNAME"]!,
                             "SELLERNAME":dic2["SELLERNAME"]!,
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                     }
                 }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
+                
                 
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -63,7 +61,7 @@ class BlockTradeTestCase: BaseTestCase {
         if mRequest.requestType == "iinvholdchg"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                var jsonarr1 = [JSON]()
+                var resultJSON  : JSON = [:]
                 for List in Lists{
                     if let dic2 : NSDictionary = List as! NSDictionary{
                         var jsonarr2: JSON = [
@@ -75,12 +73,10 @@ class BlockTradeTestCase: BaseTestCase {
                             "HOLDAMT":dic2["HOLDAMT"]!,
                             "HOLDQTYSUMCHG":dic2["HOLDQTYSUMCHG"]!,
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(dic2["REPORTDATE"]!)"] = jsonarr2
                     }
                 }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
+                
                 
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -89,7 +85,7 @@ class BlockTradeTestCase: BaseTestCase {
         if mRequest.requestType == "importnoticedate"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                var jsonarr1 = [JSON]()
+                var resultJSON : JSON = [:]
                 for List in Lists{
                     if let dic2 : NSDictionary = List as! NSDictionary{
                         var jsonarr2: JSON = [
@@ -98,12 +94,9 @@ class BlockTradeTestCase: BaseTestCase {
                             "TEXT":dic2["TEXT"]!
                             
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                     }
                 }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
                 
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -112,7 +105,7 @@ class BlockTradeTestCase: BaseTestCase {
         if mRequest.requestType == "importnoticetitlbe"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                var jsonarr1 = [JSON]()
+                var resultJSON : JSON = [:]
                 for List in Lists{
                     if let dic2 : NSDictionary = List as! NSDictionary{
                         var jsonarr2: JSON = [
@@ -120,12 +113,10 @@ class BlockTradeTestCase: BaseTestCase {
                             "TRADEDATE":dic2["TRADEDATE"]!,
                             "TEXT":dic2["TEXT"]!
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                     }
                 }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
+                
                 
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -135,7 +126,7 @@ class BlockTradeTestCase: BaseTestCase {
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    var resultJSON : JSON = [:]
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -144,12 +135,9 @@ class BlockTradeTestCase: BaseTestCase {
                                 "RETAMAXPROFITSMK":dic2["RETAMAXPROFITSMK"]!,
                                 "RETAMAXPROFITSINC":dic2["RETAMAXPROFITSINC"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
                     
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
@@ -161,7 +149,7 @@ class BlockTradeTestCase: BaseTestCase {
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    var resultJSON : JSON = [:]
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -171,12 +159,10 @@ class BlockTradeTestCase: BaseTestCase {
                                 "TAGRT":dic2["TAGRT"]!,
                                 "NPGRT":dic2["NPGRT"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
+                    
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
                 }
@@ -187,7 +173,7 @@ class BlockTradeTestCase: BaseTestCase {
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    var resultJSON : JSON = [:]
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -200,12 +186,10 @@ class BlockTradeTestCase: BaseTestCase {
                                 "NEWSSOURCE":dic2["NEWSSOURCE"]!,
                                 "INTERACTIVEID":dic2["PageNumber"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADING"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
+                    
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
                 }

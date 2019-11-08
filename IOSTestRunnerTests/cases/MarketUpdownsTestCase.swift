@@ -35,17 +35,10 @@ class MarketUpdownsTestCase: BaseTestCase {
             "yLimitUp":marketUpdownsResponse.preLimitUpCount,
             "yLimitDown":marketUpdownsResponse.preLimitDownCount,
             "yTime":marketUpdownsResponse.preDatetime,
-            "tTime":marketUpdownsResponse.datetime
-           // "list":marketUpdownsResponse.list,
+            "tTime":marketUpdownsResponse.datetime,
+            "list":marketUpdownsResponse.list,
             ]
-        var jsonlist = [JSON]()
-        for i in 0 ..< marketUpdownsResponse.list.count{
-            let jsonlists : JSON = [
-                "\(-10+i)%": marketUpdownsResponse.list[i]
-            ]
-            jsonlist.append(jsonlists)
-        }
-        resultJSON["list"].arrayObject = jsonlist
+        
 print(resultJSON)
 onTestResult(param: param, result: resultJSON)
 }

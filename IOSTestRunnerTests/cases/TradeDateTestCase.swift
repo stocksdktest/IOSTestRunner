@@ -25,20 +25,18 @@ class TradeDateTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let tradeDateResponse = resp as! MTradeDateResponse
         XCTAssertNotNil(tradeDateResponse.dates)
-        var jsonarr1 = [JSON]()
+        var resultJSON : JSON = [:]
         for dates in tradeDateResponse.dates{
             var jsonarr2: JSON = [
                 "date": dates.date,
                 "isTrade": dates.type.rawValue,
                 "description": dates.desc
             ]
-            jsonarr1.append(jsonarr2)
+            resultJSON["\(dates.date!)"] = jsonarr2
             
             
         }
-        var resultJSON: JSON = [
-            "tradeDates": jsonarr1
-        ]
+        
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
 //        var jsonarr1 = [JSON]()

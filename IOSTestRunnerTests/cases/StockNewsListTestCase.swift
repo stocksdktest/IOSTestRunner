@@ -35,9 +35,10 @@ class StockNewsListTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let stockNewsListResponse = resp as! MStockNewsListResponse
         XCTAssertNotNil(stockNewsListResponse.stockNewsItems)
+        var resultJSON : JSON = [:]
         for items in stockNewsListResponse.stockNewsItems{
             if let item: MStockNewsItem = items as! MStockNewsItem{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "INIPUBDATE_":item.datetime,
                     "ID_":item.id,
                     "REPORTTITLE_":item.title,
@@ -48,10 +49,12 @@ class StockNewsListTestCase: BaseTestCase {
                     "ENTRYDATE":item.entryDate,
                     "ENTRYTIME":item.entryTime,
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(item.datetime!)"] = itemJSON
+                
             }
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

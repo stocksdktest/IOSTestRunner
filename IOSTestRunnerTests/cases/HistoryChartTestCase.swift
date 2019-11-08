@@ -26,8 +26,9 @@ class HistoryChartTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let historyChartResponse = resp as! MHistoryChartResponse
         XCTAssertNotNil(historyChartResponse.ohlcItems)
+        var resultJSON : JSON = [:]
         for items in historyChartResponse.ohlcItems{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
              "datetime": items.datetime + "00",
              "closePrice": items.closePrice,
              "tradeVolume": items.tradeVolume,
@@ -37,8 +38,10 @@ class HistoryChartTestCase: BaseTestCase {
              "iopv": items.iopv,
              "iopvPre": items.referenceIOPVPrice,
         ]
+            resultJSON["\(items.datetime!)00"] = itemJSON
+        
+ }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
- }
 }
 }

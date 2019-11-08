@@ -39,7 +39,7 @@ class HKQuoteInfoTestCase: BaseTestCase {
             "casLowerPrice": hKQuoteInfoResponse.casLowerPrice,
             "casUpperPrice": hKQuoteInfoResponse.casUpperPrice
         ]
-        var jsonarr1 = [JSON]()
+        var jsonarr1 : JSON = [:]
         for item in hKQuoteInfoResponse.oddInfoItems {
             var jsonarr2: JSON = [
                 "OrderId": item.orderId,
@@ -49,9 +49,9 @@ class HKQuoteInfoTestCase: BaseTestCase {
                 "Side": item.side.rawValue,
                 "DataTimestamp": item.datetime
             ]
-            jsonarr1.append(jsonarr2)
+            jsonarr1["\(item.orderId!)"] = jsonarr2
         }
-        resultJSON["HKOtherItem"].arrayObject = jsonarr1
+        resultJSON["HKOtherItem"] = jsonarr1
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }

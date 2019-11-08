@@ -35,7 +35,7 @@ class OverLayChartTestCase: BaseTestCase {
         let chartResponse = resp as! MChartResponse
         XCTAssertNotNil(chartResponse.ohlcItems)
         
-        var jsonarr1 = [JSON]()
+        var jsonarr1 : JSON = [:]
         for item in chartResponse.ohlcItems{
             var jsonarr2:JSON = [
                 "datetime" : item.datetime,
@@ -48,9 +48,9 @@ class OverLayChartTestCase: BaseTestCase {
                 "iopvPre": item.referenceIOPVPrice,
 //                "dayList": chartResponse.tradeDates
             ]
-            jsonarr1.append(jsonarr2)
+            jsonarr1["\(item.datetime!)"] = jsonarr2
         }
-        var jsonarr3 = [JSON]()
+        var jsonarr3 : JSON = [:]
         if let SPitems = chartResponse.superposition.ohlcItems{
             
             for SPitem in SPitems{
@@ -64,16 +64,14 @@ class OverLayChartTestCase: BaseTestCase {
                     "iopv": SPitem.iopv,
                     "iopvPre": SPitem.referenceIOPVPrice
                 ]
-                jsonarr3.append(jsonarr4)
+                jsonarr3["\(SPitem.datetime!)"] = jsonarr4
             }
         }
-        var jsonarr5 = [JSON]()
+        var jsonarr5 = [String]()
         for dayLists in chartResponse.tradeDates{
             if let dayList:String = dayLists as! String{
-                var jsonarr6: JSON = [
-                    "day": dayList
-                ]
-                jsonarr5.append(jsonarr6)
+                
+                jsonarr5.append(dayList)
             }
         }
         var resultJSON: JSON = [

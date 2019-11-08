@@ -140,56 +140,13 @@ class SnapQuoteTestCase: BaseTestCase {
                 "vega": item.vega,
                 "realLeverage": item.leverage,
                 "theoreticalPrice": item.theoreticalPrice,
-                
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+                "buySingleVolumes":item.buyCount,
+                "sellSingleVolumes":item.sellCount,
             ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            var jsonBuySingleVolumes = [JSON]()
-            for i in 0 ..< item.buyCount.count{
-                let jsonBuySingleVolume : JSON = [
-                    "buySingleVolume\(i+1)": item.buyCount[i]
-                ]
-                jsonBuySingleVolumes.append(jsonBuySingleVolume)
-            }
-            resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            var jsonsellSingleVolumes = [JSON]()
-            for i in 0 ..< item.sellCount.count{
-                let jsonsellSingleVolume : JSON = [
-                    "sellSingleVolume\(i+1)": item.sellCount[i]
-                ]
-                jsonsellSingleVolumes.append(jsonsellSingleVolume)
-            }
-            resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
             //            var jsonSubtypes = [JSON]()
             //            for i in 0 ..< item.subtypes.count{
             //                let jsonSubtype : JSON = [
@@ -391,57 +348,14 @@ class SnapQuoteTestCase: BaseTestCase {
                 "intersectionNum": item.intersectionNum,
                 "change1": item.change1,
                 "totalBid": item.entrustBuyVolume,
-                "totalAsk": item.entrustSellVolume
-                
+                "totalAsk": item.entrustSellVolume,
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+                "buySingleVolumes":item.buyCount,
+                "sellSingleVolumes":item.sellCount,
             ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            var jsonBuySingleVolumes = [JSON]()
-            for i in 0 ..< item.buyCount.count{
-                let jsonBuySingleVolume : JSON = [
-                    "buySingleVolume\(i+1)": item.buyCount[i]
-                ]
-                jsonBuySingleVolumes.append(jsonBuySingleVolume)
-            }
-            resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            var jsonsellSingleVolumes = [JSON]()
-            for i in 0 ..< item.sellCount.count{
-                let jsonsellSingleVolume : JSON = [
-                    "sellSingleVolume\(i+1)": item.sellCount[i]
-                ]
-                jsonsellSingleVolumes.append(jsonsellSingleVolume)
-            }
-            resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
 //            var jsonSubtypes = [JSON]()
 //            for i in 0 ..< item.subtypes.count{
 //                let jsonSubtype : JSON = [
@@ -615,57 +529,15 @@ class SnapQuoteTestCase: BaseTestCase {
                             "bidpx1": item.buyPrice,
                             "askpx1": item.sellPrice,
                             "bidvol1": item.buyVolume,
-                            "askvol1": item.sellVolume
+                            "askvol1": item.sellVolume,
+                            "buyPrices": item.buyPrices,
+                            "buyVolumes":item.buyVolumes,
+                            "sellPrices":item.sellPrices,
+                            "sellVolumes":item.sellVolumes,
+                            "buySingleVolumes":item.buyCount,
+                            "sellSingleVolumes":item.sellCount,
             
                         ]
-                        var jsonBuyPrices = [JSON]()
-                        for i in 0 ..< item.buyPrices.count{
-                            let jsonBuyPrice : JSON = [
-                                "buyPrice\(i+1)": item.buyPrices[i]
-                            ]
-                            jsonBuyPrices.append(jsonBuyPrice)
-                        }
-                        resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-                        var jsonBuySingleVolumes = [JSON]()
-                        for i in 0 ..< item.buyCount.count{
-                            let jsonBuySingleVolume : JSON = [
-                                "buySingleVolume\(i+1)": item.buyCount[i]
-                            ]
-                            jsonBuySingleVolumes.append(jsonBuySingleVolume)
-                        }
-                        resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-                        var jsonBuyVolumes = [JSON]()
-                        for i in 0 ..< item.buyVolumes.count{
-                            let jsonBuyVolume : JSON = [
-                                "buyVolume\(i+1)": item.buyVolumes[i]
-                            ]
-                            jsonBuyVolumes.append(jsonBuyVolume)
-                        }
-                        resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-                        var jsonsellPrices = [JSON]()
-                        for i in 0 ..< item.sellPrices.count{
-                            let jsonsellPrice : JSON = [
-                                "sellPrice\(i+1)": item.sellPrices[i]
-                            ]
-                            jsonsellPrices.append(jsonsellPrice)
-                        }
-                        resultJSON["sellPrices"].arrayObject = jsonsellPrices
-                        var jsonsellSingleVolumes = [JSON]()
-                        for i in 0 ..< item.sellCount.count{
-                            let jsonsellSingleVolume : JSON = [
-                                "sellSingleVolume\(i+1)": item.sellCount[i]
-                            ]
-                            jsonsellSingleVolumes.append(jsonsellSingleVolume)
-                        }
-                        resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-                        var jsonsellVolumes = [JSON]()
-                        for i in 0 ..< item.sellVolumes.count{
-                            let jsonsellVolume : JSON = [
-                                "sellVolume\(i+1)": item.sellVolumes[i]
-                            ]
-                            jsonsellVolumes.append(jsonsellVolume)
-                        }
-                        resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
 //                        var jsonSubtypes = [JSON]()
 //                        for i in 0 ..< item.subtypes.count{
 //                            let jsonSubtype : JSON = [

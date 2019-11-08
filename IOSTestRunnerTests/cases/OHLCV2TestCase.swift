@@ -36,8 +36,9 @@ class OHLCV2TestCase: BaseTestCase {
         let oHLCResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCResponse.ohlcItems)
         XCTAssertNotNil(oHLCResponse.fqItems)
+        var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,
                 "highPrice": item.highPrice,
@@ -51,23 +52,11 @@ class OHLCV2TestCase: BaseTestCase {
                 "fp_volume": item.afterHoursVolume,
                 "fp_amount": item.afterHoursAmount
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
         }
-        for item in oHLCResponse.fqItems{
-            var resultJSON: JSON = [
-                "dateTime": item.dateTime,
-                "increasePrice": item.increasePrice,
-                "allotmentPrice": item.allotmentPrice,
-                "bonusAmount": item.bonusAmount,
-                "bonusProportion": item.bonusProportion,
-                "increaseProportion": item.increaseProportion,
-                "increaseVolume": item.increaseVolume,
-                "allotmentProportion": item.allotmentProportion
-            ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
-        }
+       print(resultJSON)
+       onTestResult(param: param, result: resultJSON)
     }
 }
 
