@@ -23,18 +23,21 @@ class BrokerSeatTestCase: BaseTestCase {
 
         let resp = self.makeSyncRequest(request: mRequest)
         let brokerSeatResponse = resp as! MBrokerSeatResponse
-        print(brokerSeatResponse)
+//        print(brokerSeatResponse)
         XCTAssertNotNil(brokerSeatResponse.buyBrokerSeatItems)
         XCTAssertNotNil(brokerSeatResponse.sellBrokerSeatItems)
         var resultJSON : JSON = [:]
+        var i = 1
+        
         for buyitem in brokerSeatResponse.buyBrokerSeatItems{
             var itemJSON: JSON = [
                 "corp": buyitem.name,
                 "corporation": buyitem.fullName,
                 "state": "1"
             ]
-            resultJSON["\(buyitem.name!)1"] = itemJSON
-            
+//            print(itemJSON)
+            resultJSON["\(i)"] = itemJSON
+            i = i + 1
         }
         for sellitem in brokerSeatResponse.sellBrokerSeatItems{
             var itemJSON: JSON = [
@@ -42,7 +45,8 @@ class BrokerSeatTestCase: BaseTestCase {
                 "corporation": sellitem.fullName,
                 "state": "0"
             ]
-            resultJSON["\(sellitem.name!)0"] = itemJSON
+            resultJSON["\(i)"] = itemJSON
+            i = i + 1
         }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
