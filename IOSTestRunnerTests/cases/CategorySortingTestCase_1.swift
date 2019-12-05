@@ -300,7 +300,7 @@ class CategorySortingTestCase_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
-                    resultJSON["addValue\(addValueitem.date!)\(addValueitem.time!)"] = itemJSON
+                    resultJSON["addValue"] = itemJSON
                 }
             }else if items is MFuturesItem{
                 let item:MFuturesItem = items as! MFuturesItem
@@ -606,7 +606,7 @@ class CategorySortingTestCase_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
-                    resultJSON["addValue\(addValueitem.date!)\(addValueitem.time!)"] = itemJSON
+                    resultJSON["addValue"] = itemJSON
                     }
             }else if items is MStockItem{
                 let item:MStockItem = items
@@ -884,7 +884,7 @@ class CategorySortingTestCase_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
-                    resultJSON["addValue\(addValueitem.date!)\(addValueitem.time!)"] = itemJSON
+                    resultJSON["addValue"] = itemJSON
             }
                     }
             print(resultJSON)
