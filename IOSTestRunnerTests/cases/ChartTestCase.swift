@@ -45,6 +45,18 @@ class ChartTestCase: BaseTestCase {
             resultJSON["\(item.datetime!)"] = itemJSON
             
         }
+        if mRequest.returnAFData == true {
+            for item in chartResponse.afItems{
+                var itemJSON:JSON = [
+                    "datetime": item.datetime,
+                    "closePrice": item.closePrice,
+                    "tradeVolume": item.tradeVolume,
+                    "reference_price": item.referencePrice
+                ]
+                resultJSON["\(item.datetime!)"] = itemJSON
+            }
+            
+        }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }

@@ -86,6 +86,8 @@ enum StockTestCaseName: String, CaseIterable {
     case OHLCSubTestCase = "OHLCSubTestCase"
     case L2TimeTickTestCase = "L2TimeTickTestCase"
     case L2TimeTickDetailTestCase = "L2TimeTickDetailTestCase"
+    case SearchV2TestCase = "SearchV2TestCase"
+    case VolumeTestCase = "VolumeTestCase"
 //    ///////////////////F10//////////////
     case  F10TestCase = "F10TestCase"
     case  LatestIndexTestCase = "LatestIndexTestCase"

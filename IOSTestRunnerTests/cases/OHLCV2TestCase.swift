@@ -24,18 +24,25 @@ class OHLCV2TestCase: BaseTestCase {
         if let typeVal = MOHLCPeriod.init(rawValue:param["PERIOD"].uIntValue) {
             mRequest.period = typeVal
         }
-        mRequest.date = param["DATE"].stringValue
+        if param["DATE"].stringValue != ""{
+            mRequest.date = param["DATE"].stringValue
+        }
+        
         if let typeVal = MRequestType.init(rawValue:param["REQUESTTYPE"].uIntValue) {
             mRequest.requestType = typeVal
         }
         if let typeVal = MOHLCPriceAdjustedMode.init(rawValue:param["PRICEADJUSTEDMODE"].intValue) {
              mRequest.priceAdjustedMode = typeVal
         }
+        if param["COUNT"].uIntValue != 0{
+            mRequest.count = param["COUNT"].uIntValue
+        }
    
         let resp = self.makeSyncRequest(request: mRequest)
         let oHLCResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCResponse.ohlcItems)
-        XCTAssertNotNil(oHLCResponse.fqItems)
+//        XCTAssertNotNil(oHLCResponse.fqItems)
+        print(oHLCResponse)
         var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
             var itemJSON: JSON = [

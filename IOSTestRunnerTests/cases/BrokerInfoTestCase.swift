@@ -30,6 +30,7 @@ class BrokerSeatTestCase: BaseTestCase {
         var i = 1
         
         for buyitem in brokerSeatResponse.buyBrokerSeatItems{
+            
             var itemJSON: JSON = [
                 "corp": buyitem.name,
                 "corporation": buyitem.fullName,
