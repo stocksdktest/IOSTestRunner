@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
-		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
 		A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869823150A4400F75635 /* ExampleTestCase2.swift */; };
 		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
@@ -21,7 +20,6 @@
 		A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153911F23113DF3007648F4 /* ExampleTestCase1.swift */; };
 		A153912B23113DF3007648F4 /* IOSTestRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */; };
 		A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1658D1523177FD100B876D3 /* SDKSetup.swift */; };
-		A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
 		A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D1A2317D4F400B876D3 /* libc++.tbd */; };
 		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
 		A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D3A2318E85900B876D3 /* CoreData.framework */; };
@@ -30,6 +28,9 @@
 		A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C6838823123DEE001F7CD0 /* StockTestCaseName.swift */; };
 		A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA4150231E49750019A5D4 /* TestResultCollector.swift */; };
 		A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */; };
+		A1DDD9B9239A62DA000640C3 /* MongoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDD9B8239A62DA000640C3 /* MongoCollector.swift */; };
+		A1DDD9BB239A62F1000640C3 /* LogCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDD9BA239A62F1000640C3 /* LogCollector.swift */; };
+		A1DDD9BC239BA78E000640C3 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
 		A1F7BF41231388DE00687389 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF40231388DE00687389 /* Utils.swift */; };
 		A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF422313D4D800687389 /* BaseTestCase.swift */; };
 		A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */; };
@@ -176,6 +177,9 @@
 		A1C6838B23124596001F7CD0 /* IOSTestRunnerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOSTestRunnerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A1DA4150231E49750019A5D4 /* TestResultCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultCollector.swift; sourceTree = "<group>"; };
 		A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTestObservation.swift; sourceTree = "<group>"; };
+		A1DDD9B8239A62DA000640C3 /* MongoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoCollector.swift; sourceTree = "<group>"; };
+		A1DDD9BA239A62F1000640C3 /* LogCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCollector.swift; sourceTree = "<group>"; };
+		A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F7BF40231388DE00687389 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1F7BF422313D4D800687389 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		A1F7BF442313DB1C00687389 /* ParametrizedTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParametrizedTestCase.h; sourceTree = "<group>"; };
@@ -282,12 +286,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DDD9BC239BA78E000640C3 /* libMApi.a in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
 				A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */,
-				A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */,
-				957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +366,8 @@
 				A1F7BF40231388DE00687389 /* Utils.swift */,
 				A1DA4150231E49750019A5D4 /* TestResultCollector.swift */,
 				A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */,
+				A1DDD9B8239A62DA000640C3 /* MongoCollector.swift */,
+				A1DDD9BA239A62F1000640C3 /* LogCollector.swift */,
 			);
 			path = IOSTestRunnerTests;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
 				A1658D9F231A494000B876D3 /* MApi */,
 				A1658D3A2318E85900B876D3 /* CoreData.framework */,
@@ -706,13 +712,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MongoSwift/MongoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/mongo-embedded-c-driver/iPhoneOS/Frameworks/bson.framework",
+				"${PODS_ROOT}/mongo-embedded-c-driver/iPhoneOS/Frameworks/bson.framework.dSYM",
+				"${PODS_ROOT}/mongo-embedded-c-driver/iPhoneOS/Frameworks/mongoc.framework",
+				"${PODS_ROOT}/mongo-embedded-c-driver/iPhoneOS/Frameworks/mongoc.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MongoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/bson.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/bson.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/mongoc.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/mongoc.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -801,6 +817,7 @@
 				A1FEE239235475B9007FD238 /* L2TimeTickTestCase.swift in Sources */,
 				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
 				A1FEE256235475B9007FD238 /* NewsTestCase.swift in Sources */,
+				A1DDD9BB239A62F1000640C3 /* LogCollector.swift in Sources */,
 				A1FEE276235475B9007FD238 /* F10TestCase.swift in Sources */,
 				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1FEE27A235475B9007FD238 /* SectionSortingTestCase_1.swift in Sources */,
@@ -839,6 +856,7 @@
 				A1FEE236235475B9007FD238 /* TradeQuoteTestCase.swift in Sources */,
 				A1FEE265235475B9007FD238 /* SearchTestCase.swift in Sources */,
 				A1FEE23C235475B9007FD238 /* MarginInfoShareTestCase.swift in Sources */,
+				A1DDD9B9239A62DA000640C3 /* MongoCollector.swift in Sources */,
 				A1FEE277235475B9007FD238 /* BlockTradeTestCase.swift in Sources */,
 				A1FEE235235475B9007FD238 /* SubnewBondRankingTestCase.swift in Sources */,
 				A1FEE243235475B9007FD238 /* OHLCSubTestCase.swift in Sources */,
@@ -1014,7 +1032,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1045,7 +1063,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1084,7 +1102,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
 				);
 				OTHER_LDFLAGS = (
@@ -1096,7 +1113,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "IOSTestRunnerTests/IOSTestRunnerTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSTestRunner.app/IOSTestRunner";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/sdk/MApi";
@@ -1120,7 +1137,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
 				);
 				OTHER_LDFLAGS = (
@@ -1131,7 +1147,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "IOSTestRunnerTests/IOSTestRunnerTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSTestRunner.app/IOSTestRunner";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/sdk/MApi";
