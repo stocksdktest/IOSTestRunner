@@ -3,13 +3,11 @@ import mongoc
 
 /// `BSONEncoder` facilitates the encoding of `Encodable` values into BSON.
 public class BSONEncoder {
-    /**
-     * Enum representing the various strategies for encoding `Date`s.
-     *
-     * As per the BSON specification, the default strategy is to encode `Date`s as BSON datetime objects.
-     *
-     * - SeeAlso: bsonspec.org
-     */
+    /// Enum representing the various strategies for encoding `Date`s.
+    ///
+    /// As per the BSON specification, the default strategy is to encode `Date`s as BSON datetime objects.
+    ///
+    /// - SeeAlso: bsonspec.org
     public enum DateEncodingStrategy {
         /// Encode the `Date` by deferring to its default encoding implementation.
         case deferredToDate
@@ -35,14 +33,12 @@ public class BSONEncoder {
         case custom((Date, Encoder) throws -> Void)
     }
 
-    /**
-     * Enum representing the various strategies for encoding `UUID`s.
-     *
-     * As per the BSON specification, the default strategy is to encode `UUID`s as BSON binary types with the UUID
-     * subtype.
-     *
-     * - SeeAlso: bsonspec.org
-     */
+    /// Enum representing the various strategies for encoding `UUID`s.
+    ///
+    /// As per the BSON specification, the default strategy is to encode `UUID`s as BSON binary types with the UUID
+    /// subtype.
+    ///
+    /// - SeeAlso: bsonspec.org
     public enum UUIDEncodingStrategy {
         /// Encode the `UUID` by deferring to its default encoding implementation.
         case deferredToUUID
@@ -51,22 +47,18 @@ public class BSONEncoder {
         case binary
     }
 
-    /**
-     * Enum representing the various strategies for encoding `Data`s.
-     *
-     * As per the BSON specification, the default strategy is to encode `Data`s as BSON binary types with the generic
-     * binary subtype.
-     *
-     * - SeeAlso: bsonspec.org
-     */
+    /// Enum representing the various strategies for encoding `Data`s.
+    ///
+    /// As per the BSON specification, the default strategy is to encode `Data`s as BSON binary types with the generic
+    /// binary subtype.
+    ///
+    /// - SeeAlso: bsonspec.org
     public enum DataEncodingStrategy {
-        /**
-         * Encode the `Data` by deferring to its default encoding implementation.
-         *
-         * Note: The default encoding implementation attempts to encode the `Data` as a `[UInt8]`, but because BSON
-         * does not support integer types besides `Int32` or `Int64`, it actually gets encoded to BSON as an `[Int32]`.
-         * This results in a space inefficient storage of the `Data` (using 4 bytes of BSON storage per byte of data).
-         */
+        /// Encode the `Data` by deferring to its default encoding implementation.
+        ///
+        /// Note: The default encoding implementation attempts to encode the `Data` as a `[UInt8]`, but because BSON
+        /// does not support integer types besides `Int32` or `Int64`, it actually gets encoded to BSON as an `[Int32]`.
+        /// This results in a space inefficient storage of the `Data` (using 4 bytes of BSON storage per byte of data).
         case deferredToData
 
         /// Encode the `Data` as a BSON binary type (default).
@@ -110,34 +102,13 @@ public class BSONEncoder {
     }
 
     /// Initializes `self`.
-    public init(options: CodingStrategyProvider? = nil) {
-        self.configureWithOptions(options: options)
-    }
+    public init() {}
 
-    /// Initializes `self` by using the options of another `BSONEncoder` and the provided options, with preference
-    /// going to the provided options in the case of conflicts.
-    internal init(copies other: BSONEncoder, options: CodingStrategyProvider?) {
-        self.userInfo = other.userInfo
-        self.dateEncodingStrategy = other.dateEncodingStrategy
-        self.uuidEncodingStrategy = other.uuidEncodingStrategy
-        self.dataEncodingStrategy = other.dataEncodingStrategy
-
-        self.configureWithOptions(options: options)
-    }
-
-    internal func configureWithOptions(options: CodingStrategyProvider?) {
-        self.dateEncodingStrategy = options?.dateCodingStrategy?.rawValue.encoding ?? self.dateEncodingStrategy
-        self.uuidEncodingStrategy = options?.uuidCodingStrategy?.rawValue.encoding ?? self.uuidEncodingStrategy
-        self.dataEncodingStrategy = options?.dataCodingStrategy?.rawValue.encoding ?? self.dataEncodingStrategy
-    }
-
-    /**
-     * Encodes the given top-level value and returns its BSON representation.
-     *
-     * - Parameter value: The value to encode.
-     * - Returns: A new `Document` containing the encoded BSON data.
-     * - Throws: `EncodingError` if any value throws an error during encoding.
-     */
+    /// Encodes the given top-level value and returns its BSON representation.
+    ///
+    /// - parameter value: The value to encode.
+    /// - returns: A new `Document` containing the encoded BSON data.
+    /// - throws: An error if any value throws an error during encoding.
     public func encode<T: Encodable>(_ value: T) throws -> Document {
         // if the value being encoded is already a `Document` we're done
         switch value {
@@ -170,14 +141,12 @@ public class BSONEncoder {
         return dict.asDocument()
     }
 
-    /**
-     * Encodes the given top-level optional value and returns its BSON representation. Returns nil if the
-     * value is nil or if it contains no data.
-     *
-     * - Parameter value: The value to encode.
-     * - Returns: A new `Document` containing the encoded BSON data, or nil if there is no data to encode.
-     * - Throws: `EncodingError` if any value throws an error during encoding.
-     */
+    /// Encodes the given top-level optional value and returns its BSON representation. Returns nil if the
+    /// value is nil or if it contains no data.
+    ///
+    /// - parameter value: The value to encode.
+    /// - returns: A new `Document` containing the encoded BSON data, or nil if there is no data to encode.
+    /// - throws: An error if any value throws an error during encoding.
     public func encode<T: Encodable>(_ value: T?) throws -> Document? {
         guard let value = value else {
             return nil
@@ -186,26 +155,22 @@ public class BSONEncoder {
         return encoded == [:] ? nil : encoded
     }
 
-    /**
-     * Encodes the given array of top-level values and returns an array of their BSON representations.
-     *
-     * - Parameter values: The values to encode.
-     * - Returns: A new `[Document]` containing the encoded BSON data.
-     * - Throws: `EncodingError` if any value throws an error during encoding.
-     */
+    /// Encodes the given array of top-level values and returns an array of their BSON representations.
+    ///
+    /// - parameter values: The values to encode.
+    /// - returns: A new `[Document]` containing the encoded BSON data.
+    /// - throws: An error if any value throws an error during encoding.
     public func encode<T: Encodable>(_ values: [T]) throws -> [Document] {
         return try values.map { try self.encode($0) }
     }
 
-    /**
-     * Encodes the given array of top-level optional values and returns an array of their BSON representations.
-     * Any value that is nil or contains no data will be mapped to nil.
-     *
-     * - Parameter values: The values to encode.
-     * - Returns: A new `[Document?]` containing the encoded BSON data. Any value that is nil or
-     *            contains no data will be mapped to nil.
-     * - Throws: `EncodingError` if any value throws an error during encoding.
-     */
+    /// Encodes the given array of top-level optional values and returns an array of their BSON representations.
+    /// Any value that is nil or contains no data will be mapped to nil.
+    ///
+    /// - parameter values: The values to encode.
+    /// - returns: A new `[Document?]` containing the encoded BSON data. Any value that is nil or
+    ///            contains no data will be mapped to nil.
+    /// - throws: An error if any value throws an error during encoding.
     public func encode<T: Encodable>(_ values: [T?]) throws -> [Document?] {
         return try values.map { try self.encode($0) }
     }
@@ -313,8 +278,8 @@ internal struct _BSONEncodingStorage {
         guard !self.containers.isEmpty else {
             fatalError("Empty container stack.")
         }
-        // swiftlint:disable:next force_unwrapping
-        return self.containers.popLast()! // guaranteed safe because of precondition.
+        // swiftlint:disable:next force_unwrapping - guaranteed safe because of precondition.
+        return self.containers.popLast()!
     }
 }
 
@@ -435,10 +400,11 @@ extension _BSONEncoder {
         case .formatted(let formatter):
             return formatter.string(from: date)
         case .iso8601:
-            guard #available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) else {
-                fatalError("ISO8601DateFormatter is unavailable on this platform.")
+            if #available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
+                return BSONDecoder.iso8601Formatter.string(from: date)
+            } else {
+                throw MongoError.bsonEncodeError(message: "ISO8601DateFormatter is unavailable on this platform.")
             }
-            return BSONDecoder.iso8601Formatter.string(from: date)
         case .custom(let f):
             return try handleCustomStrategy(encodeFunc: f, forValue: date)
         }
@@ -511,7 +477,7 @@ extension _BSONEncoder {
     }
 }
 
-private struct _BSONKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
+private struct _BSONKeyedEncodingContainer<K: CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
 
     /// A reference to the encoder we're writing to.
@@ -751,10 +717,6 @@ private class MutableArray: BSONValue {
     required convenience init(from decoder: Decoder) throws {
         fatalError("`MutableArray` is not meant to be initialized from a `Decoder`")
     }
-
-    func bsonEquals(_ other: BSONValue?) -> Bool {
-        return self.array.bsonEquals(other)
-    }
 }
 
 /// A private class wrapping a Swift dictionary so we can pass it by reference
@@ -802,13 +764,6 @@ private class MutableDictionary: BSONValue {
     }
 
     init() {}
-
-    func bsonEquals(_ other: BSONValue?) -> Bool {
-        guard let otherDict = other as? MutableDictionary else {
-            return false
-        }
-        return otherDict.keys == self.keys && otherDict.values.bsonEquals(self.values)
-    }
 
     /// methods required by the BSONValue protocol that we don't actually need/use. MutableDictionary
     /// is just a BSONValue to simplify usage alongside true BSONValues within the encoder.

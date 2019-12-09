@@ -8,18 +8,10 @@ import mongoc
 public final class ReadPreference {
     /// An enumeration of possible ReadPreference modes.
     public enum Mode: String {
-        /// Default mode. All operations read from the current replica set primary.
         case primary
-        /// In most situations, operations read from the primary but if it is
-        /// unavailable, operations read from secondary members.
         case primaryPreferred
-        /// All operations read from the secondary members of the replica set.
         case secondary
-        /// In most situations, operations read from secondary members but if no
-        /// secondary members are available, operations read from the primary.
         case secondaryPreferred
-        /// Operations read from member of the replica set with the least network
-        /// latency, irrespective of the member’s type.
         case nearest
 
         internal var readMode: mongoc_read_mode_t {
@@ -70,8 +62,8 @@ public final class ReadPreference {
         guard let bson = mongoc_read_prefs_get_tags(self._readPreference) else {
             fatalError("Failed to retrieve read preference tags")
         }
-        // we have to copy because libmongoc owns the pointer.
-        let wrapped = Document(copying: bson)
+
+        let wrapped = Document(fromPointer: bson)
 
         // swiftlint:disable:next force_cast
         return wrapped.values as! [Document]
@@ -107,24 +99,25 @@ public final class ReadPreference {
      * - Returns: a new `ReadPreference`
      *
      * - Throws:
-     *   - A `UserError.invalidArgumentError` if `mode` is `.primary` and `tagSets` is non-empty
-     *   - A `UserError.invalidArgumentError` if `maxStalenessSeconds` non-nil and < 90
+     *   - A `MongoError.readPreferenceError` if `mode` is `.primary` and `tagSets` is non-empty
+     *   - A `MongoError.readPreferenceError` if `maxStalenessSeconds` non-nil and < 90
      */
     public init(_ mode: Mode, tagSets: [Document]? = nil, maxStalenessSeconds: Int64? = nil) throws {
         self._readPreference = mongoc_read_prefs_new(mode.readMode)
 
         if let tagSets = tagSets {
             guard mode != .primary || tagSets.isEmpty else {
-                throw UserError.invalidArgumentError(message: "tagSets may not be used with primary mode")
+                throw MongoError.readPreferenceError(message: "tagSets may not be used with primary mode")
             }
 
-            let tags = try BSONEncoder().encode(Document(tagSets))
-            mongoc_read_prefs_set_tags(self._readPreference, tags._bson)
+            let encoder = BSONEncoder()
+            let tags = try encoder.encode(Document(tagSets))
+            mongoc_read_prefs_set_tags(self._readPreference, tags.data)
         }
 
         if let maxStalenessSeconds = maxStalenessSeconds {
             guard maxStalenessSeconds >= MONGOC_SMALLEST_MAX_STALENESS_SECONDS else {
-                throw UserError.invalidArgumentError(message: "Expected maxStalenessSeconds to be >= " +
+                throw MongoError.readPreferenceError(message: "Expected maxStalenessSeconds to be >= " +
                     " \(MONGOC_SMALLEST_MAX_STALENESS_SECONDS), \(maxStalenessSeconds) given")
             }
 
@@ -143,7 +136,7 @@ public final class ReadPreference {
         self._readPreference = mongoc_read_prefs_copy(readPreference)
     }
 
-    /// Cleans up internal state.
+    /// Cleans up the internal `mongoc_read_prefs_t`.
     deinit {
         guard let readPreference = self._readPreference else {
             return

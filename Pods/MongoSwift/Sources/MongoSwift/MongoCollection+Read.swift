@@ -10,22 +10,17 @@ extension MongoCollection {
      *   - options: Optional `FindOptions` to use when executing the command
      *
      * - Returns: A `MongoCursor` over the resulting `Document`s
-     *
-     * - Throws:
-     *   - `UserError.invalidArgumentError` if the options passed are an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
-    public func find(_ filter: Document = [:],
-                     options: FindOptions? = nil,
-                     session: ClientSession? = nil) throws -> MongoCursor<CollectionType> {
-        let opts = try encodeOptions(options: options, session: session)
+    public func find(_ filter: Document = [:], options: FindOptions? = nil) throws -> MongoCursor<CollectionType> {
+        let opts = try BSONEncoder().encode(options)
         let rp = options?.readPreference?._readPreference
-
-        guard let cursor = mongoc_collection_find_with_opts(self._collection, filter._bson, opts?._bson, rp) else {
-            fatalError("Couldn't get cursor from the server")
+        guard let cursor = mongoc_collection_find_with_opts(self._collection, filter.data, opts?.data, rp) else {
+            throw MongoError.invalidResponse()
         }
-        return try MongoCursor(from: cursor, client: self._client, decoder: self.decoder, session: session)
+        guard let client = self._client else {
+            throw MongoError.invalidClient()
+        }
+        return MongoCursor(fromCursor: cursor, withClient: client)
     }
 
     /**
@@ -36,24 +31,19 @@ extension MongoCollection {
      *   - options: Optional `AggregateOptions` to use when executing the command
      *
      * - Returns: A `MongoCursor` over the resulting `Document`s
-     *
-     * - Throws:
-     *   - `UserError.invalidArgumentError` if the options passed are an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
-    public func aggregate(_ pipeline: [Document],
-                          options: AggregateOptions? = nil,
-                          session: ClientSession? = nil) throws -> MongoCursor<Document> {
-        let opts = try encodeOptions(options: options, session: session)
+    public func aggregate(_ pipeline: [Document], options: AggregateOptions? = nil) throws -> MongoCursor<Document> {
+        let opts = try BSONEncoder().encode(options)
         let rp = options?.readPreference?._readPreference
         let pipeline: Document = ["pipeline": pipeline]
-
         guard let cursor = mongoc_collection_aggregate(
-            self._collection, MONGOC_QUERY_NONE, pipeline._bson, opts?._bson, rp) else {
-            fatalError("Couldn't get cursor from the server")
+            self._collection, MONGOC_QUERY_NONE, pipeline.data, opts?.data, rp) else {
+            throw MongoError.invalidResponse()
         }
-        return try MongoCursor(from: cursor, client: self._client, decoder: self.decoder, session: session)
+        guard let client = self._client else {
+            throw MongoError.invalidClient()
+        }
+        return MongoCursor(fromCursor: cursor, withClient: client)
     }
 
     // TODO SWIFT-133: mark this method deprecated https://jira.mongodb.org/browse/SWIFT-133
@@ -65,17 +55,19 @@ extension MongoCollection {
      *   - options: Optional `CountOptions` to use when executing the command
      *
      * - Returns: The count of the documents that matched the filter
-     *
-     * - Throws:
-     *   - `ServerError.commandError` if an error occurs that prevents the command from performing the write.
-     *   - `UserError.invalidArgumentError` if the options passed in form an invalid combination.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
-    public func count(_ filter: Document = [:],
-                      options: CountOptions? = nil,
-                      session: ClientSession? = nil) throws -> Int {
-        let operation = CountOperation(collection: self, filter: filter, options: options, session: session)
-        return try operation.execute()
+    public func count(_ filter: Document = [:], options: CountOptions? = nil) throws -> Int {
+        let opts = try BSONEncoder().encode(options)
+        let rp = options?.readPreference?._readPreference
+        var error = bson_error_t()
+        // because we already encode skip and limit in the options,
+        // pass in 0s so we don't get duplicate parameter errors.
+        let count = mongoc_collection_count_with_opts(
+            self._collection, MONGOC_QUERY_NONE, filter.data, 0, 0, opts?.data, rp, &error)
+
+        if count == -1 { throw MongoError.commandError(message: toErrorString(error)) }
+
+        return Int(count)
     }
 
     /**
@@ -87,11 +79,9 @@ extension MongoCollection {
      *
      * - Returns: The count of the documents that matched the filter
      */
-    private func countDocuments(_ filter: Document = [:],
-                                options: CountDocumentsOptions? = nil,
-                                session: ClientSession? = nil) throws -> Int {
+    private func countDocuments(_ filter: Document = [:], options: CountDocumentsOptions? = nil) throws -> Int {
         // TODO SWIFT-133: implement this https://jira.mongodb.org/browse/SWIFT-133
-        throw UserError.logicError(message: "Unimplemented command")
+        throw MongoError.commandError(message: "Unimplemented command")
     }
 
     /**
@@ -102,10 +92,9 @@ extension MongoCollection {
      *
      * - Returns: an estimate of the count of documents in this collection
      */
-    private func estimatedDocumentCount(options: EstimatedDocumentCountOptions? = nil,
-                                        session: ClientSession? = nil) throws -> Int {
+    private func estimatedDocumentCount(options: EstimatedDocumentCountOptions? = nil) throws -> Int {
         // TODO SWIFT-133: implement this https://jira.mongodb.org/browse/SWIFT-133
-        throw UserError.logicError(message: "Unimplemented command")
+        throw MongoError.commandError(message: "Unimplemented command")
     }
 
     /**
@@ -117,28 +106,37 @@ extension MongoCollection {
      *   - options: Optional `DistinctOptions` to use when executing the command
      *
      * - Returns: A `[BSONValue]` containing the distinct values for the specified criteria
-     *
-     * - Throws:
-     *   - `ServerError.commandError` if an error occurs that prevents the command from executing.
-     *   - `UserError.invalidArgumentError` if the options passed in form an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
     public func distinct(fieldName: String,
                          filter: Document = [:],
-                         options: DistinctOptions? = nil,
-                         session: ClientSession? = nil) throws -> [BSONValue] {
-        let operation = DistinctOperation(collection: self,
-                                          fieldName: fieldName,
-                                          filter: filter,
-                                          options: options,
-                                          session: session)
-        return try operation.execute()
+                         options: DistinctOptions? = nil) throws -> [BSONValue] {
+        let collName = String(cString: mongoc_collection_get_name(self._collection))
+        let command: Document = [
+            "distinct": collName,
+            "key": fieldName,
+            "query": filter
+        ]
+
+        let opts = try BSONEncoder().encode(options)
+        let rp = options?.readPreference?._readPreference
+        let reply = Document()
+        var error = bson_error_t()
+        guard mongoc_collection_read_command_with_opts(
+            self._collection, command.data, rp, opts?.data, reply.data, &error) else {
+            throw MongoError.commandError(message: toErrorString(error))
+        }
+
+        guard let values = try reply.getValue(for: "values") as? [BSONValue] else {
+            throw MongoError.commandError(message:
+                "expected server reply \(reply) to contain an array of distinct values")
+        }
+
+        return values
     }
 }
 
 /// An index to "hint" or force MongoDB to use when performing a query.
-public enum Hint: Codable {
+public enum Hint: Encodable {
     /// Specifies an index to use by its name.
     case indexName(String)
     /// Specifies an index to use by a specification `Document` containing the index key(s).
@@ -153,55 +151,44 @@ public enum Hint: Codable {
             try container.encode(doc)
         }
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let str = try? container.decode(String.self) {
-            self = .indexName(str)
-        } else {
-            self = .indexSpec(try container.decode(Document.self))
-        }
-    }
 }
 
 /// Options to use when executing an `aggregate` command on a `MongoCollection`.
-public struct AggregateOptions: Codable {
+public struct AggregateOptions: Encodable {
     /// Enables writing to temporary files. When set to true, aggregation stages
     /// can write data to the _tmp subdirectory in the dbPath directory.
-    public var allowDiskUse: Bool?
+    public let allowDiskUse: Bool?
 
     /// The number of `Document`s to return per batch.
-    public var batchSize: Int32?
+    public let batchSize: Int32?
 
     /// If true, allows the write to opt-out of document level validation. This only applies
     /// when the $out stage is specified.
-    public var bypassDocumentValidation: Bool?
+    public let bypassDocumentValidation: Bool?
 
     /// Specifies a collation.
-    public var collation: Document?
+    public let collation: Document?
 
     /// The maximum amount of time to allow the query to run.
-    public var maxTimeMS: Int64?
+    public let maxTimeMS: Int64?
 
     /// Enables users to specify an arbitrary string to help trace the operation through
     /// the database profiler, currentOp and logs. The default is to not send a value.
-    public var comment: String?
+    public let comment: String?
 
     /// The index hint to use for the aggregation. The hint does not apply to $lookup and $graphLookup stages.
-    public var hint: Hint?
+    public let hint: Hint?
 
     /// A `ReadConcern` to use in read stages of this operation.
-    public var readConcern: ReadConcern?
+    public let readConcern: ReadConcern?
 
-    // swiftlint:disable redundant_optional_initialization
     /// A ReadPreference to use for this operation.
-    public var readPreference: ReadPreference? = nil
-    // swiftlint:enable redundant_optional_initialization
+    public let readPreference: ReadPreference?
 
     /// A `WriteConcern` to use in `$out` stages of this operation.
-    public var writeConcern: WriteConcern?
+    public let writeConcern: WriteConcern?
 
-    /// Convenience initializer allowing any/all parameters to be omitted or optional.
+    /// Convenience initializer allowing any/all parameters to be optional
     public init(allowDiskUse: Bool? = nil,
                 batchSize: Int32? = nil,
                 bypassDocumentValidation: Bool? = nil,
@@ -230,6 +217,51 @@ public struct AggregateOptions: Codable {
     }
 }
 
+/// Options to use when executing a `count` command on a `MongoCollection`.
+public struct CountOptions: Encodable {
+    /// Specifies a collation.
+    public let collation: Document?
+
+    /// A hint for the index to use.
+    public let hint: Hint?
+
+    /// The maximum number of documents to count.
+    public let limit: Int64?
+
+    /// The maximum amount of time to allow the query to run.
+    public let maxTimeMS: Int64?
+
+    /// The number of documents to skip before counting.
+    public let skip: Int64?
+
+    /// A ReadConcern to use for this operation.
+    public let readConcern: ReadConcern?
+
+    /// A ReadPreference to use for this operation.
+    public let readPreference: ReadPreference?
+
+    /// Convenience initializer allowing any/all parameters to be optional
+    public init(collation: Document? = nil,
+                hint: Hint? = nil,
+                limit: Int64? = nil,
+                maxTimeMS: Int64? = nil,
+                readConcern: ReadConcern? = nil,
+                readPreference: ReadPreference? = nil,
+                skip: Int64? = nil) {
+        self.collation = collation
+        self.hint = hint
+        self.limit = limit
+        self.maxTimeMS = maxTimeMS
+        self.readConcern = readConcern
+        self.readPreference = readPreference
+        self.skip = skip
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case collation, hint, limit, maxTimeMS, readConcern, skip
+    }
+}
+
 /// The `countDocuments` command takes the same options as the deprecated `count`.
 private typealias CountDocumentsOptions = CountOptions
 
@@ -238,9 +270,39 @@ private struct EstimatedDocumentCountOptions {
     /// The maximum amount of time to allow the query to run.
     public let maxTimeMS: Int64?
 
-    /// Initializer allowing any/all parameters to be omitted or optional.
+    /// Initializer allowing any/all parameters to be omitted.
     public init(maxTimeMS: Int64? = nil) {
         self.maxTimeMS = maxTimeMS
+    }
+}
+
+/// Options to use when executing a `distinct` command on a `MongoCollection`.
+public struct DistinctOptions: Encodable {
+    /// Specifies a collation.
+    public let collation: Document?
+
+    /// The maximum amount of time to allow the query to run.
+    public let maxTimeMS: Int64?
+
+    /// A ReadConcern to use for this operation.
+    public let readConcern: ReadConcern?
+
+    /// A ReadPreference to use for this operation.
+    public let readPreference: ReadPreference?
+
+    /// Convenience initializer allowing any/all parameters to be optional
+    public init(collation: Document? = nil,
+                maxTimeMS: Int64? = nil,
+                readConcern: ReadConcern? = nil,
+                readPreference: ReadPreference? = nil) {
+        self.collation = collation
+        self.maxTimeMS = maxTimeMS
+        self.readConcern = readConcern
+        self.readPreference = readPreference
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case collation, maxTimeMS, readConcern
     }
 }
 
@@ -276,107 +338,77 @@ public enum CursorType {
 }
 
 /// Options to use when executing a `find` command on a `MongoCollection`.
-public struct FindOptions: Codable {
+public struct FindOptions: Encodable {
     /// Get partial results from a mongos if some shards are down (instead of throwing an error).
-    public var allowPartialResults: Bool?
+    public let allowPartialResults: Bool?
 
     /// The number of documents to return per batch.
-    public var batchSize: Int32?
+    public let batchSize: Int32?
 
     /// Specifies a collation.
-    public var collation: Document?
+    public let collation: Document?
 
     /// Attaches a comment to the query.
-    public var comment: String?
+    public let comment: String?
+
+    /// Indicates the type of cursor to use. This value includes both the tailable and awaitData options.
+    public let cursorType: CursorType?
 
     /// If a `CursorType` is provided, indicates whether it is `.tailable` or .`tailableAwait`.
-    private var tailable: Bool?
+    private let tailable: Bool?
 
     /// If a `CursorType` is provided, indicates whether it is `.tailableAwait`.
-    private var awaitData: Bool?
+    private let awaitData: Bool?
 
     /// A hint for the index to use.
-    public var hint: Hint?
+    public let hint: Hint?
 
     /// The maximum number of documents to return.
-    public var limit: Int64?
+    public let limit: Int64?
 
     /// The exclusive upper bound for a specific index.
-    public var max: Document?
+    public let max: Document?
 
     /// The maximum amount of time for the server to wait on new documents to satisfy a tailable cursor
     /// query. This only applies when used with `CursorType.tailableAwait`. Otherwise, this option is ignored.
-    public var maxAwaitTimeMS: Int64?
+    public let maxAwaitTimeMS: Int64?
 
     /// Maximum number of documents or index keys to scan when executing the query.
-    public var maxScan: Int64?
+    public let maxScan: Int64?
 
     /// The maximum amount of time to allow the query to run.
-    public var maxTimeMS: Int64?
+    public let maxTimeMS: Int64?
 
     /// The inclusive lower bound for a specific index.
-    public var min: Document?
+    public let min: Document?
 
     /// The server normally times out idle cursors after an inactivity period (10 minutes)
     /// to prevent excess memory use. Set this option to prevent that.
-    public var noCursorTimeout: Bool?
+    public let noCursorTimeout: Bool?
 
     /// Limits the fields to return for all matching documents.
-    public var projection: Document?
+    public let projection: Document?
 
     /// If true, returns only the index keys in the resulting documents.
-    public var returnKey: Bool?
+    public let returnKey: Bool?
 
     /// Determines whether to return the record identifier for each document. If true, adds a field $recordId
     /// to the returned documents.
-    public var showRecordId: Bool?
+    public let showRecordId: Bool?
 
     /// The number of documents to skip before returning.
-    public var skip: Int64?
+    public let skip: Int64?
 
     /// The order in which to return matching documents.
-    public var sort: Document?
+    public let sort: Document?
 
     /// A ReadConcern to use for this operation.
-    public var readConcern: ReadConcern?
-
-    // swiftlint:disable redundant_optional_initialization
+    public let readConcern: ReadConcern?
 
     /// A ReadPreference to use for this operation.
-    public var readPreference: ReadPreference? = nil
+    public let readPreference: ReadPreference?
 
-    /// Indicates the type of cursor to use. This value includes both the tailable and awaitData options.
-    public var cursorType: CursorType? {
-        get {
-            if self.tailable == nil && self.awaitData == nil {
-                return nil
-            }
-
-            if self.tailable == true && self.awaitData == true {
-                return .tailableAwait
-            }
-
-            if self.tailable == true {
-                return .tailable
-            }
-
-            return .nonTailable
-        }
-
-        set(newCursorType) {
-            if newCursorType == nil {
-                self.tailable = nil
-                self.awaitData = nil
-            } else {
-                self.tailable = newCursorType == .tailable || newCursorType == .tailableAwait
-                self.awaitData = newCursorType == .tailableAwait
-            }
-        }
-    }
-
-    // swiftlint:enable redundant_optional_initialization
-
-    /// Convenience initializer allowing any/all parameters to be omitted or optional.
+    /// Convenience initializer allowing any/all parameters to be optional
     public init(allowPartialResults: Bool? = nil,
                 batchSize: Int32? = nil,
                 collation: Document? = nil,
@@ -401,7 +433,10 @@ public struct FindOptions: Codable {
         self.batchSize = batchSize
         self.collation = collation
         self.comment = comment
+        // although this does not get encoded, we store it for debugging purposes
         self.cursorType = cursorType
+        self.tailable = cursorType == .tailable || cursorType == .tailableAwait
+        self.awaitData = cursorType == .tailableAwait
         self.hint = hint
         self.limit = limit
         self.max = max
@@ -419,7 +454,7 @@ public struct FindOptions: Codable {
         self.sort = sort
     }
 
-    // Encode everything except `self.readPreference`, because this is sent to libmongoc separately
+    // Encode everything except `self.cursorType`, as we only store it for debugging purposes
     private enum CodingKeys: String, CodingKey {
         case allowPartialResults, awaitData, batchSize, collation, comment, hint, limit, max, maxAwaitTimeMS,
             maxScan, maxTimeMS, min, noCursorTimeout, projection, readConcern, returnKey, showRecordId, tailable, skip,

@@ -1,26 +1,25 @@
 import Foundation
 
 /// A struct wrapping a `BSONValue` type that allows for encoding/
-/// decoding `BSONValue`s of unknown type.
+/// decoding `BSONValue`s of unknown type.  
 public struct AnyBSONValue: Codable, Equatable, Hashable {
     // TODO: conform all `BSONValue` types to `Hashable` (SWIFT-320).
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.value.bsonType)
+    // swiftlint:disable:next legacy_hashing
+    public var hashValue: Int {
         // A few types need to be handled specifically because their string representations aren't sufficient or
         // performant.
         if let date = self.value as? Date {
             // `Date`'s string conversion omits milliseconds and smaller time units, and using a string formatter is
             // expensive. Instead, we just include the time interval itself.
-            hasher.combine(date.timeIntervalSince1970)
+            return "\(self.value.bsonType)-\(date.timeIntervalSince1970)".hashValue
         } else if let binary = self.value as? Binary {
             // `Binary`'s string representation omits the data itself, so we include its hashValue.
-            hasher.combine(binary.data)
-            hasher.combine(binary.subtype)
+            return "\(self.value.bsonType)-\(binary.data.hashValue)-\(binary.subtype)".hashValue
         } else if let arr = self.value as? [BSONValue] {
             // To factor in every item in the array, we include the arrays extended JSON representation.
-            hasher.combine((["value": arr] as Document).extendedJSON)
+            return "\(self.value.bsonType)-\((["value": arr] as Document).extendedJSON)".hashValue
         }
-        hasher.combine("\(self.value)")
+        return "\(self.value.bsonType)-\(self.value)".hashValue
     }
 
     /// The `BSONValue` wrapped by this struct.
@@ -46,7 +45,7 @@ public struct AnyBSONValue: Codable, Equatable, Hashable {
         }
 
         // in this case, we need to wrap each value in an
-        // `AnyBSONValue`, before we encode, because `[BSONValue]`
+        // `AnyBSONValue`, before we encode, because `[BSONValue]` 
         // is not considered `Encodable`
         if let arr = self.value as? [BSONValue] {
             let mapped = arr.map { AnyBSONValue($0) }
@@ -64,44 +63,30 @@ public struct AnyBSONValue: Codable, Equatable, Hashable {
     }
 
     public static func == (lhs: AnyBSONValue, rhs: AnyBSONValue) -> Bool {
-        return lhs.value.bsonEquals(rhs.value)
+        return bsonEquals(lhs.value, rhs.value)
     }
 
-    /**
-     * Initializes a new `AnyBSONValue` from a `Decoder`.
-     *
-     * Caveats for usage with `Decoder`s other than MongoSwift's `BSONDecoder` -
-     * 1) This method does *not* support initializing an `AnyBSONValue` wrapping
-     * a `Date`. This is because, in non-BSON formats, `Date`s are encoded
-     * as other types such as `Double` or `String`. We have no way of knowing
-     * which type is the intended one when decoding to a `Document`, as `Document`s
-     * can contain any `BSONValue` type, so for simplicity we always go with a
-     * `Double` or a `String` over a `Date`.
-     * 2) Numeric values will be attempted to be decoded in the following
-     * order of types: `Int`, `Int32`, `Int64`, `Double`. The first one
-     * that can successfully represent the value with no loss of precision will
-     * be used.
-     *
-     * - Throws:
-     *   - `DecodingError` if a `BSONValue` could not be decoded from the given decoder (which is not a `BSONDecoder`).
-     *   - `DecodingError` if a BSON datetime is encountered but a non-default date decoding strategy was set on the
-     *     decoder (which is a `BSONDecoder`).
-     */
+    /// Initializes a new `AnyBSONValue` from a `Decoder`. 
+    ///
+    /// Caveats for usage with `Decoder`s other than MongoSwift's `BSONDecoder` -
+    /// 1) This method does *not* support initializing an `AnyBSONValue` wrapping
+    /// a `Date`. This is because, in non-BSON formats, `Date`s are encoded
+    /// as other types such as `Double` or `String`. We have no way of knowing 
+    /// which type is the intended one when decoding to a `Document`, as `Document`s 
+    /// can contain any `BSONValue` type, so for simplicity we always go with a 
+    /// `Double` or a `String` over a `Date`.
+    /// 2) Numeric values will be attempted to be decoded in the following
+    /// order of types: `Int`, `Int32`, `Int64`, `Double`. The first one
+    /// that can successfully represent the value with no loss of precision will 
+    /// be used.
     // swiftlint:disable:next cyclomatic_complexity
     public init(from decoder: Decoder) throws {
         // short-circuit in the `BSONDecoder` case
         if let bsonDecoder = decoder as? _BSONDecoder {
             if bsonDecoder.storage.topContainer is Date {
                 guard case .bsonDateTime = bsonDecoder.options.dateDecodingStrategy else {
-                    throw DecodingError.typeMismatch(
-                            AnyBSONValue.self,
-                            DecodingError.Context(
-                                    codingPath: bsonDecoder.codingPath,
-                                    debugDescription: "Got a BSON datetime but was expecting another format. To " +
-                                            "decode from BSON datetimes, use the default .bsonDateTime " +
-                                            "DateDecodingStrategy."
-                            )
-                    )
+                    throw MongoError.bsonDecodeError(message: "Got a BSON datetime but was expecting another format. " +
+                            "To decode from BSON datetimes, use the default .bsonDateTime DateDecodingStrategy.")
                 }
             }
             self.value = bsonDecoder.storage.topContainer
@@ -145,12 +130,8 @@ public struct AnyBSONValue: Codable, Equatable, Hashable {
         } else if let value = try? container.decode(Document.self) {
             self.value = value
         } else {
-            throw DecodingError.typeMismatch(
-                    AnyBSONValue.self,
-                    DecodingError.Context(
-                            codingPath: decoder.codingPath,
-                            debugDescription: "Encountered a value that could not be decoded to any BSON type")
-            )
+            throw MongoError.typeError(
+                message: "Encountered a value that could not be decoded to any BSON type")
         }
     }
 }

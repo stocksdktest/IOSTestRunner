@@ -1,76 +1,156 @@
 import mongoc
 
+/// Options to use when running a command against a `MongoDatabase`.
+public struct RunCommandOptions: Encodable {
+    /// A session to associate with this operation
+    public let session: ClientSession?
+
+    /// An optional `ReadConcern` to use for this operation
+    public let readConcern: ReadConcern?
+
+    /// An optional `ReadPreference` to use for this operation
+    public let readPreference: ReadPreference?
+
+    /// An optional WriteConcern to use for this operation
+    public let writeConcern: WriteConcern?
+
+    /// Convenience initializer allowing session to be omitted or optional
+    public init(readConcern: ReadConcern? = nil,
+                readPreference: ReadPreference? = nil,
+                session: ClientSession? = nil,
+                writeConcern: WriteConcern? = nil) {
+        self.readConcern = readConcern
+        self.readPreference = readPreference
+        self.session = session
+        self.writeConcern = writeConcern
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        // TODO: Encode ClientSession as "sessionId" (see: SWIFT-28)
+        case readConcern, writeConcern
+    }
+}
+
 /// Options to use when executing a `listCollections` command on a `MongoDatabase`.
 public struct ListCollectionsOptions: Encodable {
-    /// A filter to match collections against.
-    public var filter: Document?
+    /// A filter to match collections against
+    public let filter: Document?
 
-    /// The batchSize for the returned cursor.
-    public var batchSize: Int?
+    /// The batchSize for the returned cursor
+    public let batchSize: Int?
+
+    /// A session to associate with this operation
+    public let session: ClientSession?
 
     /// Convenience initializer allowing any/all parameters to be omitted or optional
-    public init(batchSize: Int? = nil, filter: Document? = nil) {
+    public init(batchSize: Int? = nil, filter: Document? = nil, session: ClientSession? = nil) {
         self.batchSize = batchSize
         self.filter = filter
+        self.session = session
+    }
+}
+
+/// Options to use when executing a `createCollection` command on a `MongoDatabase`.
+public struct CreateCollectionOptions: Encodable {
+    /// Indicates whether this will be a capped collection
+    public let capped: Bool?
+
+    /// Whether or not this collection will automatically generate an index on _id
+    public let autoIndexId: Bool?
+
+    /// Maximum size, in bytes, of this collection (if capped)
+    public let size: Int64?
+
+    /// Maximum number of documents allowed in the collection (if capped)
+    public let max: Int64?
+
+    /// Determine which storage engine to use
+    public let storageEngine: Document?
+
+    /// What validator should be used for the collection
+    public let validator: Document?
+
+    /// Determines how strictly MongoDB applies the validation rules to existing documents during an update
+    public let validationLevel: String?
+
+    /// Determines whether to error on invalid documents or just warn about the violations
+    /// but allow invalid documents to be inserted
+    public let validationAction: String?
+
+    /// Allows users to specify a default configuration for indexes when creating a collection
+    public let indexOptionDefaults: Document?
+
+    /// The name of the source collection or view from which to create the view
+    public let viewOn: String?
+
+    /// Specifies the default collation for the collection
+    public let collation: Document?
+
+    /// A session to associate with this operation
+    public let session: ClientSession?
+
+    /// A write concern to use when executing this command. To set a read or write concern
+    /// for the collection itself, retrieve the collection using `MongoDatabase.collection`.
+    public let writeConcern: WriteConcern?
+
+    /// Convenience initializer allowing any/all parameters to be omitted or optional
+    public init(autoIndexId: Bool? = nil,
+                capped: Bool? = nil,
+                collation: Document? = nil,
+                indexOptionDefaults: Document? = nil,
+                max: Int64? = nil,
+                session: ClientSession? = nil,
+                size: Int64? = nil,
+                storageEngine: Document? = nil,
+                validationAction: String? = nil,
+                validationLevel: String? = nil,
+                validator: Document? = nil,
+                viewOn: String? = nil,
+                writeConcern: WriteConcern? = nil) {
+        self.autoIndexId = autoIndexId
+        self.capped = capped
+        self.collation = collation
+        self.indexOptionDefaults = indexOptionDefaults
+        self.max = max
+        self.session = session
+        self.size = size
+        self.storageEngine = storageEngine
+        self.validationAction = validationAction
+        self.validationLevel = validationLevel
+        self.validator = validator
+        self.viewOn = viewOn
+        self.writeConcern = writeConcern
     }
 }
 
 /// Options to set on a retrieved `MongoCollection`.
-public struct CollectionOptions: CodingStrategyProvider {
-    /// A read concern to set on the returned collection. If one is not specified, the collection will inherit the
-    /// database's read concern.
-    public var readConcern: ReadConcern?
+public struct CollectionOptions {
+    /// A read concern to set on the returned collection. If one is not specified,
+    /// the collection will inherit the database's read concern.
+    public let readConcern: ReadConcern?
 
-    /// A read preference to set on the returned collection. If one is not specified, the collection will inherit the
-    /// database's read preference.
-    public var readPreference: ReadPreference?
+    /// A read preference to set on the returned collection. If one is not
+    /// specified, the collection will inherit the database's read preference.
+    public let readPreference: ReadPreference?
 
-    /// A write concern to set on the returned collection. If one is not specified, the collection will inherit the
-    /// database's write concern.
-    public var writeConcern: WriteConcern?
+    /// A write concern to set on the returned collection. If one is not specified,
+    /// the collection will inherit the database's write concern.
+    public let writeConcern: WriteConcern?
 
-    /// Specifies the `DateCodingStrategy` to use for BSON encoding/decoding operations performed by this collection.
-    /// It is the responsibility of the user to ensure that any `Date`s already stored in this collection can be
-    /// decoded using this strategy.
-    public var dateCodingStrategy: DateCodingStrategy?
-
-    /// Specifies the `UUIDCodingStrategy` to use for BSON encoding/decoding operations performed by this collection.
-    /// It is the responsibility of the user to ensure that any `UUID`s already stored in this collection can be
-    /// decoded using this strategy.
-    public var uuidCodingStrategy: UUIDCodingStrategy?
-
-    /// Specifies the `DataCodingStrategy` to use for BSON encoding/decoding operations performed by this collection.
-    /// It is the responsibility of the user to ensure that any `Data`s already stored in this collection can be
-    /// decoded using this strategy.
-    public var dataCodingStrategy: DataCodingStrategy?
-
-    /// Convenience initializer allowing any/all arguments to be omitted or optional.
+    /// Convenience initializer allowing any/all arguments to be omitted or optional
     public init(readConcern: ReadConcern? = nil,
                 readPreference: ReadPreference? = nil,
-                writeConcern: WriteConcern? = nil,
-                dateCodingStrategy: DateCodingStrategy? = nil,
-                uuidCodingStrategy: UUIDCodingStrategy? = nil,
-                dataCodingStrategy: DataCodingStrategy? = nil) {
+                writeConcern: WriteConcern? = nil) {
         self.readConcern = readConcern
         self.readPreference = readPreference
         self.writeConcern = writeConcern
-        self.dateCodingStrategy = dateCodingStrategy
-        self.uuidCodingStrategy = uuidCodingStrategy
-        self.dataCodingStrategy = dataCodingStrategy
     }
 }
 
-/// A MongoDB Database.
+/// A MongoDB Database
 public class MongoDatabase {
-    internal var _database: OpaquePointer?
-    internal var _client: MongoClient
-
-    /// Encoder used by this database for BSON conversions. This encoder's options are inherited by collections derived
-    /// from this database.
-    public let encoder: BSONEncoder
-
-    /// Decoder whose options are inherited by collections derived from this database.
-    public let decoder: BSONDecoder
+    private var _database: OpaquePointer?
+    private var _client: MongoClient?
 
     /// The name of this database.
     public var name: String {
@@ -85,8 +165,8 @@ public class MongoDatabase {
     }
 
     /// The `ReadPreference` set on this database
-    public var readPreference: ReadPreference {
-        return ReadPreference(from: mongoc_database_get_read_prefs(self._database))
+    public var readPreference: ReadPreference? {
+        return ReadPreference(from: mongoc_collection_get_read_prefs(self._database))
     }
 
     /// The `WriteConcern` set on this database, or `nil` if one is not set.
@@ -97,31 +177,14 @@ public class MongoDatabase {
     }
 
     /// Initializes a new `MongoDatabase` instance, not meant to be instantiated directly.
-    internal init(name: String, client: MongoClient, options: DatabaseOptions?) {
-        guard let db = mongoc_client_get_database(client._client, name) else {
-            fatalError("Couldn't get database '\(name)'")
-        }
-
-        if let rc = options?.readConcern {
-            mongoc_database_set_read_concern(db, rc._readConcern)
-        }
-
-        if let rp = options?.readPreference {
-            mongoc_database_set_read_prefs(db, rp._readPreference)
-        }
-
-        if let wc = options?.writeConcern {
-            mongoc_database_set_write_concern(db, wc._writeConcern)
-        }
-
-        self._database = db
-        self._client = client
-        self.encoder = BSONEncoder(copies: client.encoder, options: options)
-        self.decoder = BSONDecoder(copies: client.decoder, options: options)
+    internal init(fromDatabase: OpaquePointer, withClient: MongoClient) {
+        self._database = fromDatabase
+        self._client = withClient
     }
 
-    /// Cleans up internal state.
+    /// Deinitializes a MongoDatabase, cleaning up the internal `mongoc_database_t`.
     deinit {
+        self._client = nil
         guard let database = self._database else {
             return
         }
@@ -130,11 +193,11 @@ public class MongoDatabase {
     }
 
     /// Drops this database.
-    /// - Throws:
-    ///   - `ServerError.commandError` if an error occurs that prevents the command from executing.
-    public func drop(session: ClientSession? = nil) throws {
-        let operation = DropDatabaseOperation(database: self, session: session)
-        try operation.execute()
+    public func drop() throws {
+        var error = bson_error_t()
+        guard mongoc_database_drop(self._database, &error) else {
+            throw MongoError.commandError(message: toErrorString(error))
+        }
     }
 
     /**
@@ -146,8 +209,8 @@ public class MongoDatabase {
      *
      * - Returns: the requested `MongoCollection<Document>`
      */
-    public func collection(_ name: String, options: CollectionOptions? = nil) -> MongoCollection<Document> {
-        return self.collection(name, withType: Document.self, options: options)
+    public func collection(_ name: String, options: CollectionOptions? = nil) throws -> MongoCollection<Document> {
+        return try self.collection(name, withType: Document.self, options: options)
     }
 
     /**
@@ -163,8 +226,27 @@ public class MongoDatabase {
      */
     public func collection<T: Codable>(_ name: String,
                                        withType: T.Type,
-                                       options: CollectionOptions? = nil) -> MongoCollection<T> {
-        return MongoCollection(name: name, database: self, options: options)
+                                       options: CollectionOptions? = nil) throws -> MongoCollection<T> {
+        guard let collection = mongoc_database_get_collection(self._database, name) else {
+            throw MongoError.invalidCollection(message: "Could not get collection '\(name)'")
+        }
+
+        if let rc = options?.readConcern {
+            mongoc_collection_set_read_concern(collection, rc._readConcern)
+        }
+
+        if let rp = options?.readPreference {
+            mongoc_collection_set_read_prefs(collection, rp._readPreference)
+        }
+
+        if let wc = options?.writeConcern {
+            mongoc_collection_set_write_concern(collection, wc._writeConcern)
+        }
+
+        guard let client = self._client else {
+            throw MongoError.invalidClient()
+        }
+        return MongoCollection(fromCollection: collection, withClient: client)
     }
 
     /**
@@ -175,17 +257,10 @@ public class MongoDatabase {
      *   - options: Optional `CreateCollectionOptions` to use for the collection
      *
      * - Returns: the newly created `MongoCollection<Document>`
-     *
-     * - Throws:
-     *   - `ServerError.commandError` if an error occurs that prevents the command from executing.
-     *   - `UserError.invalidArgumentError` if the options passed in form an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
     public func createCollection(_ name: String,
-                                 options: CreateCollectionOptions? = nil,
-                                 session: ClientSession? = nil) throws -> MongoCollection<Document> {
-        return try self.createCollection(name, withType: Document.self, options: options, session: session)
+                                 options: CreateCollectionOptions? = nil) throws -> MongoCollection<Document> {
+        return try self.createCollection(name, withType: Document.self, options: options)
     }
 
     /**
@@ -199,23 +274,22 @@ public class MongoDatabase {
      *   - options: Optional `CreateCollectionOptions` to use for the collection
      *
      * - Returns: the newly created `MongoCollection<T>`
-     *
-     * - Throws:
-     *   - `ServerError.commandError` if an error occurs that prevents the command from executing.
-     *   - `UserError.invalidArgumentError` if the options passed in form an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
     public func createCollection<T: Codable>(_ name: String,
-                                             withType type: T.Type,
-                                             options: CreateCollectionOptions? = nil,
-                                             session: ClientSession? = nil) throws -> MongoCollection<T> {
-        let operation = CreateCollectionOperation(database: self,
-                                                  name: name,
-                                                  type: type,
-                                                  options: options,
-                                                  session: session)
-        return try operation.execute()
+                                             withType: T.Type,
+                                             options: CreateCollectionOptions? = nil) throws -> MongoCollection<T> {
+        let encoder = BSONEncoder()
+        let opts = try encoder.encode(options)
+        var error = bson_error_t()
+
+        guard let collection = mongoc_database_create_collection(self._database, name, opts?.data, &error) else {
+            throw MongoError.commandError(message: toErrorString(error))
+        }
+
+        guard let client = self._client else {
+            throw MongoError.invalidClient()
+        }
+        return MongoCollection(fromCollection: collection, withClient: client)
     }
 
     /**
@@ -226,20 +300,17 @@ public class MongoDatabase {
      *   - options: Optional `ListCollectionsOptions` to use when executing this command
      *
      * - Returns: a `MongoCursor` over an array of collections
-     *
-     * - Throws:
-     *   - `userError.invalidArgumentError` if the options passed are an invalid combination.
-     *   - `UserError.logicError` if the provided session is inactive.
      */
-    public func listCollections(options: ListCollectionsOptions? = nil,
-                                session: ClientSession? = nil) throws -> MongoCursor<Document> {
-        let opts = try encodeOptions(options: options, session: session)
-
-        guard let collections = mongoc_database_find_collections_with_opts(self._database, opts?._bson) else {
-            fatalError("Couldn't get cursor from the server")
+    public func listCollections(options: ListCollectionsOptions? = nil) throws -> MongoCursor<Document> {
+        let encoder = BSONEncoder()
+        let opts = try encoder.encode(options)
+        guard let collections = mongoc_database_find_collections_with_opts(self._database, opts?.data) else {
+            throw MongoError.invalidResponse()
         }
-
-        return try MongoCursor(from: collections, client: self._client, decoder: self.decoder, session: session)
+        guard let client = self._client else {
+            throw MongoError.invalidClient()
+        }
+        return MongoCursor(fromCursor: collections, withClient: client)
     }
 
     /**
@@ -250,19 +321,16 @@ public class MongoDatabase {
      *   - options: Optional `RunCommandOptions` to use when executing this command
      *
      * - Returns: a `Document` containing the server response for the command
-     *
-     * - Throws:
-     *   - `UserError.invalidArgumentError` if `requests` is empty.
-     *   - `UserError.logicError` if the provided session is inactive.
-     *   - `ServerError.writeError` if any error occurs while the command was performing a write.
-     *   - `ServerError.commandError` if an error occurs that prevents the command from being performed.
-     *   - `EncodingError` if an error occurs while encoding the options to BSON.
      */
     @discardableResult
-    public func runCommand(_ command: Document,
-                           options: RunCommandOptions? = nil,
-                           session: ClientSession? = nil) throws -> Document {
-        let operation = RunCommandOperation(database: self, command: command, options: options, session: session)
-        return try operation.execute()
+    public func runCommand(_ command: Document, options: RunCommandOptions? = nil) throws -> Document {
+        let rp = options?.readPreference?._readPreference
+        let opts = try BSONEncoder().encode(options)
+        let reply = Document()
+        var error = bson_error_t()
+        guard mongoc_database_command_with_opts(self._database, command.data, rp, opts?.data, reply.data, &error) else {
+            throw MongoError.commandError(message: toErrorString(error))
+        }
+        return reply
     }
 }
