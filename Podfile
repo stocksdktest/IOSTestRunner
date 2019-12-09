@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '11.2'
 
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
@@ -8,9 +8,9 @@ target 'IOSTestRunner' do
   use_frameworks!
 
   # Pods for IOSTestRunner
-  # pod 'Protobuf','3.4.0'
   pod 'SwiftProtobuf', '1.4.0'
   pod 'SwiftyJSON', '4.2'
+  pod 'MongoSwift', '0.1.3'
 
   target 'IOSTestRunnerTests' do
     inherit! :search_paths
