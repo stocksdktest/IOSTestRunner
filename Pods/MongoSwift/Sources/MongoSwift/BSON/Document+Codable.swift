@@ -14,8 +14,8 @@ extension Document: Codable {
         // and then wrap the values in `AnyBSONValue`s and encode them
         var container = encoder.container(keyedBy: _BSONKey.self)
         for (k, v) in self {
-            // swiftlint:disable:next force_unwrapping
-            let key = _BSONKey(stringValue: k)! // the initializer never actually returns nil.
+            // swiftlint:disable:next force_unwrapping - the initializer never actually returns nil.
+            let key = _BSONKey(stringValue: k)!
             if v is BSONNull {
                 try container.encodeNil(forKey: key)
             } else {
@@ -27,10 +27,10 @@ extension Document: Codable {
 
     /// This method will work with any `Decoder`, but for non-BSON
     /// decoders, we do not support decoding `Date`s, because of limitations
-    /// of decoding to `AnyBSONValue`s. See `AnyBSONValue.init(from:)` for
+    /// of decoding to `AnyBSONValue`s. See `AnyBSONValue.init(from:)` for 
     /// more information.
     public init(from decoder: Decoder) throws {
-        // if it's a `BSONDecoder` we should just short-circuit and
+        // if it's a `BSONDecoder` we should just short-circuit and 
         // return the container `Document`
         if let bsonDecoder = decoder as? _BSONDecoder {
             let topContainer = bsonDecoder.storage.topContainer

@@ -36,6 +36,19 @@ public class WriteConcern: Codable {
                 try container.encode("majority")
             }
         }
+
+        public static func == (lhs: W, rhs: W) -> Bool {
+            switch (lhs, rhs) {
+            case let (.number(lNum), .number(rNum)):
+                return lNum == rNum
+            case let (.tag(lTag), .tag(rTag)):
+                return lTag == rTag
+            case (.majority, .majority):
+                return true
+            default:
+                return false
+            }
+        }
     }
 
     /// Indicates the `W` value for this `WriteConcern`.
@@ -67,9 +80,9 @@ public class WriteConcern: Codable {
 
     /// If the write concern is not satisfied within this timeout (in milliseconds),
     /// the operation will return an error. The value MUST be greater than or equal to 0.
-    public var wtimeoutMS: Int64? {
+    public var wtimeoutMS: Int32? {
         let timeout = mongoc_write_concern_get_wtimeout(self._writeConcern)
-        return timeout == 0 ? nil : Int64(timeout)
+        return timeout == 0 ? nil : timeout
     }
 
     /// Indicates whether this is an acknowledged write concern.
@@ -93,15 +106,10 @@ public class WriteConcern: Codable {
     }
 
     /// Initializes a new `WriteConcern`.
-    /// - Throws:
-    ///   - `UserError.invalidArgumentError` if the options form an invalid combination.
-    public init(journal: Bool? = nil, w: W? = nil, wtimeoutMS: Int64? = nil) throws {
+    public init(journal: Bool? = nil, w: W? = nil, wtimeoutMS: Int32? = nil) throws {
         self._writeConcern = mongoc_write_concern_new()
         if let journal = journal { mongoc_write_concern_set_journal(self._writeConcern, journal) }
-        if let wtimeoutMS = wtimeoutMS {
-            // libmongoc takes in a 32-bit integer for wtimeoutMS, but the specification states it should be an int64
-            mongoc_write_concern_set_wtimeout(self._writeConcern, Int32(truncatingIfNeeded: wtimeoutMS))
-        }
+        if let wtimeoutMS = wtimeoutMS { mongoc_write_concern_set_wtimeout(self._writeConcern, wtimeoutMS) }
 
         if let w = w {
             switch w {
@@ -119,7 +127,7 @@ public class WriteConcern: Codable {
             let journalStr = String(describing: journal)
             let wStr = String(describing: w)
             let timeoutStr = String(describing: wtimeoutMS)
-            throw UserError.invalidArgumentError(message:
+            throw MongoError.invalidArgument(message:
                 "Invalid combination of options: journal=\(journalStr), w=\(wStr), wtimeoutMS=\(timeoutStr)")
         }
     }
@@ -138,7 +146,7 @@ public class WriteConcern: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let w = try container.decodeIfPresent(W.self, forKey: .w)
         let journal = try container.decodeIfPresent(Bool.self, forKey: .j)
-        let wtimeoutMS = try container.decodeIfPresent(Int64.self, forKey: .wtimeout)
+        let wtimeoutMS = try container.decodeIfPresent(Int32.self, forKey: .wtimeout)
         try self.init(journal: journal, w: w, wtimeoutMS: wtimeoutMS)
     }
 
@@ -149,7 +157,6 @@ public class WriteConcern: Codable {
         try container.encodeIfPresent(self.journal, forKey: .j)
     }
 
-    /// Cleans up internal state.
     deinit {
         guard let writeConcern = self._writeConcern else {
             return

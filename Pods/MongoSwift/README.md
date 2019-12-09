@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/mongodb/mongo-swift-driver.svg?branch=master)](https://travis-ci.org/mongodb/mongo-swift-driver)
-[![Code Coverage](https://codecov.io/gh/mongodb/mongo-swift-driver/branch/master/graph/badge.svg)](https://codecov.io/gh/mongodb/mongo-swift-driver/branch/master)
 
 # MongoSwift
 The official [MongoDB](https://www.mongodb.com/) driver for Swift.
@@ -8,7 +7,7 @@ The official [MongoDB](https://www.mongodb.com/) driver for Swift.
 - [Documentation](#documentation)
 - [Bugs/Feature Requests](#bugs--feature-requests)
 - [Installation](#installation)
-    - [macOS and Linux](#macos-and-linux)
+    - [OS X and Linux](#os-x-and-linux)
       - [Step 1: Install the MongoDB C Driver](#step-1-install-the-mongodb-c-driver)
       - [Step 2: Install MongoSwift](#step-2-install-mongoswift)
     - [iOS, tvOS, and watchOS](#ios-tvos-and-watchos)
@@ -35,21 +34,19 @@ Bug reports in JIRA for all driver projects (i.e. NODE, PYTHON, CSHARP, JAVA) an
 Core Server (i.e. SERVER) project are **public**.
 
 ## Installation
-`MongoSwift` works with Swift 4.2+.
+`MongoSwift` works with Swift 4.0+.
 
-### macOS and Linux
+### OS X and Linux
 
-Installation on macOS and Linux is supported via [Swift Package Manager](https://swift.org/package-manager/).
+Installation on OS X and Linux is supported via [Swift Package Manager](https://swift.org/package-manager/).
 
 #### Step 1: Install the MongoDB C Driver
 The driver wraps the MongoDB C driver, and using it requires having the C driver's two components, `libbson` and `libmongoc`, installed on your system. **The minimum required version of the C Driver is 1.13.0**.
 
-*On a Mac*, you can install both components at once using [Homebrew](https://brew.sh/):
+On a Mac, you can install both components at once using [Homebrew](https://brew.sh/):
 `brew install mongo-c-driver`.
 
-*On Linux*: please follow the [instructions](http://mongoc.org/libmongoc/current/installing.html#building-on-unix) from `libmongoc`'s documentation. Note that the versions provided by your package manager may be too old, in which case you can follow the instructions for building and installing from source.
-
-See example installation from source on Ubuntu in [Docker](https://github.com/mongodb/mongo-swift-driver/tree/master/Examples/Docker).
+On Linux: please follow the [instructions](http://mongoc.org/libmongoc/current/installing.html#building-on-unix) from `libmongoc`'s documentation. Note that the versions provided by your package manager may be too old, in which case you can follow the instructions for building and installing from source.
 
 #### Step 2: Install MongoSwift
 *Please follow the instructions in the previous section on installing the MongoDB C Driver before proceeding.*
@@ -57,7 +54,7 @@ See example installation from source on Ubuntu in [Docker](https://github.com/mo
 Add MongoSwift to your dependencies in `Package.swift`:
 
 ```swift
-// swift-tools-version:4.2
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
@@ -96,21 +93,29 @@ Then run `pod install` to install your project's dependencies.
 
 ## Example Usage
 
-Note: You should call `cleanupMongoSwift()` exactly once at the end of your application to release all memory and other resources allocated by `libmongoc`.
+### Initialization
+You *must* call `MongoSwift.initialize()` once at the start of your application to
+initialize `libmongoc`. This initializes global state, such as process counters. Subsequent calls will have no effect.
+
+You should call `MongoSwift.cleanup()` exactly once at the end of your application to release all memory and other resources allocated by `libmongoc`. `MongoSwift.initialize()`
+will *not* reinitialize the driver after `MongoSwift.cleanup()`.
 
 ### Connect to MongoDB and Create a Collection
 ```swift
 import MongoSwift
 
-let client = try MongoClient("mongodb://localhost:27017")
-let db = client.db("myDB")
+// initialize global state
+MongoSwift.initialize()
+
+let client = try MongoClient(connectionString: "mongodb://localhost:27017")
+let db = try client.db("myDB")
 let collection = try db.createCollection("myCollection")
 
 // free all resources
-cleanupMongoSwift()
+MongoSwift.cleanup()
 ```
 
-Note: we have included the client `connectionString` parameter for clarity, but if connecting to the default `"mongodb://localhost:27017"`it may be omitted: `let client = try MongoClient()`.
+Note: we have included the client `connectionString` for clarity, but if connecting to the default `"mongodb://localhost:27017"`it may be omitted: `let client = try MongoClient()`.
 
 ### Create and Insert a Document
 ```swift

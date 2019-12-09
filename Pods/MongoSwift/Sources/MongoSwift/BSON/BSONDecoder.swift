@@ -2,8 +2,7 @@ import Foundation
 
 /// `BSONDecoder` facilitates the decoding of BSON into semantic `Decodable` types.
 public class BSONDecoder {
-    // swiftlint:disable explicit_acl
-    // some kind of swiftlint bug here.
+    // swiftlint:disable explicit_acl - seems to be a Swiftlint bug.
     @available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
     internal static var iso8601Formatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
@@ -110,36 +109,16 @@ public class BSONDecoder {
     }
 
     /// Initializes `self`.
-    public init(options: CodingStrategyProvider? = nil) {
-        self.configureWithOptions(options: options)
-    }
+    public init() {}
 
-    /// Initializes `self` by using the options of another `BSONDecoder` and the provided options, with preference
-    /// going to the provided options in the case of conflicts.
-    internal init(copies other: BSONDecoder, options: CodingStrategyProvider?) {
-        self.userInfo = other.userInfo
-        self.dateDecodingStrategy = other.dateDecodingStrategy
-        self.uuidDecodingStrategy = other.uuidDecodingStrategy
-        self.dataDecodingStrategy = other.dataDecodingStrategy
-        self.configureWithOptions(options: options)
-    }
-
-    internal func configureWithOptions(options: CodingStrategyProvider?) {
-        self.dateDecodingStrategy = options?.dateCodingStrategy?.rawValue.decoding ?? self.dateDecodingStrategy
-        self.uuidDecodingStrategy = options?.uuidCodingStrategy?.rawValue.decoding ?? self.uuidDecodingStrategy
-        self.dataDecodingStrategy = options?.dataCodingStrategy?.rawValue.decoding ?? self.dataDecodingStrategy
-    }
-
-    /**
-     * Decodes a top-level value of the given type from the given BSON document.
-     *
-     * - Parameter type: The type of the value to decode.
-     * - Parameter document: The BSON document to decode from.
-     * - Returns: A value of the requested type.
-     * - Throws: `DecodingError` if any value throws an error during decoding.
-     */
+    /// Decodes a top-level value of the given type from the given BSON document.
+    ///
+    /// - parameter type: The type of the value to decode.
+    /// - parameter document: The BSON document to decode from.
+    /// - returns: A value of the requested type.
+    /// - throws: An error if any value throws an error during decoding.
     public func decode<T: Decodable>(_ type: T.Type, from document: Document) throws -> T {
-        // if the requested type is `Document` we're done
+        /// if the requested type is `Document` we're done
         if let doc = document as? T {
             return doc
         }
@@ -147,26 +126,22 @@ public class BSONDecoder {
         return try type.init(from: _decoder)
     }
 
-    /**
-     * Decodes a top-level value of the given type from the given BSON data.
-     *
-     * - Parameter type: The type of the value to decode.
-     * - Parameter data: The BSON data to decode from.
-     * - Returns: A value of the requested type.
-     * - Throws: `DecodingError` if the BSON data is corrupt or if any value throws an error during decoding.
-     */
+    /// Decodes a top-level value of the given type from the given BSON data.
+    ///
+    /// - parameter type: The type of the value to decode.
+    /// - parameter data: The BSON data to decode from.
+    /// - returns: A value of the requested type.
+    /// - throws: An error if the BSON data is corrupt, or if any value throws an error during decoding.
     public func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
         return try self.decode(type, from: Document(fromBSON: data))
     }
 
-    /**
-     * Decodes a top-level value of the given type from the given JSON/extended JSON string.
-     *
-     * - Parameter type: The type of the value to decode.
-     * - Parameter json: The JSON string to decode from.
-     * - Returns: A value of the requested type.
-     * - Throws: `DecodingError` if the JSON data is corrupt or if any value throws an error during decoding.
-     */
+    /// Decodes a top-level value of the given type from the given JSON/extended JSON string.
+    ///
+    /// - parameter type: The type of the value to decode.
+    /// - parameter json: The JSON string to decode from.
+    /// - returns: A value of the requested type.
+    /// - throws: An error if the JSON data is corrupt, or if any value throws an error during decoding.
     public func decode<T: Decodable>(_ type: T.Type, from json: String) throws -> T {
         // we nest the input JSON in another object, and then decode to a `DecodableWrapper`
         // wrapping an object of the requested type. since our decoder only supports decoding
@@ -187,25 +162,6 @@ public class BSONDecoder {
         throw DecodingError.dataCorrupted(
             DecodingError.Context(codingPath: [],
                                   debugDescription: "Unable to parse JSON string \(json)"))
-    }
-
-    /**
-     * Internal version of decode that throws `.internalErrors` instead of `DecodingErrors`. Use this when using the
-     * decoder internally on non-user-modified types.
-     *
-     * - Throws:
-     *   - `RuntimeError.internalError` if the BSON data is corrupt or if any value throws an error during decoding.
-     */
-    internal func internalDecode<T: Decodable>(
-            _ type: T.Type,
-            from document: Document,
-            withError errMsg: String = "Failed to decode \(T.self)")
-    throws -> T {
-        do {
-            return try self.decode(type, from: document)
-        } catch is DecodingError {
-            throw RuntimeError.internalError(message: errMsg)
-        }
     }
 
     /// A struct to wrap a `Decodable` type, allowing us to support decoding to types that
@@ -297,8 +253,8 @@ internal struct _BSONDecodingStorage {
         guard !self.containers.isEmpty else {
             fatalError("Empty container stack.")
         }
-        // swiftlint:disable:next force_unwrapping
-        return self.containers.last! // guaranteed safe because of precondition.
+        // swiftlint:disable:next force_unwrapping - guaranteed safe because of precondition.
+        return self.containers.last!
     }
 
     /// Adds a new container to the stack.
@@ -306,7 +262,7 @@ internal struct _BSONDecodingStorage {
         self.containers.append(container)
     }
 
-    /// Pops the top container from the stack.
+    /// Pops the top container from the stack. 
     fileprivate mutating func popContainer() {
         guard !self.containers.isEmpty else {
             fatalError("Empty container stack.")
@@ -346,10 +302,12 @@ extension _BSONDecoder {
             defer { self.storage.popContainer() }
             return try Data(from: self)
         case .binary:
-            let binary = try self.unboxBSONValue(value, as: Binary.self)
+            let binary = try self.unbox(value, as: Binary.self)
             return binary.data
         case.base64:
-            let base64Str = try self.unboxBSONValue(value, as: String.self)
+            guard let base64Str = value as? String else {
+                throw DecodingError._typeMismatch(at: self.codingPath, expectation: String.self, reality: value)
+            }
 
             guard let data = Data(base64Encoded: base64Str) else {
                 throw DecodingError.dataCorrupted(
@@ -367,10 +325,13 @@ extension _BSONDecoder {
     }
 
     /// Private helper function used specifically for decoding dates.
+    // swiftlint:disable cyclomatic_complexity
     fileprivate func unboxDate(_ value: BSONValue) throws -> Date {
         switch self.options.dateDecodingStrategy {
         case .bsonDateTime:
-            let date = try self.unboxBSONValue(value, as: Date.self)
+            guard let date = value as? Date else {
+                throw DecodingError._typeMismatch(at: self.codingPath, expectation: Date.self, reality: value)
+            }
             return date
         case .deferredToDate:
             self.storage.push(container: value)
@@ -384,9 +345,9 @@ extension _BSONDecoder {
             return Date(timeIntervalSince1970: seconds)
         case .iso8601:
             guard #available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) else {
-                fatalError("ISO8601DateFormatter is unavailable on this platform.")
+                throw MongoError.bsonDecodeError(message: "ISO8601DateFormatter is unavailable on this platform.")
             }
-            let isoString = try self.unboxBSONValue(value, as: String.self)
+            let isoString = try self.unbox(value, as: String.self)
             guard let date = BSONDecoder.iso8601Formatter.date(from: isoString) else {
                 throw DecodingError.dataCorrupted(
                         DecodingError.Context(
@@ -402,7 +363,7 @@ extension _BSONDecoder {
             defer { self.storage.popContainer() }
             return try f(self)
         case .formatted(let formatter):
-            let dateString = try self.unboxBSONValue(value, as: String.self)
+            let dateString = try self.unbox(value, as: String.self)
             guard let date = formatter.date(from: dateString) else {
                 throw DecodingError.dataCorrupted(
                         DecodingError.Context(
@@ -415,6 +376,7 @@ extension _BSONDecoder {
             return date
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
     /// Private helper used specifically for decoding UUIDs.
     fileprivate func unboxUUID(_ value: BSONValue) throws -> UUID {
@@ -424,17 +386,8 @@ extension _BSONDecoder {
             defer { self.storage.popContainer() }
             return try UUID(from: self)
         case .binary:
-            let binary = try self.unboxBSONValue(value, as: Binary.self)
-            do {
-                return try UUID(from: binary)
-            } catch {
-                throw DecodingError.dataCorrupted(
-                        DecodingError.Context(
-                                codingPath: self.codingPath,
-                                debugDescription: error.localizedDescription
-                        )
-                )
-            }
+            let binary = try self.unbox(value, as: Binary.self)
+            return try UUID(from: binary)
         }
     }
 
@@ -468,7 +421,7 @@ extension _BSONDecoder {
 }
 
 /// A keyed decoding container, backed by a `Document`.
-private struct _BSONKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProtocol {
+private struct _BSONKeyedDecodingContainer<K: CodingKey> : KeyedDecodingContainerProtocol {
     typealias Key = K
 
     /// A reference to the decoder we're reading from.
@@ -489,7 +442,11 @@ private struct _BSONKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainer
 
     /// All the keys the decoder has for this container.
     public var allKeys: [Key] {
+        #if swift(>=4.1)
         return self.container.keys.compactMap { Key(stringValue: $0) }
+        #else
+        return self.container.keys.flatMap { Key(stringValue: $0) }
+        #endif
     }
 
     /// Returns a Boolean value indicating whether the decoder contains a value associated with the given key.
@@ -535,7 +492,7 @@ private struct _BSONKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainer
         let entry = try getValue(forKey: key)
         return try self.decoder.with(pushedKey: key) {
             let value = try decoder.unbox(entry, as: type)
-            guard !(value is BSONNull) || type == BSONNull.self else {
+            guard !(value is BSONNull) else {
                 throw DecodingError.valueNotFound(
                     type,
                     DecodingError.Context(codingPath: self.decoder.codingPath,
@@ -655,11 +612,10 @@ private struct _BSONUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     /// A Boolean value indicating whether there are no more elements left to be decoded in the container.
     public var isAtEnd: Bool { return self.currentIndex >= self.count! }
-    // swiftlint:disable:previous force_unwrapping
-    // `.count` always returns a value and is only an `Int?` because it's required of the
-    // UnkeyedDecodingContainer protocol.
+    // swiftlint:disable:previous force_unwrapping - `.count` always returns a value and is only an `Int?`
+    // because it's required of the UnkeyedDecodingContainer protocol.
 
-    /// A private helper function to check if we're at the end of the container, and if so throw an error.
+    /// A private helper function to check if we're at the end of the container, and if so throw an error. 
     private func checkAtEnd() throws {
         guard !self.isAtEnd else {
             throw DecodingError.valueNotFound(
@@ -840,11 +796,11 @@ internal struct _BSONKey: CodingKey {
         self.intValue = index
     }
 
-    // swiftlint:disable:next force_unwrapping
-    internal static let `super` = _BSONKey(stringValue: "super")! // this initializer never actually returns nil.
+    // swiftlint:disable:next force_unwrapping - this initializer never actually returns nil.
+    internal static let `super` = _BSONKey(stringValue: "super")!
 }
 
-extension DecodingError {
+internal extension DecodingError {
     internal static func _typeMismatch(at path: [CodingKey],
                                        expectation: Any.Type,
                                        reality: BSONValue) -> DecodingError {
