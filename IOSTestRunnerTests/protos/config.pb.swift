@@ -113,6 +113,22 @@ struct StockTesting_TestcaseConfig {
   init() {}
 }
 
+struct StockTesting_StoreConfig {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var mongoUri: String = String()
+
+  var dbName: String = String()
+
+  var collectionName: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 struct StockTesting_RunnerConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -141,6 +157,15 @@ struct StockTesting_RunnerConfig {
     get {return _storage._casesConfig}
     set {_uniqueStorage()._casesConfig = newValue}
   }
+
+  var storeConfig: StockTesting_StoreConfig {
+    get {return _storage._storeConfig ?? StockTesting_StoreConfig()}
+    set {_uniqueStorage()._storeConfig = newValue}
+  }
+  /// Returns true if `storeConfig` has been explicitly set.
+  var hasStoreConfig: Bool {return _storage._storeConfig != nil}
+  /// Clears the value of `storeConfig`. Subsequent reads from it will return its default value.
+  mutating func clearStoreConfig() {_uniqueStorage()._storeConfig = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -391,6 +416,47 @@ extension StockTesting_TestcaseConfig: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
+extension StockTesting_StoreConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".StoreConfig"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "mongoUri"),
+    2: .same(proto: "dbName"),
+    3: .same(proto: "collectionName"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.mongoUri)
+      case 2: try decoder.decodeSingularStringField(value: &self.dbName)
+      case 3: try decoder.decodeSingularStringField(value: &self.collectionName)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.mongoUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.mongoUri, fieldNumber: 1)
+    }
+    if !self.dbName.isEmpty {
+      try visitor.visitSingularStringField(value: self.dbName, fieldNumber: 2)
+    }
+    if !self.collectionName.isEmpty {
+      try visitor.visitSingularStringField(value: self.collectionName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: StockTesting_StoreConfig, rhs: StockTesting_StoreConfig) -> Bool {
+    if lhs.mongoUri != rhs.mongoUri {return false}
+    if lhs.dbName != rhs.dbName {return false}
+    if lhs.collectionName != rhs.collectionName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".RunnerConfig"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -398,6 +464,7 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
     2: .same(proto: "runnerID"),
     3: .same(proto: "sdkConfig"),
     4: .same(proto: "casesConfig"),
+    5: .same(proto: "storeConfig"),
   ]
 
   fileprivate class _StorageClass {
@@ -405,6 +472,7 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
     var _runnerID: String = String()
     var _sdkConfig: StockTesting_SDKConfig? = nil
     var _casesConfig: [StockTesting_TestcaseConfig] = []
+    var _storeConfig: StockTesting_StoreConfig? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -415,6 +483,7 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
       _runnerID = source._runnerID
       _sdkConfig = source._sdkConfig
       _casesConfig = source._casesConfig
+      _storeConfig = source._storeConfig
     }
   }
 
@@ -434,6 +503,7 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
         case 2: try decoder.decodeSingularStringField(value: &_storage._runnerID)
         case 3: try decoder.decodeSingularMessageField(value: &_storage._sdkConfig)
         case 4: try decoder.decodeRepeatedMessageField(value: &_storage._casesConfig)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._storeConfig)
         default: break
         }
       }
@@ -454,6 +524,9 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
       if !_storage._casesConfig.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._casesConfig, fieldNumber: 4)
       }
+      if let v = _storage._storeConfig {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -467,6 +540,7 @@ extension StockTesting_RunnerConfig: SwiftProtobuf.Message, SwiftProtobuf._Messa
         if _storage._runnerID != rhs_storage._runnerID {return false}
         if _storage._sdkConfig != rhs_storage._sdkConfig {return false}
         if _storage._casesConfig != rhs_storage._casesConfig {return false}
+        if _storage._storeConfig != rhs_storage._storeConfig {return false}
         return true
       }
       if !storagesAreEqual {return false}

@@ -6,6 +6,8 @@
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
 
+import Foundation
+import XCTest
 import os.log
 
 class RunnerSetup {
@@ -44,6 +46,7 @@ class RunnerSetup {
             }
         }
         let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
+//        let cfgStr = "CgRUSi0xEipSVU4tQS0wOGUxNDI5MS04M2ZlLTQ0NWQtYmIwYS1jYTdhZmNlMzcyYjEaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATIiLgoKVEVTVENBU0VfMBgDIh57IlFVT1RFX05VTUJFUlMiOiAiNjAwMDAwLnNoIn0="
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {
@@ -58,7 +61,13 @@ class RunnerSetup {
             throw RunnerSetupError.SDKSetupError(error.localizedDescription)
         }
         // Setup has done
-        self.resultCollector = TestResultLogCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID)
+        // self.resultCollector = TestResultLogCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID)
+        do {
+            self.resultCollector = try TestResultMongoDBCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID, storeConf: runnerConfig.storeConfig)
+        } catch {
+            Utils.log(tag: "RunnerSetup", str: "Init TestResultCollector error: \(error)")
+            throw RunnerSetupError.SDKSetupError(error.localizedDescription)
+        }
         XCTestObservationCenter.shared.addTestObserver(StockTestObservation(collector: self.resultCollector))
     }
     
