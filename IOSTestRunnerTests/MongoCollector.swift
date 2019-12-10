@@ -25,7 +25,7 @@ class TestResultMongoDBCollector : TestResultCollector {
         
         self.mongoClient = try MongoClient(connectionString: storeConf.mongoUri)
         let db = self.mongoClient.db(storeConf.dbName)
-        self.recordCollection = db.collection(storeConf.collectionName)
+        self.recordCollection = try db.collection(storeConf.collectionName)
     }
     
     private func buildExecutionRecord() -> JSON {
