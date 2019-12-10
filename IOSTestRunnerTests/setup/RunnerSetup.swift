@@ -63,7 +63,11 @@ class RunnerSetup {
         // Setup has done
         // self.resultCollector = TestResultLogCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID)
         do {
-            self.resultCollector = try TestResultMongoDBCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID, storeConf: runnerConfig.storeConfig)
+            if runnerConfig.hasStoreConfig {
+                self.resultCollector = try TestResultMongoDBCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID, storeConf: runnerConfig.storeConfig)
+            } else {
+                self.resultCollector = TestResultLogCollector(jobID: runnerConfig.jobID, runnerID: runnerConfig.runnerID)
+            }
         } catch {
             Utils.log(tag: "RunnerSetup", str: "Init TestResultCollector error: \(error)")
             throw RunnerSetupError.SDKSetupError(error.localizedDescription)
