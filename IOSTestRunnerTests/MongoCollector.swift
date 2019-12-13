@@ -24,7 +24,7 @@ class TestResultMongoDBCollector : TestResultCollector {
         self.testStartTimeDict = [String : (Int64, Bool)]()
         
         self.mongoClient = try MongoClient(connectionString: storeConf.mongoUri)
-        let db = self.mongoClient.db(storeConf.dbName)
+        let db = try self.mongoClient.db(storeConf.dbName)
         self.recordCollection = try db.collection(storeConf.collectionName)
     }
     
