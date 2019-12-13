@@ -10,11 +10,11 @@ if [[ $# -ne 1 ]] && [[ $# -ne 2 ]];then
     echo "./helper.sh run-for-132"
     echo "./helper.sh log"
 elif [[ $1 == "build" ]]; then
-    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator11.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
+    xcodebuild -quiet -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator11.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
 elif [[ $1 == "build-for-124" ]]; then
-    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator12.4 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
+    xcodebuild -quiet -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator12.4 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
 elif [[ $1 == "build-for-132" ]]; then
-    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator13.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
+    xcodebuild -quiet -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator13.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
 elif [[ $1 == "config" ]]; then
     if [[ $# -ne 2 ]];then
         echo "need config string"
