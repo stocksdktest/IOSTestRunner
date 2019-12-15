@@ -46,7 +46,7 @@ class RunnerSetup {
             }
         }
         let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
-//        let cfgStr = "CgRUSi0xEipSVU4tQS0wOGUxNDI5MS04M2ZlLTQ0NWQtYmIwYS1jYTdhZmNlMzcyYjEaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATIiLgoKVEVTVENBU0VfMBgDIh57IlFVT1RFX05VTUJFUlMiOiAiNjAwMDAwLnNoIn0="
+//        let cfgStr = "CgRUSi0xEipSVU4tQS1hYzlkOGI3ZS0xMDliLTQ0MzEtODQyNy03MWRiMTY0YjBiNTMaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATIiLgoKVEVTVENBU0VfMBgDIh57IlFVT1RFX05VTUJFUlMiOiAiNjAwMDAwLnNoIn0qOQomaHR0cDovLzExNC4yMTIuODMuMTQ5OjgwMDAvdGVzdF9yZXN1bHQSBXN0b2NrGgh0ZXN0X2FkYg=="
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {
