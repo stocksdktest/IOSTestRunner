@@ -124,6 +124,8 @@ struct StockTesting_StoreConfig {
 
   var collectionName: String = String()
 
+  var restEndpoint: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -422,6 +424,7 @@ extension StockTesting_StoreConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
     1: .same(proto: "mongoUri"),
     2: .same(proto: "dbName"),
     3: .same(proto: "collectionName"),
+    4: .same(proto: "restEndpoint"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -430,6 +433,7 @@ extension StockTesting_StoreConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 1: try decoder.decodeSingularStringField(value: &self.mongoUri)
       case 2: try decoder.decodeSingularStringField(value: &self.dbName)
       case 3: try decoder.decodeSingularStringField(value: &self.collectionName)
+      case 4: try decoder.decodeSingularStringField(value: &self.restEndpoint)
       default: break
       }
     }
@@ -445,6 +449,9 @@ extension StockTesting_StoreConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if !self.collectionName.isEmpty {
       try visitor.visitSingularStringField(value: self.collectionName, fieldNumber: 3)
     }
+    if !self.restEndpoint.isEmpty {
+      try visitor.visitSingularStringField(value: self.restEndpoint, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -452,6 +459,7 @@ extension StockTesting_StoreConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if lhs.mongoUri != rhs.mongoUri {return false}
     if lhs.dbName != rhs.dbName {return false}
     if lhs.collectionName != rhs.collectionName {return false}
+    if lhs.restEndpoint != rhs.restEndpoint {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

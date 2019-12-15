@@ -10,7 +10,6 @@ target 'IOSTestRunner' do
   # Pods for IOSTestRunner
   pod 'SwiftProtobuf', '1.4.0'
   pod 'SwiftyJSON', '4.2'
-  pod 'MongoSwift', '0.0.9'
 
   target 'IOSTestRunnerTests' do
     inherit! :search_paths

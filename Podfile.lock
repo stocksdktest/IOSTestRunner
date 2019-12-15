@@ -1,28 +1,20 @@
 PODS:
-  - mongo-embedded-c-driver (1.13.0-4.0.4)
-  - MongoSwift (0.0.9):
-    - mongo-embedded-c-driver (~> 1.13.0-4.0.0)
   - SwiftProtobuf (1.4.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
-  - MongoSwift (= 0.0.9)
   - SwiftProtobuf (= 1.4.0)
   - SwiftyJSON (= 4.2)
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
-    - mongo-embedded-c-driver
-    - MongoSwift
     - SwiftProtobuf
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  mongo-embedded-c-driver: b46360baa15fc142baae80628822f26663220bde
-  MongoSwift: c7420b38a7e223439667f8c50aefada29c270df8
   SwiftProtobuf: b06646ed6cdcfc3fecd074c6000fe0c413140e4f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 6e55f271e4be5450eba9fe7a73ede93f7da1c499
+PODFILE CHECKSUM: b37eb4b9f905c0ea2823a643572c7c86397677fd
 
 COCOAPODS: 1.8.4

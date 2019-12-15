@@ -8,24 +8,20 @@
 
 import Foundation
 import SwiftyJSON
-import MongoSwift
 
 class TestResultMongoDBCollector : TestResultCollector {
     private let jobID: String
     private let runnerID: String
     private var testStartTimeDict: [String : (Int64, Bool)]
     
-    private let mongoClient: MongoClient
-    private let recordCollection: MongoCollection<Document>
+    private let mongoRESTEndpoint: String
     
     init(jobID: String, runnerID: String, storeConf: StockTesting_StoreConfig) throws {
         self.jobID = jobID
         self.runnerID = runnerID
         self.testStartTimeDict = [String : (Int64, Bool)]()
         
-        self.mongoClient = try MongoClient(connectionString: storeConf.mongoUri)
-        let db = try self.mongoClient.db(storeConf.dbName)
-        self.recordCollection = try db.collection(storeConf.collectionName)
+        self.mongoRESTEndpoint = storeConf.restEndpoint
     }
     
     private func buildExecutionRecord() -> JSON {
@@ -46,6 +42,34 @@ class TestResultMongoDBCollector : TestResultCollector {
         return record
     }
     
+    private func insertExecutionRecord(data: JSON) throws {
+        let url = URL(string: "\(self.mongoRESTEndpoint)/test_result")!
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try data.rawData()
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    Utils.log(tag: "TestResultCollector", str: "POST request success: \(json)")
+                }
+            } catch let error {
+                Utils.log(tag: "TestResultCollector", str: "POST request error: \(error)")
+            }
+        })
+        task.resume()
+    }
+    
     func beforeAllTests() {
         // pass
     }
@@ -63,7 +87,7 @@ class TestResultMongoDBCollector : TestResultCollector {
             record["isPass"].bool = entry.1
             Utils.log(tag: "TestResultCollector", str: "On test end, encoding record: \(record)")
             do {
-                try self.recordCollection.insertOne(Document.init(fromJSON: record.rawData()))
+                try self.insertExecutionRecord(data: record)
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test end, encoding record (\(record)) error: \(error)")
             }
@@ -81,7 +105,7 @@ class TestResultMongoDBCollector : TestResultCollector {
                 record["paramData"].object = param
                 record["resultData"].object = result
                 Utils.log(tag: "TestResultCollector", str: "On test result, encoding record: \(record)")
-                try self.recordCollection.insertOne(Document.init(fromJSON: record.rawData()))
+                try self.insertExecutionRecord(data: record)
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test result, encoding record (\(record)) error: \(error)")
             }
@@ -103,7 +127,7 @@ class TestResultMongoDBCollector : TestResultCollector {
             do {
                 record["exceptionData"].object = errorJSON
                 Utils.log(tag: "TestResultCollector", str: "On test error, encoding record: \(record)")
-                try self.recordCollection.insertOne(Document.init(fromJSON: record.rawData()))
+                try self.insertExecutionRecord(data: record)
             } catch {
                 Utils.log(tag: "TestResultCollector", str: "On test error, encoding record (\(record)) error: \(error)")
             }
