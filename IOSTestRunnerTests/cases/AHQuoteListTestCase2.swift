@@ -37,7 +37,7 @@ class AHQuoteListTestCase2: BaseTestCase {
                 "name" : item.name,
                 "codeA": item.codeA,
                 "lastPriceA": item.lastPriceA,
-                "preClosePrice": item.preClosePriceA,
+                "preClosePriceA": item.preClosePriceA,
                 "dateTimeA": item.datetimeA,
                 "codeH": item.codeH,
                 "lastPriceH": item.lastPriceH,

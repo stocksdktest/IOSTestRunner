@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21901AD823990E200011C858 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
+		21901ADA23990E300011C858 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21901AD923990E300011C858 /* libMApi.a */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
 		97332F5A2387BA8000A3FFF6 /* SearchV2TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97332F592387BA8000A3FFF6 /* SearchV2TestCase.swift */; };
 		97357DAA238F54AA0015FFF6 /* VolumeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97357DA9238F54AA0015FFF6 /* VolumeTestCase.swift */; };
-		97357DAC2390CA780015FFF6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
-		97357DAD2390CA8E0015FFF6 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
 		973B84CF237124A20023C230 /* SnapQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84CE237124A10023C230 /* SnapQuoteTestCase.swift */; };
 		973B84DF237125250023C230 /* OptionTTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D0237125240023C230 /* OptionTTestCase.swift */; };
 		973B84E0237125250023C230 /* OfferQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D1237125240023C230 /* OfferQuoteTestCase.swift */; };
@@ -154,6 +154,7 @@
 
 /* Begin PBXFileReference section */
 		02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.release.xcconfig"; sourceTree = "<group>"; };
+		21901AD923990E300011C858 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -317,8 +318,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97357DAD2390CA8E0015FFF6 /* libMApi.a in Frameworks */,
-				97357DAC2390CA780015FFF6 /* libc++.tbd in Frameworks */,
+				21901ADA23990E300011C858 /* libMApi.a in Frameworks */,
+				21901AD823990E200011C858 /* libc++.tbd in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
@@ -448,6 +449,7 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21901AD923990E300011C858 /* libMApi.a */,
 				97357DAB2390CA780015FFF6 /* libc++.tbd */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
 				A1658D9F231A494000B876D3 /* MApi */,
@@ -1156,6 +1158,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1192,6 +1195,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
