@@ -47,28 +47,24 @@ class MarginInfoTestCase: BaseTestCase {
                     "page": dic1["Page"]!
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
-                    var jsonarr1 = [JSON]()
+                    var j = 1
                     for list in lists{
                         let dic2:NSDictionary = list as! NSDictionary
-                        let key0: String = keys[0] as! String
-                        var jsonarr2: JSON = [
-                            key0: dic2[keys[0]]
-                        ]
                         
-                        if keys.count > 1{
-                            for i in 1 ..< keys.count{
+                        var jsonarr2: JSON = [:]
+                        
+                        if keys.count > 0{
+                            for i in 0 ..< keys.count{
                                 var keyVal:String = keys[i] as! String
                                 jsonarr2[keyVal].string = dic2[keys[i]] as! String
                                 
                             }
-                            
+                            resultJSON["\(j)"] = jsonarr2
+                            j = j + 1
                         }
-                        jsonarr1.append(jsonarr2)
+                        
                     }
                     
-                    
-                    
-                    resultJSON["list"].arrayObject = jsonarr1
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -80,7 +76,7 @@ class MarginInfoTestCase: BaseTestCase {
                     "page": dic1["Page"]!
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
-                    var jsonarr1 = [JSON]()
+                    var j = 1
                     for list in lists{
                         let dic2:NSDictionary = list as! NSDictionary
                         var jsonarr2: JSON = [
@@ -98,11 +94,10 @@ class MarginInfoTestCase: BaseTestCase {
                             "FINMRGHBAL": dic2["FINMRGHBAL"]!,
                             "FINMRGNBAL": dic2["FINMRGNBAL"]!
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(j)"] = jsonarr2
+                        j = j + 1
                     }
-                    
-                    
-                    resultJSON["list"].arrayObject = jsonarr1
+                   
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)

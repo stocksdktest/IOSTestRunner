@@ -25,8 +25,9 @@ class SectionQuoteTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let sectionQuoteResponse = resp as! MSectionQuoteResponse
         XCTAssertNotNil(sectionQuoteResponse.sectionQuoteItems)
+        var resultJSON : JSON = [:]
         for item in sectionQuoteResponse.sectionQuoteItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "ID": item.id,
                 "name": item.name,
                 "weightedChange": item.weightedChange,
@@ -72,11 +73,10 @@ class SectionQuoteTestCase: BaseTestCase {
                 "limitDownCount": item.limitDownCount,
                 "lzgj":item.stockLastPrice
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
-            
+            resultJSON["\(item.id!)"] = itemJSON
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

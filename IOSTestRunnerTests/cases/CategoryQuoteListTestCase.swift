@@ -25,8 +25,9 @@ class CategoryQuoteListTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let categoryQuoteListResponse = resp as! MCategoryQuoteListResponse
         XCTAssertNotNil(categoryQuoteListResponse.categoryQuoteItems)
+        var resultJSON : JSON = [:]
         for item in categoryQuoteListResponse.categoryQuoteItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
                 "id": item.id,
                 "name": item.name,
@@ -83,73 +84,30 @@ class CategoryQuoteListTestCase: BaseTestCase {
                 "askpx1": item.sellPrice,
                 "bidvol1": item.buyVolume,
                 "askvol1": item.sellVolume,
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+                "buySingleVolumes":item.buyCount,
+                "sellSingleVolumes":item.sellCount,
                 
-                
                 ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
-            var jsonBuySingleVolumes = [JSON]()
-            for i in 0 ..< item.buyCount.count{
-                let jsonBuySingleVolume : JSON = [
-                    "buySingleVolume\(i+1)": item.buyCount[i]
-                ]
-                jsonBuySingleVolumes.append(jsonBuySingleVolume)
-            }
-            resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-            var jsonsellSingleVolumes = [JSON]()
-            for i in 0 ..< item.sellCount.count{
-                let jsonsellSingleVolume : JSON = [
-                    "sellSingleVolume\(i+1)": item.sellCount[i]
-                ]
-                jsonsellSingleVolumes.append(jsonsellSingleVolume)
-            }
-            resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
             
             switch item.changeState{
                 
             case .flat:
-                resultJSON["changeRate"].string = item.changeRate
+                itemJSON["changeRate"].string = item.changeRate
             case .rise:
-                resultJSON["changeRate"].string = "+"+item.changeRate
+                itemJSON["changeRate"].string = "+"+item.changeRate
             case .drop:
-                resultJSON["changeRate"].string = "-"+item.changeRate
+                itemJSON["changeRate"].string = "-"+item.changeRate
             }
+            resultJSON["\(item.datetime!)"] = itemJSON
             
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
         }
+        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
         
     }
 }

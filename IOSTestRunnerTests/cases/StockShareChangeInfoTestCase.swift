@@ -30,32 +30,38 @@ class StockShareChangeInfoTestCase: BaseTestCase {
         switch mRequest.sourceType{
             
         case .GA:
+            var resultJSON : JSON = [:]
             for records in stockShareChangeInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "totalShare": record["TOTALSHARE"]!,
                         "CONSTDESC_": record["CONSTDESC"]!,
                         "aListedShare": record["ALISTEDSHARE"]!,
                         "lastChangeDate": record["LASTCHANGEDATE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["LASTCHANGEDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         case .CH:
+            var resultJSON : JSON = [:]
             for records in stockShareChangeInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "totalShare": record["TOTALSHARE"]!,
                         "CONSTDESC_": record["CONSTDESC"]!,
                         "lastChangeDate": record["LASTCHANGEDATE"]!,
                         "changeamt": record["CHANGEAMT"]!,
                         "changedire": record["CHANGEDIRE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["LASTCHANGEDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
         
         

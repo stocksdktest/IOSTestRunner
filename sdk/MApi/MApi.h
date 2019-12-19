@@ -21,6 +21,10 @@ extern NSString * const MApiSourceLevelChangedMarketKey;
 /// 行情源切换通知：切换方向
 extern NSString * const MApiSourceLevelChangedToKey;
 
+/// 忽略本地缓存key,用与认证的方法的options参数
+/// 当设置@{MApiIgnoreRestoreAuthInfoKey:@(YES)}时，SDK忽略本地缓存强制重新认证，默认为NO，认证信息缓存16小时
+extern NSString * const MApiIgnoreRestoreAuthInfoKey;
+
 
 /// 订阅股票收到TCP推送数据时会发送此通知
 extern NSString * const MApiTcpDidReceivedDataNotification;
@@ -38,6 +42,8 @@ extern NSString * const MApiTcpDidReceivedDataLineTradeDatesKey;
 extern NSString * const MApiTcpDidReceivedDataLineTimeKey;
 /// 推送分时明细数据键，值为NSArray
 extern NSString * const MApiTcpDidReceivedDataTimeTickKey;
+/// 推送逐笔明细数据键值，值为NSArray
+extern NSString * const MApiTcpDidReceivedDataTimeTickDetailKey;
 
 
 /// 上海, ref: @"sh"
@@ -208,6 +214,29 @@ typedef void (^MApiTcpReceiveBlock)(NSString *code, MApiTcpUpdateBlock update);
  *  当前版本信息
  */
 + (NSString *)version;
+
+/**
+ *  订阅股票快照信息  目前支持市场 沪、深、港
+ *
+ *  若要使用长连接接收实时股票行情，可调用此方法
+ *  @param codes  股票代码
+ *  @param didReceiveUpdate 回调方法
+ *
+ */
++ (void)subscribeQuoteCode:(NSString *)codes didReceiveUpdate:(MApiTcpReceiveBlock)didReceiveUpdate;
+
+/**
+ *  取消订阅股票信息
+ *  此取消方法只会取消快照订阅，并不能取消该股票代码的分时走势的订阅
+ *
+ *  若要取消长连接接收实时股票行情，可调用此方法
+ *  @param code  股票代码
+ *
+ */
++ (void)unsubscribeQuoteCode:(NSString *)code;
++ (void)unsubscribeAllQuoteCode;
+
+
 /**
  *  按具体类型订阅股票信息
  *
@@ -243,6 +272,20 @@ typedef void (^MApiTcpReceiveBlock)(NSString *code, MApiTcpUpdateBlock update);
  *
  */
 + (MApiSourceLevel)sourceLevelWithMarket:(NSString *)market;
+
+/**
+ *  获取市场的ip列表
+ *  @param market 市场别 [sh, sz, hk, ...]
+ *  @param permission  市场权限 MApiSourceLevel
+ */
++ (NSArray *)serverListWithMarket:(NSString *)market permission:(MApiSourceLevel)permission;
+/**
+ *  重置市场的ip列表，重置后SDK内部会直接取serverList的第一个ip去请求
+ *  注意：调用此方法后，会把{market}市场的权限设置为{permission}
+ *  @param market 市场别 [sh, sz, hk, ...]
+ *  @param permission  市场权限 MApiSourceLevel
+ */
++ (void)resetServerList:(NSArray *)serverList withMarket:(NSString *)market permission:(MApiSourceLevel)permission;
 
 /**
  *  更新服务器列表
@@ -324,12 +367,5 @@ typedef void (^MApiTcpReceiveBlock)(NSString *code, MApiTcpUpdateBlock update);
         withOptions:(NSDictionary *)options
         sourceLevel:(MApiSourceLevel)sourceLevel
   completionHandler:(void (^)(NSError *error))handler __attribute__((deprecated("sourceLevel已弃用, 使用setUserPermissionAttributes单独设置市场")));
-+ (void)subscribeQuoteCode:(NSString *)codes didReceiveUpdate:(MApiTcpReceiveBlock)didReceiveUpdate  __attribute__((deprecated("已弃用, 使用unSubscribeCode:type:方法订阅MApiTcpSubscribeTypeSnap类型")));
-///注意： 推送API接口升级后，以下取消订阅的API只针对取消快照推送有效，如果新订阅了分时、明细等，调用以下取消方法，只会取消订阅的快照推送，不会影响分时、明细等的推送。
-/// 只会取消订阅的快照推送，不会影响分时、明细等的推送
-/// 只会取消订阅的快照推送，不会影响分时、明细等的推送
-/// 只会取消订阅的快照推送，不会影响分时、明细等的推送
-+ (void)unsubscribeQuoteCode:(NSString *)code __attribute__((deprecated("已弃用, 使用unSubscribeCode:type:取消MApiTcpSubscribeTypeSnap类型")));
-+ (void)unsubscribeAllQuoteCode __attribute__((deprecated("已弃用, 使用unSubscribeAllCodeType:取消MApiTcpSubscribeTypeALL类型")));
 @end
 

@@ -25,8 +25,9 @@ class AfterHoursChartTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let afterHoursChartResponse = resp as! MAfterHoursChartResponse
         XCTAssertNotNil(afterHoursChartResponse.ohlcItems)
+        var resultJSON : JSON = [:]
         for item in afterHoursChartResponse.ohlcItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "tradeTimes": afterHoursChartResponse.tickCount,
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,
@@ -38,10 +39,12 @@ class AfterHoursChartTestCase: BaseTestCase {
                 "fp_volume": item.afterHoursVolume,
                 "fp_amount": item.afterHoursAmount
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["datetime"] = itemJSON
 
         }
+        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
         
         //            var resultJSON: JSON = [
         //                "lastPrice": item.lastPrice,

@@ -43,26 +43,24 @@ class MarginInfoDiffTestCase: BaseTestCase {
                     "page": dic1["Page"]!
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
-                    var jsonarr1 = [JSON]()
+                    
+                    var j = 1
                     for list in lists{
                         let dic2:NSDictionary = list as! NSDictionary
-                        let key0: String = keys[0] as! String
-                        var jsonarr2: JSON = [
-                            key0: dic2[keys[0]]
-                        ]
-                        if keys.count > 1{
-                            for i in 1 ..< keys.count{
+                        
+                        var jsonarr2: JSON = [:]
+                        if keys.count != 0{
+                            for i in 0 ..< keys.count{
                                 var keyVal:String = keys[i] as! String
                                 jsonarr2[keyVal].string = dic2[keys[i]] as! String
-                                jsonarr1.append(jsonarr2)
+                                
                             }
+                            resultJSON["\(j)"] = jsonarr2
+                            j = j + 1
                         }
                         
                     }
                     
-                    
-                    
-                    resultJSON["list"].arrayObject = jsonarr1
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -74,21 +72,22 @@ class MarginInfoDiffTestCase: BaseTestCase {
                     "page": dic1["Page"]!
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
-                    var jsonarr1 = [JSON]()
+                    var j = 1
                     for list in lists{
                         let dic2:NSDictionary = list as! NSDictionary
                         var jsonarr2: JSON = [
-                                                        "TRADEDATE": dic2["TRADEDATE"]!,
-                                                        "FINBALANCESUM": dic2["FINBALANCESUM"]!,
-                                                        "FINBUYAMTSUM": dic2["FINBUYAMTSUM"]!,
-                                                        "FINREPAYAMTSUM": dic2["FINREPAYAMTSUM"]!,
-                                                        "MRGGBALSUM": dic2["MRGGBALSUM"]!,
-                                                        "FINMRGHBALSUM": dic2["FINMRGHBALSUM"]!,
-                                                        "FINMRGNBALSUM": dic2["FINMRGNBALSUM"]!
-                                                    ]
-                            jsonarr1.append(jsonarr2)
+                            "TRADEDATE": dic2["TRADEDATE"]!,
+                            "FINBALANCESUM": dic2["FINBALANCESUM"]!,
+                            "FINBUYAMTSUM": dic2["FINBUYAMTSUM"]!,
+                            "FINREPAYAMTSUM": dic2["FINREPAYAMTSUM"]!,
+                            "MRGGBALSUM": dic2["MRGGBALSUM"]!,
+                            "FINMRGHBALSUM": dic2["FINMRGHBALSUM"]!,
+                            "FINMRGNBALSUM": dic2["FINMRGNBALSUM"]!
+                        ]
+                            resultJSON["\(j)"] = jsonarr2
+                        j = j + 1
                         }
-                    
+                     
                     
                     
                     //                        var jsonarr2: JSON = [
@@ -102,7 +101,7 @@ class MarginInfoDiffTestCase: BaseTestCase {
                     //                        jsonarr1.append(jsonarr2)
                     //                    }
                     //                }
-                    resultJSON["list"].arrayObject = jsonarr1
+                   
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)

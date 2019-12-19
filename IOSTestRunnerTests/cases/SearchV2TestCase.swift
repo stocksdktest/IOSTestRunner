@@ -1,24 +1,24 @@
 //
-//  ExampleTestCase2.swift
+//  SearchV2TestCase.swift
 //  IOSTestRunnerTests
 //
-//  Created by liao xiangsen on 2019/8/27.
-//  Copyright © 2019年 liao xiangsen. All rights reserved.
+//  Created by HW1-MM01 on 2019/11/22.
+//  Copyright © 2019 liao xiangsen. All rights reserved.
 //
-//股票查询
+
 import XCTest
 import os.log
 import SwiftyJSON
 
-class SearchTestCase: BaseTestCase {
+class SearchV2TestCase: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.SearchTestCase
+        return StockTestCaseName.SearchV2TestCase
     }
     
     func testSearch() {
         let param = self.testCaseRoundConfig.getParam()
-        let mRequest = MSearchRequest()
+        let mRequest = MSearchRequestV2()
          mRequest.keyword = param["KEYWORD"].stringValue
         if let fields = param["CATEGORIES"].array{
             var fieldVal = [String]()
@@ -27,10 +27,7 @@ class SearchTestCase: BaseTestCase {
             }
                 mRequest.categories = fieldVal
         }
-         mRequest.searchLocal = param["SEARCHLOCAL"].boolValue
          mRequest.searchLimit = param["SEARCHLIMIT"].uIntValue
-         mRequest.returnRenamed = param["RETURNRENAMED"].boolValue
-         mRequest.returnDelisted = param["RETURNDELISTED"].boolValue
     
         
         let resp = self.makeSyncRequest(request: mRequest)
@@ -54,4 +51,3 @@ class SearchTestCase: BaseTestCase {
         onTestResult(param: param, result: resultJSON)
     }
 }
-

@@ -46,7 +46,7 @@ class SnapQuoteTestCase: BaseTestCase {
 
         if snapQuoteResponse.stockItem is MOptionItem{
             let item: MOptionItem = snapQuoteResponse.stockItem as! MOptionItem
-           
+            
             var resultJSON: JSON = [
                 "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
                 "id": item.id,
@@ -140,56 +140,17 @@ class SnapQuoteTestCase: BaseTestCase {
                 "vega": item.vega,
                 "realLeverage": item.leverage,
                 "theoreticalPrice": item.theoreticalPrice,
-                
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+                "buySingleVolumes":item.buyCount,
+                "sellSingleVolumes":item.sellCount,
+                "blockChg":item.weightedChange,
+                "averageChg":item.averageChange,
+                "indexChg5":item.changeRate5,
+                "indexChg10":item.changeRate10
             ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            var jsonBuySingleVolumes = [JSON]()
-            for i in 0 ..< item.buyCount.count{
-                let jsonBuySingleVolume : JSON = [
-                    "buySingleVolume\(i+1)": item.buyCount[i]
-                ]
-                jsonBuySingleVolumes.append(jsonBuySingleVolume)
-            }
-            resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            var jsonsellSingleVolumes = [JSON]()
-            for i in 0 ..< item.sellCount.count{
-                let jsonsellSingleVolume : JSON = [
-                    "sellSingleVolume\(i+1)": item.sellCount[i]
-                ]
-                jsonsellSingleVolumes.append(jsonsellSingleVolume)
-            }
-            resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
             //            var jsonSubtypes = [JSON]()
             //            for i in 0 ..< item.subtypes.count{
             //                let jsonSubtype : JSON = [
@@ -226,10 +187,134 @@ class SnapQuoteTestCase: BaseTestCase {
                 }
                 resultJSON["tradeTick"].arrayObject = jsonarray2
             }
+            if item.orderQuantityBuyItems != nil{
+                let orderQuantityBuyItems: NSArray = snapQuoteResponse.orderQuantityBuyItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantityBuyItem in orderQuantityBuyItems{
+                        let OQBItem:MOrderQuantityItem = orderQuantityBuyItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["buylist"].arrayObject = JSONarr
+            }
+            if item.orderQuantitySellItems != nil{
+                let orderQuantitySellItems: NSArray = snapQuoteResponse.orderQuantitySellItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantitySellItem in orderQuantitySellItems{
+                        let OQSItem:MOrderQuantityItem = orderQuantitySellItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["selllist"].arrayObject = JSONarr
+            }
+            if item.brokerSeatBuyItems != nil{
+                let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
+                var i = 1
+                    for brokerSeatBuyItem in brokerSeatBuyItems{
+                        let BSBItem:MBrokerSeatItem = brokerSeatBuyItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSBItem.name,
+                            "corporation": BSBItem.fullName,
+                            "state": "1"
+                        ]
+                        resultJSON["1_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+                
+            }
+            if item.brokerSeatSellItems != nil{
+                let brokerSeatSellItems: NSArray = item.brokerSeatSellItems! as NSArray
+                var i = 1
+                    for brokerSeatSellItem in brokerSeatSellItems{
+                        let BSSItem:MBrokerSeatItem = brokerSeatSellItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSSItem.name,
+                            "corporation": BSSItem.fullName,
+                            "state": "0"
+                        ]
+                        resultJSON["0_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+                
+            }
+            if item.addValueItem != nil{
+                let addValueitem: MAddValueItem = item.addValueItem!
+                var itemJSON: JSON = [
+                    "code" : addValueitem.code,
+                    "date" : addValueitem.date,
+                    "time" : addValueitem.time,
+                    "ultraLargeBuyVolume" : addValueitem.ultraLargeBuyVolume,
+                    "ultraLargeSellVolume" : addValueitem.ultraLargeSellVolume,
+                    "ultraLargeBuyAmount" : addValueitem.ultraLargeBuyAmount,
+                    "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
+                    "largeBuyVolume" : addValueitem.largeBuyVolume,
+                    "largeSellVolume" : addValueitem.largeSellVolume,
+                    "largeBuyAmount" : addValueitem.largeBuyAmount,
+                    "largeSellAmount" : addValueitem.largeSellAmount,
+                    "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                    "mediumSellVolume" : addValueitem.mediumSellVolume,
+                    "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                    "mediumSellAmount" : addValueitem.mediumSellAmount,
+                    "smallBuyVolume" : addValueitem.smallBuyVolume,
+                    "smallSellVolume" : addValueitem.smallSellVolume,
+                    "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    "smallSellAmount" : addValueitem.smallSellAmount,
+                    "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                    "largeNetInflow" : addValueitem.largeNetInflow,
+                    "netCapitalInflow" : addValueitem.netCapitalInflow,
+                    "mediumNetInflow" : addValueitem.mediumNetInflow,
+                    "smallNetInflow" : addValueitem.smallNetInflow,
+                    "fundsInflows" : addValueitem.fundsInflows,
+                    "fundsOutflows" : addValueitem.fundsOutflows,
+                    "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    "largeDiffer" : addValueitem.largeDiffer,
+                    "mediumDiffer" : addValueitem.mediumDiffer,
+                    "smallDiffer" : addValueitem.smallDiffer,
+                    "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                    "largeSellDealCount" : addValueitem.largeSellDealCount,
+                    "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                    "buyCount" : addValueitem.buyCount,
+                    "sellCount" : addValueitem.sellCount,
+                    "BBD" : addValueitem.bbd,
+                    "BBD5" : addValueitem.bbd5,
+                    "BBD10" : addValueitem.bbd10,
+                    "DDX" : addValueitem.ddx,
+                    "DDX5" : addValueitem.ddx5,
+                    "DDX10" : addValueitem.ddx10,
+                    "DDY" : addValueitem.ddy,
+                    "DDY5" : addValueitem.ddy5,
+                    "DDY10" : addValueitem.ddy10,
+                    "DDZ" : addValueitem.ddz,
+                    "RatioBS" : addValueitem.ratioBS,
+                    "othersFundsInflows" : addValueitem.othersFundsInflows,
+                    "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                    "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                    "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                    "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                    "bigOrderNumB" : addValueitem.largeBuyCount,
+                    "bigOrderNumS" : addValueitem.largeSellCount,
+                    "midOrderNumB" : addValueitem.mediumBuyCount,
+                    "midOrderNumS" : addValueitem.mediumSellCount,
+                    "smallOrderNumB" : addValueitem.smallBuyCount,
+                    "smallOrderNumS" : addValueitem.smallSellCount,
+                    "mainforceMoneyNetInflow5" : addValueitem.netInflow5,
+                    "mainforceMoneyNetInflow10" : addValueitem.netInflow10,
+                    "mainforceMoneyNetInflow20" : addValueitem.netInflow20,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate5,
+                    "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
+                ]
+                resultJSON["addValue"] = itemJSON
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }else if snapQuoteResponse.stockItem is MFuturesItem{
             let item:MFuturesItem = snapQuoteResponse.stockItem as! MFuturesItem
+            
             var resultJSON: JSON = [
                 "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
                 "id": item.id,
@@ -391,57 +476,18 @@ class SnapQuoteTestCase: BaseTestCase {
                 "intersectionNum": item.intersectionNum,
                 "change1": item.change1,
                 "totalBid": item.entrustBuyVolume,
-                "totalAsk": item.entrustSellVolume
-                
+                "totalAsk": item.entrustSellVolume,
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+                "buySingleVolumes":item.buyCount,
+                "sellSingleVolumes":item.sellCount,
+                "blockChg":item.weightedChange,
+                "averageChg":item.averageChange,
+                "indexChg5":item.changeRate5,
+                "indexChg10":item.changeRate10
             ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            var jsonBuySingleVolumes = [JSON]()
-            for i in 0 ..< item.buyCount.count{
-                let jsonBuySingleVolume : JSON = [
-                    "buySingleVolume\(i+1)": item.buyCount[i]
-                ]
-                jsonBuySingleVolumes.append(jsonBuySingleVolume)
-            }
-            resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            var jsonsellSingleVolumes = [JSON]()
-            for i in 0 ..< item.sellCount.count{
-                let jsonsellSingleVolume : JSON = [
-                    "sellSingleVolume\(i+1)": item.sellCount[i]
-                ]
-                jsonsellSingleVolumes.append(jsonsellSingleVolume)
-            }
-            resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
 //            var jsonSubtypes = [JSON]()
 //            for i in 0 ..< item.subtypes.count{
 //                let jsonSubtype : JSON = [
@@ -478,10 +524,136 @@ class SnapQuoteTestCase: BaseTestCase {
                 }
                 resultJSON["tradeTick"].arrayObject = jsonarray2
             }
+            if item.orderQuantityBuyItems != nil{
+                let orderQuantityBuyItems: NSArray = snapQuoteResponse.orderQuantityBuyItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantityBuyItem in orderQuantityBuyItems{
+                        let OQBItem:MOrderQuantityItem = orderQuantityBuyItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["buylist"].arrayObject = JSONarr
+            }
+            if item.orderQuantitySellItems != nil{
+                let orderQuantitySellItems: NSArray = snapQuoteResponse.orderQuantitySellItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantitySellItem in orderQuantitySellItems{
+                        let OQSItem:MOrderQuantityItem = orderQuantitySellItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["selllist"].arrayObject = JSONarr
+            }
+            if item.brokerSeatBuyItems != nil{
+                let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
+                var i = 1
+                    for brokerSeatBuyItem in brokerSeatBuyItems{
+                        let BSBItem:MBrokerSeatItem = brokerSeatBuyItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSBItem.name,
+                            "corporation": BSBItem.fullName,
+                            "state": "1"
+                        ]
+                        resultJSON["1_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+                
+            }
+            if item.brokerSeatSellItems != nil{
+                let brokerSeatSellItems: NSArray = item.brokerSeatSellItems! as NSArray
+                var i = 1
+                    for brokerSeatSellItem in brokerSeatSellItems{
+                        let BSSItem:MBrokerSeatItem = brokerSeatSellItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSSItem.name,
+                            "corporation": BSSItem.fullName,
+                            "state": "0"
+                        ]
+                        resultJSON["0_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+            }
+            if item.addValueItem != nil{
+                let addValueitem: MAddValueItem = item.addValueItem!
+                var itemJSON: JSON = [
+                    "code" : addValueitem.code,
+                    "date" : addValueitem.date,
+                    "time" : addValueitem.time,
+                    "ultraLargeBuyVolume" : addValueitem.ultraLargeBuyVolume,
+                    "ultraLargeSellVolume" : addValueitem.ultraLargeSellVolume,
+                    "ultraLargeBuyAmount" : addValueitem.ultraLargeBuyAmount,
+                    "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
+                    "largeBuyVolume" : addValueitem.largeBuyVolume,
+                    "largeSellVolume" : addValueitem.largeSellVolume,
+                    "largeBuyAmount" : addValueitem.largeBuyAmount,
+                    "largeSellAmount" : addValueitem.largeSellAmount,
+                    "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                    "mediumSellVolume" : addValueitem.mediumSellVolume,
+                    "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                    "mediumSellAmount" : addValueitem.mediumSellAmount,
+                    "smallBuyVolume" : addValueitem.smallBuyVolume,
+                    "smallSellVolume" : addValueitem.smallSellVolume,
+                    "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    "smallSellAmount" : addValueitem.smallSellAmount,
+                    "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                    "largeNetInflow" : addValueitem.largeNetInflow,
+                    "netCapitalInflow" : addValueitem.netCapitalInflow,
+                    "mediumNetInflow" : addValueitem.mediumNetInflow,
+                    "smallNetInflow" : addValueitem.smallNetInflow,
+                    "fundsInflows" : addValueitem.fundsInflows,
+                    "fundsOutflows" : addValueitem.fundsOutflows,
+                    "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    "largeDiffer" : addValueitem.largeDiffer,
+                    "mediumDiffer" : addValueitem.mediumDiffer,
+                    "smallDiffer" : addValueitem.smallDiffer,
+                    "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                    "largeSellDealCount" : addValueitem.largeSellDealCount,
+                    "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                    "buyCount" : addValueitem.buyCount,
+                    "sellCount" : addValueitem.sellCount,
+                    "BBD" : addValueitem.bbd,
+                    "BBD5" : addValueitem.bbd5,
+                    "BBD10" : addValueitem.bbd10,
+                    "DDX" : addValueitem.ddx,
+                    "DDX5" : addValueitem.ddx5,
+                    "DDX10" : addValueitem.ddx10,
+                    "DDY" : addValueitem.ddy,
+                    "DDY5" : addValueitem.ddy5,
+                    "DDY10" : addValueitem.ddy10,
+                    "DDZ" : addValueitem.ddz,
+                    "RatioBS" : addValueitem.ratioBS,
+                    "othersFundsInflows" : addValueitem.othersFundsInflows,
+                    "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                    "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                    "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                    "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                    "bigOrderNumB" : addValueitem.largeBuyCount,
+                    "bigOrderNumS" : addValueitem.largeSellCount,
+                    "midOrderNumB" : addValueitem.mediumBuyCount,
+                    "midOrderNumS" : addValueitem.mediumSellCount,
+                    "smallOrderNumB" : addValueitem.smallBuyCount,
+                    "smallOrderNumS" : addValueitem.smallSellCount,
+                    "mainforceMoneyNetInflow5" : addValueitem.netInflow5,
+                    "mainforceMoneyNetInflow10" : addValueitem.netInflow10,
+                    "mainforceMoneyNetInflow20" : addValueitem.netInflow20,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate5,
+                    "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
+                ]
+                resultJSON["addValue"] = itemJSON
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }else if snapQuoteResponse.stockItem is MStockItem{
             let item:MStockItem = snapQuoteResponse.stockItem
+            
+//            let orderQuantitySellItems: NSArray = snapQuoteResponse.orderQuantitySellItems! as NSArray
+//            let buyBrokerSeatItems: NSArray = snapQuoteResponse.buyBrokerSeatItems! as NSArray
+//            let sellBrokerSeatItems: NSArray = snapQuoteResponse.sellBrokerSeatItems! as NSArray
             var resultJSON: JSON = [
                             "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
                             "id": item.id,
@@ -615,57 +787,18 @@ class SnapQuoteTestCase: BaseTestCase {
                             "bidpx1": item.buyPrice,
                             "askpx1": item.sellPrice,
                             "bidvol1": item.buyVolume,
-                            "askvol1": item.sellVolume
-            
+                            "askvol1": item.sellVolume,
+                            "buyPrices": item.buyPrices,
+                            "buyVolumes":item.buyVolumes,
+                            "sellPrices":item.sellPrices,
+                            "sellVolumes":item.sellVolumes,
+                            "buySingleVolumes":item.buyCount,
+                            "sellSingleVolumes":item.sellCount,
+                            "blockChg":item.weightedChange,
+                            "averageChg":item.averageChange,
+                            "indexChg5":item.changeRate5,
+                            "indexChg10":item.changeRate10
                         ]
-                        var jsonBuyPrices = [JSON]()
-                        for i in 0 ..< item.buyPrices.count{
-                            let jsonBuyPrice : JSON = [
-                                "buyPrice\(i+1)": item.buyPrices[i]
-                            ]
-                            jsonBuyPrices.append(jsonBuyPrice)
-                        }
-                        resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-                        var jsonBuySingleVolumes = [JSON]()
-                        for i in 0 ..< item.buyCount.count{
-                            let jsonBuySingleVolume : JSON = [
-                                "buySingleVolume\(i+1)": item.buyCount[i]
-                            ]
-                            jsonBuySingleVolumes.append(jsonBuySingleVolume)
-                        }
-                        resultJSON["buySingleVolumes"].arrayObject = jsonBuySingleVolumes
-                        var jsonBuyVolumes = [JSON]()
-                        for i in 0 ..< item.buyVolumes.count{
-                            let jsonBuyVolume : JSON = [
-                                "buyVolume\(i+1)": item.buyVolumes[i]
-                            ]
-                            jsonBuyVolumes.append(jsonBuyVolume)
-                        }
-                        resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-                        var jsonsellPrices = [JSON]()
-                        for i in 0 ..< item.sellPrices.count{
-                            let jsonsellPrice : JSON = [
-                                "sellPrice\(i+1)": item.sellPrices[i]
-                            ]
-                            jsonsellPrices.append(jsonsellPrice)
-                        }
-                        resultJSON["sellPrices"].arrayObject = jsonsellPrices
-                        var jsonsellSingleVolumes = [JSON]()
-                        for i in 0 ..< item.sellCount.count{
-                            let jsonsellSingleVolume : JSON = [
-                                "sellSingleVolume\(i+1)": item.sellCount[i]
-                            ]
-                            jsonsellSingleVolumes.append(jsonsellSingleVolume)
-                        }
-                        resultJSON["sellSingleVolumes"].arrayObject = jsonsellSingleVolumes
-                        var jsonsellVolumes = [JSON]()
-                        for i in 0 ..< item.sellVolumes.count{
-                            let jsonsellVolume : JSON = [
-                                "sellVolume\(i+1)": item.sellVolumes[i]
-                            ]
-                            jsonsellVolumes.append(jsonsellVolume)
-                        }
-                        resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
 //                        var jsonSubtypes = [JSON]()
 //                        for i in 0 ..< item.subtypes.count{
 //                            let jsonSubtype : JSON = [
@@ -703,6 +836,129 @@ class SnapQuoteTestCase: BaseTestCase {
                             }
                             resultJSON["tradeTick"].arrayObject = jsonarray2
                         }
+            if item.orderQuantityBuyItems != nil{
+                let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantityBuyItem in orderQuantityBuyItems{
+                        let OQBItem:MOrderQuantityItem = orderQuantityBuyItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["buylist"].arrayObject = JSONarr
+            }
+            if item.orderQuantitySellItems != nil{
+                let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
+                var JSONarr = [JSON]()
+                    for orderQuantitySellItem in orderQuantitySellItems{
+                        let OQSItem:MOrderQuantityItem = orderQuantitySellItem as! MOrderQuantityItem
+
+                        var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
+                        JSONarr.append(itemJSON)
+                    }
+                resultJSON["selllist"].arrayObject = JSONarr
+            }
+            if item.brokerSeatBuyItems != nil{
+                let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
+                var i = 1
+                    for brokerSeatBuyItem in brokerSeatBuyItems{
+                        let BSBItem:MBrokerSeatItem = brokerSeatBuyItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSBItem.name,
+                            "corporation": BSBItem.fullName,
+                            "state": "1"
+                        ]
+                        resultJSON["1_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+                
+            }
+            if item.brokerSeatSellItems != nil{
+                let brokerSeatSellItems: NSArray = item.brokerSeatSellItems! as NSArray
+                var i = 1
+                    for brokerSeatSellItem in brokerSeatSellItems{
+                        let BSSItem:MBrokerSeatItem = brokerSeatSellItem as! MBrokerSeatItem
+
+                        var itemJSON: JSON = [
+                            "corp": BSSItem.name,
+                            "corporation": BSSItem.fullName,
+                            "state": "0"
+                        ]
+                        resultJSON["0_\(i)"] = itemJSON
+                        i = i + 1
+                    }
+                
+            }
+            if item.addValueItem != nil{
+                let addValueitem: MAddValueItem = item.addValueItem!
+                var itemJSON: JSON = [
+                    "code" : addValueitem.code,
+                    "date" : addValueitem.date,
+                    "time" : addValueitem.time,
+                    "ultraLargeBuyVolume" : addValueitem.ultraLargeBuyVolume,
+                    "ultraLargeSellVolume" : addValueitem.ultraLargeSellVolume,
+                    "ultraLargeBuyAmount" : addValueitem.ultraLargeBuyAmount,
+                    "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
+                    "largeBuyVolume" : addValueitem.largeBuyVolume,
+                    "largeSellVolume" : addValueitem.largeSellVolume,
+                    "largeBuyAmount" : addValueitem.largeBuyAmount,
+                    "largeSellAmount" : addValueitem.largeSellAmount,
+                    "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                    "mediumSellVolume" : addValueitem.mediumSellVolume,
+                    "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                    "mediumSellAmount" : addValueitem.mediumSellAmount,
+                    "smallBuyVolume" : addValueitem.smallBuyVolume,
+                    "smallSellVolume" : addValueitem.smallSellVolume,
+                    "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    "smallSellAmount" : addValueitem.smallSellAmount,
+                    "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                    "largeNetInflow" : addValueitem.largeNetInflow,
+                    "netCapitalInflow" : addValueitem.netCapitalInflow,
+                    "mediumNetInflow" : addValueitem.mediumNetInflow,
+                    "smallNetInflow" : addValueitem.smallNetInflow,
+                    "fundsInflows" : addValueitem.fundsInflows,
+                    "fundsOutflows" : addValueitem.fundsOutflows,
+                    "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    "largeDiffer" : addValueitem.largeDiffer,
+                    "mediumDiffer" : addValueitem.mediumDiffer,
+                    "smallDiffer" : addValueitem.smallDiffer,
+                    "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                    "largeSellDealCount" : addValueitem.largeSellDealCount,
+                    "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                    "buyCount" : addValueitem.buyCount,
+                    "sellCount" : addValueitem.sellCount,
+                    "BBD" : addValueitem.bbd,
+                    "BBD5" : addValueitem.bbd5,
+                    "BBD10" : addValueitem.bbd10,
+                    "DDX" : addValueitem.ddx,
+                    "DDX5" : addValueitem.ddx5,
+                    "DDX10" : addValueitem.ddx10,
+                    "DDY" : addValueitem.ddy,
+                    "DDY5" : addValueitem.ddy5,
+                    "DDY10" : addValueitem.ddy10,
+                    "DDZ" : addValueitem.ddz,
+                    "RatioBS" : addValueitem.ratioBS,
+                    "othersFundsInflows" : addValueitem.othersFundsInflows,
+                    "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                    "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                    "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                    "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                    "bigOrderNumB" : addValueitem.largeBuyCount,
+                    "bigOrderNumS" : addValueitem.largeSellCount,
+                    "midOrderNumB" : addValueitem.mediumBuyCount,
+                    "midOrderNumS" : addValueitem.mediumSellCount,
+                    "smallOrderNumB" : addValueitem.smallBuyCount,
+                    "smallOrderNumS" : addValueitem.smallSellCount,
+                    "mainforceMoneyNetInflow5" : addValueitem.netInflow5,
+                    "mainforceMoneyNetInflow10" : addValueitem.netInflow10,
+                    "mainforceMoneyNetInflow20" : addValueitem.netInflow20,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate5,
+                    "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
+                    "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
+                ]
+                resultJSON["addValue"] = itemJSON
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }

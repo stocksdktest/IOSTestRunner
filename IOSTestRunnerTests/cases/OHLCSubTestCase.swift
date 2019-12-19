@@ -30,7 +30,7 @@ class OHLCSubTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let oHLCSubResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCSubResponse.fqItems)
-        var jsonarr1 = [JSON]()
+        var resultJSON : JSON = [:]
         for items in oHLCSubResponse.fqItems{
             var jsonarr2: JSON = [
                 "dateTime":items.dateTime,
@@ -42,12 +42,10 @@ class OHLCSubTestCase: BaseTestCase {
                 "increaseVolume":items.increaseVolume,
                 "allotmentProportion":items.allotmentProportion,
             ]
-            jsonarr1.append(jsonarr2)
+            resultJSON["\(items.dateTime!)"] = jsonarr2
             
         }
-        var resultJSON: JSON = [
-            "fqItem": jsonarr1
-        ]
+        
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }

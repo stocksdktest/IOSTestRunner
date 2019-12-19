@@ -31,32 +31,37 @@ class LeaderPersonInfoTestCase: BaseTestCase {
         switch mRequest.sourceType{
             
         case .GA:
+            var resultJSON : JSON = [:]
             for records in leaderPersonInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "POSITIONNAME": record["POSITIONNAME"]!,
                         "LEADERNAME": record["LEADERNAME"]!,
                         "AGE": record["AGE"]!,
                         "GENDER": record["GENDER"]!,
                         "EDUCATION": record["EDUCATION"]
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["LEADERNAME"]!)"] = itemJSON
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         case .CH:
+            var resultJSON : JSON = [:]
             for records in leaderPersonInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "DUTY": record["DUTY"]!,
                         "LEADERNAME": record["LEADERNAME"]!,
                         "DUTYTYPE": record["DUTYTYPE"]!,
                         "BEGINDATE": record["BEGINDATE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["LEADERNAME"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
         
         

@@ -29,8 +29,67 @@ class FinancialInfoTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let financialInfoResponse = resp as! MFinancialInfoResponse
         XCTAssertNotNil(financialInfoResponse.jsonObject)
-        if let dic1:NSDictionary = financialInfoResponse.jsonObject as! NSDictionary{
-            print(dic1)
+        switch mRequest.sourceType{
+        case .GA:
+            var resultJSON : JSON = [:]
+            if let dic1: NSDictionary = financialInfoResponse.jsonObject as? NSDictionary{
+                var itemJSON : JSON = [
+                    "REPORTTITLE_": dic1["REPORTTITLE"]!,
+                    "BasicEPS": dic1["BASICEPS"]!,
+                    
+                    "BVPS_": dic1["BVPS"]!,
+                    "NETCASHFLOWOPERPS_":dic1["NETCASHFLOWOPERPS"]!,
+                    "WEIGHTEDROE_":dic1["WEIGHTEDROE"]!,
+                    "ROA_":dic1["ROA"]!,
+                    "TotalOperRevenue":dic1["TOTALOPERREVENUE"]!,
+                    "OperProfit":dic1["OPERPROFIT"]!,
+                    "NetProfit":dic1["NETPROFIT"]!,
+                    "TotalAsset":dic1["TOTALASSET"]!,
+                    "TotalLiab":dic1["TOTALLIAB"]!,
+                    "TotalSHEquity":dic1["TOTALSHEQUITY"]!,
+                    "NetCashFlowOper":dic1["NETCASHFLOWOPER"]!,
+                    "NetCashFlowInv":dic1["NETCASHFLOWINV"]!,
+                    "NetCashFlowFina":dic1["NETCASHFLOWFINA"]!,
+                    "CashEquiNetIncr":dic1["CASHEQUINETINCR"]!,
+                    "EPSBASIC":dic1["BASICEPS"]!,
+                    
+                ]
+                resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
+                }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
+        case .CH:
+            var resultJSON : JSON = [:]
+            if let arr1: NSArray = financialInfoResponse.jsonObject as? NSArray{
+                for item in arr1{
+                    if let dic1 : NSDictionary = item as? NSDictionary{
+                        var itemJSON : JSON = [
+                            "REPORTTITLE_": dic1["REPORTTITLE"]!,
+                            "BasicEPS": dic1["BASICEPS"]!,
+                            
+                            "BVPS_": dic1["BVPS"]!,
+                            "NETCASHFLOWOPERPS_":dic1["NETCASHFLOWOPERPS"]!,
+                            "WEIGHTEDROE_":dic1["WEIGHTEDROE"]!,
+                            "ROA_":dic1["ROA"]!,
+                            "TotalOperRevenue":dic1["TOTALOPERREVENUE"]!,
+                            "OperProfit":dic1["OPERPROFIT"]!,
+                            "NetProfit":dic1["NETPROFIT"]!,
+                            "TotalAsset":dic1["TOTALASSET"]!,
+                            "TotalLiab":dic1["TOTALLIAB"]!,
+                            "TotalSHEquity":dic1["TOTALSHEQUITY"]!,
+                            "NetCashFlowOper":dic1["NETCASHFLOWOPER"]!,
+                            "NetCashFlowInv":dic1["NETCASHFLOWINV"]!,
+                            "NetCashFlowFina":dic1["NETCASHFLOWFINA"]!,
+                            "CashEquiNetIncr":dic1["CASHEQUINETINCR"]!,
+                            "EPSBASIC":dic1["BASICEPS"]!,
+                        ]
+                        resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
+                    }
+                    
+                }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
+            }
         }
     }
 }

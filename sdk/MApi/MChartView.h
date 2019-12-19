@@ -711,7 +711,6 @@ withMaxValue:(double)maxValue
 
 @optional
 - (void)bidDrawingRectForPlot:(__kindof MPlot *)plot rect:(CGRect)rect inContext:(CGContextRef)context;
-- (void)AFDrawingRectForPlot:(__kindof MPlot *)plot rect:(CGRect)rect inContext:(CGContextRef)context;
 
 @end
 
@@ -751,5 +750,7 @@ withMaxValue:(double)maxValue
 @property (nonatomic, assign) BOOL bidChartShow;
 /** 科创板盘后交易线图，默认不展示为NO */
 @property (nonatomic, assign) BOOL AFChartShow;
+/** 是否使用TCP推送分时数据，默认NO，不使用*/
+@property (nonatomic, assign) BOOL isTCP;
 @end
 

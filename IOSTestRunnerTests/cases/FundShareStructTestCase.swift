@@ -26,18 +26,21 @@ class FundShareStructTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let fundShareStructResponse = resp as! MFundShareStructResponse
         XCTAssertNotNil(fundShareStructResponse.records)
+        var resultJSON : JSON = [:]
         for items in fundShareStructResponse.records{
         if let item: NSDictionary = items as! NSDictionary{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
                     "ENDDATE":item["ENDDATE"]!,
                     "ENDFDSHARE":item["ENDFDSHARE"]!,
                     "SUBSHARETOT":item["SUBSHARETOT"]!,
                     "REDTOTSHARE":item["REDTOTSHARE"]!,
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item["ENDDATE"]!)"] = itemJSON
+                
             }
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

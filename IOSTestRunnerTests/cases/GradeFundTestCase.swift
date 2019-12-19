@@ -53,7 +53,7 @@ class GradeFundTestCase: BaseTestCase {
         }
         if mRequest.gradeFundType == "fndclassstockpre"{
             if let infos:NSArray = gradeFundResponse.jsonObject as! NSArray{
-                var jsonarr1 = [JSON]()
+                var resultJSON : JSON = [:]
                 for info in infos{
                     if let infodic:NSDictionary = info as!NSDictionary{
                         var jsonarr2: JSON = [
@@ -63,12 +63,9 @@ class GradeFundTestCase: BaseTestCase {
                             "ACCSTKRTO": infodic["ACCSTKRTO"]!,
                             "ACCCIRCRTO": infodic["ACCCIRCRTO"]!
                         ]
-                        jsonarr1.append(jsonarr2)
+                        resultJSON["\(infodic["SKNAME"]!)"] = jsonarr2
                     }
                 }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }
@@ -132,7 +129,8 @@ class GradeFundTestCase: BaseTestCase {
                     
                 ]
                 if let subcosts:NSArray = info["subcost"] as! NSArray{
-                    var jsonarr1 = [JSON]()
+                    var jsonarr1 : JSON = [:]
+                    var i = 1
                     for subcost in subcosts{
                         if let dic1:NSDictionary = subcost as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -142,10 +140,11 @@ class GradeFundTestCase: BaseTestCase {
                                 "APPAMTRESH": dic1["APPAMTRESH"]!,
                                 "SUBMIXAMT": dic1["SUBMIXAMT"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            jsonarr1["\(i)"] = jsonarr2
+                            i = i + 1
                         }
                     }
-                    resultJSON["subcost"].arrayObject = jsonarr1
+                    resultJSON["subcost"] = jsonarr1
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)

@@ -33,6 +33,7 @@ class F10TestCase: BaseTestCase {
         let f10Response = resp as! MF10Response
         XCTAssertNotNil(f10Response.jsonObject)
 //        print(f10Response.jsonObject)
+        var resultJSON : JSON = [:]
         if mRequest.requestType == "importantindex"{
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 var resultJSON: JSON = [
@@ -49,15 +50,12 @@ class F10TestCase: BaseTestCase {
                     "EXRIGHT":dic1["EXRIGHT"]!
                     ]
                 
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                
               }
            }
         if mRequest.requestType == "businessinfo"{
             if let Lists: NSArray = f10Response.jsonObject as! NSArray{
-                
-                
-                    var jsonarr1 = [JSON]()
+                    
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -66,23 +64,13 @@ class F10TestCase: BaseTestCase {
                                 "TYPESTYLE":dic2["TYPESTYLE"]!,
                                 "PUBLISHDATE":dic2["PUBLISHDATE"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
-                
-                
             }
         }
         if mRequest.requestType == "charts5buys"{
             if let Lists: NSArray = f10Response.jsonObject as! NSArray{
-                
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -92,23 +80,14 @@ class F10TestCase: BaseTestCase {
                                 "TRADEDATE":dic2["TRADEDATE"]!,
                                 "CHGDESC":dic2["CHGDESC"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
-                
-                
             }
         }
         if mRequest.requestType == "charts5sells"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -118,24 +97,17 @@ class F10TestCase: BaseTestCase {
                                 "TRADEDATE":dic2["TRADEDATE"]!,
                                 "CHGDESC":dic2["CHGDESC"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "exptskinvrating"{
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
-                var resultJSON: JSON = [
-                    "STDRATING":dic1["STDRATING"]!
-                ]
+                resultJSON["STDRATING"] = dic1["STDRATING"]! as! JSON
+                
                 if let Lists: NSArray = dic1["list"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    var itemJSON : JSON = [:]
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -145,13 +117,11 @@ class F10TestCase: BaseTestCase {
                                 "DATE":dic2["DATE"]!,
                                 "PRICECAP":dic2["PRICECAP"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            itemJSON["\(dic2["DATE"]!)"] = jsonarr2
                         }
                     }
-                    resultJSON["list"].arrayObject = jsonarr1
+                    resultJSON["list"] = itemJSON
                 }
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "exptskstatn"{
@@ -183,8 +153,7 @@ class F10TestCase: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                
             }
         }
         if mRequest.requestType == "companyinfo"{
@@ -202,15 +171,11 @@ class F10TestCase: BaseTestCase {
                     "SWLEVEL2NAME":dic1["SWLEVEL2NAME"]!
                 ]
                 
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "sharebonus"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
-                
-                
-                    var jsonarr1 = [JSON]()
+                    
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -219,22 +184,14 @@ class F10TestCase: BaseTestCase {
                                 "EQURECORDDATE":dic2["EQURECORDDATE"]!,
                                 "XDRDATE":dic2["XDRDATE"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["DATETYPETIME"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "companymanager"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -245,22 +202,14 @@ class F10TestCase: BaseTestCase {
                                 "BEGINEND":dic2["BEGINEND"]!,
                                 "MEMO":dic2["MEMO"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["CNAME"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "otsholder10"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -271,22 +220,14 @@ class F10TestCase: BaseTestCase {
                                 "HOLDERSUMCHG":dic2["PCTOFFLOTSHARES"]!,
                                 "SHHOLDERCODE":dic2["HOLDERSUMCHG"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "shareholder10"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -297,15 +238,9 @@ class F10TestCase: BaseTestCase {
                                 "CURCHG":dic2["HOLDERRTO"]!,
                                 "SHHOLDERCODE":dic2["CURCHG"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "shareinfo"{
@@ -320,14 +255,11 @@ class F10TestCase: BaseTestCase {
                     "TOTALSHAMT":dic1["TOTALSHAMT"]!
                 ]
                 
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "shareholdernum"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -336,21 +268,14 @@ class F10TestCase: BaseTestCase {
                                 "KAVGSH":dic2["KAVGSH"]!,
                                 "MOM":dic2["MOM"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "profinmainindex"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -369,21 +294,13 @@ class F10TestCase: BaseTestCase {
                                 "QUICKRT":dic2["QUICKRT"]!,
                                 "OPNCFPS":dic2["OPNCFPS"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "proincstatementnew"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
-                
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -399,21 +316,14 @@ class F10TestCase: BaseTestCase {
                                 "TOTPROFIT":dic2["TOTPROFIT"]!,
                                 "PARENETP":dic2["PARENETP"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "probalsheetnew"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -425,9 +335,7 @@ class F10TestCase: BaseTestCase {
                                 "INVE":dic2["INVE"]!,
                                 "ACCORECE":dic2["ACCORECE"]!,
                                 "OTHERRECE":dic2["OTHERRECE"]!,
-                                "FIXEDASSENET":dic2["FIXEDASSENET"]!
-                            ]
-                            let update1: JSON = [
+                                "FIXEDASSENET":dic2["FIXEDASSENET"]!,
                                 "AVAISELLASSE":dic2["AVAISELLASSE"]!,
                                 "INTAASSET":dic2["INTAASSET"]!,
                                 "SHORTTERMBORR":dic2["SHORTTERMBORR"]!,
@@ -440,26 +348,14 @@ class F10TestCase: BaseTestCase {
                                 "CAPISURP":dic2["CAPISURP"]!,
                                 "GOODWILL":dic2["GOODWILL"]!
                             ]
-                            do {
-                                try jsonarr2.merge(with: update1)
-                            } catch {
-                                // ignore
-                            }
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "procfstatementnew"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -475,21 +371,14 @@ class F10TestCase: BaseTestCase {
                                 "FINNETCFLOW":dic2["FINNETCFLOW"]!,
                                 "CASHNETR":dic2["CASHNETR"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "blocktrade"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -501,21 +390,14 @@ class F10TestCase: BaseTestCase {
                                 "BUYERNAME":dic2["BUYERNAME"]!,
                                 "SELLERNAME":dic2["SELLERNAME"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "iinvholdchg"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -527,21 +409,14 @@ class F10TestCase: BaseTestCase {
                                 "HOLDAMT":dic2["HOLDAMT"]!,
                                 "HOLDQTYSUMCHG":dic2["HOLDQTYSUMCHG"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["REPORTDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "importnoticedate"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -550,21 +425,14 @@ class F10TestCase: BaseTestCase {
                                 "TEXT":dic2["TEXT"]!
                                 
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
-        if mRequest.requestType == "importnoticetitlbe"{
+        if mRequest.requestType == "importnoticetitle"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 
-                    var jsonarr1 = [JSON]()
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -572,22 +440,16 @@ class F10TestCase: BaseTestCase {
                                 "TRADEDATE":dic2["TRADEDATE"]!,
                                 "TEXT":dic2["TEXT"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
                         }
                     }
-                var resultJSON: JSON = [
-                    "list": jsonarr1
-                ]
-                
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
             }
         }
         if mRequest.requestType == "exptperformance"{
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -596,15 +458,9 @@ class F10TestCase: BaseTestCase {
                                 "RETAMAXPROFITSMK":dic2["RETAMAXPROFITSMK"]!,
                                 "RETAMAXPROFITSINC":dic2["RETAMAXPROFITSINC"]!
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
-                    
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
                 }
                 
             }
@@ -613,7 +469,7 @@ class F10TestCase: BaseTestCase {
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -623,14 +479,9 @@ class F10TestCase: BaseTestCase {
                                 "TAGRT":dic2["TAGRT"]!,
                                 "NPGRT":dic2["NPGRT"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
                 }
                 
             }
@@ -639,7 +490,7 @@ class F10TestCase: BaseTestCase {
             if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
                 
                 if let Lists: NSArray = dic1["List"] as!NSArray{
-                    var jsonarr1 = [JSON]()
+                    
                     for List in Lists{
                         if let dic2 : NSDictionary = List as! NSDictionary{
                             var jsonarr2: JSON = [
@@ -652,18 +503,15 @@ class F10TestCase: BaseTestCase {
                                 "NEWSSOURCE":dic2["NEWSSOURCE"]!,
                                 "INTERACTIVEID":dic2["PageNumber"]!,
                             ]
-                            jsonarr1.append(jsonarr2)
+                            resultJSON["\(dic2["TRADING"]!)"] = jsonarr2
                         }
                     }
-                    var resultJSON: JSON = [
-                        "list": jsonarr1
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
                 }
                 
             }
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
 }
 }
 

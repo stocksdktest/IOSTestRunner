@@ -33,18 +33,21 @@ class NewsListTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let newsListResponse = resp as! MNewsListResponse
         XCTAssertNotNil(newsListResponse.newsItems)
+        var resultJSON : JSON = [:]
         for items in newsListResponse.newsItems{
           if let item: MNewsItem = items as! MNewsItem{
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "ID_":item.id,
                 "INIPUBDATE_":item.datetime,
                 "REPORTTITLE_":item.title,
                 "MEDIANAME_":item.source,
                 "ABSTRACTFORMAT_":item.format,
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
             }
      }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
 }
 }

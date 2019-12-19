@@ -29,9 +29,9 @@ class ChartTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse
         XCTAssertNotNil(chartResponse.ohlcItems)
-        print(chartResponse.superposition)
+        var resultJSON : JSON = [:]
         for item in chartResponse.ohlcItems{
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "datetime" : item.datetime,
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
@@ -42,10 +42,23 @@ class ChartTestCase: BaseTestCase {
                 "iopvPre": item.referenceIOPVPrice,
                 
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
         }
-        
+        if mRequest.returnAFData == true {
+            for item in chartResponse.afItems{
+                var itemJSON:JSON = [
+                    "datetime": item.datetime,
+                    "closePrice": item.closePrice,
+                    "tradeVolume": item.tradeVolume,
+                    "reference_price": item.referencePrice
+                ]
+                resultJSON["\(item.datetime!)"] = itemJSON
+            }
+            
+        }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
     
 }

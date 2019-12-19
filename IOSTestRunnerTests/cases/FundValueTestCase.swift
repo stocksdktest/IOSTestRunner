@@ -28,17 +28,19 @@ class FundValueTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let fundValueResponse = resp as! MFundValueResponse
         XCTAssertNotNil(fundValueResponse.items)
+        var resultJSON : JSON = [:]
         for items in fundValueResponse.items{
             if let item: NSDictionary = items as! NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "UnitNAV_": item["UnitNAV"]!,
                     "ENDDATE_": item["ENDDATE"]!
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(item["ENDDATE"]!)"] = itemJSON
+                
             }
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

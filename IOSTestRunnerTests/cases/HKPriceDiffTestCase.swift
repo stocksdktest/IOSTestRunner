@@ -23,7 +23,8 @@ class HKPriceDiffTestCase: BaseTestCase {
         let hKPriceDiffResponse = resp as! MHKPriceDiffResponse
         XCTAssertNotNil(hKPriceDiffResponse)
         if let hkPriceDiffs = hKPriceDiffResponse.hkPriceDiffs{
-            var jsonarr2 = [JSON]()
+            var resultJSON : JSON = [:]
+            var i = 1
             for hkPriceDiff in hkPriceDiffs{
                 if let arr1:NSArray = hkPriceDiff.value as! NSArray{
                     for arr2 in arr1{
@@ -33,7 +34,8 @@ class HKPriceDiffTestCase: BaseTestCase {
                                 "lowLimit": arr3[1],
                                 "priceDifference": arr3[2]
                             ]
-                            jsonarr2.append(jsonarr1)
+                            resultJSON["\(i)"] = jsonarr1
+                            i = i + 1
                         }
                         
                     }
@@ -42,9 +44,7 @@ class HKPriceDiffTestCase: BaseTestCase {
             }
             
         
-        var resultJSON: JSON = [
-            "hkPriceDiffs":jsonarr2
-        ]
+        
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
         }

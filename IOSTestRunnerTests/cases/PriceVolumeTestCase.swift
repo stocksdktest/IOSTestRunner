@@ -25,8 +25,10 @@ class PriceVolumeTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let priceVolumeResponse = resp as! MPriceVolumeResponse
         XCTAssertNotNil(priceVolumeResponse.items)
+        var resultJSON : JSON = [:]
+        var i = 1
         for item in priceVolumeResponse.items {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "price": item.price,
                 "volume": item.volume,
                 "buyVolume": item.buyVolume,
@@ -37,10 +39,12 @@ class PriceVolumeTestCase: BaseTestCase {
                 "sellCount": item.sellCount,
                 "unknownCount": item.unknownCount
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(i)"] = itemJSON
+            i = i + 1
+            
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

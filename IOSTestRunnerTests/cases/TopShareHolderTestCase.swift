@@ -30,24 +30,29 @@ class TopShareHolderTestCase: BaseTestCase {
         switch mRequest.sourceType{
             
         case .GA:
+            var resultJSON : JSON = [:]
             for records in topShareHolderResponse.records{
                 if let record:NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "SHNO_": record["SHNO"]!,
                         "SHNAME_": record["SHNAME"]!,
                         "SHCODE_": record["SHCODE"]!,
                         "PCTTOTALSHAREUR_": record["PCTTOTALSHAREUR"]!,
                         "DIFF_": record["DIFF"]!,
-                        "HOLDASHAREUR_": record["HOLDSHARE"]!
+                        "HOLDASHAREUR_": record["HOLDSHARE"]!,
+                        "ENDDATE_": record["ENDDATE"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         case .CH:
+            var resultJSON : JSON = [:]
             for records in topShareHolderResponse.records{
                 if let record:NSDictionary = records as! NSDictionary{
-                    var resultJSON: JSON = [
+                    var itemJSON: JSON = [
                         "SHNAME_": record["SHNAME"]!,
                         "PCTTOTALSHAREUR_": record["PCTTOTALSHAREUR"]!,
                         "DIFF_": record["DIFF"]!,
@@ -55,10 +60,12 @@ class TopShareHolderTestCase: BaseTestCase {
                         "SHCODE_":record["SHCODE"]!,
                         "HOLDASHAREUR_":record["HOLDASHAREUR"]!
                     ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
+                    
                 }
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
     }
 }

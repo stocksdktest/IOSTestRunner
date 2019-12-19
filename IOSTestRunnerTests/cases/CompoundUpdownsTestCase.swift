@@ -30,8 +30,10 @@ class CompoundUpdownsTestCase: BaseTestCase{
         let resp = self.makeSyncRequest(request: mRequest)
         let compoundUpdownsResponse = resp as! MCompoundUpdownsResponse
         XCTAssertNotNil(compoundUpdownsResponse)
+        var resultJSON : JSON = [:]
+        
         for item in compoundUpdownsResponse.items{
-            var resultJSON : JSON = [
+            var itemJSON : JSON = [
                 "datetime" : item.dateTime,
                 "riseCount": item.riseCount,
                 "fallCount": item.fallCount,
@@ -40,21 +42,14 @@ class CompoundUpdownsTestCase: BaseTestCase{
                 "riseLimitCount": item.riseLimitCount,
                 "fallLimitCount": item.fallLimitCount,
                 "oneRiseLimitCount": item.oneRiseLimitCount,
-                "natureRiseLimitCount": item.natureRiseFallCount
+                "natureRiseLimitCount": item.natureRiseFallCount,
+                "riseFallRange": item.riseFallRange
             ]
-            var jsonarr1 = [JSON]()
-            for i in 0..<item.riseFallRange.count{
-                var jsonarr2: JSON = [
-                    "\(-10+i)%": item.riseFallRange[i]
-                ]
-                jsonarr1.append(jsonarr2)
-                
-            }
-            resultJSON["riseFallRange"].arrayObject = jsonarr1
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.dateTime!)"] = itemJSON
         }
-        
+//        var resultJSON : JSON = [resultDIC]
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
         
     }
 }

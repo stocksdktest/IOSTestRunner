@@ -28,18 +28,22 @@ class FundIndustryPortfolioTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let fundIndustryPortfolioResponse = resp as! MFundIndustryPortfolioResponse
         XCTAssertNotNil(fundIndustryPortfolioResponse.records)
+        var resultJSON : JSON = [:]
         for items in fundIndustryPortfolioResponse.records{
             if let item: NSDictionary = items as! NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "ENDDATE":item["ENDDATE"]!,
                     "INDUSTRYNAME":item["INDUSTRYNAME"]!,
                     "FAIRVALUE":item["FAIRVALUE"]!,
                     "NAVRATIO":item["NAVRATIO"]!,
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(item["ENDDATE"]!)"] = itemJSON
+                
             }
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

@@ -24,8 +24,9 @@ class UKQuoteTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let uKQuoteResponse = resp as! MUKQuoteResponse
         XCTAssertNotNil(uKQuoteResponse.stockItems)
+        var resultJSON : JSON = [:]
         for items in uKQuoteResponse.stockItems {
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
                 "code":items.id,
                 "name":items.name,
                 "subtype":items.subtype,
@@ -62,9 +63,11 @@ class UKQuoteTestCase: BaseTestCase {
                 "subjectClosingReferencePrice":items.subjectClosingReferencePrice,
                 "premium":items.premiumRate,
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(items.datetime!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

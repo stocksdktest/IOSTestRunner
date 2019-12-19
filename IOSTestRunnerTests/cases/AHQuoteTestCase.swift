@@ -26,6 +26,7 @@ class AHQuoteTestCase: BaseTestCase {
         XCTAssertNotNil(AHQuoteResponse)
             var resultJSON:JSON = [
                 "code" : AHQuoteResponse.linkageCode,
+                "name" : AHQuoteResponse.linkageName,
                 "lastPrice": AHQuoteResponse.lastPrice,
                 "premiun": AHQuoteResponse.premiumRate,
                 "preClosePrice": AHQuoteResponse.preClosePrice,

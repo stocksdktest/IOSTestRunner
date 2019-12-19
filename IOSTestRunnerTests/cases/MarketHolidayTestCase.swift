@@ -25,15 +25,13 @@ class MarketHolidayTestCase: BaseTestCase {
         XCTAssertNotNil(mMarketHolidayResponse.jsonObject)
         let objects = mMarketHolidayResponse.jsonObject["hk"]
             let items: NSArray = objects as! NSArray
-            var jsonarr1 = [JSON]()
+            var jsonarr1 = [String]()
             for item in items{
                 let dic1:NSDictionary = item as! NSDictionary
-                var jsonarr2: JSON = [
-                    "date": dic1["date"]!
-                ]
+                jsonarr1.append(dic1["date"]! as! String)
             }
         var resultJSON: JSON = [
-            "dayList": jsonarr1
+            "date": jsonarr1
         ]
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)

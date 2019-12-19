@@ -7,9 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21901AD823990E200011C858 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
+		21901ADA23990E300011C858 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21901AD923990E300011C858 /* libMApi.a */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
+		97332F5A2387BA8000A3FFF6 /* SearchV2TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97332F592387BA8000A3FFF6 /* SearchV2TestCase.swift */; };
+		97357DAA238F54AA0015FFF6 /* VolumeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97357DA9238F54AA0015FFF6 /* VolumeTestCase.swift */; };
+		973B84CF237124A20023C230 /* SnapQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84CE237124A10023C230 /* SnapQuoteTestCase.swift */; };
+		973B84DF237125250023C230 /* OptionTTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D0237125240023C230 /* OptionTTestCase.swift */; };
+		973B84E0237125250023C230 /* OfferQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D1237125240023C230 /* OfferQuoteTestCase.swift */; };
+		973B84E1237125250023C230 /* OfferQuoteListkTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D2237125240023C230 /* OfferQuoteListkTestCase.swift */; };
+		973B84E2237125250023C230 /* OptionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D3237125240023C230 /* OptionTestCase.swift */; };
+		973B84E3237125250023C230 /* AfterHoursChartTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D4237125240023C230 /* AfterHoursChartTestCase.swift */; };
+		973B84E4237125250023C230 /* UnderlyingStockTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D5237125240023C230 /* UnderlyingStockTestCase.swift */; };
+		973B84E5237125250023C230 /* QuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D6237125250023C230 /* QuoteTestCase.swift */; };
+		973B84E6237125250023C230 /* SectionQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D7237125250023C230 /* SectionQuoteTestCase.swift */; };
+		973B84E7237125250023C230 /* StockBulletinListTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D8237125250023C230 /* StockBulletinListTestCase.swift */; };
+		973B84E8237125250023C230 /* StockBulletinTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D9237125250023C230 /* StockBulletinTestCase.swift */; };
+		973B84E9237125250023C230 /* CategoryQuoteListTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DA237125250023C230 /* CategoryQuoteListTestCase.swift */; };
+		973B84EA237125250023C230 /* CategorySortingTestCase_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DB237125250023C230 /* CategorySortingTestCase_1.swift */; };
+		973B84EB237125250023C230 /* CategorySortingTestCase_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DC237125250023C230 /* CategorySortingTestCase_2.swift */; };
+		973B84EC237125250023C230 /* StockNewsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DD237125250023C230 /* StockNewsTestCase.swift */; };
+		973B84ED237125250023C230 /* StockReportTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DE237125250023C230 /* StockReportTestCase.swift */; };
+		973B84EF237126B50023C230 /* CompoundUpdownsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84EE237126B50023C230 /* CompoundUpdownsTestCase.swift */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
 		A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869823150A4400F75635 /* ExampleTestCase2.swift */; };
 		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
@@ -21,8 +42,6 @@
 		A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153911F23113DF3007648F4 /* ExampleTestCase1.swift */; };
 		A153912B23113DF3007648F4 /* IOSTestRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */; };
 		A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1658D1523177FD100B876D3 /* SDKSetup.swift */; };
-		A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
-		A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D1A2317D4F400B876D3 /* libc++.tbd */; };
 		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
 		A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D3A2318E85900B876D3 /* CoreData.framework */; };
 		A1C0CEA7231F61E0002F1A26 /* record.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0CEA6231F61E0002F1A26 /* record.pb.swift */; };
@@ -90,7 +109,6 @@
 		A1FEE266235475B9007FD238 /* GradeFundTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE203235475B5007FD238 /* GradeFundTestCase.swift */; };
 		A1FEE267235475B9007FD238 /* SectionSortingTestCase_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE204235475B5007FD238 /* SectionSortingTestCase_2.swift */; };
 		A1FEE268235475B9007FD238 /* IPOCalendarTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE205235475B5007FD238 /* IPOCalendarTestCase.swift */; };
-		A1FEE269235475B9007FD238 /* StaticDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE206235475B5007FD238 /* StaticDataTestCase.swift */; };
 		A1FEE26A235475B9007FD238 /* ShareHolderHistoryInfoTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE207235475B5007FD238 /* ShareHolderHistoryInfoTestCase.swift */; };
 		A1FEE26B235475B9007FD238 /* UKQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE208235475B5007FD238 /* UKQuoteTestCase.swift */; };
 		A1FEE26C235475B9007FD238 /* TopLiquidShareHolderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE209235475B5007FD238 /* TopLiquidShareHolderTestCase.swift */; };
@@ -109,7 +127,6 @@
 		A1FEE27E235475B9007FD238 /* ForecastYearTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21B235475B8007FD238 /* ForecastYearTestCase.swift */; };
 		A1FEE27F235475B9007FD238 /* DRQuoteListTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21C235475B8007FD238 /* DRQuoteListTestCase.swift */; };
 		A1FEE280235475B9007FD238 /* AHQuoteListTestCase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21D235475B8007FD238 /* AHQuoteListTestCase2.swift */; };
-		A1FEE281235475B9007FD238 /* MAddValueTestCass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21E235475B8007FD238 /* MAddValueTestCass.swift */; };
 		A1FEE282235475B9007FD238 /* FundIndustryPortfolioTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21F235475B8007FD238 /* FundIndustryPortfolioTestCase.swift */; };
 		A1FEE283235475B9007FD238 /* CoreBusinessTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE220235475B8007FD238 /* CoreBusinessTestCase.swift */; };
 		A1FEE284235475B9007FD238 /* BondBasicInfoTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE221235475B8007FD238 /* BondBasicInfoTestCase.swift */; };
@@ -137,9 +154,30 @@
 
 /* Begin PBXFileReference section */
 		02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.release.xcconfig"; sourceTree = "<group>"; };
+		21901AD923990E300011C858 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		97332F592387BA8000A3FFF6 /* SearchV2TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchV2TestCase.swift; sourceTree = "<group>"; };
+		97357DA9238F54AA0015FFF6 /* VolumeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTestCase.swift; sourceTree = "<group>"; };
+		97357DAB2390CA780015FFF6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		973B84CE237124A10023C230 /* SnapQuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapQuoteTestCase.swift; sourceTree = "<group>"; };
+		973B84D0237125240023C230 /* OptionTTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTTestCase.swift; sourceTree = "<group>"; };
+		973B84D1237125240023C230 /* OfferQuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferQuoteTestCase.swift; sourceTree = "<group>"; };
+		973B84D2237125240023C230 /* OfferQuoteListkTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferQuoteListkTestCase.swift; sourceTree = "<group>"; };
+		973B84D3237125240023C230 /* OptionTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTestCase.swift; sourceTree = "<group>"; };
+		973B84D4237125240023C230 /* AfterHoursChartTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterHoursChartTestCase.swift; sourceTree = "<group>"; };
+		973B84D5237125240023C230 /* UnderlyingStockTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlyingStockTestCase.swift; sourceTree = "<group>"; };
+		973B84D6237125250023C230 /* QuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTestCase.swift; sourceTree = "<group>"; };
+		973B84D7237125250023C230 /* SectionQuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionQuoteTestCase.swift; sourceTree = "<group>"; };
+		973B84D8237125250023C230 /* StockBulletinListTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockBulletinListTestCase.swift; sourceTree = "<group>"; };
+		973B84D9237125250023C230 /* StockBulletinTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockBulletinTestCase.swift; sourceTree = "<group>"; };
+		973B84DA237125250023C230 /* CategoryQuoteListTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryQuoteListTestCase.swift; sourceTree = "<group>"; };
+		973B84DB237125250023C230 /* CategorySortingTestCase_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySortingTestCase_1.swift; sourceTree = "<group>"; };
+		973B84DC237125250023C230 /* CategorySortingTestCase_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySortingTestCase_2.swift; sourceTree = "<group>"; };
+		973B84DD237125250023C230 /* StockNewsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockNewsTestCase.swift; sourceTree = "<group>"; };
+		973B84DE237125250023C230 /* StockReportTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockReportTestCase.swift; sourceTree = "<group>"; };
+		973B84EE237126B50023C230 /* CompoundUpdownsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundUpdownsTestCase.swift; sourceTree = "<group>"; };
 		9DC61FBFB7002141182E1DB4 /* Pods-IOSTestRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunnerTests/Pods-IOSTestRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A11F65822314D3F6000071A2 /* config.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config.pb.swift; sourceTree = "<group>"; };
 		A11F869823150A4400F75635 /* ExampleTestCase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTestCase2.swift; sourceTree = "<group>"; };
@@ -237,7 +275,6 @@
 		A1FEE203235475B5007FD238 /* GradeFundTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeFundTestCase.swift; sourceTree = "<group>"; };
 		A1FEE204235475B5007FD238 /* SectionSortingTestCase_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSortingTestCase_2.swift; sourceTree = "<group>"; };
 		A1FEE205235475B5007FD238 /* IPOCalendarTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPOCalendarTestCase.swift; sourceTree = "<group>"; };
-		A1FEE206235475B5007FD238 /* StaticDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticDataTestCase.swift; sourceTree = "<group>"; };
 		A1FEE207235475B5007FD238 /* ShareHolderHistoryInfoTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareHolderHistoryInfoTestCase.swift; sourceTree = "<group>"; };
 		A1FEE208235475B5007FD238 /* UKQuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKQuoteTestCase.swift; sourceTree = "<group>"; };
 		A1FEE209235475B5007FD238 /* TopLiquidShareHolderTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLiquidShareHolderTestCase.swift; sourceTree = "<group>"; };
@@ -256,7 +293,6 @@
 		A1FEE21B235475B8007FD238 /* ForecastYearTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastYearTestCase.swift; sourceTree = "<group>"; };
 		A1FEE21C235475B8007FD238 /* DRQuoteListTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRQuoteListTestCase.swift; sourceTree = "<group>"; };
 		A1FEE21D235475B8007FD238 /* AHQuoteListTestCase2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHQuoteListTestCase2.swift; sourceTree = "<group>"; };
-		A1FEE21E235475B8007FD238 /* MAddValueTestCass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAddValueTestCass.swift; sourceTree = "<group>"; };
 		A1FEE21F235475B8007FD238 /* FundIndustryPortfolioTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FundIndustryPortfolioTestCase.swift; sourceTree = "<group>"; };
 		A1FEE220235475B8007FD238 /* CoreBusinessTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreBusinessTestCase.swift; sourceTree = "<group>"; };
 		A1FEE221235475B8007FD238 /* BondBasicInfoTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondBasicInfoTestCase.swift; sourceTree = "<group>"; };
@@ -282,11 +318,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21901ADA23990E300011C858 /* libMApi.a in Frameworks */,
+				21901AD823990E200011C858 /* libc++.tbd in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
-				A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */,
-				A1658D192317D41E00B876D3 /* libMApi.a in Frameworks */,
 				957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +449,8 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21901AD923990E300011C858 /* libMApi.a */,
+				97357DAB2390CA780015FFF6 /* libc++.tbd */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
 				A1658D9F231A494000B876D3 /* MApi */,
 				A1658D3A2318E85900B876D3 /* CoreData.framework */,
@@ -431,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				A1FEE1F8235475B4007FD238 /* AddValueTestCase.swift */,
+				973B84D4237125240023C230 /* AfterHoursChartTestCase.swift */,
 				A1FEE1EF235475B2007FD238 /* AHQuoteListTestCase1.swift */,
 				A1FEE21D235475B8007FD238 /* AHQuoteListTestCase2.swift */,
 				A1FEE1D4235475B0007FD238 /* AHQuoteTestCase.swift */,
@@ -442,12 +481,18 @@
 				A1FEE1DF235475B1007FD238 /* BondInterestPayTestCase.swift */,
 				A1FEE1F5235475B3007FD238 /* BonusFinanceTestCase.swift */,
 				A1FEE1EE235475B2007FD238 /* BrokerInfoTestCase.swift */,
+				973B84DA237125250023C230 /* CategoryQuoteListTestCase.swift */,
+				973B84DB237125250023C230 /* CategorySortingTestCase_1.swift */,
+				973B84DC237125250023C230 /* CategorySortingTestCase_2.swift */,
 				A1FEE20A235475B6007FD238 /* ChartIndexTestCase.swift */,
 				A1FEE1CF235475AF007FD238 /* ChartTestCase.swift */,
 				A1FEE1E3235475B1007FD238 /* CompanyInfoTestCase.swift */,
+				973B84EE237126B50023C230 /* CompoundUpdownsTestCase.swift */,
 				A1FEE220235475B8007FD238 /* CoreBusinessTestCase.swift */,
 				A1FEE1EB235475B2007FD238 /* DRLinkTestCase.swift */,
 				A1FEE21C235475B8007FD238 /* DRQuoteListTestCase.swift */,
+				A153911F23113DF3007648F4 /* ExampleTestCase1.swift */,
+				A11F869823150A4400F75635 /* ExampleTestCase2.swift */,
 				A1FEE1F9235475B4007FD238 /* ExpireMonthTestCase.swift */,
 				A1FEE213235475B7007FD238 /* F10TestCase.swift */,
 				A1FEE1E4235475B1007FD238 /* FinancialInfoTestCase.swift */,
@@ -479,7 +524,6 @@
 				A1FEE1CA235475AF007FD238 /* LatestIndexTestCase.swift */,
 				A1FEE1E5235475B1007FD238 /* LeaderPersonInfoTestCase.swift */,
 				A1FEE215235475B7007FD238 /* LinkQuoteTestCase.swift */,
-				A1FEE21E235475B8007FD238 /* MAddValueTestCass.swift */,
 				A1FEE223235475B9007FD238 /* MarginInfoDiffTestCase.swift */,
 				A1FEE1D9235475B0007FD238 /* MarginInfoShareTestCase.swift */,
 				A1FEE1EA235475B2007FD238 /* MarginInfoTestCase.swift */,
@@ -487,20 +531,31 @@
 				A1FEE1FD235475B4007FD238 /* MarketUpdownsTestCase.swift */,
 				A1FEE1FF235475B4007FD238 /* NewsListTestCase.swift */,
 				A1FEE1F3235475B3007FD238 /* NewsTestCase.swift */,
+				973B84D2237125240023C230 /* OfferQuoteListkTestCase.swift */,
+				973B84D1237125240023C230 /* OfferQuoteTestCase.swift */,
 				A1FEE1E0235475B1007FD238 /* OHLCSubTestCase.swift */,
 				A1FEE1E2235475B1007FD238 /* OHLCTestCase.swift */,
 				A1FEE1FA235475B4007FD238 /* OHLCV2TestCase.swift */,
+				973B84D3237125240023C230 /* OptionTestCase.swift */,
+				973B84D0237125240023C230 /* OptionTTestCase.swift */,
 				A1FEE1E9235475B2007FD238 /* OrderQuantityTestCase.swift */,
 				A1FEE216235475B7007FD238 /* OverLayChartTestCase.swift */,
 				A1FEE1D0235475AF007FD238 /* PlateIndexQuoteTestCase.swift */,
 				A1FEE219235475B7007FD238 /* PriceVolumeTestCase.swift */,
+				973B84D6237125250023C230 /* QuoteTestCase.swift */,
 				A1FEE202235475B5007FD238 /* SearchTestCase.swift */,
+				97332F592387BA8000A3FFF6 /* SearchV2TestCase.swift */,
+				973B84D7237125250023C230 /* SectionQuoteTestCase.swift */,
 				A1FEE217235475B7007FD238 /* SectionSortingTestCase_1.swift */,
 				A1FEE204235475B5007FD238 /* SectionSortingTestCase_2.swift */,
 				A1FEE207235475B5007FD238 /* ShareHolderHistoryInfoTestCase.swift */,
-				A1FEE206235475B5007FD238 /* StaticDataTestCase.swift */,
+				973B84CE237124A10023C230 /* SnapQuoteTestCase.swift */,
+				973B84D8237125250023C230 /* StockBulletinListTestCase.swift */,
+				973B84D9237125250023C230 /* StockBulletinTestCase.swift */,
 				A1FEE20C235475B6007FD238 /* StockNewsListTestCase.swift */,
+				973B84DD237125250023C230 /* StockNewsTestCase.swift */,
 				A1FEE1D1235475AF007FD238 /* StockReportListTestCase.swift */,
+				973B84DE237125250023C230 /* StockReportTestCase.swift */,
 				A1FEE1E1235475B1007FD238 /* StockShareChangeInfoTestCase.swift */,
 				A1FEE1C4235475AE007FD238 /* StockShareInfoTestCase.swift */,
 				A1FEE1D2235475AF007FD238 /* SubnewBondRankingTestCase.swift */,
@@ -512,8 +567,8 @@
 				A1FEE1E6235475B1007FD238 /* TradeDetailInfoTestCase.swift */,
 				A1FEE1D3235475AF007FD238 /* TradeQuoteTestCase.swift */,
 				A1FEE208235475B5007FD238 /* UKQuoteTestCase.swift */,
-				A153911F23113DF3007648F4 /* ExampleTestCase1.swift */,
-				A11F869823150A4400F75635 /* ExampleTestCase2.swift */,
+				973B84D5237125240023C230 /* UnderlyingStockTestCase.swift */,
+				97357DA9238F54AA0015FFF6 /* VolumeTestCase.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -756,16 +811,18 @@
 				A1FEE287235475B9007FD238 /* HSAmountTestCase.swift in Sources */,
 				A1FEE262235475B9007FD238 /* NewsListTestCase.swift in Sources */,
 				A1FEE232235475B9007FD238 /* ChartTestCase.swift in Sources */,
-				A1FEE269235475B9007FD238 /* StaticDataTestCase.swift in Sources */,
 				A1FEE230235475B9007FD238 /* FundAssetAllocationTestCase.swift in Sources */,
 				A1FEE267235475B9007FD238 /* SectionSortingTestCase_2.swift in Sources */,
-				A1FEE281235475B9007FD238 /* MAddValueTestCass.swift in Sources */,
+				973B84E0237125250023C230 /* OfferQuoteTestCase.swift in Sources */,
 				A11F65832314D3F6000071A2 /* config.pb.swift in Sources */,
+				973B84E8237125250023C230 /* StockBulletinTestCase.swift in Sources */,
 				A1FEE22D235475B9007FD238 /* LatestIndexTestCase.swift in Sources */,
 				A1FEE284235475B9007FD238 /* BondBasicInfoTestCase.swift in Sources */,
+				97332F5A2387BA8000A3FFF6 /* SearchV2TestCase.swift in Sources */,
 				A1FEE248235475B9007FD238 /* LeaderPersonInfoTestCase.swift in Sources */,
 				A1FEE27F235475B9007FD238 /* DRQuoteListTestCase.swift in Sources */,
 				A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */,
+				973B84EB237125250023C230 /* CategorySortingTestCase_2.swift in Sources */,
 				A1FEE245235475B9007FD238 /* OHLCTestCase.swift in Sources */,
 				A1FEE282235475B9007FD238 /* FundIndustryPortfolioTestCase.swift in Sources */,
 				A1FEE227235475B9007FD238 /* StockShareInfoTestCase.swift in Sources */,
@@ -783,7 +840,10 @@
 				A1FEE26C235475B9007FD238 /* TopLiquidShareHolderTestCase.swift in Sources */,
 				A1FEE271235475B9007FD238 /* SubnewStockRankingTestCase.swift in Sources */,
 				A1FEE22C235475B9007FD238 /* FundShareHolderInfoTestCase.swift in Sources */,
+				973B84E1237125250023C230 /* OfferQuoteListkTestCase.swift in Sources */,
 				A1FEE24B235475B9007FD238 /* IPOShareDetailTestCase.swift in Sources */,
+				973B84EA237125250023C230 /* CategorySortingTestCase_1.swift in Sources */,
+				973B84ED237125250023C230 /* StockReportTestCase.swift in Sources */,
 				A1FEE27E235475B9007FD238 /* ForecastYearTestCase.swift in Sources */,
 				A1FEE260235475B9007FD238 /* MarketUpdownsTestCase.swift in Sources */,
 				A1FEE26D235475B9007FD238 /* ChartIndexTestCase.swift in Sources */,
@@ -799,9 +859,11 @@
 				A1FEE23E235475B9007FD238 /* FundFinanceTestCase.swift in Sources */,
 				A1FEE278235475B9007FD238 /* LinkQuoteTestCase.swift in Sources */,
 				A1FEE239235475B9007FD238 /* L2TimeTickTestCase.swift in Sources */,
+				973B84CF237124A20023C230 /* SnapQuoteTestCase.swift in Sources */,
 				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
 				A1FEE256235475B9007FD238 /* NewsTestCase.swift in Sources */,
 				A1FEE276235475B9007FD238 /* F10TestCase.swift in Sources */,
+				973B84DF237125250023C230 /* OptionTTestCase.swift in Sources */,
 				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1FEE27A235475B9007FD238 /* SectionSortingTestCase_1.swift in Sources */,
 				A1FEE23F235475B9007FD238 /* ForecastRatingTestCase.swift in Sources */,
@@ -810,13 +872,17 @@
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
 				A1FEE270235475B9007FD238 /* BondBuyBacksTestCase.swift in Sources */,
 				A1FEE233235475B9007FD238 /* PlateIndexQuoteTestCase.swift in Sources */,
+				973B84E3237125250023C230 /* AfterHoursChartTestCase.swift in Sources */,
 				A1FEE24D235475B9007FD238 /* MarginInfoTestCase.swift in Sources */,
 				A1FEE247235475B9007FD238 /* FinancialInfoTestCase.swift in Sources */,
+				973B84EC237125250023C230 /* StockNewsTestCase.swift in Sources */,
 				A1FEE26F235475B9007FD238 /* StockNewsListTestCase.swift in Sources */,
 				A1FEE252235475B9007FD238 /* AHQuoteListTestCase1.swift in Sources */,
 				A1FEE23D235475B9007FD238 /* FundShareStructTestCase.swift in Sources */,
 				A1FEE253235475B9007FD238 /* MarketHolidayTestCase.swift in Sources */,
+				973B84E6237125250023C230 /* SectionQuoteTestCase.swift in Sources */,
 				A1FEE25B235475B9007FD238 /* AddValueTestCase.swift in Sources */,
+				973B84E9237125250023C230 /* CategoryQuoteListTestCase.swift in Sources */,
 				A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */,
 				A1FEE244235475B9007FD238 /* StockShareChangeInfoTestCase.swift in Sources */,
 				A1FEE25A235475B9007FD238 /* IndexUpdownsTestCase.swift in Sources */,
@@ -830,12 +896,16 @@
 				A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */,
 				A1FEE242235475B9007FD238 /* BondInterestPayTestCase.swift in Sources */,
 				A1FEE234235475B9007FD238 /* StockReportListTestCase.swift in Sources */,
+				973B84EF237126B50023C230 /* CompoundUpdownsTestCase.swift in Sources */,
 				A1FEE27C235475B9007FD238 /* PriceVolumeTestCase.swift in Sources */,
 				A1FEE22B235475B9007FD238 /* FundStockPortfolioTestCase.swift in Sources */,
+				97357DAA238F54AA0015FFF6 /* VolumeTestCase.swift in Sources */,
 				A1FEE286235475B9007FD238 /* MarginInfoDiffTestCase.swift in Sources */,
+				973B84E2237125250023C230 /* OptionTestCase.swift in Sources */,
 				A1FEE268235475B9007FD238 /* IPOCalendarTestCase.swift in Sources */,
 				A1FEE251235475B9007FD238 /* BrokerInfoTestCase.swift in Sources */,
 				A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */,
+				973B84E5237125250023C230 /* QuoteTestCase.swift in Sources */,
 				A1FEE236235475B9007FD238 /* TradeQuoteTestCase.swift in Sources */,
 				A1FEE265235475B9007FD238 /* SearchTestCase.swift in Sources */,
 				A1FEE23C235475B9007FD238 /* MarginInfoShareTestCase.swift in Sources */,
@@ -843,9 +913,11 @@
 				A1FEE235235475B9007FD238 /* SubnewBondRankingTestCase.swift in Sources */,
 				A1FEE243235475B9007FD238 /* OHLCSubTestCase.swift in Sources */,
 				A1FEE25D235475B9007FD238 /* OHLCV2TestCase.swift in Sources */,
+				973B84E7237125250023C230 /* StockBulletinListTestCase.swift in Sources */,
 				A1FEE26A235475B9007FD238 /* ShareHolderHistoryInfoTestCase.swift in Sources */,
 				A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */,
 				A1FEE24C235475B9007FD238 /* OrderQuantityTestCase.swift in Sources */,
+				973B84E4237125250023C230 /* UnderlyingStockTestCase.swift in Sources */,
 				A1FEE240235475B9007FD238 /* TimeTickTestCase.swift in Sources */,
 				A1FEE246235475B9007FD238 /* CompanyInfoTestCase.swift in Sources */,
 			);
@@ -1086,6 +1158,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1122,6 +1195,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

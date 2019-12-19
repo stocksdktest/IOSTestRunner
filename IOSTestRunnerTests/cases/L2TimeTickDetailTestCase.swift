@@ -29,27 +29,30 @@ class L2TimeTickDetailTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let timeTickResponse = resp as! ML2TimeTickDetailResponse
         XCTAssertNotNil(timeTickResponse.items)
+        var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
-            var resultJSON:JSON = [
+            var itemJSON:JSON = [
                 "type" : item.type.rawValue,
                 "time" : item.time,
                 "tradeVolume" : item.tradeVolume,
                 "tradePrice" : item.tradePrice
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.time!)"] = itemJSON
+            
         }
+        
         
         var ItemsCount = timeTickResponse.items.count
         var EndIndex = timeTickResponse.endIndex!
         
         while ItemsCount == 100{
             
-            timeTickNext(index: &EndIndex , count: &ItemsCount)
+            timeTickNext(index: &EndIndex , count: &ItemsCount , result: &resultJSON)
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
-    func timeTickNext( index :  inout String , count : inout Int){
+    func timeTickNext( index :  inout String , count : inout Int , result : inout JSON){
         let param = self.testCaseRoundConfig.getParam()
         let mRequestNext = ML2TimeTickDetailRequest()
         mRequestNext.code = param["CODE"].stringValue
@@ -63,14 +66,13 @@ class L2TimeTickDetailTestCase: BaseTestCase {
         let timeTickResponseNext = resp as! ML2TimeTickDetailResponse
         if timeTickResponseNext.items != nil{
             for item in timeTickResponseNext.items{
-                var resultJSON:JSON = [
+                var itemJSON:JSON = [
                     "type" : item.type.rawValue,
                     "time" : item.time,
                     "tradeVolume" : item.tradeVolume,
                     "tradePrice" : item.tradePrice
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                result["\(item.time!)"] = itemJSON
             }
             index = timeTickResponseNext.endIndex
             count = timeTickResponseNext.items.count

@@ -28,15 +28,20 @@ class BigEventNotificationTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let bigEventNotificationResponse = resp as! MBigEventNotificationResponse
         XCTAssertNotNil(bigEventNotificationResponse.records)
+        var resultJSON : JSON = [:]
         for record in bigEventNotificationResponse.records{
             if let BENrecord:NSDictionary = record as? NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "PUBDATE_": BENrecord["PUBDATE"]!,
                     "diviScheme": BENrecord["DIVISCHEME"]!
                 ]
-                print(resultJSON)
+                resultJSON["\(BENrecord["PUBDATE"]!)"] = itemJSON
+                
             }
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

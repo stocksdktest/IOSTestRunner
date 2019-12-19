@@ -24,8 +24,9 @@ class LinkQuoteTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let linkQuoteResponse = resp as! MLinkQuoteResponse
         XCTAssertNotNil(linkQuoteResponse.items)
+        var resultJSON : JSON = [:]
         for items in linkQuoteResponse.items{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
         "code":items.code,
         "name":items.name,
         "lastPrice":items.lastPrice,
@@ -33,8 +34,10 @@ class LinkQuoteTestCase: BaseTestCase {
         "changeRate":items.changeRate,
         "change":items.change,
              ]
- print(resultJSON)
- onTestResult(param: param, result: resultJSON)
+            resultJSON["\(items.code!)"] = itemJSON
+ 
      }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
   }
 }

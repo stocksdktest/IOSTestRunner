@@ -28,9 +28,11 @@ class FundAssetAllocationTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let fundAssetAllocationResponse = resp as! MFundAssetAllocationResponse
         XCTAssertNotNil(fundAssetAllocationResponse.records)
+        var resultJSON : JSON = [:]
+        var i = 1
         for items in fundAssetAllocationResponse.records{
             if let item: NSDictionary = items as! NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "ASSESECI":item["ASSESECI"]!,
                     "BDINVE":item["BDINVE"]!,
                     "FDINVE":item["FDINVE"]!,
@@ -38,9 +40,11 @@ class FundAssetAllocationTestCase: BaseTestCase {
                     "TOTASSET":item["TOTASSET"]!,
                     "TOTASSETYOY":item["TOTASSETYOY"]!,
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(i)"] = itemJSON
+                i = i+1
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
     }
 }

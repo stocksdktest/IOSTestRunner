@@ -30,8 +30,9 @@ class SubnewBondRankingTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let subnewBondRankingResponse = resp as! MSubnewBondRankingResponse
         XCTAssertNotNil(subnewBondRankingResponse.items)
+        var resultJSON : JSON = [:]
         for items in subnewBondRankingResponse.items{
-        var resultJSON: JSON = [
+        var itemJSON: JSON = [
                 "code":items.code,
                 "name":items.name,
                 "lastestPrice":items.lastPrice,
@@ -42,9 +43,11 @@ class SubnewBondRankingTestCase: BaseTestCase {
                 "rate":items.rate,
                 "allRate":items.totalRate,
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(items.code!)"] = itemJSON
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

@@ -28,19 +28,22 @@ class BonusFinanceTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let bonusFinanceResponse = resp as! MBonusFinanceResponse
         XCTAssertNotNil(bonusFinanceResponse.records)
+        var resultJSON : JSON = [:]
         for record in bonusFinanceResponse.records{
             
                 if let BFrecord:NSDictionary = record as? NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "ExDiviDate": BFrecord["EXDIVIDATE"]!,
                     "DiviScheme": BFrecord["DIVISCHEME"]!,
                     "NoticeDate": BFrecord["NOTICEDATE"]!
                 ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
+                    resultJSON["\(BFrecord["NOTICEDATE"]!)"] = itemJSON
+                    
                 }
             
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

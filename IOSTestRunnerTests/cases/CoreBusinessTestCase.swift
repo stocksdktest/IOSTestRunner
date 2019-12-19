@@ -28,9 +28,10 @@ class CoreBusinessTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let coreBusinessResponse = resp as! MCoreBusinessResponse
         XCTAssertNotNil(coreBusinessResponse.records)
+        var resultJSON : JSON = [:]
         for records in coreBusinessResponse.records{
             if let record:NSDictionary = records as! NSDictionary{
-                var resultJSON: JSON = [
+                var itemJSON: JSON = [
                     "BUSSINESSNATURE_": record["BUSSINESSNATURE"]!,
                     "OperCost": record["OPERCOST"]!,
                     "OPERREVENUETOTOR_": record["OPERREVENUETOTOR"]!,
@@ -38,9 +39,11 @@ class CoreBusinessTestCase: BaseTestCase {
                     "OperRevenue": record["OPERREVENUE"]!,
                     "ENDDATE_": record["ENDDATE"]!
                 ]
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+                resultJSON["\(record["ENDDATE"]!)"] = itemJSON
+                
             }
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
     }
 }

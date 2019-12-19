@@ -30,10 +30,6 @@ class TradeQuoteTestCase: BaseTestCase {
                 "id": item.code,
                 "subtype": item.subtype,
                 "name": item.name,
-//                "buyPrices": item.buyPrices,
-//                "buyVolumes": item.buyVolumes,
-//                "sellPrices": item.sellPrices,
-//                "sellVolumes": item.sellVolumes,
                 "lastPrice": item.lastPrice,
                 "preClosePrice": item.preClosePrice,
                 "limitUp": item.limitUp,
@@ -45,44 +41,12 @@ class TradeQuoteTestCase: BaseTestCase {
                 "quantityUnitBuy": item.buyVolumeUnit,
                 "quantityUnitSell": item.sellVolumeUnit,
                 "pricePosition": item.priceUnit,
-                "hkPriceDifferenceCategory": item.priceDiffType
+                "hkPriceDifferenceCategory": item.priceDiffType,
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
                 ]
-            var jsonBuyPrices = [JSON]()
-            for i in 0 ..< item.buyPrices.count{
-                let jsonBuyPrice : JSON = [
-                    "buyPrice\(i+1)": item.buyPrices[i]
-                ]
-                jsonBuyPrices.append(jsonBuyPrice)
-            }
-            resultJSON["buyPrices"].arrayObject = jsonBuyPrices
-            
-            var jsonBuyVolumes = [JSON]()
-            for i in 0 ..< item.buyVolumes.count{
-                let jsonBuyVolume : JSON = [
-                    "buyVolume\(i+1)": item.buyVolumes[i]
-                ]
-                jsonBuyVolumes.append(jsonBuyVolume)
-            }
-            resultJSON["buyVolumes"].arrayObject = jsonBuyVolumes
-            
-            var jsonsellPrices = [JSON]()
-            for i in 0 ..< item.sellPrices.count{
-                let jsonsellPrice : JSON = [
-                    "sellPrice\(i+1)": item.sellPrices[i]
-                ]
-                jsonsellPrices.append(jsonsellPrice)
-            }
-            resultJSON["sellPrices"].arrayObject = jsonsellPrices
-            
-            var jsonsellVolumes = [JSON]()
-            for i in 0 ..< item.sellVolumes.count{
-                let jsonsellVolume : JSON = [
-                    "sellVolume\(i+1)": item.sellVolumes[i]
-                ]
-                jsonsellVolumes.append(jsonsellVolume)
-            }
-            resultJSON["sellVolumes"].arrayObject = jsonsellVolumes
-    
             switch item.changeState{
                 
             case .flat:

@@ -24,14 +24,14 @@ class ExpireMonthTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let expireMonthResponse = resp as! MExpireMonthResponse
         XCTAssertNotNil(expireMonthResponse.expireMonths)
-        for item in expireMonthResponse.expireMonths{
+        
             
             var resultJSON: JSON = [
-                "date": item
+                "list": expireMonthResponse.expireMonths
             ]
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
-        }
+        
         
     }
 }

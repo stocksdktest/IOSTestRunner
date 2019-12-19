@@ -24,8 +24,9 @@ class OfferQuoteTestCase: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let offerQuoteResponse = resp as! MOfferQuoteResponse
         XCTAssertNotNil(offerQuoteResponse.items)
+        var resultJSON : JSON = [:]
         for item in offerQuoteResponse.items{
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "code": item.code,
                 "name": item.name,
                 "offerId": item.offerID,
@@ -34,9 +35,12 @@ class OfferQuoteTestCase: BaseTestCase {
                 "startDate": item.startDate,
                 "endDate": item.endDate
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.code!)"] = itemJSON
+            
         }
+        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 
