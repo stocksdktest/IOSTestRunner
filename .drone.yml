@@ -1,0 +1,69 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  event:
+  - tag
+
+steps:
+- name: pull-codebase
+  image: appleboy/drone-scp
+  volumes:
+  - name: build-deps
+    path: /drone/src/sdk
+  settings:
+    host: 221.228.66.83
+    port: 30751
+    username: 
+      from_secret: ssh_username
+    password: 
+      from_secret: ssh_password
+    rm: true
+    target: /tmp/build-cache
+    source: /drone/src
+    strip_components: 2
+- name: build
+  image: appleboy/drone-ssh
+  volumes:
+  - name: build-result
+    path: /root/build
+  settings:
+    host: 221.228.66.83
+    port: 30751
+    username: 
+      from_secret: ssh_username
+    password: 
+      from_secret: ssh_password
+    script_stop: true
+    script:
+    - cd /tmp/build-cache && bash ./helper.sh build
+    - test -d /tmp/build-cache/Build/Products/Debug-iphonesimulator/IOSTestRunner.app
+    - cd /tmp/build-cache/Build/Products/Debug-iphonesimulator/ && zip -r /tmp/build-cache/IOSTestRunner.app.zip IOSTestRunner.app
+- name: checksum-and-release
+  image: kroniak/ssh-client
+  environment:
+    USERNAME:
+      from_secret: ssh_username
+  volumes:
+  - name: rsa-private-key
+    path: /root/.ssh
+  - name: release
+    path: /root/release
+  commands:
+  - mkdir -p /root/release/${DRONE_TAG}
+  - scp -P 30751 -i /root/.ssh/id_rsa $${USERNAME}@221.228.66.83:/tmp/build-cache/IOSTestRunner.app.zip /root/release/${DRONE_TAG}/IOSTestRunner.app.zip
+  - md5sum /root/release/${DRONE_TAG}/IOSTestRunner.app.zip > /root/release/${DRONE_TAG}/md5sum.txt
+  - chown -R 1000:1000 /root/release/${DRONE_TAG}
+
+volumes:
+- name: build-deps
+  host:
+    path: /root/ftp-cache/sdk/iOS/v3.0.3
+- name: rsa-private-key
+  host:
+    path: /root/.ssh
+- name: release
+  host:
+    path: /root/ftp-cache/release/iOS
