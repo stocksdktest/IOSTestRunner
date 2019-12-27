@@ -57,6 +57,8 @@ typedef NS_ENUM(NSUInteger, MIPOType) {
 @property (nonatomic, copy) NSString *entryTime;
 /** 是否是PDF文件 (YES表示详情内容pdf形式显示)  仅适用于来源为 MF10DataSourceCH*/
 @property (nonatomic, assign) BOOL isPDF;
+/** 来源 */
+@property (nonatomic, copy) NSString *source;
 @end
 
 /*! @brief 个股公告内文
@@ -72,6 +74,10 @@ typedef NS_ENUM(NSUInteger, MIPOType) {
 @property (nonatomic, copy) NSString *format;
 /** pdf_url 仅适用于来源为 MF10DataSourceCH，根据列表返回的isPDF状态判断是否有值*/
 @property (nonatomic, copy) NSString *url;
+/** 标题 */
+@property (nonatomic, copy) NSString *title;
+/** 来源 */
+@property (nonatomic, copy) NSString *source;
 @end
 
 /*! @brief 个股新闻
@@ -112,6 +118,8 @@ typedef NS_ENUM(NSUInteger, MIPOType) {
 @property (nonatomic, copy) NSString *source;
 /** pdf_url 仅适用于来源为 MF10DataSourceCH，根据列表返回的isPDF状态判断是否有值*/
 @property (nonatomic, copy) NSString *url;
+/** 标题 */
+@property (nonatomic, copy) NSString *title;
 @end
 
 /*! @brief 个股研报
@@ -152,6 +160,8 @@ typedef NS_ENUM(NSUInteger, MIPOType) {
 @property (nonatomic, copy) NSString *source;
 /** pdf_url 仅适用于来源为 MF10DataSourceCH，根据列表返回的isPDF状态判断是否有值*/
 @property (nonatomic, copy) NSString *url;
+/** 标题 */
+@property (nonatomic, copy) NSString *title;
 @end
 
 #pragma mark 新闻资讯
@@ -688,12 +698,13 @@ __attribute__((deprecated("已弃用")))
 @end
 
 /*! @brief 新股(债)信息请求类
+ *  只支持MF10DataSourceCH
  */
 @interface MIPOShareDetailRequest : MDataRequest
 /** 股号 */
 @property (nonatomic, copy) NSString *code;
 /** IPO类型，默认为新股：MIPOTypeStock */
-@property (nonatomic, assign)MIPOType type;
+@property (nonatomic, assign)MIPOType type __attribute__((deprecated));
 @end
 
 
