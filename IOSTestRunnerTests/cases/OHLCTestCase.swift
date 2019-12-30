@@ -31,8 +31,9 @@ class OHLCTestCase: BaseTestCase {
         let oHLCResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCResponse.ohlcItems)
         XCTAssertNotNil(oHLCResponse.fqItems)
+        var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
-            var resultJSON: JSON = [
+            var itemJSON: JSON = [
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,
                 "highPrice": item.highPrice,
@@ -46,9 +47,10 @@ class OHLCTestCase: BaseTestCase {
                 "fp_volume": item.afterHoursVolume,
                 "fp_amount": item.afterHoursAmount
             ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            resultJSON["\(item.datetime!)"] = itemJSON
+            
         }
-        
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
         }
 }
