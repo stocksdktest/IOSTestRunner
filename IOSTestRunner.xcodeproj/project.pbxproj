@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		21901AD823990E200011C858 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
-		21901ADA23990E300011C858 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21901AD923990E300011C858 /* libMApi.a */; };
 		21F4774F23AC53A200EF6438 /* ADDVALUE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4774E23AC53A200EF6438 /* ADDVALUE_2.swift */; };
 		21F4775123AC547D00EF6438 /* ADDVALUE_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775023AC547D00EF6438 /* ADDVALUE_3.swift */; };
 		21F4775323AC5A9200EF6438 /* AFTERHOURSCHART_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775223AC5A9200EF6438 /* AFTERHOURSCHART_2.swift */; };
@@ -51,6 +50,7 @@
 		21F4779D23B4C22600EF6438 /* TICK_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779C23B4C22600EF6438 /* TICK_2.swift */; };
 		21F4779F23B4C4FD00EF6438 /* L2TICKV2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */; };
 		21F477A123B4C5A600EF6438 /* L2TICKDETAILV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */; };
+		21F478D623B98E8E00EF6438 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F478D523B98E8E00EF6438 /* libMApi.a */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
@@ -159,7 +159,6 @@
 		A1FEE270235475B9007FD238 /* F10_BNDBUYBACKS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20D235475B6007FD238 /* F10_BNDBUYBACKS_1.swift */; };
 		A1FEE271235475B9007FD238 /* SUBNEWSTOCKRANKING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20E235475B6007FD238 /* SUBNEWSTOCKRANKING_1.swift */; };
 		A1FEE274235475B9007FD238 /* F10_IMPORTANTNOTICE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE211235475B6007FD238 /* F10_IMPORTANTNOTICE_1.swift */; };
-		A1FEE276235475B9007FD238 /* F10TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE213235475B7007FD238 /* F10TestCase.swift */; };
 		A1FEE277235475B9007FD238 /* F10_BLOCKTRADE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE214235475B7007FD238 /* F10_BLOCKTRADE_1.swift */; };
 		A1FEE278235475B9007FD238 /* CONVERTIBLE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE215235475B7007FD238 /* CONVERTIBLE_1.swift */; };
 		A1FEE279235475B9007FD238 /* OVERLAYCHART_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE216235475B7007FD238 /* OVERLAYCHART_1.swift */; };
@@ -196,7 +195,6 @@
 
 /* Begin PBXFileReference section */
 		02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.release.xcconfig"; sourceTree = "<group>"; };
-		21901AD923990E300011C858 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		21F4774E23AC53A200EF6438 /* ADDVALUE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDVALUE_2.swift; sourceTree = "<group>"; };
 		21F4775023AC547D00EF6438 /* ADDVALUE_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDVALUE_3.swift; sourceTree = "<group>"; };
 		21F4775223AC5A9200EF6438 /* AFTERHOURSCHART_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFTERHOURSCHART_2.swift; sourceTree = "<group>"; };
@@ -239,6 +237,7 @@
 		21F4779C23B4C22600EF6438 /* TICK_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICK_2.swift; sourceTree = "<group>"; };
 		21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKV2_2.swift; sourceTree = "<group>"; };
 		21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKDETAILV2_1.swift; sourceTree = "<group>"; };
+		21F478D523B98E8E00EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -279,7 +278,6 @@
 		A153912623113DF3007648F4 /* IOSTestRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSTestRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTestRunnerUITests.swift; sourceTree = "<group>"; };
 		A153912C23113DF3007648F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1658D10231778A400B876D3 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = sdk/libMApi.a; sourceTree = "<group>"; };
 		A1658D1523177FD100B876D3 /* SDKSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKSetup.swift; sourceTree = "<group>"; };
 		A1658D1A2317D4F400B876D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A1658D362318E84700B876D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -367,7 +365,6 @@
 		A1FEE20D235475B6007FD238 /* F10_BNDBUYBACKS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BNDBUYBACKS_1.swift; sourceTree = "<group>"; };
 		A1FEE20E235475B6007FD238 /* SUBNEWSTOCKRANKING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUBNEWSTOCKRANKING_1.swift; sourceTree = "<group>"; };
 		A1FEE211235475B6007FD238 /* F10_IMPORTANTNOTICE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_IMPORTANTNOTICE_1.swift; sourceTree = "<group>"; };
-		A1FEE213235475B7007FD238 /* F10TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10TestCase.swift; sourceTree = "<group>"; };
 		A1FEE214235475B7007FD238 /* F10_BLOCKTRADE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BLOCKTRADE_1.swift; sourceTree = "<group>"; };
 		A1FEE215235475B7007FD238 /* CONVERTIBLE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CONVERTIBLE_1.swift; sourceTree = "<group>"; };
 		A1FEE216235475B7007FD238 /* OVERLAYCHART_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OVERLAYCHART_1.swift; sourceTree = "<group>"; };
@@ -402,7 +399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21901ADA23990E300011C858 /* libMApi.a in Frameworks */,
+				21F478D623B98E8E00EF6438 /* libMApi.a in Frameworks */,
 				21901AD823990E200011C858 /* libc++.tbd in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
@@ -533,7 +530,7 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				21901AD923990E300011C858 /* libMApi.a */,
+				21F478D523B98E8E00EF6438 /* libMApi.a */,
 				97357DAB2390CA780015FFF6 /* libc++.tbd */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
 				A1658D9F231A494000B876D3 /* MApi */,
@@ -541,7 +538,6 @@
 				A1658D382318E85000B876D3 /* libz.tbd */,
 				A1658D362318E84700B876D3 /* SystemConfiguration.framework */,
 				A1658D1A2317D4F400B876D3 /* libc++.tbd */,
-				A1658D10231778A400B876D3 /* libMApi.a */,
 				D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */,
 				3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */,
 				3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */,
@@ -636,7 +632,6 @@
 				A1FEE209235475B5007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift */,
 				A1FEE1F1235475B3007FD238 /* F10_TOPSHAREHOLDER_1.swift */,
 				A1FEE1E6235475B1007FD238 /* F10_TRADEDETAIL_1.swift */,
-				A1FEE213235475B7007FD238 /* F10TestCase.swift */,
 				21F4775823B196A300EF6438 /* F10V2TEST_1.swift */,
 				21F4775A23B1975500EF6438 /* F10V2TEST_2.swift */,
 				21F4775C23B19ACB00EF6438 /* F10V2TEST_3.swift */,
@@ -1006,7 +1001,6 @@
 				973B84CF237124A20023C230 /* QUOTEDETAIL_1.swift in Sources */,
 				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
 				A1FEE256235475B9007FD238 /* F10_NEWS_1.swift in Sources */,
-				A1FEE276235475B9007FD238 /* F10TestCase.swift in Sources */,
 				973B84DF237125250023C230 /* OPTIONTQUOTE_1.swift in Sources */,
 				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1FEE27A235475B9007FD238 /* BANKUAISORTING_1.swift in Sources */,

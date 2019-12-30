@@ -364,6 +364,9 @@ class F10V2TEST_2: BaseTestCase {
                                         "OTHERRECE":dic2["OTHERRECE"]!,
                                         "FIXEDASSENET":dic2["FIXEDASSENET"]!,
                                         "AVAISELLASSE":dic2["AVAISELLASSE"]!,
+                                        
+                                    ]
+                                    let update1: JSON = [
                                         "INTAASSET":dic2["INTAASSET"]!,
                                         "SHORTTERMBORR":dic2["SHORTTERMBORR"]!,
                                         "ADVAPAYM":dic2["ADVAPAYM"]!,
@@ -375,6 +378,11 @@ class F10V2TEST_2: BaseTestCase {
                                         "CAPISURP":dic2["CAPISURP"]!,
                                         "GOODWILL":dic2["GOODWILL"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update1)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                                 }
                             }
