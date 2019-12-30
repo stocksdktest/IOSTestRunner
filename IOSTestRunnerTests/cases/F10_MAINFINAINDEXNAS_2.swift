@@ -48,6 +48,9 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                     "ROA_EBIT_":dic1["ROA_EBIT"]!,
                     "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
                     "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
+                    
+                ]
+                let update1: JSON = [
                     "TLToTA_":dic1["TLTOTA"]!,
                     "TAToSHE_":dic1["TATOSHE"]!,
                     "CurrentRatio":dic1["CURRENTRATIO"]!,
@@ -65,6 +68,11 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                     "NetAssetYOY":dic1["NETASSETYOY"]!,
                     "TotalAssetYOY":dic1["TOTALASSETYOY"]!
                 ]
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
                 resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
             }
             print(resultJSON)
@@ -88,6 +96,9 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                             "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
                             "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
                             "TLToTA_":dic1["TLTOTA"]!,
+                            
+                        ]
+                        let update1: JSON = [
                             "TAToSHE_":dic1["TATOSHE"]!,
                             "CurrentRatio":dic1["CURRENTRATIO"]!,
                             "QuickRatio":dic1["QUICKRATIO"]!,
@@ -104,6 +115,11 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                             "NetAssetYOY":dic1["NETASSETYOY"]!,
                             "TotalAssetYOY":dic1["TOTALASSETYOY"]!
                         ]
+                        do {
+                            try itemJSON.merge(with: update1)
+                        } catch {
+                            // ignore
+                        }
                         resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
                     }
                     
