@@ -237,7 +237,6 @@
 		21F4779C23B4C22600EF6438 /* TICK_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICK_2.swift; sourceTree = "<group>"; };
 		21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKV2_2.swift; sourceTree = "<group>"; };
 		21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKDETAILV2_1.swift; sourceTree = "<group>"; };
-		21F478D523B98E8E00EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		21F478D723B9993D00EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../IOSTestRunner-master/libMApi.a"; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,7 +530,6 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				21F478D523B98E8E00EF6438 /* libMApi.a */,
 				21F478D723B9993D00EF6438 /* libMApi.a */,
 				97357DAB2390CA780015FFF6 /* libc++.tbd */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
