@@ -790,11 +790,7 @@
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/IOSTestRunner",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MY_VAR = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -821,11 +817,7 @@
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/IOSTestRunner",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MY_VAR = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -856,12 +848,7 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/IOSTestRunner",
-					"$(PROJECT_DIR)/sdk",
-					"$(PROJECT_DIR)",
-					"/Users/yu_jbin/Desktop/自动化/gitPush1",
-				);
+				LIBRARY_SEARCH_PATHS = "/Users/yu_jbin/Desktop/自动化/gitPush1";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -893,12 +880,7 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/IOSTestRunner",
-					"$(PROJECT_DIR)/sdk",
-					"$(PROJECT_DIR)",
-					"/Users/yu_jbin/Desktop/自动化/gitPush1",
-				);
+				LIBRARY_SEARCH_PATHS = "/Users/yu_jbin/Desktop/自动化/gitPush1";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
