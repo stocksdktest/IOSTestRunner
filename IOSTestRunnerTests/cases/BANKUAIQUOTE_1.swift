@@ -37,11 +37,12 @@ class BANKUAIQUOTE_1: BaseTestCase {
                 "turnoverRate": item.turnoverRate,
                 "stockID": item.stockID,
                 "stockName": item.stockName,
-                "stockChange": item.stockChange,
-                "stockChangeRate": item.stockChangeRate,
-                "netCapitalInflow": item.netCapitalInflow,
-                "netCapitalInflow5": item.netCapitalInflow5,
-                "netCapitalInflow10": item.netCapitalInflow10,
+                
+                
+                
+                
+            ]
+            let update1: JSON = [
                 "capitalInflow": item.capitalInflow,
                 "capitalOutflow": item.capitalOutflow,
                 "type": item.type,
@@ -52,6 +53,13 @@ class BANKUAIQUOTE_1: BaseTestCase {
                 "changeRate": item.changeRate,
                 "changeRate5": item.changeRate5,
                 "changeRate10": item.changeRate10,
+            ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
+            let update2: JSON = [
                 "flowValue": item.flowValue,
                 "totalValue": item.totalValue,
                 "riseRate": item.riseRate,
@@ -62,6 +70,13 @@ class BANKUAIQUOTE_1: BaseTestCase {
                 "change": item.change,
                 "entrustBuyVolume": item.entrustBuyVolume,
                 "entrustSellVolume": item.entrustSellVolume,
+            ]
+            do {
+                try itemJSON.merge(with: update2)
+            } catch {
+                // ignore
+            }
+            let update3: JSON = [
                 "orderRatio": item.orderRatio,
                 "entrustDiff": item.entrustDiff,
                 "PE": item.pe,
@@ -73,6 +88,23 @@ class BANKUAIQUOTE_1: BaseTestCase {
                 "limitDownCount": item.limitDownCount,
                 "lzgj":item.stockLastPrice
             ]
+            do {
+                try itemJSON.merge(with: update3)
+            } catch {
+                // ignore
+            }
+            let update4: JSON = [
+                "stockChange": item.stockChange,
+                "stockChangeRate": item.stockChangeRate,
+                "netCapitalInflow": item.netCapitalInflow,
+                "netCapitalInflow5": item.netCapitalInflow5,
+                "netCapitalInflow10": item.netCapitalInflow10,
+            ]
+            do {
+                try itemJSON.merge(with: update4)
+            } catch {
+                // ignore
+            }
             resultJSON["\(item.id!)"] = itemJSON
         }
         print(resultJSON)
