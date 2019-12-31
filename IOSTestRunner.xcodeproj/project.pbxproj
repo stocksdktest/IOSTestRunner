@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -398,29 +398,29 @@
 		A15390FF23113DF3007648F4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "liao xiangsen";
 				TargetAttributes = {
 					A153910623113DF3007648F4 = {
-						CreatedOnToolsVersion = 9.2;
+						CreatedOnToolsVersion = 11.1;
 						ProvisioningStyle = Manual;
 					};
 					A153911A23113DF3007648F4 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A153910623113DF3007648F4;
 					};
 					A153912523113DF3007648F4 = {
-						CreatedOnToolsVersion = 9.2;
+						CreatedOnToolsVersion = 11.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A153910623113DF3007648F4;
 					};
 				};
 			};
 			buildConfigurationList = A153910223113DF3007648F4 /* Build configuration list for PBXProject "IOSTestRunner" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 9.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -752,7 +752,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -783,7 +783,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = IOSTestRunner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
