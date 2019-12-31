@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21901AD823990E200011C858 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
 		21F4775923B196A300EF6438 /* F10V2TEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775823B196A300EF6438 /* F10V2TEST_1.swift */; };
 		21F4775B23B1975500EF6438 /* F10V2TEST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775A23B1975500EF6438 /* F10V2TEST_2.swift */; };
 		21F4775D23B19ACB00EF6438 /* F10V2TEST_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775C23B19ACB00EF6438 /* F10V2TEST_3.swift */; };
@@ -15,15 +14,11 @@
 		21F4778523B445E700EF6438 /* MOREPRICE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778423B445E700EF6438 /* MOREPRICE_2.swift */; };
 		21F4779F23B4C4FD00EF6438 /* L2TICKV2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */; };
 		21F477A123B4C5A600EF6438 /* L2TICKDETAILV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */; };
-		21F478D823B9993D00EF6438 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F478D723B9993D00EF6438 /* libMApi.a */; };
 		21F478DB23BADE5100EF6438 /* LogCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F478D923BADE5100EF6438 /* LogCollector.swift */; };
 		21F478DC23BADE5100EF6438 /* MongoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F478DA23BADE5100EF6438 /* MongoCollector.swift */; };
 		21F47A1A23BB235A00EF6438 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A1923BB235A00EF6438 /* CoreServices.framework */; };
-		21F47A1C23BB2A2100EF6438 /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A1B23BB2A2100EF6438 /* Pods_IOSTestRunner.framework */; };
-		21F47A1E23BB2A2100EF6438 /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A1D23BB2A2100EF6438 /* Pods_IOSTestRunnerTests.framework */; };
-		21F47A2023BB2A2100EF6438 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A1F23BB2A2100EF6438 /* Pods_IOSTestRunnerUITests.framework */; };
-		21F47A2223BB2A2100EF6438 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A2123BB2A2100EF6438 /* SwiftProtobuf.framework */; };
-		21F47A2423BB2A2100EF6438 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A2323BB2A2100EF6438 /* SwiftyJSON.framework */; };
+		21F47A2E23BB308600EF6438 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
+		21F47A3323BB31C400EF6438 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F47A3223BB31C400EF6438 /* libMApi.a */; };
 		97357DAA238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97357DA9238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift */; };
 		973B84E6237125250023C230 /* BANKUAIQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D7237125250023C230 /* BANKUAIQUOTE_1.swift */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
@@ -90,6 +85,15 @@
 		21F47A1F23BB2A2100EF6438 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F47A2123BB2A2100EF6438 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F47A2323BB2A2100EF6438 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21F47A2723BB2FC500EF6438 /* MApiObject+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MApiObject+Info.h"; sourceTree = "<group>"; };
+		21F47A2823BB2FC500EF6438 /* MApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MApiObject.h; sourceTree = "<group>"; };
+		21F47A2923BB2FC500EF6438 /* MChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MChartView.h; sourceTree = "<group>"; };
+		21F47A2A23BB2FC500EF6438 /* MApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MApi.h; sourceTree = "<group>"; };
+		21F47A2B23BB2FC500EF6438 /* MIPOCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPOCalendarView.h; sourceTree = "<group>"; };
+		21F47A2C23BB2FC500EF6438 /* MIPODetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPODetailView.h; sourceTree = "<group>"; };
+		21F47A2D23BB2FC500EF6438 /* MTOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTOptionView.h; sourceTree = "<group>"; };
+		21F47A3023BB314400EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
+		21F47A3223BB31C400EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = ../libMApi.a; sourceTree = "<group>"; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		97357DA9238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOREVOLUMETEST_1.swift; sourceTree = "<group>"; };
 		97357DAB2390CA780015FFF6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
@@ -156,17 +160,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21F47A2223BB2A2100EF6438 /* SwiftProtobuf.framework in Frameworks */,
-				21F47A2023BB2A2100EF6438 /* Pods_IOSTestRunnerUITests.framework in Frameworks */,
+				21F47A3323BB31C400EF6438 /* libMApi.a in Frameworks */,
+				21F47A2E23BB308600EF6438 /* libc++.tbd in Frameworks */,
 				21F47A1A23BB235A00EF6438 /* CoreServices.framework in Frameworks */,
-				21F478D823B9993D00EF6438 /* libMApi.a in Frameworks */,
-				21901AD823990E200011C858 /* libc++.tbd in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
-				21F47A2423BB2A2100EF6438 /* SwiftyJSON.framework in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
-				21F47A1E23BB2A2100EF6438 /* Pods_IOSTestRunnerTests.framework in Frameworks */,
-				21F47A1C23BB2A2100EF6438 /* Pods_IOSTestRunner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +179,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21F47A2523BB2FC500EF6438 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				21F47A2623BB2FC500EF6438 /* MApi */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		21F47A2623BB2FC500EF6438 /* MApi */ = {
+			isa = PBXGroup;
+			children = (
+				21F47A2723BB2FC500EF6438 /* MApiObject+Info.h */,
+				21F47A2823BB2FC500EF6438 /* MApiObject.h */,
+				21F47A2923BB2FC500EF6438 /* MChartView.h */,
+				21F47A2A23BB2FC500EF6438 /* MApi.h */,
+				21F47A2B23BB2FC500EF6438 /* MIPOCalendarView.h */,
+				21F47A2C23BB2FC500EF6438 /* MIPODetailView.h */,
+				21F47A2D23BB2FC500EF6438 /* MTOptionView.h */,
+			);
+			path = MApi;
+			sourceTree = "<group>";
+		};
 		2F873115E952AA612FD86800 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +217,7 @@
 		A15390FE23113DF3007648F4 = {
 			isa = PBXGroup;
 			children = (
+				21F47A2523BB2FC500EF6438 /* sdk */,
 				A153910923113DF3007648F4 /* IOSTestRunner */,
 				A153911E23113DF3007648F4 /* IOSTestRunnerTests */,
 				A153912923113DF3007648F4 /* IOSTestRunnerUITests */,
@@ -293,6 +315,8 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21F47A3023BB314400EF6438 /* libMApi.a */,
+				21F47A3223BB31C400EF6438 /* libMApi.a */,
 				21F47A1B23BB2A2100EF6438 /* Pods_IOSTestRunner.framework */,
 				21F47A1D23BB2A2100EF6438 /* Pods_IOSTestRunnerTests.framework */,
 				21F47A1F23BB2A2100EF6438 /* Pods_IOSTestRunnerUITests.framework */,
@@ -837,6 +861,7 @@
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
 					"$(PROJECT_DIR)",
+					"/Users/yu_jbin/Desktop/自动化/gitPush1",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -874,6 +899,7 @@
 					"$(PROJECT_DIR)/IOSTestRunner",
 					"$(PROJECT_DIR)/sdk",
 					"$(PROJECT_DIR)",
+					"/Users/yu_jbin/Desktop/自动化/gitPush1",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
