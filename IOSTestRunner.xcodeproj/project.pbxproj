@@ -8,80 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		21901AD823990E200011C858 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97357DAB2390CA780015FFF6 /* libc++.tbd */; };
-		21F4774F23AC53A200EF6438 /* ADDVALUE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4774E23AC53A200EF6438 /* ADDVALUE_2.swift */; };
-		21F4775123AC547D00EF6438 /* ADDVALUE_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775023AC547D00EF6438 /* ADDVALUE_3.swift */; };
-		21F4775323AC5A9200EF6438 /* AFTERHOURSCHART_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775223AC5A9200EF6438 /* AFTERHOURSCHART_2.swift */; };
-		21F4775523AC6F1A00EF6438 /* BIDCHART_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775423AC6F1A00EF6438 /* BIDCHART_2.swift */; };
-		21F4775723ACB21100EF6438 /* CHARTSUB_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775623ACB21100EF6438 /* CHARTSUB_1.swift */; };
 		21F4775923B196A300EF6438 /* F10V2TEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775823B196A300EF6438 /* F10V2TEST_1.swift */; };
 		21F4775B23B1975500EF6438 /* F10V2TEST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775A23B1975500EF6438 /* F10V2TEST_2.swift */; };
 		21F4775D23B19ACB00EF6438 /* F10V2TEST_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775C23B19ACB00EF6438 /* F10V2TEST_3.swift */; };
 		21F4775F23B19BF300EF6438 /* F10V2TEST_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4775E23B19BF300EF6438 /* F10V2TEST_4.swift */; };
-		21F4776123B1ABCE00EF6438 /* CHARTV2TEST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776023B1ABCE00EF6438 /* CHARTV2TEST_2.swift */; };
-		21F4776323B1ABD800EF6438 /* CHARTV2TEST_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776223B1ABD800EF6438 /* CHARTV2TEST_3.swift */; };
-		21F4776523B1ABE900EF6438 /* CHARTV2TEST_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776423B1ABE900EF6438 /* CHARTV2TEST_4.swift */; };
-		21F4776723B1AC0400EF6438 /* CHARTV2TEST_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776623B1AC0400EF6438 /* CHARTV2TEST_5.swift */; };
-		21F4776923B1AC1000EF6438 /* CHARTV2TEST_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776823B1AC1000EF6438 /* CHARTV2TEST_6.swift */; };
-		21F4776B23B1BE5A00EF6438 /* F10_MAINFINADATANASS_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776A23B1BE5A00EF6438 /* F10_MAINFINADATANASS_2.swift */; };
-		21F4776D23B1DE1900EF6438 /* F10_MAINFINAINDEXNAS_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776C23B1DE1900EF6438 /* F10_MAINFINAINDEXNAS_2.swift */; };
-		21F4776F23B1F29E00EF6438 /* HISTORYCHART_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4776E23B1F29E00EF6438 /* HISTORYCHART_2.swift */; };
-		21F4777123B1FACC00EF6438 /* F10_BONDTRADINGDAY_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777023B1FACC00EF6438 /* F10_BONDTRADINGDAY_1.swift */; };
-		21F4777323B2019F00EF6438 /* F10_BNDNEWSHARESCAL_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777223B2019F00EF6438 /* F10_BNDNEWSHARESCAL_1.swift */; };
-		21F4777523B206D800EF6438 /* F10_BNDSHAREIPODETAI_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777423B206D800EF6438 /* F10_BNDSHAREIPODETAI_1.swift */; };
-		21F4777723B35CEC00EF6438 /* OHLCV3_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777623B35CEC00EF6438 /* OHLCV3_2.swift */; };
-		21F4777923B35CF800EF6438 /* OHLCV3_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777823B35CF800EF6438 /* OHLCV3_3.swift */; };
-		21F4777B23B35D0500EF6438 /* OHLCV3_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777A23B35D0500EF6438 /* OHLCV3_4.swift */; };
-		21F4777D23B35D1000EF6438 /* OHLCV3_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777C23B35D1000EF6438 /* OHLCV3_5.swift */; };
-		21F4777F23B35D1800EF6438 /* OHLCV3_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4777E23B35D1800EF6438 /* OHLCV3_6.swift */; };
-		21F4778123B3744C00EF6438 /* ORDERQUANTITY_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778023B3744C00EF6438 /* ORDERQUANTITY_2.swift */; };
-		21F4778323B4430E00EF6438 /* OVERLAYCHART_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778223B4430E00EF6438 /* OVERLAYCHART_2.swift */; };
 		21F4778523B445E700EF6438 /* MOREPRICE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778423B445E700EF6438 /* MOREPRICE_2.swift */; };
-		21F4778723B4477100EF6438 /* QUOTE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778623B4477100EF6438 /* QUOTE_2.swift */; };
-		21F4778923B4495000EF6438 /* SEARTEST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778823B4495000EF6438 /* SEARTEST_2.swift */; };
-		21F4778B23B4495A00EF6438 /* SEARTEST_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778A23B4495A00EF6438 /* SEARTEST_3.swift */; };
-		21F4778D23B4496500EF6438 /* SEARTEST_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778C23B4496500EF6438 /* SEARTEST_4.swift */; };
-		21F4778F23B4496F00EF6438 /* SEARTEST_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4778E23B4496F00EF6438 /* SEARTEST_5.swift */; };
-		21F4779123B453E000EF6438 /* SEARV2TEST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779023B453E000EF6438 /* SEARV2TEST_2.swift */; };
-		21F4779323B45D5400EF6438 /* QUOTEDETAIL_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779223B45D5400EF6438 /* QUOTEDETAIL_2.swift */; };
-		21F4779523B45FC600EF6438 /* F10_STOCKBULLETINLIST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779423B45FC600EF6438 /* F10_STOCKBULLETINLIST_2.swift */; };
-		21F4779723B4618700EF6438 /* F10_STOCKNEWSLIST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779623B4618700EF6438 /* F10_STOCKNEWSLIST_2.swift */; };
-		21F4779923B4648B00EF6438 /* F10_STOCKREPORTLIST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779823B4648B00EF6438 /* F10_STOCKREPORTLIST_2.swift */; };
-		21F4779B23B46B9500EF6438 /* TRADEDATE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779A23B46B9500EF6438 /* TRADEDATE_2.swift */; };
-		21F4779D23B4C22600EF6438 /* TICK_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779C23B4C22600EF6438 /* TICK_2.swift */; };
 		21F4779F23B4C4FD00EF6438 /* L2TICKV2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */; };
 		21F477A123B4C5A600EF6438 /* L2TICKDETAILV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */; };
 		21F478D823B9993D00EF6438 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F478D723B9993D00EF6438 /* libMApi.a */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
 		957B7B1966B23F3077BBCE2B /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */; };
-		97332F5A2387BA8000A3FFF6 /* SEARV2TEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97332F592387BA8000A3FFF6 /* SEARV2TEST_1.swift */; };
 		97357DAA238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97357DA9238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift */; };
-		973B84CF237124A20023C230 /* QUOTEDETAIL_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84CE237124A10023C230 /* QUOTEDETAIL_1.swift */; };
-		973B84DF237125250023C230 /* OPTIONTQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D0237125240023C230 /* OPTIONTQUOTE_1.swift */; };
-		973B84E0237125250023C230 /* OFFERQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D1237125240023C230 /* OFFERQUOTE_1.swift */; };
-		973B84E1237125250023C230 /* OFFERQUOTE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D2237125240023C230 /* OFFERQUOTE_2.swift */; };
-		973B84E2237125250023C230 /* OPTIONQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D3237125240023C230 /* OPTIONQUOTE_1.swift */; };
-		973B84E3237125250023C230 /* AFTERHOURSCHART_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D4237125240023C230 /* AFTERHOURSCHART_1.swift */; };
-		973B84E4237125250023C230 /* OPTIONLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D5237125240023C230 /* OPTIONLIST_1.swift */; };
-		973B84E5237125250023C230 /* QUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D6237125250023C230 /* QUOTE_1.swift */; };
 		973B84E6237125250023C230 /* BANKUAIQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D7237125250023C230 /* BANKUAIQUOTE_1.swift */; };
-		973B84E7237125250023C230 /* F10_STOCKBULLETINLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D8237125250023C230 /* F10_STOCKBULLETINLIST_1.swift */; };
-		973B84E8237125250023C230 /* F10_STOCKBULLETIN_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84D9237125250023C230 /* F10_STOCKBULLETIN_1.swift */; };
-		973B84E9237125250023C230 /* CATEQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DA237125250023C230 /* CATEQUOTE_1.swift */; };
-		973B84EA237125250023C230 /* CATESORTING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DB237125250023C230 /* CATESORTING_1.swift */; };
-		973B84EB237125250023C230 /* CATESORTING_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DC237125250023C230 /* CATESORTING_2.swift */; };
-		973B84EC237125250023C230 /* F10_STOCKNEWS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DD237125250023C230 /* F10_STOCKNEWS_1.swift */; };
-		973B84ED237125250023C230 /* F10_STOCKREPORT_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84DE237125250023C230 /* F10_STOCKREPORT_1.swift */; };
-		973B84EF237126B50023C230 /* COMPOUNDUPDOWN_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B84EE237126B50023C230 /* COMPOUNDUPDOWN_1.swift */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
-		A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869823150A4400F75635 /* ExampleTestCase2.swift */; };
 		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
 		A153910B23113DF3007648F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910A23113DF3007648F4 /* AppDelegate.swift */; };
 		A153910D23113DF3007648F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910C23113DF3007648F4 /* ViewController.swift */; };
 		A153911023113DF3007648F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153910E23113DF3007648F4 /* Main.storyboard */; };
 		A153911223113DF3007648F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A153911123113DF3007648F4 /* Assets.xcassets */; };
 		A153911523113DF3007648F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153911323113DF3007648F4 /* LaunchScreen.storyboard */; };
-		A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153911F23113DF3007648F4 /* ExampleTestCase1.swift */; };
 		A153912B23113DF3007648F4 /* IOSTestRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */; };
 		A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1658D1523177FD100B876D3 /* SDKSetup.swift */; };
 		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
@@ -95,85 +41,13 @@
 		A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF422313D4D800687389 /* BaseTestCase.swift */; };
 		A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */; };
 		A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */; };
-		A1FEE227235475B9007FD238 /* F10_STOCKSHAREINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1C4235475AE007FD238 /* F10_STOCKSHAREINFO_1.swift */; };
-		A1FEE228235475B9007FD238 /* HKMARINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1C5235475AE007FD238 /* HKMARINFO_1.swift */; };
-		A1FEE229235475B9007FD238 /* HKSTOCKINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1C6235475AE007FD238 /* HKSTOCKINFO_1.swift */; };
-		A1FEE22B235475B9007FD238 /* F10_STOCKPORTFOLIO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1C8235475AF007FD238 /* F10_STOCKPORTFOLIO_1.swift */; };
-		A1FEE22C235475B9007FD238 /* F10_FUNDSHAREHOLDERINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1C9235475AF007FD238 /* F10_FUNDSHAREHOLDERINFO_1.swift */; };
-		A1FEE22D235475B9007FD238 /* F10_NEWINDEX_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1CA235475AF007FD238 /* F10_NEWINDEX_1.swift */; };
-		A1FEE230235475B9007FD238 /* F10_ASSETALLOCATION_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1CD235475AF007FD238 /* F10_ASSETALLOCATION_1.swift */; };
-		A1FEE232235475B9007FD238 /* CHARTV2TEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1CF235475AF007FD238 /* CHARTV2TEST_1.swift */; };
-		A1FEE233235475B9007FD238 /* PlateIndexQuoteTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D0235475AF007FD238 /* PlateIndexQuoteTestCase.swift */; };
-		A1FEE234235475B9007FD238 /* F10_STOCKREPORTLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D1235475AF007FD238 /* F10_STOCKREPORTLIST_1.swift */; };
 		A1FEE235235475B9007FD238 /* SUBNEWBONDSTOCKRANKING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D2235475AF007FD238 /* SUBNEWBONDSTOCKRANKING_1.swift */; };
-		A1FEE236235475B9007FD238 /* TRADEQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D3235475AF007FD238 /* TRADEQUOTE_1.swift */; };
-		A1FEE237235475B9007FD238 /* AHQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D4235475B0007FD238 /* AHQUOTE_1.swift */; };
 		A1FEE239235475B9007FD238 /* L2TICKV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D6235475B0007FD238 /* L2TICKV2_1.swift */; };
-		A1FEE23A235475B9007FD238 /* F10_FNDNAVINDEX_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D7235475B0007FD238 /* F10_FNDNAVINDEX_1.swift */; };
-		A1FEE23B235475B9007FD238 /* HISTORYCHART_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D8235475B0007FD238 /* HISTORYCHART_1.swift */; };
-		A1FEE23C235475B9007FD238 /* F10_FINANCEMRGNIN_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1D9235475B0007FD238 /* F10_FINANCEMRGNIN_3.swift */; };
-		A1FEE23D235475B9007FD238 /* F10_SHARESTRUCTURE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DA235475B0007FD238 /* F10_SHARESTRUCTURE_1.swift */; };
-		A1FEE23E235475B9007FD238 /* F10_FNDFINANCE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DB235475B0007FD238 /* F10_FNDFINANCE_1.swift */; };
-		A1FEE23F235475B9007FD238 /* F10_FORECASTRATING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DC235475B0007FD238 /* F10_FORECASTRATING_1.swift */; };
-		A1FEE240235475B9007FD238 /* TICK_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DD235475B0007FD238 /* TICK_1.swift */; };
-		A1FEE241235475B9007FD238 /* F10_MAINFINAINDEXNAS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DE235475B1007FD238 /* F10_MAINFINAINDEXNAS_1.swift */; };
-		A1FEE242235475B9007FD238 /* F10_BNDINTERESTPAY_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1DF235475B1007FD238 /* F10_BNDINTERESTPAY_1.swift */; };
-		A1FEE243235475B9007FD238 /* OHLCSUB_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E0235475B1007FD238 /* OHLCSUB_1.swift */; };
-		A1FEE244235475B9007FD238 /* F10_STOCKSHARECHANGEINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E1235475B1007FD238 /* F10_STOCKSHARECHANGEINFO_1.swift */; };
-		A1FEE245235475B9007FD238 /* OHLCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E2235475B1007FD238 /* OHLCTestCase.swift */; };
-		A1FEE246235475B9007FD238 /* F10_COMPANYINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E3235475B1007FD238 /* F10_COMPANYINFO_1.swift */; };
-		A1FEE247235475B9007FD238 /* F10_MAINFINADATANASS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E4235475B1007FD238 /* F10_MAINFINADATANASS_1.swift */; };
-		A1FEE248235475B9007FD238 /* F10_LEADERPERSONINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E5235475B1007FD238 /* F10_LEADERPERSONINFO_1.swift */; };
-		A1FEE249235475B9007FD238 /* F10_TRADEDETAIL_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E6235475B1007FD238 /* F10_TRADEDETAIL_1.swift */; };
-		A1FEE24A235475B9007FD238 /* HKPRICEINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E7235475B2007FD238 /* HKPRICEINFO_1.swift */; };
-		A1FEE24B235475B9007FD238 /* F10_NEWSHAREDETAIL_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E8235475B2007FD238 /* F10_NEWSHAREDETAIL_1.swift */; };
-		A1FEE24C235475B9007FD238 /* ORDERQUANTITY_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1E9235475B2007FD238 /* ORDERQUANTITY_1.swift */; };
-		A1FEE24D235475B9007FD238 /* F10_FINANCEMRGNIN_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1EA235475B2007FD238 /* F10_FINANCEMRGNIN_1.swift */; };
-		A1FEE24E235475B9007FD238 /* DRLINKQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1EB235475B2007FD238 /* DRLINKQUOTE_1.swift */; };
-		A1FEE250235475B9007FD238 /* F10_FUNDVALUE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1ED235475B2007FD238 /* F10_FUNDVALUE_1.swift */; };
-		A1FEE251235475B9007FD238 /* BROKERINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1EE235475B2007FD238 /* BROKERINFO_1.swift */; };
-		A1FEE252235475B9007FD238 /* AHLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1EF235475B2007FD238 /* AHLIST_1.swift */; };
-		A1FEE253235475B9007FD238 /* HOLIDAY_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F0235475B3007FD238 /* HOLIDAY_1.swift */; };
-		A1FEE254235475B9007FD238 /* F10_TOPSHAREHOLDER_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F1235475B3007FD238 /* F10_TOPSHAREHOLDER_1.swift */; };
-		A1FEE256235475B9007FD238 /* F10_NEWS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F3235475B3007FD238 /* F10_NEWS_1.swift */; };
-		A1FEE258235475B9007FD238 /* F10_BONUSFINANCE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F5235475B3007FD238 /* F10_BONUSFINANCE_1.swift */; };
-		A1FEE25A235475B9007FD238 /* UPDOWNS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F7235475B3007FD238 /* UPDOWNS_1.swift */; };
-		A1FEE25B235475B9007FD238 /* ADDVALUE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F8235475B4007FD238 /* ADDVALUE_1.swift */; };
-		A1FEE25C235475B9007FD238 /* OPTIONEXPIRE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1F9235475B4007FD238 /* OPTIONEXPIRE_1.swift */; };
-		A1FEE25D235475B9007FD238 /* OHLCV3_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1FA235475B4007FD238 /* OHLCV3_1.swift */; };
-		A1FEE25F235475B9007FD238 /* TRADEDATE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1FC235475B4007FD238 /* TRADEDATE_1.swift */; };
-		A1FEE260235475B9007FD238 /* MARKETUPDOWN_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1FD235475B4007FD238 /* MARKETUPDOWN_1.swift */; };
-		A1FEE261235475B9007FD238 /* F10_FNDDIVIDEEND_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1FE235475B4007FD238 /* F10_FNDDIVIDEEND_1.swift */; };
-		A1FEE262235475B9007FD238 /* F10_NEWSLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE1FF235475B4007FD238 /* F10_NEWSLIST_1.swift */; };
 		A1FEE263235475B9007FD238 /* L2TICKDETAILV2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE200235475B4007FD238 /* L2TICKDETAILV2_2.swift */; };
-		A1FEE264235475B9007FD238 /* F10_FUNDBASIC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE201235475B5007FD238 /* F10_FUNDBASIC_1.swift */; };
-		A1FEE265235475B9007FD238 /* SEARTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE202235475B5007FD238 /* SEARTEST_1.swift */; };
-		A1FEE266235475B9007FD238 /* F10_STRUCTUREDFUND_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE203235475B5007FD238 /* F10_STRUCTUREDFUND_1.swift */; };
 		A1FEE267235475B9007FD238 /* BANKUAISORTING_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE204235475B5007FD238 /* BANKUAISORTING_2.swift */; };
-		A1FEE268235475B9007FD238 /* F10_CALENDAR_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE205235475B5007FD238 /* F10_CALENDAR_1.swift */; };
-		A1FEE26A235475B9007FD238 /* F10_SHAREHOLDERHISTORYINFO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE207235475B5007FD238 /* F10_SHAREHOLDERHISTORYINFO_1.swift */; };
-		A1FEE26B235475B9007FD238 /* UKQUOTE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE208235475B5007FD238 /* UKQUOTE_1.swift */; };
-		A1FEE26C235475B9007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE209235475B5007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift */; };
-		A1FEE26D235475B9007FD238 /* CHARTSUB_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20A235475B6007FD238 /* CHARTSUB_2.swift */; };
-		A1FEE26F235475B9007FD238 /* F10_STOCKNEWSLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20C235475B6007FD238 /* F10_STOCKNEWSLIST_1.swift */; };
-		A1FEE270235475B9007FD238 /* F10_BNDBUYBACKS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20D235475B6007FD238 /* F10_BNDBUYBACKS_1.swift */; };
 		A1FEE271235475B9007FD238 /* SUBNEWSTOCKRANKING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE20E235475B6007FD238 /* SUBNEWSTOCKRANKING_1.swift */; };
-		A1FEE274235475B9007FD238 /* F10_IMPORTANTNOTICE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE211235475B6007FD238 /* F10_IMPORTANTNOTICE_1.swift */; };
-		A1FEE277235475B9007FD238 /* F10_BLOCKTRADE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE214235475B7007FD238 /* F10_BLOCKTRADE_1.swift */; };
-		A1FEE278235475B9007FD238 /* CONVERTIBLE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE215235475B7007FD238 /* CONVERTIBLE_1.swift */; };
-		A1FEE279235475B9007FD238 /* OVERLAYCHART_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE216235475B7007FD238 /* OVERLAYCHART_1.swift */; };
 		A1FEE27A235475B9007FD238 /* BANKUAISORTING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE217235475B7007FD238 /* BANKUAISORTING_1.swift */; };
 		A1FEE27C235475B9007FD238 /* MOREPRICE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE219235475B7007FD238 /* MOREPRICE_1.swift */; };
-		A1FEE27D235475B9007FD238 /* F10_NEWSHARELIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21A235475B7007FD238 /* F10_NEWSHARELIST_1.swift */; };
-		A1FEE27E235475B9007FD238 /* F10_FORECASTYEAR_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21B235475B8007FD238 /* F10_FORECASTYEAR_1.swift */; };
-		A1FEE27F235475B9007FD238 /* DRQUOTELIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21C235475B8007FD238 /* DRQUOTELIST_1.swift */; };
-		A1FEE280235475B9007FD238 /* AHLIST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21D235475B8007FD238 /* AHLIST_2.swift */; };
-		A1FEE282235475B9007FD238 /* F10_INDUSTRYPORTFOLIO_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE21F235475B8007FD238 /* F10_INDUSTRYPORTFOLIO_1.swift */; };
-		A1FEE283235475B9007FD238 /* F10_COREBUSINESS_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE220235475B8007FD238 /* F10_COREBUSINESS_1.swift */; };
-		A1FEE284235475B9007FD238 /* F10_BONDBASIC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE221235475B8007FD238 /* F10_BONDBASIC_1.swift */; };
-		A1FEE286235475B9007FD238 /* F10_FINANCEMRGNIN_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE223235475B9007FD238 /* F10_FINANCEMRGNIN_2.swift */; };
-		A1FEE287235475B9007FD238 /* HSAMOUNT_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE224235475B9007FD238 /* HSAMOUNT_1.swift */; };
-		A1FEE288235475B9007FD238 /* BIDCHART_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEE225235475B9007FD238 /* BIDCHART_1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,75 +69,22 @@
 
 /* Begin PBXFileReference section */
 		02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.release.xcconfig"; sourceTree = "<group>"; };
-		21F4774E23AC53A200EF6438 /* ADDVALUE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDVALUE_2.swift; sourceTree = "<group>"; };
-		21F4775023AC547D00EF6438 /* ADDVALUE_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDVALUE_3.swift; sourceTree = "<group>"; };
-		21F4775223AC5A9200EF6438 /* AFTERHOURSCHART_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFTERHOURSCHART_2.swift; sourceTree = "<group>"; };
-		21F4775423AC6F1A00EF6438 /* BIDCHART_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIDCHART_2.swift; sourceTree = "<group>"; };
-		21F4775623ACB21100EF6438 /* CHARTSUB_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTSUB_1.swift; sourceTree = "<group>"; };
 		21F4775823B196A300EF6438 /* F10V2TEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10V2TEST_1.swift; sourceTree = "<group>"; };
 		21F4775A23B1975500EF6438 /* F10V2TEST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10V2TEST_2.swift; sourceTree = "<group>"; };
 		21F4775C23B19ACB00EF6438 /* F10V2TEST_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10V2TEST_3.swift; sourceTree = "<group>"; };
 		21F4775E23B19BF300EF6438 /* F10V2TEST_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10V2TEST_4.swift; sourceTree = "<group>"; };
-		21F4776023B1ABCE00EF6438 /* CHARTV2TEST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_2.swift; sourceTree = "<group>"; };
-		21F4776223B1ABD800EF6438 /* CHARTV2TEST_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_3.swift; sourceTree = "<group>"; };
-		21F4776423B1ABE900EF6438 /* CHARTV2TEST_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_4.swift; sourceTree = "<group>"; };
-		21F4776623B1AC0400EF6438 /* CHARTV2TEST_5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_5.swift; sourceTree = "<group>"; };
-		21F4776823B1AC1000EF6438 /* CHARTV2TEST_6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_6.swift; sourceTree = "<group>"; };
-		21F4776A23B1BE5A00EF6438 /* F10_MAINFINADATANASS_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_MAINFINADATANASS_2.swift; sourceTree = "<group>"; };
-		21F4776C23B1DE1900EF6438 /* F10_MAINFINAINDEXNAS_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_MAINFINAINDEXNAS_2.swift; sourceTree = "<group>"; };
-		21F4776E23B1F29E00EF6438 /* HISTORYCHART_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HISTORYCHART_2.swift; sourceTree = "<group>"; };
-		21F4777023B1FACC00EF6438 /* F10_BONDTRADINGDAY_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_BONDTRADINGDAY_1.swift; sourceTree = "<group>"; };
-		21F4777223B2019F00EF6438 /* F10_BNDNEWSHARESCAL_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_BNDNEWSHARESCAL_1.swift; sourceTree = "<group>"; };
-		21F4777423B206D800EF6438 /* F10_BNDSHAREIPODETAI_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_BNDSHAREIPODETAI_1.swift; sourceTree = "<group>"; };
-		21F4777623B35CEC00EF6438 /* OHLCV3_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLCV3_2.swift; sourceTree = "<group>"; };
-		21F4777823B35CF800EF6438 /* OHLCV3_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLCV3_3.swift; sourceTree = "<group>"; };
-		21F4777A23B35D0500EF6438 /* OHLCV3_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLCV3_4.swift; sourceTree = "<group>"; };
-		21F4777C23B35D1000EF6438 /* OHLCV3_5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLCV3_5.swift; sourceTree = "<group>"; };
-		21F4777E23B35D1800EF6438 /* OHLCV3_6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLCV3_6.swift; sourceTree = "<group>"; };
-		21F4778023B3744C00EF6438 /* ORDERQUANTITY_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORDERQUANTITY_2.swift; sourceTree = "<group>"; };
-		21F4778223B4430E00EF6438 /* OVERLAYCHART_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OVERLAYCHART_2.swift; sourceTree = "<group>"; };
 		21F4778423B445E700EF6438 /* MOREPRICE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOREPRICE_2.swift; sourceTree = "<group>"; };
-		21F4778623B4477100EF6438 /* QUOTE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUOTE_2.swift; sourceTree = "<group>"; };
-		21F4778823B4495000EF6438 /* SEARTEST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARTEST_2.swift; sourceTree = "<group>"; };
-		21F4778A23B4495A00EF6438 /* SEARTEST_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARTEST_3.swift; sourceTree = "<group>"; };
-		21F4778C23B4496500EF6438 /* SEARTEST_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARTEST_4.swift; sourceTree = "<group>"; };
-		21F4778E23B4496F00EF6438 /* SEARTEST_5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARTEST_5.swift; sourceTree = "<group>"; };
-		21F4779023B453E000EF6438 /* SEARV2TEST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARV2TEST_2.swift; sourceTree = "<group>"; };
-		21F4779223B45D5400EF6438 /* QUOTEDETAIL_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUOTEDETAIL_2.swift; sourceTree = "<group>"; };
-		21F4779423B45FC600EF6438 /* F10_STOCKBULLETINLIST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_STOCKBULLETINLIST_2.swift; sourceTree = "<group>"; };
-		21F4779623B4618700EF6438 /* F10_STOCKNEWSLIST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_STOCKNEWSLIST_2.swift; sourceTree = "<group>"; };
-		21F4779823B4648B00EF6438 /* F10_STOCKREPORTLIST_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10_STOCKREPORTLIST_2.swift; sourceTree = "<group>"; };
-		21F4779A23B46B9500EF6438 /* TRADEDATE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRADEDATE_2.swift; sourceTree = "<group>"; };
-		21F4779C23B4C22600EF6438 /* TICK_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICK_2.swift; sourceTree = "<group>"; };
 		21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKV2_2.swift; sourceTree = "<group>"; };
 		21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2TICKDETAILV2_1.swift; sourceTree = "<group>"; };
 		21F478D723B9993D00EF6438 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../IOSTestRunner-master/libMApi.a"; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
-		97332F592387BA8000A3FFF6 /* SEARV2TEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARV2TEST_1.swift; sourceTree = "<group>"; };
 		97357DA9238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOREVOLUMETEST_1.swift; sourceTree = "<group>"; };
 		97357DAB2390CA780015FFF6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
-		973B84CE237124A10023C230 /* QUOTEDETAIL_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QUOTEDETAIL_1.swift; sourceTree = "<group>"; };
-		973B84D0237125240023C230 /* OPTIONTQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTIONTQUOTE_1.swift; sourceTree = "<group>"; };
-		973B84D1237125240023C230 /* OFFERQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OFFERQUOTE_1.swift; sourceTree = "<group>"; };
-		973B84D2237125240023C230 /* OFFERQUOTE_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OFFERQUOTE_2.swift; sourceTree = "<group>"; };
-		973B84D3237125240023C230 /* OPTIONQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTIONQUOTE_1.swift; sourceTree = "<group>"; };
-		973B84D4237125240023C230 /* AFTERHOURSCHART_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFTERHOURSCHART_1.swift; sourceTree = "<group>"; };
-		973B84D5237125240023C230 /* OPTIONLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTIONLIST_1.swift; sourceTree = "<group>"; };
-		973B84D6237125250023C230 /* QUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QUOTE_1.swift; sourceTree = "<group>"; };
 		973B84D7237125250023C230 /* BANKUAIQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BANKUAIQUOTE_1.swift; sourceTree = "<group>"; };
-		973B84D8237125250023C230 /* F10_STOCKBULLETINLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKBULLETINLIST_1.swift; sourceTree = "<group>"; };
-		973B84D9237125250023C230 /* F10_STOCKBULLETIN_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKBULLETIN_1.swift; sourceTree = "<group>"; };
-		973B84DA237125250023C230 /* CATEQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATEQUOTE_1.swift; sourceTree = "<group>"; };
-		973B84DB237125250023C230 /* CATESORTING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATESORTING_1.swift; sourceTree = "<group>"; };
-		973B84DC237125250023C230 /* CATESORTING_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATESORTING_2.swift; sourceTree = "<group>"; };
-		973B84DD237125250023C230 /* F10_STOCKNEWS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKNEWS_1.swift; sourceTree = "<group>"; };
-		973B84DE237125250023C230 /* F10_STOCKREPORT_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKREPORT_1.swift; sourceTree = "<group>"; };
-		973B84EE237126B50023C230 /* COMPOUNDUPDOWN_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COMPOUNDUPDOWN_1.swift; sourceTree = "<group>"; };
 		9DC61FBFB7002141182E1DB4 /* Pods-IOSTestRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunnerTests/Pods-IOSTestRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A11F65822314D3F6000071A2 /* config.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config.pb.swift; sourceTree = "<group>"; };
-		A11F869823150A4400F75635 /* ExampleTestCase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTestCase2.swift; sourceTree = "<group>"; };
 		A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseRoundConfig.swift; sourceTree = "<group>"; };
 		A153910723113DF3007648F4 /* IOSTestRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSTestRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153910A23113DF3007648F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,7 +94,6 @@
 		A153911423113DF3007648F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A153911623113DF3007648F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A153911B23113DF3007648F4 /* IOSTestRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSTestRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A153911F23113DF3007648F4 /* ExampleTestCase1.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ExampleTestCase1.swift; sourceTree = "<group>"; tabWidth = 2; };
 		A153912123113DF3007648F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A153912623113DF3007648F4 /* IOSTestRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSTestRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTestRunnerUITests.swift; sourceTree = "<group>"; };
@@ -301,85 +121,13 @@
 		A1F7BF442313DB1C00687389 /* ParametrizedTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParametrizedTestCase.h; sourceTree = "<group>"; };
 		A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParametrizedTestCase.m; sourceTree = "<group>"; };
 		A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A1FEE1C4235475AE007FD238 /* F10_STOCKSHAREINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKSHAREINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1C5235475AE007FD238 /* HKMARINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKMARINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1C6235475AE007FD238 /* HKSTOCKINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKSTOCKINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1C8235475AF007FD238 /* F10_STOCKPORTFOLIO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKPORTFOLIO_1.swift; sourceTree = "<group>"; };
-		A1FEE1C9235475AF007FD238 /* F10_FUNDSHAREHOLDERINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FUNDSHAREHOLDERINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1CA235475AF007FD238 /* F10_NEWINDEX_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_NEWINDEX_1.swift; sourceTree = "<group>"; };
-		A1FEE1CD235475AF007FD238 /* F10_ASSETALLOCATION_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_ASSETALLOCATION_1.swift; sourceTree = "<group>"; };
-		A1FEE1CF235475AF007FD238 /* CHARTV2TEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHARTV2TEST_1.swift; sourceTree = "<group>"; };
-		A1FEE1D0235475AF007FD238 /* PlateIndexQuoteTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateIndexQuoteTestCase.swift; sourceTree = "<group>"; };
-		A1FEE1D1235475AF007FD238 /* F10_STOCKREPORTLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKREPORTLIST_1.swift; sourceTree = "<group>"; };
 		A1FEE1D2235475AF007FD238 /* SUBNEWBONDSTOCKRANKING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUBNEWBONDSTOCKRANKING_1.swift; sourceTree = "<group>"; };
-		A1FEE1D3235475AF007FD238 /* TRADEQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRADEQUOTE_1.swift; sourceTree = "<group>"; };
-		A1FEE1D4235475B0007FD238 /* AHQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHQUOTE_1.swift; sourceTree = "<group>"; };
 		A1FEE1D6235475B0007FD238 /* L2TICKV2_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L2TICKV2_1.swift; sourceTree = "<group>"; };
-		A1FEE1D7235475B0007FD238 /* F10_FNDNAVINDEX_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FNDNAVINDEX_1.swift; sourceTree = "<group>"; };
-		A1FEE1D8235475B0007FD238 /* HISTORYCHART_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HISTORYCHART_1.swift; sourceTree = "<group>"; };
-		A1FEE1D9235475B0007FD238 /* F10_FINANCEMRGNIN_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FINANCEMRGNIN_3.swift; sourceTree = "<group>"; };
-		A1FEE1DA235475B0007FD238 /* F10_SHARESTRUCTURE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_SHARESTRUCTURE_1.swift; sourceTree = "<group>"; };
-		A1FEE1DB235475B0007FD238 /* F10_FNDFINANCE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FNDFINANCE_1.swift; sourceTree = "<group>"; };
-		A1FEE1DC235475B0007FD238 /* F10_FORECASTRATING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FORECASTRATING_1.swift; sourceTree = "<group>"; };
-		A1FEE1DD235475B0007FD238 /* TICK_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TICK_1.swift; sourceTree = "<group>"; };
-		A1FEE1DE235475B1007FD238 /* F10_MAINFINAINDEXNAS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_MAINFINAINDEXNAS_1.swift; sourceTree = "<group>"; };
-		A1FEE1DF235475B1007FD238 /* F10_BNDINTERESTPAY_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BNDINTERESTPAY_1.swift; sourceTree = "<group>"; };
-		A1FEE1E0235475B1007FD238 /* OHLCSUB_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OHLCSUB_1.swift; sourceTree = "<group>"; };
-		A1FEE1E1235475B1007FD238 /* F10_STOCKSHARECHANGEINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKSHARECHANGEINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1E2235475B1007FD238 /* OHLCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OHLCTestCase.swift; sourceTree = "<group>"; };
-		A1FEE1E3235475B1007FD238 /* F10_COMPANYINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_COMPANYINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1E4235475B1007FD238 /* F10_MAINFINADATANASS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_MAINFINADATANASS_1.swift; sourceTree = "<group>"; };
-		A1FEE1E5235475B1007FD238 /* F10_LEADERPERSONINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_LEADERPERSONINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1E6235475B1007FD238 /* F10_TRADEDETAIL_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_TRADEDETAIL_1.swift; sourceTree = "<group>"; };
-		A1FEE1E7235475B2007FD238 /* HKPRICEINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKPRICEINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1E8235475B2007FD238 /* F10_NEWSHAREDETAIL_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_NEWSHAREDETAIL_1.swift; sourceTree = "<group>"; };
-		A1FEE1E9235475B2007FD238 /* ORDERQUANTITY_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORDERQUANTITY_1.swift; sourceTree = "<group>"; };
-		A1FEE1EA235475B2007FD238 /* F10_FINANCEMRGNIN_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FINANCEMRGNIN_1.swift; sourceTree = "<group>"; };
-		A1FEE1EB235475B2007FD238 /* DRLINKQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRLINKQUOTE_1.swift; sourceTree = "<group>"; };
-		A1FEE1ED235475B2007FD238 /* F10_FUNDVALUE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FUNDVALUE_1.swift; sourceTree = "<group>"; };
-		A1FEE1EE235475B2007FD238 /* BROKERINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BROKERINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE1EF235475B2007FD238 /* AHLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHLIST_1.swift; sourceTree = "<group>"; };
-		A1FEE1F0235475B3007FD238 /* HOLIDAY_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOLIDAY_1.swift; sourceTree = "<group>"; };
-		A1FEE1F1235475B3007FD238 /* F10_TOPSHAREHOLDER_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_TOPSHAREHOLDER_1.swift; sourceTree = "<group>"; };
-		A1FEE1F3235475B3007FD238 /* F10_NEWS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_NEWS_1.swift; sourceTree = "<group>"; };
-		A1FEE1F5235475B3007FD238 /* F10_BONUSFINANCE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BONUSFINANCE_1.swift; sourceTree = "<group>"; };
-		A1FEE1F7235475B3007FD238 /* UPDOWNS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPDOWNS_1.swift; sourceTree = "<group>"; };
-		A1FEE1F8235475B4007FD238 /* ADDVALUE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADDVALUE_1.swift; sourceTree = "<group>"; };
-		A1FEE1F9235475B4007FD238 /* OPTIONEXPIRE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTIONEXPIRE_1.swift; sourceTree = "<group>"; };
-		A1FEE1FA235475B4007FD238 /* OHLCV3_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OHLCV3_1.swift; sourceTree = "<group>"; };
-		A1FEE1FC235475B4007FD238 /* TRADEDATE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRADEDATE_1.swift; sourceTree = "<group>"; };
-		A1FEE1FD235475B4007FD238 /* MARKETUPDOWN_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARKETUPDOWN_1.swift; sourceTree = "<group>"; };
-		A1FEE1FE235475B4007FD238 /* F10_FNDDIVIDEEND_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FNDDIVIDEEND_1.swift; sourceTree = "<group>"; };
-		A1FEE1FF235475B4007FD238 /* F10_NEWSLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_NEWSLIST_1.swift; sourceTree = "<group>"; };
 		A1FEE200235475B4007FD238 /* L2TICKDETAILV2_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L2TICKDETAILV2_2.swift; sourceTree = "<group>"; };
-		A1FEE201235475B5007FD238 /* F10_FUNDBASIC_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FUNDBASIC_1.swift; sourceTree = "<group>"; };
-		A1FEE202235475B5007FD238 /* SEARTEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEARTEST_1.swift; sourceTree = "<group>"; };
-		A1FEE203235475B5007FD238 /* F10_STRUCTUREDFUND_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STRUCTUREDFUND_1.swift; sourceTree = "<group>"; };
 		A1FEE204235475B5007FD238 /* BANKUAISORTING_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BANKUAISORTING_2.swift; sourceTree = "<group>"; };
-		A1FEE205235475B5007FD238 /* F10_CALENDAR_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_CALENDAR_1.swift; sourceTree = "<group>"; };
-		A1FEE207235475B5007FD238 /* F10_SHAREHOLDERHISTORYINFO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_SHAREHOLDERHISTORYINFO_1.swift; sourceTree = "<group>"; };
-		A1FEE208235475B5007FD238 /* UKQUOTE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKQUOTE_1.swift; sourceTree = "<group>"; };
-		A1FEE209235475B5007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_TOPLIQUIDSHAREHOLDER_1.swift; sourceTree = "<group>"; };
-		A1FEE20A235475B6007FD238 /* CHARTSUB_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHARTSUB_2.swift; sourceTree = "<group>"; };
-		A1FEE20C235475B6007FD238 /* F10_STOCKNEWSLIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_STOCKNEWSLIST_1.swift; sourceTree = "<group>"; };
-		A1FEE20D235475B6007FD238 /* F10_BNDBUYBACKS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BNDBUYBACKS_1.swift; sourceTree = "<group>"; };
 		A1FEE20E235475B6007FD238 /* SUBNEWSTOCKRANKING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUBNEWSTOCKRANKING_1.swift; sourceTree = "<group>"; };
-		A1FEE211235475B6007FD238 /* F10_IMPORTANTNOTICE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_IMPORTANTNOTICE_1.swift; sourceTree = "<group>"; };
-		A1FEE214235475B7007FD238 /* F10_BLOCKTRADE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BLOCKTRADE_1.swift; sourceTree = "<group>"; };
-		A1FEE215235475B7007FD238 /* CONVERTIBLE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CONVERTIBLE_1.swift; sourceTree = "<group>"; };
-		A1FEE216235475B7007FD238 /* OVERLAYCHART_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OVERLAYCHART_1.swift; sourceTree = "<group>"; };
 		A1FEE217235475B7007FD238 /* BANKUAISORTING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BANKUAISORTING_1.swift; sourceTree = "<group>"; };
 		A1FEE219235475B7007FD238 /* MOREPRICE_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOREPRICE_1.swift; sourceTree = "<group>"; };
-		A1FEE21A235475B7007FD238 /* F10_NEWSHARELIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_NEWSHARELIST_1.swift; sourceTree = "<group>"; };
-		A1FEE21B235475B8007FD238 /* F10_FORECASTYEAR_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FORECASTYEAR_1.swift; sourceTree = "<group>"; };
-		A1FEE21C235475B8007FD238 /* DRQUOTELIST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRQUOTELIST_1.swift; sourceTree = "<group>"; };
-		A1FEE21D235475B8007FD238 /* AHLIST_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHLIST_2.swift; sourceTree = "<group>"; };
-		A1FEE21F235475B8007FD238 /* F10_INDUSTRYPORTFOLIO_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_INDUSTRYPORTFOLIO_1.swift; sourceTree = "<group>"; };
-		A1FEE220235475B8007FD238 /* F10_COREBUSINESS_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_COREBUSINESS_1.swift; sourceTree = "<group>"; };
-		A1FEE221235475B8007FD238 /* F10_BONDBASIC_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BONDBASIC_1.swift; sourceTree = "<group>"; };
-		A1FEE223235475B9007FD238 /* F10_FINANCEMRGNIN_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_FINANCEMRGNIN_2.swift; sourceTree = "<group>"; };
-		A1FEE224235475B9007FD238 /* HSAMOUNT_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSAMOUNT_1.swift; sourceTree = "<group>"; };
-		A1FEE225235475B9007FD238 /* BIDCHART_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIDCHART_1.swift; sourceTree = "<group>"; };
 		AF2A90A5D7D394CAFFFEC886 /* Pods-IOSTestRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunnerUITests.release.xcconfig"; path = "Target Support Files/Pods-IOSTestRunnerUITests/Pods-IOSTestRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B9F9299787F0EE885B900D99 /* Pods-IOSTestRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunnerUITests.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunnerUITests/Pods-IOSTestRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -548,148 +296,22 @@
 		A1C683952312558A001F7CD0 /* cases */ = {
 			isa = PBXGroup;
 			children = (
-				A1FEE1F8235475B4007FD238 /* ADDVALUE_1.swift */,
-				21F4774E23AC53A200EF6438 /* ADDVALUE_2.swift */,
-				21F4775023AC547D00EF6438 /* ADDVALUE_3.swift */,
-				973B84D4237125240023C230 /* AFTERHOURSCHART_1.swift */,
-				21F4775223AC5A9200EF6438 /* AFTERHOURSCHART_2.swift */,
-				A1FEE1EF235475B2007FD238 /* AHLIST_1.swift */,
-				A1FEE21D235475B8007FD238 /* AHLIST_2.swift */,
-				A1FEE1D4235475B0007FD238 /* AHQUOTE_1.swift */,
 				973B84D7237125250023C230 /* BANKUAIQUOTE_1.swift */,
 				A1FEE217235475B7007FD238 /* BANKUAISORTING_1.swift */,
 				A1FEE204235475B5007FD238 /* BANKUAISORTING_2.swift */,
-				A1FEE225235475B9007FD238 /* BIDCHART_1.swift */,
-				21F4775423AC6F1A00EF6438 /* BIDCHART_2.swift */,
-				A1FEE1EE235475B2007FD238 /* BROKERINFO_1.swift */,
-				973B84DA237125250023C230 /* CATEQUOTE_1.swift */,
-				973B84DB237125250023C230 /* CATESORTING_1.swift */,
-				973B84DC237125250023C230 /* CATESORTING_2.swift */,
-				21F4775623ACB21100EF6438 /* CHARTSUB_1.swift */,
-				A1FEE20A235475B6007FD238 /* CHARTSUB_2.swift */,
-				A1FEE1CF235475AF007FD238 /* CHARTV2TEST_1.swift */,
-				21F4776023B1ABCE00EF6438 /* CHARTV2TEST_2.swift */,
-				21F4776223B1ABD800EF6438 /* CHARTV2TEST_3.swift */,
-				21F4776423B1ABE900EF6438 /* CHARTV2TEST_4.swift */,
-				21F4776623B1AC0400EF6438 /* CHARTV2TEST_5.swift */,
-				21F4776823B1AC1000EF6438 /* CHARTV2TEST_6.swift */,
-				973B84EE237126B50023C230 /* COMPOUNDUPDOWN_1.swift */,
-				A1FEE215235475B7007FD238 /* CONVERTIBLE_1.swift */,
-				A1FEE1EB235475B2007FD238 /* DRLINKQUOTE_1.swift */,
-				A1FEE21C235475B8007FD238 /* DRQUOTELIST_1.swift */,
-				A153911F23113DF3007648F4 /* ExampleTestCase1.swift */,
-				A11F869823150A4400F75635 /* ExampleTestCase2.swift */,
-				A1FEE1CD235475AF007FD238 /* F10_ASSETALLOCATION_1.swift */,
-				A1FEE214235475B7007FD238 /* F10_BLOCKTRADE_1.swift */,
-				A1FEE20D235475B6007FD238 /* F10_BNDBUYBACKS_1.swift */,
-				A1FEE1DF235475B1007FD238 /* F10_BNDINTERESTPAY_1.swift */,
-				21F4777223B2019F00EF6438 /* F10_BNDNEWSHARESCAL_1.swift */,
-				21F4777423B206D800EF6438 /* F10_BNDSHAREIPODETAI_1.swift */,
-				A1FEE221235475B8007FD238 /* F10_BONDBASIC_1.swift */,
-				21F4777023B1FACC00EF6438 /* F10_BONDTRADINGDAY_1.swift */,
-				A1FEE1F5235475B3007FD238 /* F10_BONUSFINANCE_1.swift */,
-				A1FEE205235475B5007FD238 /* F10_CALENDAR_1.swift */,
-				A1FEE1E3235475B1007FD238 /* F10_COMPANYINFO_1.swift */,
-				A1FEE220235475B8007FD238 /* F10_COREBUSINESS_1.swift */,
-				A1FEE1EA235475B2007FD238 /* F10_FINANCEMRGNIN_1.swift */,
-				A1FEE223235475B9007FD238 /* F10_FINANCEMRGNIN_2.swift */,
-				A1FEE1D9235475B0007FD238 /* F10_FINANCEMRGNIN_3.swift */,
-				A1FEE1FE235475B4007FD238 /* F10_FNDDIVIDEEND_1.swift */,
-				A1FEE1DB235475B0007FD238 /* F10_FNDFINANCE_1.swift */,
-				A1FEE1D7235475B0007FD238 /* F10_FNDNAVINDEX_1.swift */,
-				A1FEE1DC235475B0007FD238 /* F10_FORECASTRATING_1.swift */,
-				A1FEE21B235475B8007FD238 /* F10_FORECASTYEAR_1.swift */,
-				A1FEE201235475B5007FD238 /* F10_FUNDBASIC_1.swift */,
-				A1FEE1C9235475AF007FD238 /* F10_FUNDSHAREHOLDERINFO_1.swift */,
-				A1FEE1ED235475B2007FD238 /* F10_FUNDVALUE_1.swift */,
-				A1FEE211235475B6007FD238 /* F10_IMPORTANTNOTICE_1.swift */,
-				A1FEE21F235475B8007FD238 /* F10_INDUSTRYPORTFOLIO_1.swift */,
-				A1FEE1E5235475B1007FD238 /* F10_LEADERPERSONINFO_1.swift */,
-				A1FEE1E4235475B1007FD238 /* F10_MAINFINADATANASS_1.swift */,
-				21F4776A23B1BE5A00EF6438 /* F10_MAINFINADATANASS_2.swift */,
-				A1FEE1DE235475B1007FD238 /* F10_MAINFINAINDEXNAS_1.swift */,
-				21F4776C23B1DE1900EF6438 /* F10_MAINFINAINDEXNAS_2.swift */,
-				A1FEE1CA235475AF007FD238 /* F10_NEWINDEX_1.swift */,
-				A1FEE1F3235475B3007FD238 /* F10_NEWS_1.swift */,
-				A1FEE1E8235475B2007FD238 /* F10_NEWSHAREDETAIL_1.swift */,
-				A1FEE21A235475B7007FD238 /* F10_NEWSHARELIST_1.swift */,
-				A1FEE1FF235475B4007FD238 /* F10_NEWSLIST_1.swift */,
-				A1FEE207235475B5007FD238 /* F10_SHAREHOLDERHISTORYINFO_1.swift */,
-				A1FEE1DA235475B0007FD238 /* F10_SHARESTRUCTURE_1.swift */,
-				973B84D9237125250023C230 /* F10_STOCKBULLETIN_1.swift */,
-				973B84D8237125250023C230 /* F10_STOCKBULLETINLIST_1.swift */,
-				21F4779423B45FC600EF6438 /* F10_STOCKBULLETINLIST_2.swift */,
-				973B84DD237125250023C230 /* F10_STOCKNEWS_1.swift */,
-				A1FEE20C235475B6007FD238 /* F10_STOCKNEWSLIST_1.swift */,
-				21F4779623B4618700EF6438 /* F10_STOCKNEWSLIST_2.swift */,
-				A1FEE1C8235475AF007FD238 /* F10_STOCKPORTFOLIO_1.swift */,
-				973B84DE237125250023C230 /* F10_STOCKREPORT_1.swift */,
-				A1FEE1D1235475AF007FD238 /* F10_STOCKREPORTLIST_1.swift */,
-				21F4779823B4648B00EF6438 /* F10_STOCKREPORTLIST_2.swift */,
-				A1FEE1E1235475B1007FD238 /* F10_STOCKSHARECHANGEINFO_1.swift */,
-				A1FEE1C4235475AE007FD238 /* F10_STOCKSHAREINFO_1.swift */,
-				A1FEE203235475B5007FD238 /* F10_STRUCTUREDFUND_1.swift */,
-				A1FEE209235475B5007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift */,
-				A1FEE1F1235475B3007FD238 /* F10_TOPSHAREHOLDER_1.swift */,
-				A1FEE1E6235475B1007FD238 /* F10_TRADEDETAIL_1.swift */,
 				21F4775823B196A300EF6438 /* F10V2TEST_1.swift */,
 				21F4775A23B1975500EF6438 /* F10V2TEST_2.swift */,
 				21F4775C23B19ACB00EF6438 /* F10V2TEST_3.swift */,
 				21F4775E23B19BF300EF6438 /* F10V2TEST_4.swift */,
-				A1FEE1D8235475B0007FD238 /* HISTORYCHART_1.swift */,
-				21F4776E23B1F29E00EF6438 /* HISTORYCHART_2.swift */,
-				A1FEE1C5235475AE007FD238 /* HKMARINFO_1.swift */,
-				A1FEE1E7235475B2007FD238 /* HKPRICEINFO_1.swift */,
-				A1FEE1C6235475AE007FD238 /* HKSTOCKINFO_1.swift */,
-				A1FEE1F0235475B3007FD238 /* HOLIDAY_1.swift */,
-				A1FEE224235475B9007FD238 /* HSAMOUNT_1.swift */,
 				A1FEE200235475B4007FD238 /* L2TICKDETAILV2_2.swift */,
 				21F477A023B4C5A600EF6438 /* L2TICKDETAILV2_1.swift */,
 				A1FEE1D6235475B0007FD238 /* L2TICKV2_1.swift */,
 				21F4779E23B4C4FD00EF6438 /* L2TICKV2_2.swift */,
-				A1FEE1FD235475B4007FD238 /* MARKETUPDOWN_1.swift */,
 				A1FEE219235475B7007FD238 /* MOREPRICE_1.swift */,
 				21F4778423B445E700EF6438 /* MOREPRICE_2.swift */,
 				97357DA9238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift */,
-				973B84D1237125240023C230 /* OFFERQUOTE_1.swift */,
-				973B84D2237125240023C230 /* OFFERQUOTE_2.swift */,
-				A1FEE1E0235475B1007FD238 /* OHLCSUB_1.swift */,
-				A1FEE1E2235475B1007FD238 /* OHLCTestCase.swift */,
-				A1FEE1FA235475B4007FD238 /* OHLCV3_1.swift */,
-				21F4777623B35CEC00EF6438 /* OHLCV3_2.swift */,
-				21F4777823B35CF800EF6438 /* OHLCV3_3.swift */,
-				21F4777A23B35D0500EF6438 /* OHLCV3_4.swift */,
-				21F4777C23B35D1000EF6438 /* OHLCV3_5.swift */,
-				21F4777E23B35D1800EF6438 /* OHLCV3_6.swift */,
-				A1FEE1F9235475B4007FD238 /* OPTIONEXPIRE_1.swift */,
-				973B84D5237125240023C230 /* OPTIONLIST_1.swift */,
-				973B84D3237125240023C230 /* OPTIONQUOTE_1.swift */,
-				973B84D0237125240023C230 /* OPTIONTQUOTE_1.swift */,
-				A1FEE1E9235475B2007FD238 /* ORDERQUANTITY_1.swift */,
-				21F4778023B3744C00EF6438 /* ORDERQUANTITY_2.swift */,
-				A1FEE216235475B7007FD238 /* OVERLAYCHART_1.swift */,
-				21F4778223B4430E00EF6438 /* OVERLAYCHART_2.swift */,
-				A1FEE1D0235475AF007FD238 /* PlateIndexQuoteTestCase.swift */,
-				973B84D6237125250023C230 /* QUOTE_1.swift */,
-				21F4778623B4477100EF6438 /* QUOTE_2.swift */,
-				973B84CE237124A10023C230 /* QUOTEDETAIL_1.swift */,
-				21F4779223B45D5400EF6438 /* QUOTEDETAIL_2.swift */,
-				A1FEE202235475B5007FD238 /* SEARTEST_1.swift */,
-				21F4778823B4495000EF6438 /* SEARTEST_2.swift */,
-				21F4778A23B4495A00EF6438 /* SEARTEST_3.swift */,
-				21F4778C23B4496500EF6438 /* SEARTEST_4.swift */,
-				21F4778E23B4496F00EF6438 /* SEARTEST_5.swift */,
-				97332F592387BA8000A3FFF6 /* SEARV2TEST_1.swift */,
-				21F4779023B453E000EF6438 /* SEARV2TEST_2.swift */,
 				A1FEE1D2235475AF007FD238 /* SUBNEWBONDSTOCKRANKING_1.swift */,
 				A1FEE20E235475B6007FD238 /* SUBNEWSTOCKRANKING_1.swift */,
-				A1FEE1DD235475B0007FD238 /* TICK_1.swift */,
-				21F4779C23B4C22600EF6438 /* TICK_2.swift */,
-				A1FEE1FC235475B4007FD238 /* TRADEDATE_1.swift */,
-				21F4779A23B46B9500EF6438 /* TRADEDATE_2.swift */,
-				A1FEE1D3235475AF007FD238 /* TRADEQUOTE_1.swift */,
-				A1FEE208235475B5007FD238 /* UKQUOTE_1.swift */,
-				A1FEE1F7235475B3007FD238 /* UPDOWNS_1.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -929,159 +551,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FEE287235475B9007FD238 /* HSAMOUNT_1.swift in Sources */,
-				A1FEE262235475B9007FD238 /* F10_NEWSLIST_1.swift in Sources */,
-				A1FEE232235475B9007FD238 /* CHARTV2TEST_1.swift in Sources */,
-				A1FEE230235475B9007FD238 /* F10_ASSETALLOCATION_1.swift in Sources */,
 				A1FEE267235475B9007FD238 /* BANKUAISORTING_2.swift in Sources */,
-				21F4777B23B35D0500EF6438 /* OHLCV3_4.swift in Sources */,
-				973B84E0237125250023C230 /* OFFERQUOTE_1.swift in Sources */,
 				A11F65832314D3F6000071A2 /* config.pb.swift in Sources */,
-				973B84E8237125250023C230 /* F10_STOCKBULLETIN_1.swift in Sources */,
-				A1FEE22D235475B9007FD238 /* F10_NEWINDEX_1.swift in Sources */,
-				21F4775723ACB21100EF6438 /* CHARTSUB_1.swift in Sources */,
-				A1FEE284235475B9007FD238 /* F10_BONDBASIC_1.swift in Sources */,
-				97332F5A2387BA8000A3FFF6 /* SEARV2TEST_1.swift in Sources */,
-				21F4777F23B35D1800EF6438 /* OHLCV3_6.swift in Sources */,
-				A1FEE248235475B9007FD238 /* F10_LEADERPERSONINFO_1.swift in Sources */,
-				21F4778323B4430E00EF6438 /* OVERLAYCHART_2.swift in Sources */,
-				21F4777123B1FACC00EF6438 /* F10_BONDTRADINGDAY_1.swift in Sources */,
-				A1FEE27F235475B9007FD238 /* DRQUOTELIST_1.swift in Sources */,
-				21F4778B23B4495A00EF6438 /* SEARTEST_3.swift in Sources */,
 				A1C6838923123DEE001F7CD0 /* StockTestCaseName.swift in Sources */,
-				973B84EB237125250023C230 /* CATESORTING_2.swift in Sources */,
-				A1FEE245235475B9007FD238 /* OHLCTestCase.swift in Sources */,
-				A1FEE282235475B9007FD238 /* F10_INDUSTRYPORTFOLIO_1.swift in Sources */,
-				21F4774F23AC53A200EF6438 /* ADDVALUE_2.swift in Sources */,
-				A1FEE227235475B9007FD238 /* F10_STOCKSHAREINFO_1.swift in Sources */,
-				A1FEE249235475B9007FD238 /* F10_TRADEDETAIL_1.swift in Sources */,
-				21F4776123B1ABCE00EF6438 /* CHARTV2TEST_2.swift in Sources */,
-				A1FEE258235475B9007FD238 /* F10_BONUSFINANCE_1.swift in Sources */,
 				21F477A123B4C5A600EF6438 /* L2TICKDETAILV2_1.swift in Sources */,
-				A1FEE23B235475B9007FD238 /* HISTORYCHART_1.swift in Sources */,
-				21F4776F23B1F29E00EF6438 /* HISTORYCHART_2.swift in Sources */,
 				A1C0CEA7231F61E0002F1A26 /* record.pb.swift in Sources */,
-				21F4777D23B35D1000EF6438 /* OHLCV3_5.swift in Sources */,
-				A1FEE25C235475B9007FD238 /* OPTIONEXPIRE_1.swift in Sources */,
-				21F4778723B4477100EF6438 /* QUOTE_2.swift in Sources */,
-				A1FEE228235475B9007FD238 /* HKMARINFO_1.swift in Sources */,
-				A1FEE24E235475B9007FD238 /* DRLINKQUOTE_1.swift in Sources */,
-				A1FEE283235475B9007FD238 /* F10_COREBUSINESS_1.swift in Sources */,
-				A1FEE266235475B9007FD238 /* F10_STRUCTUREDFUND_1.swift in Sources */,
-				A1FEE288235475B9007FD238 /* BIDCHART_1.swift in Sources */,
-				A1FEE261235475B9007FD238 /* F10_FNDDIVIDEEND_1.swift in Sources */,
-				A1FEE26C235475B9007FD238 /* F10_TOPLIQUIDSHAREHOLDER_1.swift in Sources */,
 				A1FEE271235475B9007FD238 /* SUBNEWSTOCKRANKING_1.swift in Sources */,
-				A1FEE22C235475B9007FD238 /* F10_FUNDSHAREHOLDERINFO_1.swift in Sources */,
-				973B84E1237125250023C230 /* OFFERQUOTE_2.swift in Sources */,
 				21F4775B23B1975500EF6438 /* F10V2TEST_2.swift in Sources */,
-				A1FEE24B235475B9007FD238 /* F10_NEWSHAREDETAIL_1.swift in Sources */,
-				973B84EA237125250023C230 /* CATESORTING_1.swift in Sources */,
-				21F4777323B2019F00EF6438 /* F10_BNDNEWSHARESCAL_1.swift in Sources */,
-				973B84ED237125250023C230 /* F10_STOCKREPORT_1.swift in Sources */,
-				21F4775523AC6F1A00EF6438 /* BIDCHART_2.swift in Sources */,
-				A1FEE27E235475B9007FD238 /* F10_FORECASTYEAR_1.swift in Sources */,
-				A1FEE260235475B9007FD238 /* MARKETUPDOWN_1.swift in Sources */,
-				21F4776D23B1DE1900EF6438 /* F10_MAINFINAINDEXNAS_2.swift in Sources */,
-				21F4777523B206D800EF6438 /* F10_BNDSHAREIPODETAI_1.swift in Sources */,
-				A1FEE26D235475B9007FD238 /* CHARTSUB_2.swift in Sources */,
-				A1FEE26B235475B9007FD238 /* UKQUOTE_1.swift in Sources */,
-				A1FEE254235475B9007FD238 /* F10_TOPSHAREHOLDER_1.swift in Sources */,
-				A1FEE280235475B9007FD238 /* AHLIST_2.swift in Sources */,
-				A153912023113DF3007648F4 /* ExampleTestCase1.swift in Sources */,
-				A1FEE274235475B9007FD238 /* F10_IMPORTANTNOTICE_1.swift in Sources */,
-				A1FEE237235475B9007FD238 /* AHQUOTE_1.swift in Sources */,
-				A1FEE264235475B9007FD238 /* F10_FUNDBASIC_1.swift in Sources */,
-				A1FEE229235475B9007FD238 /* HKSTOCKINFO_1.swift in Sources */,
 				A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */,
-				21F4777923B35CF800EF6438 /* OHLCV3_3.swift in Sources */,
-				A1FEE23E235475B9007FD238 /* F10_FNDFINANCE_1.swift in Sources */,
-				A1FEE278235475B9007FD238 /* CONVERTIBLE_1.swift in Sources */,
 				A1FEE239235475B9007FD238 /* L2TICKV2_1.swift in Sources */,
-				973B84CF237124A20023C230 /* QUOTEDETAIL_1.swift in Sources */,
-				A11F869923150A4400F75635 /* ExampleTestCase2.swift in Sources */,
-				A1FEE256235475B9007FD238 /* F10_NEWS_1.swift in Sources */,
-				973B84DF237125250023C230 /* OPTIONTQUOTE_1.swift in Sources */,
 				A1DA4151231E49750019A5D4 /* TestResultCollector.swift in Sources */,
 				A1FEE27A235475B9007FD238 /* BANKUAISORTING_1.swift in Sources */,
-				A1FEE23F235475B9007FD238 /* F10_FORECASTRATING_1.swift in Sources */,
-				A1FEE23A235475B9007FD238 /* F10_FNDNAVINDEX_1.swift in Sources */,
-				A1FEE24A235475B9007FD238 /* HKPRICEINFO_1.swift in Sources */,
 				A1F7BF41231388DE00687389 /* Utils.swift in Sources */,
-				A1FEE270235475B9007FD238 /* F10_BNDBUYBACKS_1.swift in Sources */,
-				A1FEE233235475B9007FD238 /* PlateIndexQuoteTestCase.swift in Sources */,
-				973B84E3237125250023C230 /* AFTERHOURSCHART_1.swift in Sources */,
-				A1FEE24D235475B9007FD238 /* F10_FINANCEMRGNIN_1.swift in Sources */,
-				21F4778123B3744C00EF6438 /* ORDERQUANTITY_2.swift in Sources */,
-				A1FEE247235475B9007FD238 /* F10_MAINFINADATANASS_1.swift in Sources */,
-				973B84EC237125250023C230 /* F10_STOCKNEWS_1.swift in Sources */,
 				21F4775923B196A300EF6438 /* F10V2TEST_1.swift in Sources */,
-				A1FEE26F235475B9007FD238 /* F10_STOCKNEWSLIST_1.swift in Sources */,
-				A1FEE252235475B9007FD238 /* AHLIST_1.swift in Sources */,
-				A1FEE23D235475B9007FD238 /* F10_SHARESTRUCTURE_1.swift in Sources */,
-				A1FEE253235475B9007FD238 /* HOLIDAY_1.swift in Sources */,
 				973B84E6237125250023C230 /* BANKUAIQUOTE_1.swift in Sources */,
-				A1FEE25B235475B9007FD238 /* ADDVALUE_1.swift in Sources */,
-				973B84E9237125250023C230 /* CATEQUOTE_1.swift in Sources */,
 				A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */,
-				A1FEE244235475B9007FD238 /* F10_STOCKSHARECHANGEINFO_1.swift in Sources */,
-				A1FEE25A235475B9007FD238 /* UPDOWNS_1.swift in Sources */,
-				A1FEE25F235475B9007FD238 /* TRADEDATE_1.swift in Sources */,
-				21F4779323B45D5400EF6438 /* QUOTEDETAIL_2.swift in Sources */,
-				21F4779D23B4C22600EF6438 /* TICK_2.swift in Sources */,
-				A1FEE27D235475B9007FD238 /* F10_NEWSHARELIST_1.swift in Sources */,
-				21F4777723B35CEC00EF6438 /* OHLCV3_2.swift in Sources */,
-				21F4775323AC5A9200EF6438 /* AFTERHOURSCHART_2.swift in Sources */,
 				A1C68387231180E0001F7CD0 /* RunnerSetup.swift in Sources */,
-				A1FEE241235475B9007FD238 /* F10_MAINFINAINDEXNAS_1.swift in Sources */,
 				21F4775F23B19BF300EF6438 /* F10V2TEST_4.swift in Sources */,
-				A1FEE250235475B9007FD238 /* F10_FUNDVALUE_1.swift in Sources */,
-				21F4778D23B4496500EF6438 /* SEARTEST_4.swift in Sources */,
-				A1FEE279235475B9007FD238 /* OVERLAYCHART_1.swift in Sources */,
 				A1FEE263235475B9007FD238 /* L2TICKDETAILV2_2.swift in Sources */,
 				A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */,
-				A1FEE242235475B9007FD238 /* F10_BNDINTERESTPAY_1.swift in Sources */,
-				A1FEE234235475B9007FD238 /* F10_STOCKREPORTLIST_1.swift in Sources */,
-				973B84EF237126B50023C230 /* COMPOUNDUPDOWN_1.swift in Sources */,
 				A1FEE27C235475B9007FD238 /* MOREPRICE_1.swift in Sources */,
-				A1FEE22B235475B9007FD238 /* F10_STOCKPORTFOLIO_1.swift in Sources */,
 				21F4778523B445E700EF6438 /* MOREPRICE_2.swift in Sources */,
 				97357DAA238F54AA0015FFF6 /* MOREVOLUMETEST_1.swift in Sources */,
 				21F4779F23B4C4FD00EF6438 /* L2TICKV2_2.swift in Sources */,
-				A1FEE286235475B9007FD238 /* F10_FINANCEMRGNIN_2.swift in Sources */,
-				973B84E2237125250023C230 /* OPTIONQUOTE_1.swift in Sources */,
-				A1FEE268235475B9007FD238 /* F10_CALENDAR_1.swift in Sources */,
-				21F4779B23B46B9500EF6438 /* TRADEDATE_2.swift in Sources */,
-				A1FEE251235475B9007FD238 /* BROKERINFO_1.swift in Sources */,
-				21F4779723B4618700EF6438 /* F10_STOCKNEWSLIST_2.swift in Sources */,
-				21F4775123AC547D00EF6438 /* ADDVALUE_3.swift in Sources */,
 				A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */,
-				973B84E5237125250023C230 /* QUOTE_1.swift in Sources */,
-				21F4778F23B4496F00EF6438 /* SEARTEST_5.swift in Sources */,
-				21F4776523B1ABE900EF6438 /* CHARTV2TEST_4.swift in Sources */,
-				A1FEE236235475B9007FD238 /* TRADEQUOTE_1.swift in Sources */,
-				A1FEE265235475B9007FD238 /* SEARTEST_1.swift in Sources */,
-				A1FEE23C235475B9007FD238 /* F10_FINANCEMRGNIN_3.swift in Sources */,
-				21F4776B23B1BE5A00EF6438 /* F10_MAINFINADATANASS_2.swift in Sources */,
-				21F4776923B1AC1000EF6438 /* CHARTV2TEST_6.swift in Sources */,
-				21F4776723B1AC0400EF6438 /* CHARTV2TEST_5.swift in Sources */,
-				A1FEE277235475B9007FD238 /* F10_BLOCKTRADE_1.swift in Sources */,
 				A1FEE235235475B9007FD238 /* SUBNEWBONDSTOCKRANKING_1.swift in Sources */,
-				A1FEE243235475B9007FD238 /* OHLCSUB_1.swift in Sources */,
-				A1FEE25D235475B9007FD238 /* OHLCV3_1.swift in Sources */,
-				973B84E7237125250023C230 /* F10_STOCKBULLETINLIST_1.swift in Sources */,
-				A1FEE26A235475B9007FD238 /* F10_SHAREHOLDERHISTORYINFO_1.swift in Sources */,
 				A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */,
-				21F4778923B4495000EF6438 /* SEARTEST_2.swift in Sources */,
-				A1FEE24C235475B9007FD238 /* ORDERQUANTITY_1.swift in Sources */,
-				973B84E4237125250023C230 /* OPTIONLIST_1.swift in Sources */,
-				21F4779523B45FC600EF6438 /* F10_STOCKBULLETINLIST_2.swift in Sources */,
 				21F4775D23B19ACB00EF6438 /* F10V2TEST_3.swift in Sources */,
-				A1FEE240235475B9007FD238 /* TICK_1.swift in Sources */,
-				21F4776323B1ABD800EF6438 /* CHARTV2TEST_3.swift in Sources */,
-				A1FEE246235475B9007FD238 /* F10_COMPANYINFO_1.swift in Sources */,
-				21F4779123B453E000EF6438 /* SEARV2TEST_2.swift in Sources */,
-				21F4779923B4648B00EF6438 /* F10_STOCKREPORTLIST_2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
