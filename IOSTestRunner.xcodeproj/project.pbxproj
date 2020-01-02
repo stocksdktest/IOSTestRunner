@@ -848,7 +848,7 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Users/yu_jbin/Desktop/自动化/gitPush1";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -880,7 +880,7 @@
 				);
 				INFOPLIST_FILE = IOSTestRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Users/yu_jbin/Desktop/自动化/gitPush1";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
