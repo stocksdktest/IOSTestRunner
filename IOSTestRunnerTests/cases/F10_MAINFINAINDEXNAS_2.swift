@@ -44,10 +44,7 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                     "RetainedEarningPS":dic1["RETAINEDEARNINGPS"]!,
                     "NetCashFlowOperPS":dic1["NETCASHFLOWOPERPS"]!,
                     "NETCASHFLOWPS_":dic1["NETCASHFLOWPS"]!,
-                    "WEIGHTEDROE_":dic1["WEIGHTEDROE"]!,
-                    "ROA_EBIT_":dic1["ROA_EBIT"]!,
-                    "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
-                    "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
+                    
                     
                 ]
                 let update1: JSON = [
@@ -62,14 +59,22 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                     "TotalAssetTurnover":dic1["TOTALASSETTURNOVER"]!,
                     "OperRevenueYOY":dic1["OPERREVENUEYOY"]!,
                     "OperProfitYOY":dic1["OPERPROFITYOY"]!,
+                    
+                ]
+                let update2: JSON = [
                     "NETPROFITPARENTCOMYOY_":dic1["NETPROFITPARENTCOMYOY"]!,
                     "NetCashFlowOperYOY":dic1["NETCASHFLOWOPERYOY"]!,
                     "ROEYOY":dic1["ROEYOY"]!,
                     "NetAssetYOY":dic1["NETASSETYOY"]!,
-                    "TotalAssetYOY":dic1["TOTALASSETYOY"]!
+                    "TotalAssetYOY":dic1["TOTALASSETYOY"]!,
+                    "WEIGHTEDROE_":dic1["WEIGHTEDROE"]!,
+                    "ROA_EBIT_":dic1["ROA_EBIT"]!,
+                    "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
+                    "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
                 ]
                 do {
                     try itemJSON.merge(with: update1)
+                    try itemJSON.merge(with: update2)
                 } catch {
                     // ignore
                 }
@@ -92,11 +97,6 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                             "NetCashFlowOperPS":dic1["NETCASHFLOWOPERPS"]!,
                             "NETCASHFLOWPS_":dic1["NETCASHFLOWPS"]!,
                             "WEIGHTEDROE_":dic1["WEIGHTEDROE"]!,
-                            "ROA_EBIT_":dic1["ROA_EBIT"]!,
-                            "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
-                            "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
-                            "TLToTA_":dic1["TLTOTA"]!,
-                            
                         ]
                         let update1: JSON = [
                             "TAToSHE_":dic1["TATOSHE"]!,
@@ -109,14 +109,22 @@ class F10_MAINFINAINDEXNAS_2: BaseTestCase {
                             "TotalAssetTurnover":dic1["TOTALASSETTURNOVER"]!,
                             "OperRevenueYOY":dic1["OPERREVENUEYOY"]!,
                             "OperProfitYOY":dic1["OPERPROFITYOY"]!,
+                            
+                        ]
+                        let update2: JSON = [
                             "NETPROFITPARENTCOMYOY_":dic1["NETPROFITPARENTCOMYOY"]!,
                             "NetCashFlowOperYOY":dic1["NETCASHFLOWOPERYOY"]!,
                             "ROEYOY":dic1["ROEYOY"]!,
                             "NetAssetYOY":dic1["NETASSETYOY"]!,
-                            "TotalAssetYOY":dic1["TOTALASSETYOY"]!
+                            "TotalAssetYOY":dic1["TOTALASSETYOY"]!,
+                            "GROSSPROFITMARGIN_":dic1["GROSSPROFITMARGIN"]!,
+                            "PROFITMARGIN_":dic1["PROFITMARGIN"]!,
+                            "TLToTA_":dic1["TLTOTA"]!,
+                            "ROA_EBIT_":dic1["ROA_EBIT"]!,
                         ]
                         do {
                             try itemJSON.merge(with: update1)
+                            try itemJSON.merge(with: update2)
                         } catch {
                             // ignore
                         }

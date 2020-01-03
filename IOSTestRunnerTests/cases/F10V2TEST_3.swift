@@ -54,14 +54,21 @@ class F10V2TEST_3: BaseTestCase {
                             "TOTALSHARE":dic1["TOTALSHARE"]!,
                             "CIRCSKAMT":dic1["CIRCSKAMT"]!,
                             "BIZINCO":dic1["BIZINCO"]!,
+                            
+                            ]
+                        let update1: JSON = [
                             "OPERINYOYB":dic1["OPERINYOYB"]!,
                             "NETPROFITYOYB":dic1["NETPROFITYOYB"]!,
                             "DISTRIBUTION":dic1["DISTRIBUTION"]!,
                             "EXRIGHT":dic1["EXRIGHT"]!,
                             "MOM": dic1["MOM"]!,
                             "ENDDATE":dic1["ENDDATE"]!
-                            ]
-                        
+                        ]
+                        do {
+                            try resultJSON.merge(with: update1)
+                        } catch {
+                            // ignore
+                        }
                         }
                       }
                    }
@@ -497,6 +504,9 @@ class F10V2TEST_3: BaseTestCase {
                                         "CRPS":dic2["CRPS"]!,
                                         "SGPMARGIN":dic2["SGPMARGIN"]!,
                                         "OPPRORT":dic2["OPPRORT"]!,
+                                        
+                                    ]
+                                    let update2: JSON = [
                                         "SNPMARGIN":dic2["SNPMARGIN"]!,
                                         "ROEWEIGHTED":dic2["ROEWEIGHTED"]!,
                                         "ROEDILUTED":dic2["ROEDILUTED"]!,
@@ -506,6 +516,11 @@ class F10V2TEST_3: BaseTestCase {
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update2)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                                 }
                             }
@@ -538,6 +553,9 @@ class F10V2TEST_3: BaseTestCase {
                                         "SALESEXPE":dic2["SALESEXPE"]!,
                                         "FINEXPE":dic2["FINEXPE"]!,
                                         "PERPROFIT":dic2["PERPROFIT"]!,
+                                        
+                                    ]
+                                    let update3: JSON = [
                                         "INVEINCO":dic2["INVEINCO"]!,
                                         "NONOPERINCOMEN":dic2["NONOPERINCOMEN"]!,
                                         "TOTPROFIT":dic2["TOTPROFIT"]!,
@@ -545,6 +563,11 @@ class F10V2TEST_3: BaseTestCase {
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update3)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                                 }
                             }
@@ -582,6 +605,9 @@ class F10V2TEST_3: BaseTestCase {
                                         "AVAISELLASSE":dic2["AVAISELLASSE"]!,
                                         "INTAASSET":dic2["INTAASSET"]!,
                                         "SHORTTERMBORR":dic2["SHORTTERMBORR"]!,
+                                        
+                                    ]
+                                    let update4: JSON = [
                                         "ADVAPAYM":dic2["ADVAPAYM"]!,
                                         "ACCOPAYA":dic2["ACCOPAYA"]!,
                                         "TOTALCURRLIAB":dic2["TOTALCURRLIAB"]!,
@@ -593,6 +619,11 @@ class F10V2TEST_3: BaseTestCase {
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update4)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                                 }
                             }
@@ -625,6 +656,9 @@ class F10V2TEST_3: BaseTestCase {
                                         "INVCASHINFL":dic2["INVCASHINFL"]!,
                                         "INVCASHOUTF":dic2["INVCASHOUTF"]!,
                                         "INVNETCASHFLOW":dic2["INVNETCASHFLOW"]!,
+                                        
+                                    ]
+                                    let update5: JSON = [
                                         "FINCASHINFL":dic2["OTHERRECE"]!,
                                         "FINCASHOUTF":dic2["FINCASHOUTF"]!,
                                         "FINNETCFLOW":dic2["FINNETCFLOW"]!,
@@ -632,6 +666,11 @@ class F10V2TEST_3: BaseTestCase {
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update5)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                                 }
                             }

@@ -46,31 +46,6 @@ class AFTERHOURSCHART_2: BaseTestCase {
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
         
-        //            var resultJSON: JSON = [
-        //                "lastPrice": item.lastPrice,
-        //                "highPrice": item.highPrice
-        //            ]
-        //            if let anyItems = item.tickItems{
-        //                var jsonarray2 = [JSON]()
-        //                for anyItem in anyItems{
-        //                    if !(anyItem is MTickItem){
-        //                        continue
-        //                    }
-        //
-        //                    let tickitem:MTickItem = anyItem as! MTickItem
-        //                    let jsonarray1: JSON = [
-        //                        "amsflag": tickitem.tradeVolume,
-        //                        "aaa": tickitem.amsFlag.rawValue
-        //                    ]
-        //                    jsonarray2.append(jsonarray1)
-        //                }
-        //                resultJSON["tickitem"].arrayObject = jsonarray2
-        //            }
-        //            print(resultJSON)
-        //            onTestResult(param: param, result: resultJSON)
-        //        }
-        //    }
-        //
     }
 }
 

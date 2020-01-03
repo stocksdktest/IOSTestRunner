@@ -32,19 +32,19 @@ class F10_BNDBUYBACKS_1: BaseTestCase {
         XCTAssertNotNil(bondBuyBacksResponse.record)
         if let item = bondBuyBacksResponse.record{
         var resultJSON: JSON = [
-        "BONDNAME":item["BONDNAME"]!,
-        "BONDSNAME":item["BONDSNAME"]!,
-        "SYMBOL":item["SYMBOL"]!,
-        "EXERENDDATE":item["EXERENDDATE"]!,
-        "PARVALUE":item["PARVALUE"]!,
-        "CONVERTRATE":item["CONVERTRATE"]!,
-        "CONVERTPRC":item["CONVERTPRC"]!,
-        "REPAYDATE":item["REPAYDATE"]!,
-             ]
-print(resultJSON)
-onTestResult(param: param, result: resultJSON)
+            "BONDNAME":item["BONDNAME"]!,
+            "BONDSNAME":item["BONDSNAME"]!,
+            "SYMBOL":item["SYMBOL"]!,
+            "EXERENDDATE":item["EXERENDDATE"]!,
+            "PARVALUE":item["PARVALUE"]!,
+            "CONVERTRATE":item["CONVERTRATE"]!,
+            "CONVERTPRC":item["CONVERTPRC"]!,
+            "REPAYDATE":item["REPAYDATE"]!,
+        ]
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
             
-}
-}
+        }
+    }
 }
 

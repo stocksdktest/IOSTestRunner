@@ -38,23 +38,109 @@ class QUOTE_1: BaseTestCase {
                     "market": item.market,
                     "subtype": item.subtype,
                     "lastPrice": item.lastPrice,
-                    "highPrice": item.highPrice,
-                    "lowPrice": item.lowPrice,
-                    "openPrice": item.openPrice,
-                    "preClosePrice": item.preClosePrice,
-                    "volume": item.volume,
-                    "nowVolume": item.nowVolume,
-                    "turnoverRate": item.turnoverRate,
-                    "optionType":item.optionType.rawValue,
-                    "limitUP": item.limitUp,
-                    "limitDown": item.limitDown,
-                    "averageValue": item.averagePrice,
-                    "change": item.change,
-                    "amount": item.amount,
-                    "volumeRatio": item.volumeRatio,
-                    "buyPrice": item.buyPrice,
-                    "sellPrice": item.sellPrice,
-                    "buyVolume": item.buyVolume,
+                    ]
+                let update1: JSON = [
+                    "theoreticalPrice": item.theoreticalPrice,
+                    "buyPrices": item.buyPrices,
+                    "buyVolumes":item.buyVolumes,
+                    "sellPrices":item.sellPrices,
+                    "sellVolumes":item.sellVolumes,
+                    "blockChg":item.weightedChange,
+                    "averageChg":item.averageChange,
+                    "indexChg5":item.changeRate5,
+                    "indexChg10":item.changeRate10
+                ]
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                let update2: JSON = [
+                    "remainDate": item.remainDate,
+                    "leverageRatio": item.leverageRatio,
+                    "premiumRate": item.premiumRate,
+                    "impliedVolatility": item.impliedVolatility,
+                    "delta": item.delta,
+                    "gramma": item.gamma,
+                    "theta": item.theta,
+                    "rho": item.rho,
+                    "vega": item.vega,
+                    "realLeverage": item.leverage,
+                ]
+                do {
+                    try itemJSON.merge(with: update2)
+                } catch {
+                    // ignore
+                }
+                let update3: JSON = [
+                    "delDate": item.deliDate,
+                    "expDate": item.expDate,
+                    "version": item.version,
+                    "presetPrice": item.presetPrice,
+                    "stockClose": item.stockClose,
+                    "stockLast": item.stockLast,
+                    "isLimit": item.isLimit,
+                    "inValue": item.inValue,
+                    "timeValue": item.timeValue,
+                    "openInterest": item.openInterest,
+                ]
+                do {
+                    try itemJSON.merge(with: update3)
+                } catch {
+                    // ignore
+                }
+                let update4: JSON = [
+                    "upf": item.unprofitableFlag.rawValue,
+                    "contractID": item.contractID,
+                    "objectID": item.stockID,
+                    "stockSymble": item.stockSymble,
+                    "stockType": item.stockType,
+                    "stockUnit": item.unit,
+                    "exePrice": item.exePrice,
+                    "startDate": item.startDate,
+                    "endDate": item.endDate,
+                    "exeDate": item.exeDate,
+                ]
+                do {
+                    try itemJSON.merge(with: update4)
+                } catch {
+                    // ignore
+                }
+                let update5: JSON = [
+                    "vote":item.voteFlag.rawValue,
+                    "change2": item.change2,
+                    "earningsPerShare" :item.eps,
+                    "earningsPerShareReportingPeriod": item.epsType,
+                    "limitPriceUpperLimit": item.plSubscribeLimit,
+                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
+                    "bidpx1": item.buyPrice,
+                    "askpx1": item.sellPrice,
+                    "bidvol1": item.buyVolume,
+                    "askvol1": item.sellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update5)
+                } catch {
+                    // ignore
+                }
+                let update6: JSON = [
+                    "sumSell": item.totalSellVolume,
+                    "averageBuy": item.averageBuyPrice,
+                    "averageSell": item.averageSellPrice,
+                    
+                    "buy_cancel_count": item.withdrawBuyCount,
+                    "buy_cancel_num": item.withdrawBuyVolume,
+                    "buy_cancel_amount": item.withdrawBuyAmount,
+                    "sell_cancel_count": item.withdrawSellCount,
+                    "sell_cancel_num": item.withdrawSellVolume,
+                    "sell_cancel_amount": item.withdrawSellAmount,
+                ]
+                do {
+                    try itemJSON.merge(with: update6)
+                } catch {
+                    // ignore
+                }
+                let update7: JSON = [
                     "sellVolume": item.sellVolume,
                     "totalValue": item.totalValue,
                     
@@ -68,66 +154,43 @@ class QUOTE_1: BaseTestCase {
                     "hk_paramStatus": item.hkInfoStatus.rawValue,
                     
                     "sumBuy": item.totalBuyVolume,
-                    "sumSell": item.totalSellVolume,
-                    "averageBuy": item.averageBuyPrice,
-                    "averageSell": item.averageSellPrice,
-                    
-                    "buy_cancel_count": item.withdrawBuyCount,
-                    "buy_cancel_num": item.withdrawBuyVolume,
-                    "buy_cancel_amount": item.withdrawBuyAmount,
-                    "sell_cancel_count": item.withdrawSellCount,
-                    "sell_cancel_num": item.withdrawSellVolume,
-                    "sell_cancel_amount": item.withdrawSellAmount,
-                    "vote":item.voteFlag.rawValue,
-                    "change2": item.change2,
-                    "earningsPerShare" :item.eps,
-                    "earningsPerShareReportingPeriod": item.epsType,
-                    "limitPriceUpperLimit": item.plSubscribeLimit,
-                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
-                    "bidpx1": item.buyPrice,
-                    "askpx1": item.sellPrice,
-                    "bidvol1": item.buyVolume,
-                    "askvol1": item.sellVolume,
-                    "upf": item.unprofitableFlag.rawValue,
-                    "contractID": item.contractID,
-                    "objectID": item.stockID,
-                    "stockSymble": item.stockSymble,
-                    "stockType": item.stockType,
-                    "stockUnit": item.unit,
-                    "exePrice": item.exePrice,
-                    "startDate": item.startDate,
-                    "endDate": item.endDate,
-                    "exeDate": item.exeDate,
-                    "delDate": item.deliDate,
-                    "expDate": item.expDate,
-                    "version": item.version,
-                    "presetPrice": item.presetPrice,
-                    "stockClose": item.stockClose,
-                    "stockLast": item.stockLast,
-                    "isLimit": item.isLimit,
-                    "inValue": item.inValue,
-                    "timeValue": item.timeValue,
-                    "openInterest": item.openInterest,
-                    "remainDate": item.remainDate,
-                    "leverageRatio": item.leverageRatio,
-                    "premiumRate": item.premiumRate,
-                    "impliedVolatility": item.impliedVolatility,
-                    "delta": item.delta,
-                    "gramma": item.gamma,
-                    "theta": item.theta,
-                    "rho": item.rho,
-                    "vega": item.vega,
-                    "realLeverage": item.leverage,
-                    "theoreticalPrice": item.theoreticalPrice,
-                    "buyPrices": item.buyPrices,
-                    "buyVolumes":item.buyVolumes,
-                    "sellPrices":item.sellPrices,
-                    "sellVolumes":item.sellVolumes,
-                    "blockChg":item.weightedChange,
-                    "averageChg":item.averageChange,
-                    "indexChg5":item.changeRate5,
-                    "indexChg10":item.changeRate10
-                    ]
+                ]
+                do {
+                    try itemJSON.merge(with: update7)
+                } catch {
+                    // ignore
+                }
+                let update8: JSON = [
+                    "limitUP": item.limitUp,
+                    "limitDown": item.limitDown,
+                    "averageValue": item.averagePrice,
+                    "change": item.change,
+                    "amount": item.amount,
+                    "volumeRatio": item.volumeRatio,
+                    "buyPrice": item.buyPrice,
+                    "sellPrice": item.sellPrice,
+                    "buyVolume": item.buyVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update8)
+                } catch {
+                    // ignore
+                }
+                let update9: JSON = [
+                    "highPrice": item.highPrice,
+                    "lowPrice": item.lowPrice,
+                    "openPrice": item.openPrice,
+                    "preClosePrice": item.preClosePrice,
+                    "volume": item.volume,
+                    "nowVolume": item.nowVolume,
+                    "turnoverRate": item.turnoverRate,
+                    "optionType":item.optionType.rawValue,
+                ]
+                do {
+                    try itemJSON.merge(with: update9)
+                } catch {
+                    // ignore
+                }
                 
                 
                 switch item.changeState{
@@ -204,53 +267,8 @@ class QUOTE_1: BaseTestCase {
                         "ultraLargeSellVolume" : addValueitem.ultraLargeSellVolume,
                         "ultraLargeBuyAmount" : addValueitem.ultraLargeBuyAmount,
                         "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
-                        "largeBuyVolume" : addValueitem.largeBuyVolume,
-                        "largeSellVolume" : addValueitem.largeSellVolume,
-                        "largeBuyAmount" : addValueitem.largeBuyAmount,
-                        "largeSellAmount" : addValueitem.largeSellAmount,
-                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
-                        "mediumSellVolume" : addValueitem.mediumSellVolume,
-                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
-                        "mediumSellAmount" : addValueitem.mediumSellAmount,
-                        "smallBuyVolume" : addValueitem.smallBuyVolume,
-                        "smallSellVolume" : addValueitem.smallSellVolume,
-                        "smallBuyAmount" : addValueitem.smallBuyAmount,
-                        "smallSellAmount" : addValueitem.smallSellAmount,
-                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
-                        "largeNetInflow" : addValueitem.largeNetInflow,
-                        "netCapitalInflow" : addValueitem.netCapitalInflow,
-                        "mediumNetInflow" : addValueitem.mediumNetInflow,
-                        "smallNetInflow" : addValueitem.smallNetInflow,
-                        "fundsInflows" : addValueitem.fundsInflows,
-                        "fundsOutflows" : addValueitem.fundsOutflows,
-                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
-                        "largeDiffer" : addValueitem.largeDiffer,
-                        "mediumDiffer" : addValueitem.mediumDiffer,
-                        "smallDiffer" : addValueitem.smallDiffer,
-                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
-                        "largeSellDealCount" : addValueitem.largeSellDealCount,
-                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
-                        "buyCount" : addValueitem.buyCount,
-                        "sellCount" : addValueitem.sellCount,
-                        "BBD" : addValueitem.bbd,
-                        "BBD5" : addValueitem.bbd5,
-                        "BBD10" : addValueitem.bbd10,
-                        "DDX" : addValueitem.ddx,
-                        "DDX5" : addValueitem.ddx5,
-                        "DDX10" : addValueitem.ddx10,
-                        "DDY" : addValueitem.ddy,
-                        "DDY5" : addValueitem.ddy5,
-                        "DDY10" : addValueitem.ddy10,
-                        "DDZ" : addValueitem.ddz,
-                        "RatioBS" : addValueitem.ratioBS,
-                        "othersFundsInflows" : addValueitem.othersFundsInflows,
-                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
-                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
-                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
-                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
-                        "bigOrderNumB" : addValueitem.largeBuyCount,
-                        "bigOrderNumS" : addValueitem.largeSellCount,
-                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    let update1: JSON = [
                         "midOrderNumS" : addValueitem.mediumSellCount,
                         "smallOrderNumB" : addValueitem.smallBuyCount,
                         "smallOrderNumS" : addValueitem.smallSellCount,
@@ -261,6 +279,94 @@ class QUOTE_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
+                    do {
+                        try itemJSON.merge(with: update1)
+                    } catch {
+                        // ignore
+                    }
+                    let update2: JSON = [
+                        "RatioBS" : addValueitem.ratioBS,
+                        "othersFundsInflows" : addValueitem.othersFundsInflows,
+                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                        "bigOrderNumB" : addValueitem.largeBuyCount,
+                        "bigOrderNumS" : addValueitem.largeSellCount,
+                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update2)
+                    } catch {
+                        // ignore
+                    }
+                    let update3: JSON = [
+                        "BBD" : addValueitem.bbd,
+                        "BBD5" : addValueitem.bbd5,
+                        "BBD10" : addValueitem.bbd10,
+                        "DDX" : addValueitem.ddx,
+                        "DDX5" : addValueitem.ddx5,
+                        "DDX10" : addValueitem.ddx10,
+                        "DDY" : addValueitem.ddy,
+                        "DDY5" : addValueitem.ddy5,
+                        "DDY10" : addValueitem.ddy10,
+                        "DDZ" : addValueitem.ddz,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update3)
+                    } catch {
+                        // ignore
+                    }
+                    let update4: JSON = [
+                        "fundsOutflows" : addValueitem.fundsOutflows,
+                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                        "largeDiffer" : addValueitem.largeDiffer,
+                        "mediumDiffer" : addValueitem.mediumDiffer,
+                        "smallDiffer" : addValueitem.smallDiffer,
+                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                        "largeSellDealCount" : addValueitem.largeSellDealCount,
+                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                        "buyCount" : addValueitem.buyCount,
+                        "sellCount" : addValueitem.sellCount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update4)
+                    } catch {
+                        // ignore
+                    }
+                    let update5: JSON = [
+                        "smallSellVolume" : addValueitem.smallSellVolume,
+                        "smallBuyAmount" : addValueitem.smallBuyAmount,
+                        "smallSellAmount" : addValueitem.smallSellAmount,
+                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                        "largeNetInflow" : addValueitem.largeNetInflow,
+                        "netCapitalInflow" : addValueitem.netCapitalInflow,
+                        "mediumNetInflow" : addValueitem.mediumNetInflow,
+                        "smallNetInflow" : addValueitem.smallNetInflow,
+                        "fundsInflows" : addValueitem.fundsInflows,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update5)
+                    } catch {
+                        // ignore
+                    }
+                    let update6: JSON = [
+                        "largeBuyVolume" : addValueitem.largeBuyVolume,
+                        "largeSellVolume" : addValueitem.largeSellVolume,
+                        "largeBuyAmount" : addValueitem.largeBuyAmount,
+                        "largeSellAmount" : addValueitem.largeSellAmount,
+                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                        "mediumSellVolume" : addValueitem.mediumSellVolume,
+                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                        "mediumSellAmount" : addValueitem.mediumSellAmount,
+                        "smallBuyVolume" : addValueitem.smallBuyVolume,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update6)
+                    } catch {
+                        // ignore
+                    }
+                    
                     resultJSON["addValue"] = itemJSON
                 }
             }else if items is MFuturesItem{
@@ -273,159 +379,8 @@ class QUOTE_1: BaseTestCase {
                     "datetime": item.datetime,
                     "market": item.market,
                     "subtype": item.subtype,
-                    "lastPrice": item.lastPrice,
-                    "highPrice": item.highPrice,
-                    "lowPrice": item.lowPrice,
-                    "openPrice": item.openPrice,
-                    "preClosePrice": item.preClosePrice,
-                    "volume": item.volume,
-                    "nowVolume": item.nowVolume,
-                    "turnoverRate": item.turnoverRate,
-                    "upDownLimitType": item.udFlag,
-                    "limitUP": item.limitUp,
-                    "limitDown": item.limitDown,
-                    "averageValue": item.averagePrice,
-                    "change": item.change,
-                    "amount": item.amount,
-                    "volumeRatio": item.volumeRatio,
-                    "buyPrice": item.buyPrice,
-                    "sellPrice": item.sellPrice,
-                    "buyVolume": item.buyVolume,
-                    "sellVolume": item.sellVolume,
-                    "totalValue": item.totalValue,
-                    "HKTotalValue": item.hkValue,
-                    "flowValue": item.flowValue,
-                    "netAsset": item.netAsset,
-                    "pe": item.pe,
-                    "pe2": item.spe,
-                    "pb": item.roe,
-                    "capitalization": item.capitalization,
-                    "circulatingShares": item.circulatingShare,
-                    "optionType":item.optionType.rawValue,
-                    "earningsPerShare" :item.eps,
-                    "earningsPerShareReportingPeriod": item.epsType,
-                    
-                    //
-                    //                "buyPrices": item.buyPrices,
-                    //                "buySingleVolumes": item.buyCount,
-                    //                "buyVolumes": item.buyVolumes,
-                    //                "sellPrices": item.sellPrices,
-                    //                "sellSingleVolumes": item.sellCount,
-                    //                "sellVolumes": item.sellVolumes,
-                    //
-                    "amplitudeRate": item.amplitudeRate,
-                    "receipts": item.receipts,
-
-
-
-                    "exerciseWay": item.exeType,
-                    "orderRatio": item.orderRatio,
-                    "hk_paramStatus": item.hkInfoStatus.rawValue,
-                    "sumBuy": item.totalBuyVolume,
-                    "sumSell": item.totalSellVolume,
-                    "averageBuy": item.averageBuyPrice,
-                    "averageSell": item.averageSellPrice,
-                    "zh": item.sFlag.rawValue,
-                    "hh": item.hFlag.rawValue,
-                    
-                    "st": item.subtypes,
-                    
-                    "bu": item.financeFlag.rawValue,
-                    "su": item.securityFlag.rawValue,
-                    "hs": item.hkCapital,
-                    "ac": item.authorisedCapital,
-                    "qf": item.investorRequirementsFlag.rawValue,
-                    "qc": item.investorRequirementsType.rawValue,
-                    "ah": item.ahFlag.rawValue,
-                    "VCMFlag": item.vcmFlag.rawValue,
-                    "CASFlag": item.casFlag.rawValue,
-                    "rp": item.termRepo,
-                    "cd": item.takeUpDays,
-                    "hg": item.hgFlag.rawValue,
-                    "sg": item.sgFlag.rawValue,
-                    "fx": item.fxFlag.rawValue,
-                    "ts": item.tsFlag.rawValue,
-                    "add_option_avg_price": item.weightedAveragePrice,
-                    "add_option_avg_pb": item.bp,
-                    "add_option_avg_close": item.weightedAveragePreClosePrice,
-                    "hk_volum_for_every_hand": item.hkMinTradeUnit,
-                    "buy_cancel_count": item.withdrawBuyCount,
-                    "buy_cancel_num": item.withdrawBuyVolume,
-                    "buy_cancel_amount": item.withdrawBuyAmount,
-                    "sell_cancel_count": item.withdrawSellCount,
-                    "sell_cancel_num": item.withdrawSellVolume,
-                    "sell_cancel_amount": item.withdrawSellAmount,
-                    "IOPV": item.iopv,
-                    "preIOPV": item.preIOPV,
-                    "stateOfTransfer": item.zrzt,
-                    "typeOfTransfer": item.zrlx,
-                    "exRighitDividend": item.cqcx,
-                    "securityLevel": item.zqjb,
-                    "rpd": item.fundAvailableDate,
-                    "cdd": item.fundReceiptedDate,
-                    "change2": item.change2,
-                    "hkTExchangeFlag": item.tradeType.rawValue,
-                    "vote": item.voteFlag.rawValue,
-                    "upf": item.unprofitableFlag.rawValue,
-                    "DRCurrentShare": item.drCurrentShare,
-                    "DRPreviousClosingShare": item.drPreviousClosingShare,
-                    "DRConversionBase": item.drConversionBase,
-                    "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
-                    "DRDepositoryInstitutionName": item.drDepositoryInstitutionName,
-                    "DRSubjectClosingReferencePrice": item.drSubjectClosingReferencePrice,
-                    "DR": item.dr,
-                    "GDR": item.gdr,
-                    "DRStockCode": item.drStockCode,
-                    "DRStockName": item.drStockName,
-                    "DRSecuritiesConversionBase": item.drSecuritiesConversionBase,
-                    "DRListingDate": item.drListingDate,
-                    "DRFlowStartDate": item.drFlowStartDate,
-                    "DRFlowEndDate": item.drFlowEndDate,
-                    "changeBP": item.changeBP,
-                    "subscribeUpperLimit": item.subscribeLimit,
-                    "subscribeLowerLimit": item.subscribeLowerLimit,
-                    "afterHoursVolume": item.afterHoursVolume,
-                    "afterHoursAmount": item.afterHoursAmount,
-                    "afterHoursTransactionNumber": item.afterHoursTransactionNumber,
-                    "afterHoursWithdrawBuyCount": item.afterHoursWithdrawBuyCount,
-                    "afterHoursWithdrawBuyVolume": item.afterHoursWithdrawBuyVolume,
-                    "afterHoursWithdrawSellCount": item.afterHoursWithdrawSellCount,
-                    "afterHoursWithdrawSellVolume": item.afterHoursWithdrawSellVolume,
-                    "afterHoursBuyVolume": item.afterHoursBuyVolume,
-                    "afterHoursSellVolume": item.afterHoursSellVolume,
-                    "issuedCapital": item.regCapital,
-                    "limitPriceUpperLimit": item.plSubscribeLimit,
-                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
-                    "longName": item.longName,
-                    "bidpx1": item.buyPrice,
-                    "askpx1": item.sellPrice,
-                    "bidvol1": item.buyVolume,
-                    "askvol1": item.sellVolume,
-                    //
-                    "tradingDay": item.tradingDay,
-                    "settlementID": item.settlementID,
-                    "settlementGroupID": item.settlementGroupID,
-                    "preSettlement": item.preSettlement,
-                    "position_chg": item.positionChg,
-                    "close": item.close,
-                    "settlement": item.settlement,
-                    "preDelta": item.preDelta,
-                    "currDelta": item.currDelta,
-                    "updateMillisec": item.updateMillisec,
-                    "entrustDiff": item.entrustDiff,
-                    "posDiff": item.posDiff,
-                    "currDiff": item.currDiff,
-                    "underlyingType": item.underlyingType,
-                    "underlyingLastPx": item.underlyingLastPx,
-                    "underlyingPreClose": item.underlyingPreClose,
-                    "underlyingchg": item.underlyingChange,
-                    "underlyingSymbol": item.underlyingSymbol,
-                    "deliveryDay": item.deliveryDay,
-                    "riskFreeInterestRate": item.riskFreeInterestRate,
-                    "intersectionNum": item.intersectionNum,
-                    "change1": item.change1,
-                    "totalBid": item.entrustBuyVolume,
-                    "totalAsk": item.entrustSellVolume,
+                ]
+                let update1: JSON = [
                     "buyPrices": item.buyPrices,
                     "buyVolumes":item.buyVolumes,
                     "sellPrices":item.sellPrices,
@@ -437,15 +392,248 @@ class QUOTE_1: BaseTestCase {
                     "indexChg5":item.changeRate5,
                     "indexChg10":item.changeRate10
                 ]
-                //            var jsonSubtypes = [JSON]()
-                //            for i in 0 ..< item.subtypes.count{
-                //                let jsonSubtype : JSON = [
-                //                    "st\(i+1)": item.subtypes[i]
-                //                ]
-                //                jsonSubtypes.append(jsonSubtype)
-                //            }
-                //            resultJSON["st"].arrayObject = jsonSubtypes
-                
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                let update2: JSON = [
+                    "underlyingLastPx": item.underlyingLastPx,
+                    "underlyingPreClose": item.underlyingPreClose,
+                    "underlyingchg": item.underlyingChange,
+                    "underlyingSymbol": item.underlyingSymbol,
+                    "deliveryDay": item.deliveryDay,
+                    "riskFreeInterestRate": item.riskFreeInterestRate,
+                    "intersectionNum": item.intersectionNum,
+                    "change1": item.change1,
+                    "totalBid": item.entrustBuyVolume,
+                    "totalAsk": item.entrustSellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update2)
+                } catch {
+                    // ignore
+                }
+                let update3: JSON = [
+                    "position_chg": item.positionChg,
+                    "close": item.close,
+                    "settlement": item.settlement,
+                    "preDelta": item.preDelta,
+                    "currDelta": item.currDelta,
+                    "updateMillisec": item.updateMillisec,
+                    "entrustDiff": item.entrustDiff,
+                    "posDiff": item.posDiff,
+                    "currDiff": item.currDiff,
+                    "underlyingType": item.underlyingType,
+                ]
+                do {
+                    try itemJSON.merge(with: update3)
+                } catch {
+                    // ignore
+                }
+                let update4: JSON = [
+                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
+                    "longName": item.longName,
+                    "bidpx1": item.buyPrice,
+                    "askpx1": item.sellPrice,
+                    "bidvol1": item.buyVolume,
+                    "askvol1": item.sellVolume,
+                    //
+                    "tradingDay": item.tradingDay,
+                    "settlementID": item.settlementID,
+                    "settlementGroupID": item.settlementGroupID,
+                    "preSettlement": item.preSettlement,
+                ]
+                do {
+                    try itemJSON.merge(with: update4)
+                } catch {
+                    // ignore
+                }
+                let update5: JSON = [
+                    "afterHoursTransactionNumber": item.afterHoursTransactionNumber,
+                    "afterHoursWithdrawBuyCount": item.afterHoursWithdrawBuyCount,
+                    "afterHoursWithdrawBuyVolume": item.afterHoursWithdrawBuyVolume,
+                    "afterHoursWithdrawSellCount": item.afterHoursWithdrawSellCount,
+                    "afterHoursWithdrawSellVolume": item.afterHoursWithdrawSellVolume,
+                    "afterHoursBuyVolume": item.afterHoursBuyVolume,
+                    "afterHoursSellVolume": item.afterHoursSellVolume,
+                    "issuedCapital": item.regCapital,
+                    "limitPriceUpperLimit": item.plSubscribeLimit,
+                ]
+                do {
+                    try itemJSON.merge(with: update5)
+                } catch {
+                    // ignore
+                }
+                let update6: JSON = [
+                    "DRStockName": item.drStockName,
+                    "DRSecuritiesConversionBase": item.drSecuritiesConversionBase,
+                    "DRListingDate": item.drListingDate,
+                    "DRFlowStartDate": item.drFlowStartDate,
+                    "DRFlowEndDate": item.drFlowEndDate,
+                    "changeBP": item.changeBP,
+                    "subscribeUpperLimit": item.subscribeLimit,
+                    "subscribeLowerLimit": item.subscribeLowerLimit,
+                    "afterHoursVolume": item.afterHoursVolume,
+                    "afterHoursAmount": item.afterHoursAmount,
+                ]
+                do {
+                    try itemJSON.merge(with: update6)
+                } catch {
+                    // ignore
+                }
+                let update7: JSON = [
+                    "upf": item.unprofitableFlag.rawValue,
+                    "DRCurrentShare": item.drCurrentShare,
+                    "DRPreviousClosingShare": item.drPreviousClosingShare,
+                    "DRConversionBase": item.drConversionBase,
+                    "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
+                    "DRDepositoryInstitutionName": item.drDepositoryInstitutionName,
+                    "DRSubjectClosingReferencePrice": item.drSubjectClosingReferencePrice,
+                    "DR": item.dr,
+                    "GDR": item.gdr,
+                    "DRStockCode": item.drStockCode,
+                ]
+                do {
+                    try itemJSON.merge(with: update7)
+                } catch {
+                    // ignore
+                }
+                let update8: JSON = [
+                    "preIOPV": item.preIOPV,
+                    "stateOfTransfer": item.zrzt,
+                    "typeOfTransfer": item.zrlx,
+                    "exRighitDividend": item.cqcx,
+                    "securityLevel": item.zqjb,
+                    "rpd": item.fundAvailableDate,
+                    "cdd": item.fundReceiptedDate,
+                    "change2": item.change2,
+                    "hkTExchangeFlag": item.tradeType.rawValue,
+                    "vote": item.voteFlag.rawValue,
+                ]
+                do {
+                    try itemJSON.merge(with: update8)
+                } catch {
+                    // ignore
+                }
+                let update9: JSON = [
+                    "add_option_avg_pb": item.bp,
+                    "add_option_avg_close": item.weightedAveragePreClosePrice,
+                    "hk_volum_for_every_hand": item.hkMinTradeUnit,
+                    "buy_cancel_count": item.withdrawBuyCount,
+                    "buy_cancel_num": item.withdrawBuyVolume,
+                    "buy_cancel_amount": item.withdrawBuyAmount,
+                    "sell_cancel_count": item.withdrawSellCount,
+                    "sell_cancel_num": item.withdrawSellVolume,
+                    "sell_cancel_amount": item.withdrawSellAmount,
+                    "IOPV": item.iopv,
+                ]
+                do {
+                    try itemJSON.merge(with: update9)
+                } catch {
+                    // ignore
+                }
+                let update10: JSON = [
+                    "ah": item.ahFlag.rawValue,
+                    "VCMFlag": item.vcmFlag.rawValue,
+                    "CASFlag": item.casFlag.rawValue,
+                    "rp": item.termRepo,
+                    "cd": item.takeUpDays,
+                    "hg": item.hgFlag.rawValue,
+                    "sg": item.sgFlag.rawValue,
+                    "fx": item.fxFlag.rawValue,
+                    "ts": item.tsFlag.rawValue,
+                    "add_option_avg_price": item.weightedAveragePrice,
+                ]
+                do {
+                    try itemJSON.merge(with: update10)
+                } catch {
+                    // ignore
+                }
+                let update11: JSON = [
+                    "averageSell": item.averageSellPrice,
+                    "zh": item.sFlag.rawValue,
+                    "hh": item.hFlag.rawValue,
+                    "st": item.subtypes,
+                    "bu": item.financeFlag.rawValue,
+                    "su": item.securityFlag.rawValue,
+                    "hs": item.hkCapital,
+                    "ac": item.authorisedCapital,
+                    "qf": item.investorRequirementsFlag.rawValue,
+                    "qc": item.investorRequirementsType.rawValue,
+                ]
+                do {
+                    try itemJSON.merge(with: update11)
+                } catch {
+                    // ignore
+                }
+                let update12: JSON = [
+                    "earningsPerShare" :item.eps,
+                    "earningsPerShareReportingPeriod": item.epsType,
+                    "amplitudeRate": item.amplitudeRate,
+                    "receipts": item.receipts,
+                    "exerciseWay": item.exeType,
+                    "orderRatio": item.orderRatio,
+                    "hk_paramStatus": item.hkInfoStatus.rawValue,
+                    "sumBuy": item.totalBuyVolume,
+                    "sumSell": item.totalSellVolume,
+                    "averageBuy": item.averageBuyPrice,
+                ]
+                do {
+                    try itemJSON.merge(with: update12)
+                } catch {
+                    // ignore
+                }
+                let update13: JSON = [
+                    "totalValue": item.totalValue,
+                    "HKTotalValue": item.hkValue,
+                    "flowValue": item.flowValue,
+                    "netAsset": item.netAsset,
+                    "pe": item.pe,
+                    "pe2": item.spe,
+                    "pb": item.roe,
+                    "capitalization": item.capitalization,
+                    "circulatingShares": item.circulatingShare,
+                    "optionType":item.optionType.rawValue,
+                ]
+                do {
+                    try itemJSON.merge(with: update13)
+                } catch {
+                    // ignore
+                }
+                let update14: JSON = [
+                    "limitUP": item.limitUp,
+                    "limitDown": item.limitDown,
+                    "averageValue": item.averagePrice,
+                    "change": item.change,
+                    "amount": item.amount,
+                    "volumeRatio": item.volumeRatio,
+                    "buyPrice": item.buyPrice,
+                    "sellPrice": item.sellPrice,
+                    "buyVolume": item.buyVolume,
+                    "sellVolume": item.sellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update14)
+                } catch {
+                    // ignore
+                }
+                let update15: JSON = [
+                    "lastPrice": item.lastPrice,
+                    "highPrice": item.highPrice,
+                    "lowPrice": item.lowPrice,
+                    "openPrice": item.openPrice,
+                    "preClosePrice": item.preClosePrice,
+                    "volume": item.volume,
+                    "nowVolume": item.nowVolume,
+                    "turnoverRate": item.turnoverRate,
+                    "upDownLimitType": item.udFlag,
+                ]
+                do {
+                    try itemJSON.merge(with: update15)
+                } catch {
+                    // ignore
+                }
                 switch item.changeState{
                     
                 case .flat:
@@ -522,51 +710,8 @@ class QUOTE_1: BaseTestCase {
                         "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
                         "largeBuyVolume" : addValueitem.largeBuyVolume,
                         "largeSellVolume" : addValueitem.largeSellVolume,
-                        "largeBuyAmount" : addValueitem.largeBuyAmount,
-                        "largeSellAmount" : addValueitem.largeSellAmount,
-                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
-                        "mediumSellVolume" : addValueitem.mediumSellVolume,
-                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
-                        "mediumSellAmount" : addValueitem.mediumSellAmount,
-                        "smallBuyVolume" : addValueitem.smallBuyVolume,
-                        "smallSellVolume" : addValueitem.smallSellVolume,
-                        "smallBuyAmount" : addValueitem.smallBuyAmount,
-                        "smallSellAmount" : addValueitem.smallSellAmount,
-                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
-                        "largeNetInflow" : addValueitem.largeNetInflow,
-                        "netCapitalInflow" : addValueitem.netCapitalInflow,
-                        "mediumNetInflow" : addValueitem.mediumNetInflow,
-                        "smallNetInflow" : addValueitem.smallNetInflow,
-                        "fundsInflows" : addValueitem.fundsInflows,
-                        "fundsOutflows" : addValueitem.fundsOutflows,
-                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
-                        "largeDiffer" : addValueitem.largeDiffer,
-                        "mediumDiffer" : addValueitem.mediumDiffer,
-                        "smallDiffer" : addValueitem.smallDiffer,
-                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
-                        "largeSellDealCount" : addValueitem.largeSellDealCount,
-                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
-                        "buyCount" : addValueitem.buyCount,
-                        "sellCount" : addValueitem.sellCount,
-                        "BBD" : addValueitem.bbd,
-                        "BBD5" : addValueitem.bbd5,
-                        "BBD10" : addValueitem.bbd10,
-                        "DDX" : addValueitem.ddx,
-                        "DDX5" : addValueitem.ddx5,
-                        "DDX10" : addValueitem.ddx10,
-                        "DDY" : addValueitem.ddy,
-                        "DDY5" : addValueitem.ddy5,
-                        "DDY10" : addValueitem.ddy10,
-                        "DDZ" : addValueitem.ddz,
-                        "RatioBS" : addValueitem.ratioBS,
-                        "othersFundsInflows" : addValueitem.othersFundsInflows,
-                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
-                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
-                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
-                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
-                        "bigOrderNumB" : addValueitem.largeBuyCount,
-                        "bigOrderNumS" : addValueitem.largeSellCount,
-                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    let update1: JSON = [
                         "midOrderNumS" : addValueitem.mediumSellCount,
                         "smallOrderNumB" : addValueitem.smallBuyCount,
                         "smallOrderNumS" : addValueitem.smallSellCount,
@@ -577,6 +722,91 @@ class QUOTE_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
+                    do {
+                        try itemJSON.merge(with: update1)
+                    } catch {
+                        // ignore
+                    }
+                    let update2: JSON = [
+                        "RatioBS" : addValueitem.ratioBS,
+                        "othersFundsInflows" : addValueitem.othersFundsInflows,
+                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                        "bigOrderNumB" : addValueitem.largeBuyCount,
+                        "bigOrderNumS" : addValueitem.largeSellCount,
+                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update2)
+                    } catch {
+                        // ignore
+                    }
+                    let update3: JSON = [
+                        "BBD5" : addValueitem.bbd5,
+                        "BBD10" : addValueitem.bbd10,
+                        "DDX" : addValueitem.ddx,
+                        "DDX5" : addValueitem.ddx5,
+                        "DDX10" : addValueitem.ddx10,
+                        "DDY" : addValueitem.ddy,
+                        "DDY5" : addValueitem.ddy5,
+                        "DDY10" : addValueitem.ddy10,
+                        "DDZ" : addValueitem.ddz,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update3)
+                    } catch {
+                        // ignore
+                    }
+                    let update4: JSON = [
+                        "largeDiffer" : addValueitem.largeDiffer,
+                        "mediumDiffer" : addValueitem.mediumDiffer,
+                        "smallDiffer" : addValueitem.smallDiffer,
+                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                        "largeSellDealCount" : addValueitem.largeSellDealCount,
+                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                        "buyCount" : addValueitem.buyCount,
+                        "sellCount" : addValueitem.sellCount,
+                        "BBD" : addValueitem.bbd,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update4)
+                    } catch {
+                        // ignore
+                    }
+                    let update5: JSON = [
+                        "smallSellAmount" : addValueitem.smallSellAmount,
+                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                        "largeNetInflow" : addValueitem.largeNetInflow,
+                        "netCapitalInflow" : addValueitem.netCapitalInflow,
+                        "mediumNetInflow" : addValueitem.mediumNetInflow,
+                        "smallNetInflow" : addValueitem.smallNetInflow,
+                        "fundsInflows" : addValueitem.fundsInflows,
+                        "fundsOutflows" : addValueitem.fundsOutflows,
+                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update5)
+                    } catch {
+                        // ignore
+                    }
+                    let update6: JSON = [
+                        "largeBuyAmount" : addValueitem.largeBuyAmount,
+                        "largeSellAmount" : addValueitem.largeSellAmount,
+                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                        "mediumSellVolume" : addValueitem.mediumSellVolume,
+                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                        "mediumSellAmount" : addValueitem.mediumSellAmount,
+                        "smallBuyVolume" : addValueitem.smallBuyVolume,
+                        "smallSellVolume" : addValueitem.smallSellVolume,
+                        "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update6)
+                    } catch {
+                        // ignore
+                    }
                     resultJSON["addValue"] = itemJSON
                 }
             }else if items is MStockItem{
@@ -592,126 +822,8 @@ class QUOTE_1: BaseTestCase {
                     "highPrice": item.highPrice,
                     "lowPrice": item.lowPrice,
                     "openPrice": item.openPrice,
-                    "preClosePrice": item.preClosePrice,
-                    "volume": item.volume,
-                    "nowVolume": item.nowVolume,
-                    "turnoverRate": item.turnoverRate,
-                    "upDownLimitType": item.udFlag,
-                    "limitUP": item.limitUp,
-                    "limitDown": item.limitDown,
-                    "averageValue": item.averagePrice,
-                    "change": item.change,
-                    "amount": item.amount,
-                    "volumeRatio": item.volumeRatio,
-                    "buyPrice": item.buyPrice,
-                    "sellPrice": item.sellPrice,
-                    "buyVolume": item.buyVolume,
-                    "sellVolume": item.sellVolume,
-                    "totalValue": item.totalValue,
-                    "HKTotalValue": item.hkValue,
-                    "flowValue": item.flowValue,
-                    "netAsset": item.netAsset,
-                    "pe": item.pe,
-                    "pe2": item.spe,
-                    "pb": item.roe,
-                    "capitalization": item.capitalization,
-                    "circulatingShares": item.circulatingShare,
-                    "earningsPerShare" :item.eps,
-                    "earningsPerShareReportingPeriod": item.epsType,
-                    //
-                    //                "buyPrices": item.buyPrices,
-                    //                "buySingleVolumes": item.buyCount,
-                    //                "buyVolumes": item.buyVolumes,
-                    //                "sellPrices": item.sellPrices,
-                    //                "sellSingleVolumes": item.sellCount,
-                    //                "sellVolumes": item.sellVolumes,
-                    //
-                    "amplitudeRate": item.amplitudeRate,
-                    "receipts": item.receipts,
-
-                    "exerciseWay": item.exeType,
-                    "orderRatio": item.orderRatio,
-                    "hk_paramStatus": item.hkInfoStatus.rawValue,
-                    "sumBuy": item.totalBuyVolume,
-                    "sumSell": item.totalSellVolume,
-                    "averageBuy": item.averageBuyPrice,
-                    "averageSell": item.averageSellPrice,
-                    "zh": item.sFlag.rawValue,
-                    "hh": item.hFlag.rawValue,
-                    
-                    "st": item.subtypes,
-                    
-                    "bu": item.financeFlag.rawValue,
-                    "su": item.securityFlag.rawValue,
-                    "hs": item.hkCapital,
-                    "ac": item.authorisedCapital,
-                    "qf": item.investorRequirementsFlag.rawValue,
-                    "qc": item.investorRequirementsType.rawValue,
-                    "ah": item.ahFlag.rawValue,
-                    "VCMFlag": item.vcmFlag.rawValue,
-                    "CASFlag": item.casFlag.rawValue,
-                    "rp": item.termRepo,
-                    "cd": item.takeUpDays,
-                    "hg": item.hgFlag.rawValue,
-                    "sg": item.sgFlag.rawValue,
-                    "fx": item.fxFlag.rawValue,
-                    "ts": item.tsFlag.rawValue,
-                    "add_option_avg_price": item.weightedAveragePrice,
-                    "add_option_avg_pb": item.bp,
-                    "add_option_avg_close": item.weightedAveragePreClosePrice,
-                    "hk_volum_for_every_hand": item.hkMinTradeUnit,
-                    "buy_cancel_count": item.withdrawBuyCount,
-                    "buy_cancel_num": item.withdrawBuyVolume,
-                    "buy_cancel_amount": item.withdrawBuyAmount,
-                    "sell_cancel_count": item.withdrawSellCount,
-                    "sell_cancel_num": item.withdrawSellVolume,
-                    "sell_cancel_amount": item.withdrawSellAmount,
-                    "IOPV": item.iopv,
-                    "preIOPV": item.preIOPV,
-                    "stateOfTransfer": item.zrzt,
-                    "typeOfTransfer": item.zrlx,
-                    "exRighitDividend": item.cqcx,
-                    "securityLevel": item.zqjb,
-                    "rpd": item.fundAvailableDate,
-                    "cdd": item.fundReceiptedDate,
-                    "change2": item.change2,
-                    "hkTExchangeFlag": item.tradeType.rawValue,
-                    "vote": item.voteFlag.rawValue,
-                    "upf": item.unprofitableFlag.rawValue,
-                    "DRCurrentShare": item.drCurrentShare,
-                    "DRPreviousClosingShare": item.drPreviousClosingShare,
-                    "DRConversionBase": item.drConversionBase,
-                    "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
-                    "DRDepositoryInstitutionName": item.drDepositoryInstitutionName,
-                    "DRSubjectClosingReferencePrice": item.drSubjectClosingReferencePrice,
-                    "DR": item.dr,
-                    "GDR": item.gdr,
-                    "DRStockCode": item.drStockCode,
-                    "DRStockName": item.drStockName,
-                    "DRSecuritiesConversionBase": item.drSecuritiesConversionBase,
-                    "DRListingDate": item.drListingDate,
-                    "DRFlowStartDate": item.drFlowStartDate,
-                    "DRFlowEndDate": item.drFlowEndDate,
-                    "changeBP": item.changeBP,
-                    "subscribeUpperLimit": item.subscribeLimit,
-                    "subscribeLowerLimit": item.subscribeLowerLimit,
-                    "afterHoursVolume": item.afterHoursVolume,
-                    "afterHoursAmount": item.afterHoursAmount,
-                    "afterHoursTransactionNumber": item.afterHoursTransactionNumber,
-                    "afterHoursWithdrawBuyCount": item.afterHoursWithdrawBuyCount,
-                    "afterHoursWithdrawBuyVolume": item.afterHoursWithdrawBuyVolume,
-                    "afterHoursWithdrawSellCount": item.afterHoursWithdrawSellCount,
-                    "afterHoursWithdrawSellVolume": item.afterHoursWithdrawSellVolume,
-                    "afterHoursBuyVolume": item.afterHoursBuyVolume,
-                    "afterHoursSellVolume": item.afterHoursSellVolume,
-                    "issuedCapital": item.regCapital,
-                    "limitPriceUpperLimit": item.plSubscribeLimit,
-                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
-                    "longName": item.longName,
-                    "bidpx1": item.buyPrice,
-                    "askpx1": item.sellPrice,
-                    "bidvol1": item.buyVolume,
-                    "askvol1": item.sellVolume,
+                ]
+                let update1: JSON = [
                     "buyPrices": item.buyPrices,
                     "buyVolumes":item.buyVolumes,
                     "sellPrices":item.sellPrices,
@@ -723,14 +835,197 @@ class QUOTE_1: BaseTestCase {
                     "indexChg5":item.changeRate5,
                     "indexChg10":item.changeRate10
                 ]
-                //                        var jsonSubtypes = [JSON]()
-                //                        for i in 0 ..< item.subtypes.count{
-                //                            let jsonSubtype : JSON = [
-                //                                "st\(i+1)": item.subtypes[i]
-                //                            ]
-                //                            jsonSubtypes.append(jsonSubtype)
-                //                        }
-                //                        resultJSON["st"].arrayObject = jsonSubtypes
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                let update2: JSON = [
+                    "afterHoursBuyVolume": item.afterHoursBuyVolume,
+                    "afterHoursSellVolume": item.afterHoursSellVolume,
+                    "issuedCapital": item.regCapital,
+                    "limitPriceUpperLimit": item.plSubscribeLimit,
+                    "limitPriceLowerLimit": item.plSubscribeLowerLimit,
+                    "longName": item.longName,
+                    "bidpx1": item.buyPrice,
+                    "askpx1": item.sellPrice,
+                    "bidvol1": item.buyVolume,
+                    "askvol1": item.sellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update2)
+                } catch {
+                    // ignore
+                }
+                let update3: JSON = [
+                    "changeBP": item.changeBP,
+                    "subscribeUpperLimit": item.subscribeLimit,
+                    "subscribeLowerLimit": item.subscribeLowerLimit,
+                    "afterHoursVolume": item.afterHoursVolume,
+                    "afterHoursAmount": item.afterHoursAmount,
+                    "afterHoursTransactionNumber": item.afterHoursTransactionNumber,
+                    "afterHoursWithdrawBuyCount": item.afterHoursWithdrawBuyCount,
+                    "afterHoursWithdrawBuyVolume": item.afterHoursWithdrawBuyVolume,
+                    "afterHoursWithdrawSellCount": item.afterHoursWithdrawSellCount,
+                    "afterHoursWithdrawSellVolume": item.afterHoursWithdrawSellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update3)
+                } catch {
+                    // ignore
+                }
+                let update4: JSON = [
+                    "DRDepositoryInstitutionName": item.drDepositoryInstitutionName,
+                    "DRSubjectClosingReferencePrice": item.drSubjectClosingReferencePrice,
+                    "DR": item.dr,
+                    "GDR": item.gdr,
+                    "DRStockCode": item.drStockCode,
+                    "DRStockName": item.drStockName,
+                    "DRSecuritiesConversionBase": item.drSecuritiesConversionBase,
+                    "DRListingDate": item.drListingDate,
+                    "DRFlowStartDate": item.drFlowStartDate,
+                    "DRFlowEndDate": item.drFlowEndDate,
+                ]
+                do {
+                    try itemJSON.merge(with: update4)
+                } catch {
+                    // ignore
+                }
+                let update5: JSON = [
+                    "rpd": item.fundAvailableDate,
+                    "cdd": item.fundReceiptedDate,
+                    "change2": item.change2,
+                    "hkTExchangeFlag": item.tradeType.rawValue,
+                    "vote": item.voteFlag.rawValue,
+                    "upf": item.unprofitableFlag.rawValue,
+                    "DRCurrentShare": item.drCurrentShare,
+                    "DRPreviousClosingShare": item.drPreviousClosingShare,
+                    "DRConversionBase": item.drConversionBase,
+                    "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
+                ]
+                do {
+                    try itemJSON.merge(with: update5)
+                } catch {
+                    // ignore
+                }
+                let update6: JSON = [
+                    "buy_cancel_amount": item.withdrawBuyAmount,
+                    "sell_cancel_count": item.withdrawSellCount,
+                    "sell_cancel_num": item.withdrawSellVolume,
+                    "sell_cancel_amount": item.withdrawSellAmount,
+                    "IOPV": item.iopv,
+                    "preIOPV": item.preIOPV,
+                    "stateOfTransfer": item.zrzt,
+                    "typeOfTransfer": item.zrlx,
+                    "exRighitDividend": item.cqcx,
+                    "securityLevel": item.zqjb,
+                ]
+                do {
+                    try itemJSON.merge(with: update6)
+                } catch {
+                    // ignore
+                }
+                let update7: JSON = [
+                    "hg": item.hgFlag.rawValue,
+                    "sg": item.sgFlag.rawValue,
+                    "fx": item.fxFlag.rawValue,
+                    "ts": item.tsFlag.rawValue,
+                    "add_option_avg_price": item.weightedAveragePrice,
+                    "add_option_avg_pb": item.bp,
+                    "add_option_avg_close": item.weightedAveragePreClosePrice,
+                    "hk_volum_for_every_hand": item.hkMinTradeUnit,
+                    "buy_cancel_count": item.withdrawBuyCount,
+                    "buy_cancel_num": item.withdrawBuyVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update7)
+                } catch {
+                    // ignore
+                }
+                let update8: JSON = [
+                    "su": item.securityFlag.rawValue,
+                    "hs": item.hkCapital,
+                    "ac": item.authorisedCapital,
+                    "qf": item.investorRequirementsFlag.rawValue,
+                    "qc": item.investorRequirementsType.rawValue,
+                    "ah": item.ahFlag.rawValue,
+                    "VCMFlag": item.vcmFlag.rawValue,
+                    "CASFlag": item.casFlag.rawValue,
+                    "rp": item.termRepo,
+                    "cd": item.takeUpDays,
+                ]
+                do {
+                    try itemJSON.merge(with: update8)
+                } catch {
+                    // ignore
+                }
+                let update9: JSON = [
+                    "orderRatio": item.orderRatio,
+                    "hk_paramStatus": item.hkInfoStatus.rawValue,
+                    "sumBuy": item.totalBuyVolume,
+                    "sumSell": item.totalSellVolume,
+                    "averageBuy": item.averageBuyPrice,
+                    "averageSell": item.averageSellPrice,
+                    "zh": item.sFlag.rawValue,
+                    "hh": item.hFlag.rawValue,
+                    "st": item.subtypes,
+                    "bu": item.financeFlag.rawValue,
+                ]
+                do {
+                    try itemJSON.merge(with: update9)
+                } catch {
+                    // ignore
+                }
+                let update10: JSON = [
+                    "pe": item.pe,
+                    "pe2": item.spe,
+                    "pb": item.roe,
+                    "capitalization": item.capitalization,
+                    "circulatingShares": item.circulatingShare,
+                    "earningsPerShare" :item.eps,
+                    "earningsPerShareReportingPeriod": item.epsType,
+                    "amplitudeRate": item.amplitudeRate,
+                    "receipts": item.receipts,
+                    "exerciseWay": item.exeType,
+                ]
+                do {
+                    try itemJSON.merge(with: update10)
+                } catch {
+                    // ignore
+                }
+                let update11: JSON = [
+                    "volumeRatio": item.volumeRatio,
+                    "buyPrice": item.buyPrice,
+                    "sellPrice": item.sellPrice,
+                    "buyVolume": item.buyVolume,
+                    "sellVolume": item.sellVolume,
+                    "totalValue": item.totalValue,
+                    "HKTotalValue": item.hkValue,
+                    "flowValue": item.flowValue,
+                    "netAsset": item.netAsset,
+                ]
+                do {
+                    try itemJSON.merge(with: update11)
+                } catch {
+                    // ignore
+                }
+                let update12: JSON = [
+                    "preClosePrice": item.preClosePrice,
+                    "volume": item.volume,
+                    "nowVolume": item.nowVolume,
+                    "turnoverRate": item.turnoverRate,
+                    "upDownLimitType": item.udFlag,
+                    "limitUP": item.limitUp,
+                    "limitDown": item.limitDown,
+                    "averageValue": item.averagePrice,
+                    "change": item.change,
+                    "amount": item.amount,
+                ]
+                do {
+                    try itemJSON.merge(with: update12)
+                } catch {
+                    // ignore
+                }
                 
                 switch item.changeState{
                     
@@ -808,51 +1103,8 @@ class QUOTE_1: BaseTestCase {
                         "ultraLargeSellAmount" : addValueitem.ultraLargeSellAmount,
                         "largeBuyVolume" : addValueitem.largeBuyVolume,
                         "largeSellVolume" : addValueitem.largeSellVolume,
-                        "largeBuyAmount" : addValueitem.largeBuyAmount,
-                        "largeSellAmount" : addValueitem.largeSellAmount,
-                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
-                        "mediumSellVolume" : addValueitem.mediumSellVolume,
-                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
-                        "mediumSellAmount" : addValueitem.mediumSellAmount,
-                        "smallBuyVolume" : addValueitem.smallBuyVolume,
-                        "smallSellVolume" : addValueitem.smallSellVolume,
-                        "smallBuyAmount" : addValueitem.smallBuyAmount,
-                        "smallSellAmount" : addValueitem.smallSellAmount,
-                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
-                        "largeNetInflow" : addValueitem.largeNetInflow,
-                        "netCapitalInflow" : addValueitem.netCapitalInflow,
-                        "mediumNetInflow" : addValueitem.mediumNetInflow,
-                        "smallNetInflow" : addValueitem.smallNetInflow,
-                        "fundsInflows" : addValueitem.fundsInflows,
-                        "fundsOutflows" : addValueitem.fundsOutflows,
-                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
-                        "largeDiffer" : addValueitem.largeDiffer,
-                        "mediumDiffer" : addValueitem.mediumDiffer,
-                        "smallDiffer" : addValueitem.smallDiffer,
-                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
-                        "largeSellDealCount" : addValueitem.largeSellDealCount,
-                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
-                        "buyCount" : addValueitem.buyCount,
-                        "sellCount" : addValueitem.sellCount,
-                        "BBD" : addValueitem.bbd,
-                        "BBD5" : addValueitem.bbd5,
-                        "BBD10" : addValueitem.bbd10,
-                        "DDX" : addValueitem.ddx,
-                        "DDX5" : addValueitem.ddx5,
-                        "DDX10" : addValueitem.ddx10,
-                        "DDY" : addValueitem.ddy,
-                        "DDY5" : addValueitem.ddy5,
-                        "DDY10" : addValueitem.ddy10,
-                        "DDZ" : addValueitem.ddz,
-                        "RatioBS" : addValueitem.ratioBS,
-                        "othersFundsInflows" : addValueitem.othersFundsInflows,
-                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
-                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
-                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
-                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
-                        "bigOrderNumB" : addValueitem.largeBuyCount,
-                        "bigOrderNumS" : addValueitem.largeSellCount,
-                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    let update1: JSON = [
                         "midOrderNumS" : addValueitem.mediumSellCount,
                         "smallOrderNumB" : addValueitem.smallBuyCount,
                         "smallOrderNumS" : addValueitem.smallSellCount,
@@ -863,6 +1115,91 @@ class QUOTE_1: BaseTestCase {
                         "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                         "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                     ]
+                    do {
+                        try itemJSON.merge(with: update1)
+                    } catch {
+                        // ignore
+                    }
+                    let update2: JSON = [
+                        "RatioBS" : addValueitem.ratioBS,
+                        "othersFundsInflows" : addValueitem.othersFundsInflows,
+                        "othersFundsOutflows" : addValueitem.othersFundsOutflows,
+                        "fiveMinutesChangeRate" : addValueitem.fiveMinRise,
+                        "largeOrderNumB" : addValueitem.ultraLargeBuyCount,
+                        "largeOrderNumS" : addValueitem.ultraLargeSellCount,
+                        "bigOrderNumB" : addValueitem.largeBuyCount,
+                        "bigOrderNumS" : addValueitem.largeSellCount,
+                        "midOrderNumB" : addValueitem.mediumBuyCount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update2)
+                    } catch {
+                        // ignore
+                    }
+                    let update3: JSON = [
+                        "BBD5" : addValueitem.bbd5,
+                        "BBD10" : addValueitem.bbd10,
+                        "DDX" : addValueitem.ddx,
+                        "DDX5" : addValueitem.ddx5,
+                        "DDX10" : addValueitem.ddx10,
+                        "DDY" : addValueitem.ddy,
+                        "DDY5" : addValueitem.ddy5,
+                        "DDY10" : addValueitem.ddy10,
+                        "DDZ" : addValueitem.ddz,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update3)
+                    } catch {
+                        // ignore
+                    }
+                    let update4: JSON = [
+                        "largeDiffer" : addValueitem.largeDiffer,
+                        "mediumDiffer" : addValueitem.mediumDiffer,
+                        "smallDiffer" : addValueitem.smallDiffer,
+                        "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                        "largeSellDealCount" : addValueitem.largeSellDealCount,
+                        "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                        "buyCount" : addValueitem.buyCount,
+                        "sellCount" : addValueitem.sellCount,
+                        "BBD" : addValueitem.bbd,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update4)
+                    } catch {
+                        // ignore
+                    }
+                    let update5: JSON = [
+                        "smallSellAmount" : addValueitem.smallSellAmount,
+                        "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                        "largeNetInflow" : addValueitem.largeNetInflow,
+                        "netCapitalInflow" : addValueitem.netCapitalInflow,
+                        "mediumNetInflow" : addValueitem.mediumNetInflow,
+                        "smallNetInflow" : addValueitem.smallNetInflow,
+                        "fundsInflows" : addValueitem.fundsInflows,
+                        "fundsOutflows" : addValueitem.fundsOutflows,
+                        "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update5)
+                    } catch {
+                        // ignore
+                    }
+                    let update6: JSON = [
+                        "largeBuyAmount" : addValueitem.largeBuyAmount,
+                        "largeSellAmount" : addValueitem.largeSellAmount,
+                        "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                        "mediumSellVolume" : addValueitem.mediumSellVolume,
+                        "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                        "mediumSellAmount" : addValueitem.mediumSellAmount,
+                        "smallBuyVolume" : addValueitem.smallBuyVolume,
+                        "smallSellVolume" : addValueitem.smallSellVolume,
+                        "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    ]
+                    do {
+                        try itemJSON.merge(with: update6)
+                    } catch {
+                        // ignore
+                    }
                     resultJSON["addValue"] = itemJSON
                 }
             }

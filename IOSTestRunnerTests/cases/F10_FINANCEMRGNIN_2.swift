@@ -91,20 +91,6 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
                         j = j + 1
                         }
                      
-                    
-                    
-                    //                        var jsonarr2: JSON = [
-                    //                            "TRADEDATE": dic2["TRADEDATE"]!,
-                    //                            "FINBALANCESUM": dic2["FINBALANCESUM"]!,
-                    //                            "FINBUYAMTSUM": dic2["FINREPAYAMTSUM"]!,
-                    //                            "MRGGBALSUM": dic2["MRGGBALSUM"]!,
-                    //                            "FINMRGHBALSUM": dic2["FINMRGHBALSUM"]!,
-                    //                            "FINMRGNBALSUM": dic2["FINMRGNBALSUM"]!
-                    //                        ]
-                    //                        jsonarr1.append(jsonarr2)
-                    //                    }
-                    //                }
-                   
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)

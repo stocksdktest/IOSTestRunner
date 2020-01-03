@@ -36,8 +36,8 @@ class TRADEQUOTE_1: BaseTestCase {
                 "limitDown": item.limitDown,
                 "change": item.change,
                 
-//                "changeRate": item.changeRate,
-//                "upDownFlag": item.changeState,
+                ]
+            let update1: JSON = [
                 "quantityUnitBuy": item.buyVolumeUnit,
                 "quantityUnitSell": item.sellVolumeUnit,
                 "pricePosition": item.priceUnit,
@@ -46,7 +46,12 @@ class TRADEQUOTE_1: BaseTestCase {
                 "buyVolumes":item.buyVolumes,
                 "sellPrices":item.sellPrices,
                 "sellVolumes":item.sellVolumes,
-                ]
+            ]
+            do {
+                try resultJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             switch item.changeState{
                 
             case .flat:

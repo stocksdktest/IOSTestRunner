@@ -39,6 +39,9 @@ class F10_STOCKSHAREINFO_1: BaseTestCase {
                 "BListedShare": record["BLISTEDSHARE"]!,
                 "BRatio": record["BRATIO"]!,
                 "totalShareUR": record["TOTALSHAREUR"]!,
+                
+            ]
+            let update1: JSON = [
                 "URRatio": record["URRATIO"]!,
                 "TotalShare": record["TOTALSHARE"]!,
                 "TotalShareL": record["TOTALSHAREL"]!,
@@ -46,6 +49,11 @@ class F10_STOCKSHAREINFO_1: BaseTestCase {
                 "ULRatio": record["ULRATIO"]!,
                 "HTotalShare": record["HTOTALSHARE"]!
             ]
+            do {
+                try resultJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }

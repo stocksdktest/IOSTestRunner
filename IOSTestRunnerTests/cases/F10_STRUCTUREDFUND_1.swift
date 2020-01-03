@@ -45,12 +45,20 @@ class F10_STRUCTUREDFUND_1: BaseTestCase {
                     "MASTERCODEB": info["MASTERCODEB"]!,
                     "SNAMECOMPB": info["SNAMECOMPB"]!,
                     "BTOTSHARE": info["BTOTSHARE"]!,
+                    
+                ]
+                let update1: JSON = [
                     "MAPCODE": info["MAPCODE"]!,
                     "MAPNAME": info["MAPNAME"]!,
                     "LISTDATE": info["LISTDATE"]!,
                     "ENDDATE": info["ENDDATE"]!,
                     "KEEPERNAME": info["KEEPERNAME"]!
                 ]
+                do {
+                    try resultJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }

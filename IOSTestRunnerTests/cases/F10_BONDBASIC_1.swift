@@ -42,6 +42,9 @@ class F10_BONDBASIC_1: BaseTestCase {
                 "MATURITYYEAR":item["MATURITYYEAR"]!,
                 "BASERATE":item["BASERATE"]!,
                 "CALCAMODE":item["CALCAMODE"]!,
+                
+            ]
+            let update1: JSON = [
                 "PAYMENTMODE":item["PAYMENTMODE"]!,
                 "LISTDATE":item["LISTDATE"]!,
                 "EXCHANGENAME":item["EXCHANGENAME"]!,
@@ -49,6 +52,11 @@ class F10_BONDBASIC_1: BaseTestCase {
                 "PAYMENTDATE":item["PAYMENTDATE"]!,
                 "DECLAREDATE":item["DECLAREDATE"]!,
             ]
+            do {
+                try resultJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
             

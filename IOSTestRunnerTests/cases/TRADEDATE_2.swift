@@ -39,21 +39,7 @@ class TRADEDATE_2: BaseTestCase {
         
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
-//        var jsonarr1 = [JSON]()
-//        for dates in tradeDateResponse.dates{
-//            var jsonarr2 : JSON = [
-//                "date": dates.date,
-//                "isTrade": dates.type.rawValue,
-//                "description": dates.desc
-//            ]
-//            jsonarr1.append(jsonarr2)
-//        }
-//        var resultJSON: JSON = [
-//            "tradeDates": jsonarr1
-//        ]
-//        print(resultJSON)
-//        onTestResult(param: param, result: resultJSON)
-//
+
     }
 }
 

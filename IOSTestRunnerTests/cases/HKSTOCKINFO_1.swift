@@ -32,6 +32,9 @@ class HKSTOCKINFO_1: BaseTestCase {
             "vcmReffPrice": hKQuoteInfoResponse.vcmRefPrice,
             "vcmLowerPrice": hKQuoteInfoResponse.vcmLowerPrice,
             "vcmUpperPrice": hKQuoteInfoResponse.vcmUpperPrice,
+            
+        ]
+        let update1: JSON = [
             "casDataTimestamp": hKQuoteInfoResponse.casDatetime,
             "casOrdImbDirection": hKQuoteInfoResponse.casOrdImbDirection,
             "casOrdImbQty": hKQuoteInfoResponse.casOrdImbQty,
@@ -39,6 +42,11 @@ class HKSTOCKINFO_1: BaseTestCase {
             "casLowerPrice": hKQuoteInfoResponse.casLowerPrice,
             "casUpperPrice": hKQuoteInfoResponse.casUpperPrice
         ]
+        do {
+            try resultJSON.merge(with: update1)
+        } catch {
+            // ignore
+        }
         var jsonarr1 : JSON = [:]
         for item in hKQuoteInfoResponse.oddInfoItems {
             var jsonarr2: JSON = [

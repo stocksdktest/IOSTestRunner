@@ -312,6 +312,9 @@ class F10V2TEST_1: BaseTestCase {
                                         "UPPS":dic2["UPPS"]!,
                                         "CRPS":dic2["CRPS"]!,
                                         "SGPMARGIN":dic2["SGPMARGIN"]!,
+                                        
+                                    ]
+                                    let update1: JSON = [
                                         "OPPRORT":dic2["OPPRORT"]!,
                                         "SNPMARGIN":dic2["SNPMARGIN"]!,
                                         "ROEWEIGHTED":dic2["ROEWEIGHTED"]!,
@@ -320,6 +323,11 @@ class F10V2TEST_1: BaseTestCase {
                                         "QUICKRT":dic2["QUICKRT"]!,
                                         "OPNCFPS":dic2["OPNCFPS"]!,
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update1)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                                 }
                             }
@@ -367,6 +375,9 @@ class F10V2TEST_1: BaseTestCase {
                                         "OTHERRECE":dic2["OTHERRECE"]!,
                                         "FIXEDASSENET":dic2["FIXEDASSENET"]!,
                                         "AVAISELLASSE":dic2["AVAISELLASSE"]!,
+                                        
+                                    ]
+                                    let update2: JSON = [
                                         "INTAASSET":dic2["INTAASSET"]!,
                                         "SHORTTERMBORR":dic2["SHORTTERMBORR"]!,
                                         "ADVAPAYM":dic2["ADVAPAYM"]!,
@@ -378,6 +389,11 @@ class F10V2TEST_1: BaseTestCase {
                                         "CAPISURP":dic2["CAPISURP"]!,
                                         "GOODWILL":dic2["GOODWILL"]!
                                     ]
+                                    do {
+                                        try jsonarr2.merge(with: update2)
+                                    } catch {
+                                        // ignore
+                                    }
                                     resultJSON["\(dic2["REPORTTITLE"]!)"] = jsonarr2
                                 }
                             }
