@@ -22,7 +22,7 @@ class L2TICKDETAILV2_2: BaseTestCase {
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
+        let paramI:NSArray = (param["page"].string?.split(separator: ",") as! NSArray)
         mRequest.pageSize = UInt(paramI[1] as! String)!
         mRequest.index = paramI[0] as! String
         mRequest.type = MTimeTickRequestType.init(rawValue: Int(paramI[2] as! String)!)!
