@@ -54,23 +54,31 @@ class CHARTSUB_1: BaseTestCase {
         var j = 1
 //        print(chartIndexResponse)
         for items in chartIndexResponse.ohlcItems{
-        var itemJSON: JSON = [
-             "ddx":items.ddx,
-             "ddy":items.ddy,
-             "ddz":items.ddz,
-             "bbd":items.bbd,
-             "ratioBS":items.ratioBS,
-             "largeMoneyInflow":items.largeMoneyInflow,
-             "bigMoneyInflow ":items.bigMoneyInflow,
-             "midMoneyInflow":items.midMoneyInflow,
-             "smallMoneyInflow":items.smallMoneyInflow,
-             "largeTradeNum":items.largeTradeNum,
-             "bigTradeNum ":items.bigTradeNum,
-             "midTradeNum":items.midTradeNum,
-             "smallTradeNum":items.smallTradeNum,
-             "bigNetVolume": items.bigNetVolume,
-             
-         ]
+            var itemJSON: JSON = [
+                 "ddx":items.ddx,
+                 "ddy":items.ddy,
+                 "ddz":items.ddz,
+                 "bbd":items.bbd,
+                 "ratioBS":items.ratioBS,
+                 "largeMoneyInflow":items.largeMoneyInflow,
+                 "bigMoneyInflow ":items.bigMoneyInflow,
+                 "midMoneyInflow":items.midMoneyInflow,
+                 
+                 
+             ]
+            let update1: JSON = [
+                "smallMoneyInflow":items.smallMoneyInflow,
+                "largeTradeNum":items.largeTradeNum,
+                "bigTradeNum ":items.bigTradeNum,
+                "midTradeNum":items.midTradeNum,
+                "smallTradeNum":items.smallTradeNum,
+                "bigNetVolume": items.bigNetVolume,
+            ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             resultJSON["\(j)"] = itemJSON
             j = j + 1
 

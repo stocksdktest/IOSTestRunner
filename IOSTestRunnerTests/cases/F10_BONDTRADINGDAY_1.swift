@@ -78,18 +78,6 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
                         for wsslist in wsslists{
                             if let list:NSDictionary = wsslist as! NSDictionary{
                                 var jsonarr2: JSON = [
-//                                    "applyCode": list["APPLYCODE"]!,
-//                                    "capplyShare": list["CAPPLYSHARE"]!,
-//                                    "secuabbr": list["SECUABBR"]!,
-//                                    "tradingCode": list["TRADINGCODE"]!,
-//                                    "peaIssue": list["PEAISSUE"]!,
-//                                    "issuePrice": list["ISSUEPRICE"]!,
-//                                    "allotrateon": list["ALLOTRATEON"]!,
-//                                    "listingDate": list["LISTINGDATE"]!,
-//                                    "issueShare": list["ISSUESHARE"]!,
-//                                    "issueShareOn": list["ISSUESHAREON"]!,
-//                                    "capplyPrice": list["CAPPLYPRICE"]!,
-                                    
                                     "issuePrice": list["ISSUEPRICE"]!,
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
@@ -117,17 +105,6 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
                         for zqlist in zqlists{
                             if let list:NSDictionary = zqlist as! NSDictionary{
                                 var jsonarr2: JSON = [
-//                                    "applyCode": list["APPLYCODE"]!,
-//                                    "capplyShare": list["CAPPLYSHARE"]!,
-//                                    "secuabbr": list["SECUABBR"]!,
-//                                    "tradingCode": list["TRADINGCODE"]!,
-//                                    "peaIssue": list["PEAISSUE"]!,
-//                                    "issuePrice": list["ISSUEPRICE"]!,
-//                                    "allotrateon": list["ALLOTRATEON"]!,
-//                                    "issueShare": list["ISSUESHARE"]!,
-//                                    "issueShareOn": list["ISSUESHAREON"]!,
-//                                    "capplyPrice": list["CAPPLYPRICE"]!,
-                                    
                                     "issuePrice": list["ISSUEPRICE"]!,
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
@@ -155,17 +132,6 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
                         for sslist in sslists{
                             if let list:NSDictionary = sslist as! NSDictionary{
                                 var jsonarr2: JSON = [
-//                                    "applyCode": list["APPLYCODE"]!,
-//                                    "capplyShare": list["CAPPLYSHARE"]!,
-//                                    "secuabbr": list["SECUABBR"]!,
-//                                    "tradingCode": list["TRADINGCODE"]!,
-//                                    "peaIssue": list["PEAISSUE"]!,
-//                                    "issuePrice": list["ISSUEPRICE"]!,
-//                                    "allotrateon": list["ALLOTRATEON"]!,
-//                                    "issueShare": list["ISSUESHARE"]!,
-//                                    "issueShareOn": list["ISSUESHAREON"]!,
-//                                    "capplyPrice": list["CAPPLYPRICE"]!,
-                                    
                                     "issuePrice": list["ISSUEPRICE"]!,
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
@@ -192,17 +158,6 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
                         for jjfxlist in jjfxlists{
                             if let list:NSDictionary = jjfxlist as! NSDictionary{
                                 var jsonarr2: JSON = [
-//                                    "applyCode": list["APPLYCODE"]!,
-//                                    "capplyShare": list["CAPPLYSHARE"]!,
-//                                    "secuabbr": list["SECUABBR"]!,
-//                                    "tradingCode": list["TRADINGCODE"]!,
-//                                    "issuePrice": list["ISSUEPRICE"]!,
-//                                    "issueShare": list["ISSUESHARE"]!,
-//                                    "issueShareOn": list["ISSUESHAREON"]!,
-//                                    "capplyPrice": list["CAPPLYPRICE"]!,
-//                                    "allotrateon": list["ALLOTRATEON"]!,
-//                                    "listingDate": list["LISTINGDATE"]!,
-                                    
                                     "issuePrice": list["ISSUEPRICE"]!,
                                     "issueShare": list["ISSUESHARE"]!,
                                     "issueShareOn": list["ISSUESHAREON"]!,
@@ -504,62 +459,6 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
-//            if let info:NSDictionary = iPOCalendarResponse.info as! NSDictionary{
-//                var resultJSON: JSON = []
-//                if let sglists:NSArray = info["sglist"] as! NSArray{
-//                    var jsonarr1 = [JSON]()
-//                    for sglist in sglists{
-//                        if let list: NSDictionary = sglist as! NSDictionary{
-//                            var jsonarr2: JSON = [
-//                                "APPLYCODE": list["APPLYCODE"]!,
-//                                "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
-//                                "CONVERTPRICE": list["CONVERTPRICE"]!,
-//                                "STOCKTRADINGCODE": list["STOCKTRADINGCODE"]!,
-//                                "STOCKSECUABBR": list["SECUABBR"]!,
-//                                "TRADINGCODE": list["TRADINGCODE"]!,
-//                                "SECUABBR": list["SECUABBR"]!
-//                            ]
-//                            jsonarr1.append(jsonarr2)
-//                        }
-//                    }
-//                    resultJSON["sglist"].arrayObject = jsonarr1
-//                }
-//                if let jjsglists:NSArray = info["jjsglist"] as! NSArray{
-//                    var jsonarr1 = [JSON]()
-//                    for jjsglist in jjsglists{
-//                        if let list: NSDictionary = jjsglist as! NSDictionary{
-//                            var jsonarr2: JSON = [
-//                                "APPLYCODE": list["APPLYCODE"]!,
-//                                "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
-//                                "CONVERTPRICE": list["CONVERTPRICE"]!,
-//                                "STOCKTRADINGCODE": list["STOCKTRADINGCODE"]!,
-//                                "STOCKSECUABBR": list["SECUABBR"]!,
-//                                "TRADINGCODE": list["TRADINGCODE"]!,
-//                                "SECUABBR": list["SECUABBR"]!
-//                            ]
-//                            jsonarr1.append(jsonarr2)
-//                        }
-//                    }
-//                    resultJSON["jjsglist"].arrayObject = jsonarr1
-//                }
-//                if let dsslists:NSArray = info["dsslist"] as! NSArray{
-//                    var jsonarr1 = [JSON]()
-//                    for dsslist in dsslists{
-//                        if let list: NSDictionary = dsslist as! NSDictionary{
-//                            var jsonarr2: JSON = [
-//                                "LISTINGDATE": list["LISTINGDATE"]!,
-//                                "ALLOTRATEON": list["ALLOTRATEON"]!,
-//                                "TRADINGCODE": list["TRADINGCODE"]!,
-//                                "SECUABBR": list["SECUABBR"]!
-//                            ]
-//                            jsonarr1.append(jsonarr2)
-//                        }
-//                    }
-//                    resultJSON["dsslist"].arrayObject = jsonarr1
-//                }
-//                print(resultJSON)
-//                onTestResult(param: param, result: resultJSON)
-//            }
         }
         
     }

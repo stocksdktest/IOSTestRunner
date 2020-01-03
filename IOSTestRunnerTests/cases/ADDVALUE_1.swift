@@ -43,29 +43,10 @@ class ADDVALUE_1: BaseTestCase {
                     "largeBuyVolume" : addValueitem.largeBuyVolume,
                     "largeSellVolume" : addValueitem.largeSellVolume,
                     "largeBuyAmount" : addValueitem.largeBuyAmount,
-                    "largeSellAmount" : addValueitem.largeSellAmount,
-                    "mediumBuyVolume" : addValueitem.mediumBuyVolume,
-                    "mediumSellVolume" : addValueitem.mediumSellVolume,
-                    "mediumBuyAmount" : addValueitem.mediumBuyAmount,
-                    "mediumSellAmount" : addValueitem.mediumSellAmount,
-                    "smallBuyVolume" : addValueitem.smallBuyVolume,
-                    "smallSellVolume" : addValueitem.smallSellVolume,
-                    "smallBuyAmount" : addValueitem.smallBuyAmount,
-                    "smallSellAmount" : addValueitem.smallSellAmount,
-                    "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
-                    "largeNetInflow" : addValueitem.largeNetInflow,
-                    "netCapitalInflow" : addValueitem.netCapitalInflow,
-                    "mediumNetInflow" : addValueitem.mediumNetInflow,
-                    "smallNetInflow" : addValueitem.smallNetInflow,
-                    "fundsInflows" : addValueitem.fundsInflows,
-                    "fundsOutflows" : addValueitem.fundsOutflows,
-                    "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
-                    "largeDiffer" : addValueitem.largeDiffer,
-                    "mediumDiffer" : addValueitem.mediumDiffer,
-                    "smallDiffer" : addValueitem.smallDiffer,
-                    "largeBuyDealCount" : addValueitem.largeBuyDealCount,
-                    "largeSellDealCount" : addValueitem.largeSellDealCount,
-                    "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                    
+                    
+                ]
+                let update1: JSON = [
                     "buyCount" : addValueitem.buyCount,
                     "sellCount" : addValueitem.sellCount,
                     "BBD" : addValueitem.bbd,
@@ -76,6 +57,13 @@ class ADDVALUE_1: BaseTestCase {
                     "DDX10" : addValueitem.ddx10,
                     "DDY" : addValueitem.ddy,
                     "DDY5" : addValueitem.ddy5,
+                ]
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                let update2: JSON = [
                     "DDY10" : addValueitem.ddy10,
                     "DDZ" : addValueitem.ddz,
                     "RatioBS" : addValueitem.ratioBS,
@@ -86,6 +74,13 @@ class ADDVALUE_1: BaseTestCase {
                     "largeOrderNumS" : addValueitem.ultraLargeSellCount,
                     "bigOrderNumB" : addValueitem.largeBuyCount,
                     "bigOrderNumS" : addValueitem.largeSellCount,
+                ]
+                do {
+                    try itemJSON.merge(with: update2)
+                } catch {
+                    // ignore
+                }
+                let update3: JSON = [
                     "midOrderNumB" : addValueitem.mediumBuyCount,
                     "midOrderNumS" : addValueitem.mediumSellCount,
                     "smallOrderNumB" : addValueitem.smallBuyCount,
@@ -97,6 +92,55 @@ class ADDVALUE_1: BaseTestCase {
                     "ratioMainforceMoneyNetInflow10" : addValueitem.netInflowRate10,
                     "ratioMainforceMoneyNetInflow5" : addValueitem.netInflowRate20
                 ]
+                do {
+                    try itemJSON.merge(with: update3)
+                } catch {
+                    // ignore
+                }
+                let update4: JSON = [
+                    "smallNetInflow" : addValueitem.smallNetInflow,
+                    "fundsInflows" : addValueitem.fundsInflows,
+                    "fundsOutflows" : addValueitem.fundsOutflows,
+                    "ultraLargeDiffer" : addValueitem.ultraLargeDiffer,
+                    "largeDiffer" : addValueitem.largeDiffer,
+                    "mediumDiffer" : addValueitem.mediumDiffer,
+                    "smallDiffer" : addValueitem.smallDiffer,
+                    "largeBuyDealCount" : addValueitem.largeBuyDealCount,
+                    "largeSellDealCount" : addValueitem.largeSellDealCount,
+                    "dealCountMovingAverage" : addValueitem.dealCountMovingAverage,
+                ]
+                do {
+                    try itemJSON.merge(with: update4)
+                } catch {
+                    // ignore
+                }
+                let update5: JSON = [
+                    "mediumBuyAmount" : addValueitem.mediumBuyAmount,
+                    "mediumSellAmount" : addValueitem.mediumSellAmount,
+                    "smallBuyVolume" : addValueitem.smallBuyVolume,
+                    "smallSellVolume" : addValueitem.smallSellVolume,
+                    "smallBuyAmount" : addValueitem.smallBuyAmount,
+                    "smallSellAmount" : addValueitem.smallSellAmount,
+                    "ultraLargeNetInflow" : addValueitem.ultraLargeNetInflow,
+                    "largeNetInflow" : addValueitem.largeNetInflow,
+                    "netCapitalInflow" : addValueitem.netCapitalInflow,
+                    "mediumNetInflow" : addValueitem.mediumNetInflow,
+                ]
+                do {
+                    try itemJSON.merge(with: update5)
+                } catch {
+                    // ignore
+                }
+                let update6: JSON = [
+                    "largeSellAmount" : addValueitem.largeSellAmount,
+                    "mediumBuyVolume" : addValueitem.mediumBuyVolume,
+                    "mediumSellVolume" : addValueitem.mediumSellVolume,
+                ]
+                do {
+                    try itemJSON.merge(with: update6)
+                } catch {
+                    // ignore
+                }
                 resultJSON["\(i)"] = itemJSON
                 i = i + 1
             }

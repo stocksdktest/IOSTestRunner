@@ -27,13 +27,13 @@ class CONVERTIBLE_1: BaseTestCase {
         var resultJSON : JSON = [:]
         for items in linkQuoteResponse.items{
         var itemJSON: JSON = [
-        "code":items.code,
-        "name":items.name,
-        "lastPrice":items.lastPrice,
-        "premium":items.premiumRate,
-        "changeRate":items.changeRate,
-        "change":items.change,
-             ]
+            "code":items.code,
+            "name":items.name,
+            "lastPrice":items.lastPrice,
+            "premium":items.premiumRate,
+            "changeRate":items.changeRate,
+            "change":items.change,
+         ]
             resultJSON["\(items.code!)"] = itemJSON
  
      }

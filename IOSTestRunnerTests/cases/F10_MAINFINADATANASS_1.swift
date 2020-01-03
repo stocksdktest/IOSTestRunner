@@ -44,6 +44,10 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
                     "TotalOperRevenue":dic1["TOTALOPERREVENUE"]!,
                     "OperProfit":dic1["OPERPROFIT"]!,
                     "NetProfit":dic1["NETPROFIT"]!,
+                    
+                    
+                ]
+                let update1: JSON = [
                     "TotalAsset":dic1["TOTALASSET"]!,
                     "TotalLiab":dic1["TOTALLIAB"]!,
                     "TotalSHEquity":dic1["TOTALSHEQUITY"]!,
@@ -52,8 +56,12 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
                     "NetCashFlowFina":dic1["NETCASHFLOWFINA"]!,
                     "CashEquiNetIncr":dic1["CASHEQUINETINCR"]!,
                     "EPSBASIC":dic1["BASICEPS"]!,
-                    
                 ]
+                do {
+                    try itemJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
                 resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
                 }
                 print(resultJSON)
@@ -74,6 +82,9 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
                             "TotalOperRevenue":dic1["TOTALOPERREVENUE"]!,
                             "OperProfit":dic1["OPERPROFIT"]!,
                             "NetProfit":dic1["NETPROFIT"]!,
+                            
+                        ]
+                        let update1: JSON = [
                             "TotalAsset":dic1["TOTALASSET"]!,
                             "TotalLiab":dic1["TOTALLIAB"]!,
                             "TotalSHEquity":dic1["TOTALSHEQUITY"]!,
@@ -83,6 +94,11 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
                             "CashEquiNetIncr":dic1["CASHEQUINETINCR"]!,
                             "EPSBASIC":dic1["BASICEPS"]!,
                         ]
+                        do {
+                            try itemJSON.merge(with: update1)
+                        } catch {
+                            // ignore
+                        }
                         resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
                     }
                     

@@ -35,24 +35,8 @@ class UKQUOTE_1: BaseTestCase {
                 "datetime":items.datetime,
                 "volume":items.volume,
                 "amount":items.amount,
-                "transactionNumber":items.transactionNumber,
-                "closeBuyPrice":items.buyPrice,
-                "closeSellPrice":items.sellPrice,
-                "highPriceDayAuto":items.highPriceDayAuto,
-                "highPriceDayNonAuto":items.highPriceNonDayAuto,
-                "lowPriceDayAuto":items.lowPriceDayAuto,
-                "lowPriceDayNonAuto":items.lowPriceNonDayAuto,
-                "highPriceYearAuto":items.highPriceYearAuto,
-                "highPriceYearNonAuto":items.highPriceNonYearAuto,
-                "lowPriceYearAuto":items.lowPriceYearAuto,
-                "lowPriceYearNonAuto":items.lowPriceNonYearAuto,
-                "highPriceTimeYearAuto":items.highPriceTimeYearAuto,
-                "highPriceTimeYearNonAuto":items.highPriceTimeYearNonAuto,
-                "lowPriceTimeYearAuto":items.lowPriceTimeYearAuto,
-                "lowPriceTimeYearNonAuto":items.lowPriceTimeYearNonAuto,
-                "averageValue":items.averagePrice,
-                "currency":items.currency,
-                "listingDate":items.listingDate,
+            ]
+            let update1: JSON = [
                 "conversionBase":items.conversionBase,
                 "securitiesConversionBase":items.securitiesConversionBase,
                 "GDR":items.gdr,
@@ -63,6 +47,43 @@ class UKQUOTE_1: BaseTestCase {
                 "subjectClosingReferencePrice":items.subjectClosingReferencePrice,
                 "premium":items.premiumRate,
             ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
+            let update2: JSON = [
+                "lowPriceYearAuto":items.lowPriceYearAuto,
+                "lowPriceYearNonAuto":items.lowPriceNonYearAuto,
+                "highPriceTimeYearAuto":items.highPriceTimeYearAuto,
+                "highPriceTimeYearNonAuto":items.highPriceTimeYearNonAuto,
+                "lowPriceTimeYearAuto":items.lowPriceTimeYearAuto,
+                "lowPriceTimeYearNonAuto":items.lowPriceTimeYearNonAuto,
+                "averageValue":items.averagePrice,
+                "currency":items.currency,
+                "listingDate":items.listingDate,
+            ]
+            do {
+                try itemJSON.merge(with: update2)
+            } catch {
+                // ignore
+            }
+            let update3: JSON = [
+                "transactionNumber":items.transactionNumber,
+                "closeBuyPrice":items.buyPrice,
+                "closeSellPrice":items.sellPrice,
+                "highPriceDayAuto":items.highPriceDayAuto,
+                "highPriceDayNonAuto":items.highPriceNonDayAuto,
+                "lowPriceDayAuto":items.lowPriceDayAuto,
+                "lowPriceDayNonAuto":items.lowPriceNonDayAuto,
+                "highPriceYearAuto":items.highPriceYearAuto,
+                "highPriceYearNonAuto":items.highPriceNonYearAuto,
+            ]
+            do {
+                try itemJSON.merge(with: update3)
+            } catch {
+                // ignore
+            }
             resultJSON["\(items.datetime!)"] = itemJSON
             
         }

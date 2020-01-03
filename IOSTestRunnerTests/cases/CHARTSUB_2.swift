@@ -80,14 +80,22 @@ class CHARTSUB_2: BaseTestCase {
              "largeMoneyInflow":items.largeMoneyInflow,
              "bigMoneyInflow ":items.bigMoneyInflow,
              "midMoneyInflow":items.midMoneyInflow,
-             "smallMoneyInflow":items.smallMoneyInflow,
-             "largeTradeNum":items.largeTradeNum,
-             "bigTradeNum ":items.bigTradeNum,
-             "midTradeNum":items.midTradeNum,
-             "smallTradeNum":items.smallTradeNum,
-             "bigNetVolume": items.bigNetVolume,
+             
              
          ]
+        let update1: JSON = [
+            "smallMoneyInflow":items.smallMoneyInflow,
+            "largeTradeNum":items.largeTradeNum,
+            "bigTradeNum ":items.bigTradeNum,
+            "midTradeNum":items.midTradeNum,
+            "smallTradeNum":items.smallTradeNum,
+            "bigNetVolume": items.bigNetVolume,
+        ]
+        do {
+            try itemJSON.merge(with: update1)
+        } catch {
+            // ignore
+        }
             resultJSON["\(j)"] = itemJSON
             j = j + 1
 

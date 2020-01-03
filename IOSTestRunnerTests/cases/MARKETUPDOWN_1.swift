@@ -31,15 +31,22 @@ class MARKETUPDOWN_1: BaseTestCase {
             "tLimitDown":marketUpdownsResponse.limitDownCount,
             "yUp":marketUpdownsResponse.preAdvanceCount,
             "yDown":marketUpdownsResponse.preDeclineCount,
+            
+            ]
+        let update1: JSON = [
             "yEqual":marketUpdownsResponse.preEqualCount,
             "yLimitUp":marketUpdownsResponse.preLimitUpCount,
             "yLimitDown":marketUpdownsResponse.preLimitDownCount,
             "yTime":marketUpdownsResponse.preDatetime,
             "tTime":marketUpdownsResponse.datetime,
             "list":marketUpdownsResponse.list,
-            ]
-        
-print(resultJSON)
-onTestResult(param: param, result: resultJSON)
-}
+        ]
+        do {
+            try resultJSON.merge(with: update1)
+        } catch {
+            // ignore
+        }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
+    }
 }

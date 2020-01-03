@@ -75,6 +75,9 @@ class OHLCV3_4: BaseTestCase {
                 "lowPrice": item.lowPrice,
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
+                
+            ]
+            let update1: JSON = [
                 "averagePrice": item.averagePrice,
                 "reference_price": item.referencePrice,
                 "transaction_price": item.amount,
@@ -82,6 +85,11 @@ class OHLCV3_4: BaseTestCase {
                 "fp_volume": item.afterHoursVolume,
                 "fp_amount": item.afterHoursAmount
             ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             resultJSON["\(item.datetime!)"] = itemJSON
             
         }

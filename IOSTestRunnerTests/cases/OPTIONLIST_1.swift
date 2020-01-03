@@ -31,23 +31,44 @@ class OPTIONLIST_1: BaseTestCase {
                 "datetime": item.datetime,
                 "market": item.market,
                 "subtype": item.subtype,
-                "lastPrice": item.lastPrice,
-                "highPrice": item.highPrice,
-                "lowPrice": item.lowPrice,
-                "openPrice": item.openPrice,
-                "preClosePrice": item.preClosePrice,
-                "volume": item.volume,
-                "nowVolume": item.nowVolume,
-                "turnoverRate": item.turnoverRate,
+            ]
+            let update1: JSON = [
+                "limitPriceUpperLimit": item.plSubscribeLimit,
+                "limitPriceLowerLimit": item.plSubscribeLowerLimit,
+                "bidpx1": item.buyPrice,
+                "askpx1": item.sellPrice,
+                "bidvol1": item.buyVolume,
+                "askvol1": item.sellVolume,
+                "buyPrices": item.buyPrices,
+                "buyVolumes":item.buyVolumes,
+                "sellPrices":item.sellPrices,
+                "sellVolumes":item.sellVolumes,
+            ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
+            let update2: JSON = [
+                "sumSell": item.totalSellVolume,
+                "averageBuy": item.averageBuyPrice,
+                "averageSell": item.averageSellPrice,
 
-                "limitUP": item.limitUp,
-                "limitDown": item.limitDown,
-                "averageValue": item.averagePrice,
-                "change": item.change,
-                "amount": item.amount,
-                "volumeRatio": item.volumeRatio,
-                "buyPrice": item.buyPrice,
-                "sellPrice": item.sellPrice,
+                "buy_cancel_count": item.withdrawBuyCount,
+                "buy_cancel_num": item.withdrawBuyVolume,
+                "buy_cancel_amount": item.withdrawBuyAmount,
+                "sell_cancel_count": item.withdrawSellCount,
+                "sell_cancel_num": item.withdrawSellVolume,
+                "sell_cancel_amount": item.withdrawSellAmount,
+
+                "change2": item.change2,
+            ]
+            do {
+                try itemJSON.merge(with: update2)
+            } catch {
+                // ignore
+            }
+            let update3: JSON = [
                 "buyVolume": item.buyVolume,
                 "sellVolume": item.sellVolume,
                 "totalValue": item.totalValue,
@@ -62,31 +83,44 @@ class OPTIONLIST_1: BaseTestCase {
                 "hk_paramStatus": item.hkInfoStatus.rawValue,
 
                 "sumBuy": item.totalBuyVolume,
-                "sumSell": item.totalSellVolume,
-                "averageBuy": item.averageBuyPrice,
-                "averageSell": item.averageSellPrice,
-
-                "buy_cancel_count": item.withdrawBuyCount,
-                "buy_cancel_num": item.withdrawBuyVolume,
-                "buy_cancel_amount": item.withdrawBuyAmount,
-                "sell_cancel_count": item.withdrawSellCount,
-                "sell_cancel_num": item.withdrawSellVolume,
-                "sell_cancel_amount": item.withdrawSellAmount,
-
-                "change2": item.change2,
-
-                "limitPriceUpperLimit": item.plSubscribeLimit,
-                "limitPriceLowerLimit": item.plSubscribeLowerLimit,
-                "bidpx1": item.buyPrice,
-                "askpx1": item.sellPrice,
-                "bidvol1": item.buyVolume,
-                "askvol1": item.sellVolume,
-                "buyPrices": item.buyPrices,
-                "buyVolumes":item.buyVolumes,
-                "sellPrices":item.sellPrices,
-                "sellVolumes":item.sellVolumes,
-                
             ]
+            do {
+                try itemJSON.merge(with: update3)
+            } catch {
+                // ignore
+            }
+            let update4: JSON = [
+                "nowVolume": item.nowVolume,
+                "turnoverRate": item.turnoverRate,
+
+                "limitUP": item.limitUp,
+                "limitDown": item.limitDown,
+                "averageValue": item.averagePrice,
+                "change": item.change,
+                "amount": item.amount,
+                "volumeRatio": item.volumeRatio,
+                "buyPrice": item.buyPrice,
+                "sellPrice": item.sellPrice,
+            ]
+            do {
+                try itemJSON.merge(with: update4)
+            } catch {
+                // ignore
+            }
+            let update5: JSON = [
+                "lastPrice": item.lastPrice,
+                "highPrice": item.highPrice,
+                "lowPrice": item.lowPrice,
+                "openPrice": item.openPrice,
+                "preClosePrice": item.preClosePrice,
+                "volume": item.volume,
+            ]
+            do {
+                try itemJSON.merge(with: update5)
+            } catch {
+                // ignore
+            }
+            
 
             
             switch item.changeState{

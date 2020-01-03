@@ -46,6 +46,9 @@ class DRQUOTELIST_1: BaseTestCase {
                 "change":items.change,
                 "dateTime":items.datetime,
                 "baseCode":items.baseStockCode,
+                
+            ]
+            let update1: JSON = [
                 "baseName":items.baseStockName,
                 "baseLastPrice":items.baseLastPrice,
                 "basePreClosePrice":items.basePreClosePrice,
@@ -55,6 +58,11 @@ class DRQUOTELIST_1: BaseTestCase {
                 "baseDateTime":items.baseDatetime,
                 "premium":items.premiumRate,
             ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             resultJSON["\(i)"] = itemJSON
             i=i+1
         }

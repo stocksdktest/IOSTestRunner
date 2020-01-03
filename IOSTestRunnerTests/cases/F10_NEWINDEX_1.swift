@@ -40,6 +40,9 @@ class F10_NEWINDEX_1: BaseTestCase {
                 "netProfitParentCom": record["NETPROFITPARENTCOM"]!,
                 "basicEPS": record["BASICEPS"]!,
                 "totalShare": record["TOTALSHARE"]!,
+                
+            ]
+            let update1: JSON = [
                 "BVPS_": record["BVPS"]!,
                 "reservePS": record["RESERVEPS"]!,
                 "REPTITLE_": record["REPTITLE"]!,
@@ -50,6 +53,11 @@ class F10_NEWINDEX_1: BaseTestCase {
                 "operRevenueYOY": record["OPERREVENUEYOY"]!,
                 "operRevenue": record["OPERREVENUE"]!
             ]
+            do {
+                try resultJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }
