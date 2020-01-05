@@ -26,10 +26,10 @@
 		971816EC23BDC51C0085A3E6 /* SUBNEWBONDSTOCKRANKING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DC23BDC51C0085A3E6 /* SUBNEWBONDSTOCKRANKING_1.swift */; };
 		971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DD23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift */; };
 		971816EE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift */; };
-		971816F923BDC5920085A3E6 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 971816EF23BDC5920085A3E6 /* libMApi.a */; };
 		971816FD23BDCEC70085A3E6 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971816FC23BDCEC60085A3E6 /* CoreServices.framework */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
 		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
+		A151DDD923C1E36E00544BA4 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
 		A153910B23113DF3007648F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910A23113DF3007648F4 /* AppDelegate.swift */; };
 		A153910D23113DF3007648F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153910C23113DF3007648F4 /* ViewController.swift */; };
 		A153911023113DF3007648F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153910E23113DF3007648F4 /* Main.storyboard */; };
@@ -91,7 +91,6 @@
 		971816DC23BDC51C0085A3E6 /* SUBNEWBONDSTOCKRANKING_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUBNEWBONDSTOCKRANKING_1.swift; sourceTree = "<group>"; };
 		971816DD23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L2TICKDETAILV2_1.swift; sourceTree = "<group>"; };
 		971816DE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOREVOLUMETEST_1.swift; sourceTree = "<group>"; };
-		971816EF23BDC5920085A3E6 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMApi.a; sourceTree = "<group>"; };
 		971816F223BDC5920085A3E6 /* MApiObject+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MApiObject+Info.h"; sourceTree = "<group>"; };
 		971816F323BDC5920085A3E6 /* MApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MApiObject.h; sourceTree = "<group>"; };
 		971816F423BDC5920085A3E6 /* MChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MChartView.h; sourceTree = "<group>"; };
@@ -161,10 +160,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A151DDD923C1E36E00544BA4 /* libMApi.a in Frameworks */,
 				971816FD23BDCEC70085A3E6 /* CoreServices.framework in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
-				971816F923BDC5920085A3E6 /* libMApi.a in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
 				A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */,
 				531233985C2C7E85A6AA6CEC /* Pods_IOSTestRunnerTests.framework in Frameworks */,
@@ -243,7 +242,6 @@
 		A15390FE23113DF3007648F4 = {
 			isa = PBXGroup;
 			children = (
-				971816EF23BDC5920085A3E6 /* libMApi.a */,
 				971816F023BDC5920085A3E6 /* sdk */,
 				A153910923113DF3007648F4 /* IOSTestRunner */,
 				A153911E23113DF3007648F4 /* IOSTestRunnerTests */,
