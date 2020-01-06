@@ -26,6 +26,7 @@ class ADDVALUE_3: BaseTestCase {
         if param["FIELDS"].array != nil{
             var fieldVal = [String]()
             if let fields = param["FIELDS"].array{
+                
                 for field in fields{
                     fieldVal.append(field.stringValue)
                 }

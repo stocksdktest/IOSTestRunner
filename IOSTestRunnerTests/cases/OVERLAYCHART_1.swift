@@ -20,17 +20,20 @@ class OVERLAYCHART_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MChartRequest()
         mRequest.code = param["CODE"].stringValue
-//        mRequest.subtype = param["SUBTYPE"].stringValue
-        if let typeVal = MChartType.init(rawValue: param["TYPE"].uIntValue) {
-            mRequest.chartType = typeVal
+        mRequest.subtype = param["SUBTYPE"].stringValue
+        if param["TYPE"].stringValue == "ChartTypeOneDay"{
+            mRequest.chartType = MChartType(rawValue: 0)!
+        }else if param["TYPE"].stringValue == "ChartTypeFiveDay"{
+            mRequest.chartType = MChartType(rawValue: 1)!
         }
-        mRequest.returnAFData = ("0" as! NSString).boolValue
+        
+        mRequest.returnAFData = ("0" as NSString).boolValue
         if let superpositionCodeVal = param["superpositionCode"].string{
             mRequest.superpositionCode = superpositionCodeVal
         }
-//        if let superpositionSubtypeVal = param["superpositionSubtype"].string{
-//            mRequest.superpositionSubtype = superpositionSubtypeVal
-//        }
+        if let superpositionSubtypeVal = param["superpositionSubtype"].string{
+            mRequest.superpositionSubtype = superpositionSubtypeVal
+        }
         let resp = self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse
         XCTAssertNotNil(chartResponse.ohlcItems)

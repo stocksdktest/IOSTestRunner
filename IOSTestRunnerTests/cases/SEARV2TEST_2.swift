@@ -20,14 +20,14 @@ class SEARV2TEST_2: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequestV2()
          mRequest.keyword = param["KEYWORD"].stringValue
-        if let fields = param["CATEGORIES"].array{
+        if let fields = param["MARKET"].array{
             var fieldVal = [String]()
             for field in fields{
                 fieldVal.append(field.stringValue)
             }
                 mRequest.categories = fieldVal
         }
-         mRequest.searchLimit = param["SEARCHLIMIT"].uIntValue
+         mRequest.searchLimit = param["CATEGORIES"].uIntValue
     
         
         let resp = self.makeSyncRequest(request: mRequest)

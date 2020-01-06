@@ -25,6 +25,7 @@ class CHARTV2TEST_3: BaseTestCase {
         }else if param["TYPE"] == "ChartTypeFiveDay"{
             mRequest.chartType = MChartType(rawValue: 1)!
         }
+        mRequest.subtype = param["SUBTYPE"].stringValue
 
         let resp = self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse

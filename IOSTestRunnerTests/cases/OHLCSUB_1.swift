@@ -20,6 +20,7 @@ class OHLCSUB_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOHLCRequestV2()
         mRequest.code = param["CODE"].stringValue
+        mRequest.subtype = param["SUBTYPE"].stringValue
         mRequest.period = MOHLCPeriod.init(rawValue:0)!
         mRequest.priceAdjustedMode = MOHLCPriceAdjustedMode.init(rawValue:0)!
         let resp = self.makeSyncRequest(request: mRequest)
