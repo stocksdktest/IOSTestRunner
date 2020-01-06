@@ -38,7 +38,7 @@ steps:
       from_secret: ssh_password
     script_stop: true
     script:
-    - cd /tmp/build-cache && bash ./helper.sh build
+    - cd /tmp/build-cache && bash ./helper.sh build-for-124
     - test -d /tmp/build-cache/Build/Products/Debug-iphonesimulator/IOSTestRunner.app
     - cd /tmp/build-cache/Build/Products/Debug-iphonesimulator/ && zip -r /tmp/build-cache/IOSTestRunner.app.zip IOSTestRunner.app
 - name: checksum-and-release
