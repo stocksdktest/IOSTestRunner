@@ -11,10 +11,10 @@ import XCTest
 import os.log
 import SwiftyJSON
 
-class CATESORTING_2: BaseTestCase {
+class CATESORTING_3: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.CATESORTING_2
+        return StockTestCaseName.CATESORTING_3
     }
     
     func testCategorySorting() {
@@ -23,8 +23,8 @@ class CATESORTING_2: BaseTestCase {
         mRequest.code = param["CateType"].stringValue
         
         let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
-        mRequest.pageSize = Int(paramI[1] as! String)!
-        mRequest.pageIndex = Int(paramI[0] as! String)!
+        mRequest.endIndex = Int(paramI[1] as! String)!
+        mRequest.beginIndex = Int(paramI[0] as! String)!
         if paramI[3] as! String == "0"{
             mRequest.ascending = ("1" as NSString).boolValue
         }else if paramI[3] as! String == "1"{

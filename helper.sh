@@ -12,7 +12,7 @@ if [[ $# -ne 1 ]] && [[ $# -ne 2 ]];then
     echo "./helper.sh run-for-131"
     echo "./helper.sh log"
 elif [[ $1 == "build" ]]; then
-    xcodebuild -quiet -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator11.2 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
+    xcodebuild -quiet -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator12.4 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build-for-testing
 elif [[ $1 == "build-for-131" ]]; then
     xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -sdk iphonesimulator13.1 -configuration Debug -destination "platform=iOS Simulator,name=iPhone 8 Plus" clean build build-for-testing
 elif [[ $1 == "build-for-124" ]]; then
@@ -27,7 +27,7 @@ elif [[ $1 == "config" ]]; then
     serializeStr=$2
     PlistBuddy -c "Add :runner_config string \"${serializeStr}\"" ./Build/Products/Debug-iphonesimulator/IOSTestRunner.app/Info.plist
 elif [[ $1 == "run" ]]; then
-    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Debug -sdk iphonesimulator11.2 -destination "platform=iOS Simulator,name=iPhone 8 Plus" test-without-building -only-testing IOSTestRunnerTests
+    xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Debug -sdk iphonesimulator12.4 -destination "platform=iOS Simulator,name=iPhone 8 Plus" test-without-building -only-testing IOSTestRunnerTests
 elif [[ $1 == "run-for-124" ]]; then
     xcodebuild -workspace IOSTestRunner.xcworkspace -scheme IOSTestRunner -configuration Debug -sdk iphonesimulator12.4 -destination "platform=iOS Simulator,name=iPhone 8 Plus" test-without-building -only-testing IOSTestRunnerTests
 elif [[ $1 == "run-for-132" ]]; then

@@ -23,26 +23,31 @@ class ORDERQUANTITY_1: BaseTestCase {
         
         let resp = self.makeSyncRequest(request: mRequest)
         let orderQuantityResponse = resp as! MOrderQuantityResponse
-        XCTAssertNotNil(orderQuantityResponse.buyItems)
-        XCTAssertNotNil(orderQuantityResponse.sellItems)
+        
 
         var jsonarr1 = [String]()
-        for buyitem in orderQuantityResponse.buyItems{
-            let OQitems:NSArray = buyitem as! NSArray
-            for OQitem in OQitems{
-                let orderQuantityBuyItem:MOrderQuantityItem = OQitem as! MOrderQuantityItem
-                jsonarr1.append(orderQuantityBuyItem.volume)
+        if orderQuantityResponse.buyItems != nil{
+            for buyitem in orderQuantityResponse.buyItems{
+                let OQitems:NSArray = buyitem as! NSArray
+                for OQitem in OQitems{
+                    let orderQuantityBuyItem:MOrderQuantityItem = OQitem as! MOrderQuantityItem
+                    jsonarr1.append(orderQuantityBuyItem.volume)
+                }
             }
         }
+        
         var jsonarr2 = [String]()
-        for sellitem in orderQuantityResponse.sellItems{
-            
-            let OQitems:NSArray = sellitem as! NSArray
-            for OQitem in OQitems{
-                let orderQuantitySellItem:MOrderQuantityItem = OQitem as! MOrderQuantityItem
-                jsonarr2.append(orderQuantitySellItem.volume)
+        if orderQuantityResponse.sellItems != nil{
+            for sellitem in orderQuantityResponse.sellItems{
+                
+                let OQitems:NSArray = sellitem as! NSArray
+                for OQitem in OQitems{
+                    let orderQuantitySellItem:MOrderQuantityItem = OQitem as! MOrderQuantityItem
+                    jsonarr2.append(orderQuantitySellItem.volume)
+                }
             }
         }
+        
         var jsonarr3: JSON = [
             "QUANTITY": jsonarr1
         ]

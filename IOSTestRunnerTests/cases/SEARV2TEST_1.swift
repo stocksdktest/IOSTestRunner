@@ -20,7 +20,7 @@ class SEARV2TEST_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequestV2()
          mRequest.keyword = param["KEYWORD"].stringValue
-        if let fields = param["CATEGORIES"].array{
+        if let fields = param["MARKET"].array{
             var fieldVal = [String]()
             for field in fields{
                 fieldVal.append(field.stringValue)
