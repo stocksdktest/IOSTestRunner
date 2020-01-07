@@ -34,6 +34,7 @@ class F10_STOCKSHARECHANGEINFO_1: BaseTestCase {
             
         case .GA:
             var resultJSON : JSON = [:]
+            var i=1
             for records in stockShareChangeInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -42,14 +43,15 @@ class F10_STOCKSHARECHANGEINFO_1: BaseTestCase {
                         "aListedShare": record["ALISTEDSHARE"]!,
                         "lastChangeDate": record["LASTCHANGEDATE"]!
                     ]
-                    resultJSON["\(record["LASTCHANGEDATE"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         case .CH:
             var resultJSON : JSON = [:]
+            var i=1
             for records in stockShareChangeInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -59,8 +61,8 @@ class F10_STOCKSHARECHANGEINFO_1: BaseTestCase {
                         "changeamt": record["CHANGEAMT"]!,
                         "changedire": record["CHANGEDIRE"]!
                     ]
-                    resultJSON["\(record["LASTCHANGEDATE"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)

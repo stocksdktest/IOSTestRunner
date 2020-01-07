@@ -46,8 +46,9 @@ class F10_ASSETALLOCATION_1: BaseTestCase {
                 resultJSON["\(i)"] = itemJSON
                 i = i+1
             }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

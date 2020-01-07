@@ -31,36 +31,70 @@ class F10_NEWINDEX_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let latestIndexResponse = resp as! MLatestIndexResponse
         XCTAssertNotNil(latestIndexResponse.record)
-        if let record = latestIndexResponse.record{
-            var resultJSON: JSON = [
-                "netProfitCutParentComYOY": record["NETPROFITCUTPARENTCOMYOY"]!,
-                "netProfitCutParentCom": record["NETPROFITCUTPARENTCOM"]!,
-                "cutBasicEPS": record["CUTBASICEPS"]!,
-                "annuROE": record["ANNUROE"]!,
-                "netProfitParentCom": record["NETPROFITPARENTCOM"]!,
-                "basicEPS": record["BASICEPS"]!,
-                "totalShare": record["TOTALSHARE"]!,
-                
-            ]
-            let update1: JSON = [
-                "BVPS_": record["BVPS"]!,
-                "reservePS": record["RESERVEPS"]!,
-                "REPTITLE_": record["REPTITLE"]!,
-                "netCashFlowOperPS": record["NETCASHFLOWOPERPS"]!,
-                "grossProfitMargin": record["GROSSPROFITMARGIN"]!,
-                "netProfitParentComYOY": record["NETPROFITPARENTCOMYOY"]!,
-                "retainedEarningPS": record["RETAINEDEARNINGPS"]!,
-                "operRevenueYOY": record["OPERREVENUEYOY"]!,
-                "operRevenue": record["OPERREVENUE"]!
-            ]
-            do {
-                try resultJSON.merge(with: update1)
-            } catch {
-                // ignore
+        switch mRequest.sourceType{
+            
+        case .GA:
+            if let record = latestIndexResponse.record{
+                var resultJSON: JSON = [
+                    "netProfitCutParentComYOY": record["NETPROFITCUTPARENTCOMYOY"]!,
+                    "netProfitCutParentCom": record["NETPROFITCUTPARENTCOM"]!,
+                    "cutBasicEPS": record["CUTBASICEPS"]!,
+                    "annuROE": record["ANNUROE"]!,
+                    "netProfitParentCom": record["NETPROFITPARENTCOM"]!,
+                    "basicEPS": record["BASICEPS"]!,
+                    "totalShare": record["TOTALSHARE"]!,
+                    
+                ]
+                let update1: JSON = [
+                    "BVPS_": record["BVPS"]!,
+                    "reservePS": record["RESERVEPS"]!,
+                    "REPTITLE_": record["REPTITLE"]!,
+                    "netCashFlowOperPS": record["NETCASHFLOWOPERPS"]!,
+                    "grossProfitMargin": record["GROSSPROFITMARGIN"]!,
+                    "netProfitParentComYOY": record["NETPROFITPARENTCOMYOY"]!,
+                    "retainedEarningPS": record["RETAINEDEARNINGPS"]!,
+                    "operRevenueYOY": record["OPERREVENUEYOY"]!,
+                    "operRevenue": record["OPERREVENUE"]!
+                ]
+                do {
+                    try resultJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
             }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+        case .CH:
+            if let record = latestIndexResponse.record{
+                var resultJSON: JSON = [
+                    "netProfitCutParentComYOY": record["NETPROFITCUTPARENTCOMYOY"]!,
+                    "netProfitCutParentCom": record["NETPROFITCUTPARENTCOM"]!,
+                    "cutBasicEPS": record["CUTBASICEPS"]!,
+                    "annuROE": record["ANNUROE"]!,
+                    "netProfitParentCom": record["NETPROFITPARENTCOM"]!,
+                    "basicEPS": record["BASICEPS"]!,
+                    "totalShare": record["TOTALSHARE"]!,
+                    
+                ]
+                let update1: JSON = [
+                    "BVPS_": record["BVPS"]!,
+                    "REPTITLE_": record["REPTITLE"]!,
+                    "netCashFlowOperPS": record["NETCASHFLOWOPERPS"]!,
+                    "grossProfitMargin": record["GROSSPROFITMARGIN"]!,
+                    "netProfitParentComYOY": record["NETPROFITPARENTCOMYOY"]!,
+                    "operRevenueYOY": record["OPERREVENUEYOY"]!,
+                    "operRevenue": record["OPERREVENUE"]!
+                ]
+                do {
+                    try resultJSON.merge(with: update1)
+                } catch {
+                    // ignore
+                }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
+            }
         }
+        
     }
 }
 

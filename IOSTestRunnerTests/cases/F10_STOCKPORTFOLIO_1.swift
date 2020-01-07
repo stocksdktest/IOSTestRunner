@@ -32,6 +32,7 @@ class F10_STOCKPORTFOLIO_1: BaseTestCase {
         let fundStockPortfolioResponse = resp as! MFundStockPortfolioResponse
         XCTAssertNotNil(fundStockPortfolioResponse.records)
         var resultJSON : JSON = [:]
+        var i = 1
         for items in fundStockPortfolioResponse.records{
             if let item: NSDictionary = items as! NSDictionary{
             var itemJSON: JSON = [
@@ -41,8 +42,8 @@ class F10_STOCKPORTFOLIO_1: BaseTestCase {
                 "ACCTFORNAV":item["ACCTFORNAV"]!,
                 "HOLDVALUE":item["HOLDVALUE"]!,
             ]
-                resultJSON["\(item["ENDDATE"]!)"] = itemJSON
-            
+                resultJSON["\(i)"] = itemJSON
+            i=i+1
             }
         }
         print(resultJSON)

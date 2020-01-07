@@ -37,6 +37,7 @@ class F10_BLOCKTRADE_1: BaseTestCase {
         if mRequest.requestType == "blocktrade"{
             if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                 var resultJSON : JSON = [:]
+                var i=1
                 for List in Lists{
                     if let dic2 : NSDictionary = List as! NSDictionary{
                         var jsonarr2: JSON = [
@@ -48,7 +49,8 @@ class F10_BLOCKTRADE_1: BaseTestCase {
                             "BUYERNAME":dic2["BUYERNAME"]!,
                             "SELLERNAME":dic2["SELLERNAME"]!,
                         ]
-                        resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
+                        resultJSON["\(i)"] = jsonarr2
+                        i=i+1
                     }
                 }
                 print(resultJSON)

@@ -31,9 +31,8 @@ class F10_STOCKREPORT_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let stockReportListResponse = resp as! MStockReportResponse
         XCTAssertNotNil(stockReportListResponse.stockReportDetailItem)
-        var resultJSON : JSON = [:]
           if let item = stockReportListResponse.stockReportDetailItem{
-                var itemJSON: JSON = [
+                var resultJSON: JSON = [
          
                     "PUBDATE_":item.datetime,
                     "ID_":item.id,
@@ -43,9 +42,9 @@ class F10_STOCKREPORT_1: BaseTestCase {
                     "ABSTRACTFORMAT_":item.format,
                     "PURL":item.url,
                 ]
-            resultJSON["\(item.datetime!)"] = itemJSON
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
             }
-        print(resultJSON)
-        onTestResult(param: param, result: resultJSON)
+        
         }
     }

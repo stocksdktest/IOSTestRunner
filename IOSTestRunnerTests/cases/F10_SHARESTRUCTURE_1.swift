@@ -30,6 +30,7 @@ class F10_SHARESTRUCTURE_1: BaseTestCase {
         let fundShareStructResponse = resp as! MFundShareStructResponse
         XCTAssertNotNil(fundShareStructResponse.records)
         var resultJSON : JSON = [:]
+        var i=1
         for items in fundShareStructResponse.records{
         if let item: NSDictionary = items as! NSDictionary{
         var itemJSON: JSON = [
@@ -38,8 +39,8 @@ class F10_SHARESTRUCTURE_1: BaseTestCase {
                     "SUBSHARETOT":item["SUBSHARETOT"]!,
                     "REDTOTSHARE":item["REDTOTSHARE"]!,
                 ]
-            resultJSON["\(item["ENDDATE"]!)"] = itemJSON
-                
+            resultJSON["\(i)"] = itemJSON
+                i=i+1
             }
         }
         print(resultJSON)

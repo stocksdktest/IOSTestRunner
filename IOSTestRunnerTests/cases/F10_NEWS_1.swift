@@ -19,7 +19,11 @@ class F10_NEWS_1: BaseTestCase {
     func testNews() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MNewsRequest()
-        mRequest.newsID = param["NEWSID"].stringValue
+        if param["NEWSID"].stringValue == "null"{
+            mRequest.newsID = "nil"
+        }else{
+            mRequest.newsID = param["NEWSID"].stringValue
+        }
         let typeVal = param["SOURCETYPE"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!

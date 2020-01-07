@@ -32,6 +32,7 @@ class F10_COREBUSINESS_1: BaseTestCase {
         let coreBusinessResponse = resp as! MCoreBusinessResponse
         XCTAssertNotNil(coreBusinessResponse.records)
         var resultJSON : JSON = [:]
+        var i = 1
         for records in coreBusinessResponse.records{
             if let record:NSDictionary = records as! NSDictionary{
                 var itemJSON: JSON = [
@@ -42,12 +43,13 @@ class F10_COREBUSINESS_1: BaseTestCase {
                     "OperRevenue": record["OPERREVENUE"]!,
                     "ENDDATE_": record["ENDDATE"]!
                 ]
-                resultJSON["\(record["ENDDATE"]!)"] = itemJSON
-                
+                resultJSON["\(i)"] = itemJSON
+                i = i + 1
             }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

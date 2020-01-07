@@ -32,6 +32,7 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
         switch mRequest.sourceType{
         case .GA:
             var resultJSON : JSON = [:]
+            var i=1
             if let dic1: NSDictionary = financialSummaryResponse.jsonObject as? NSDictionary{
                 var itemJSON : JSON = [
                     "REPORTTITLE_": dic1["REPORTTITLE"]!,
@@ -80,12 +81,14 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
+                resultJSON["\(i)"] = itemJSON
+                i=i+1
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         case .CH:
             var resultJSON : JSON = [:]
+            var i=1
             if let arr1: NSArray = financialSummaryResponse.jsonObject as? NSArray{
                 for item in arr1{
                     if let dic1 : NSDictionary = item as? NSDictionary{
@@ -135,7 +138,8 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                         } catch {
                             // ignore
                         }
-                        resultJSON["\(dic1["REPORTTITLE"]!)"] = itemJSON
+                        resultJSON["\(i)"] = itemJSON
+                        i=i+1
                     }
                     
                 }

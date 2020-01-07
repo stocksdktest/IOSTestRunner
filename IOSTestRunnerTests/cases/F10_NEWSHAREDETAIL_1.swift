@@ -27,7 +27,7 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        mRequest.type = MIPOType(rawValue: 0)!
+//        mRequest.type = MIPOType(rawValue: 0)!
         let resp = self.makeSyncRequest(request: mRequest)
         let iPOShareDetailResponse = resp as! MIPOShareDetailResponse
         XCTAssertNotNil(iPOShareDetailResponse.info)

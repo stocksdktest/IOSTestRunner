@@ -30,6 +30,7 @@ class F10_BONUSFINANCE_1: BaseTestCase {
         let bonusFinanceResponse = resp as! MBonusFinanceResponse
         XCTAssertNotNil(bonusFinanceResponse.records)
         var resultJSON : JSON = [:]
+        var i=1
         for record in bonusFinanceResponse.records{
             
                 if let BFrecord:NSDictionary = record as? NSDictionary{
@@ -38,8 +39,8 @@ class F10_BONUSFINANCE_1: BaseTestCase {
                     "DiviScheme": BFrecord["DIVISCHEME"]!,
                     "NoticeDate": BFrecord["NOTICEDATE"]!
                 ]
-                    resultJSON["\(BFrecord["NOTICEDATE"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             
         }

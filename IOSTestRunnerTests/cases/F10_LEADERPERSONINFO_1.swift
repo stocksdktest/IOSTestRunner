@@ -35,6 +35,7 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
             
         case .GA:
             var resultJSON : JSON = [:]
+            var i=1
             for records in leaderPersonInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -44,13 +45,15 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
                         "GENDER": record["GENDER"]!,
                         "EDUCATION": record["EDUCATION"]
                     ]
-                    resultJSON["\(record["LEADERNAME"]!)"] = itemJSON
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         case .CH:
             var resultJSON : JSON = [:]
+            var i=1
             for records in leaderPersonInfoResponse.records{
                 if let record: NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -59,8 +62,8 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
                         "DUTYTYPE": record["DUTYTYPE"]!,
                         "BEGINDATE": record["BEGINDATE"]!
                     ]
-                    resultJSON["\(record["LEADERNAME"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)

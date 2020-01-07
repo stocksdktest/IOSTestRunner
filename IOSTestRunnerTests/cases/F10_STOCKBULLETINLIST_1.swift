@@ -43,6 +43,7 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
         let stockBulletinListResponse = resp as! MStockBulletinListResponse
         XCTAssertNotNil(stockBulletinListResponse.stockBulletinItems)
         var resultJSON : JSON = [:]
+        var i=1
         for items in stockBulletinListResponse.stockBulletinItems{
             if let item: MStockBulletinItem = items as! MStockBulletinItem{
                var itemJSON: JSON = [
@@ -55,12 +56,13 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
                     "ENTRYDATE":item.entryDate,
                     "ENTRYTIME":item.entryTime,
                 ]
-                resultJSON["\(item.datetime!)"] = itemJSON
-                
+                resultJSON["\(i)"] = itemJSON
+                i=i+1
             }
            
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

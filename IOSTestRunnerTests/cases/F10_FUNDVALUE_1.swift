@@ -30,6 +30,7 @@ class F10_FUNDVALUE_1: BaseTestCase {
         let fundNetValueResponse = resp as! MFundNetValueResponse
         XCTAssertNotNil(fundNetValueResponse.records)
         var resultJSON : JSON = [:]
+        var i=1
         for records in fundNetValueResponse.records{
             if let record: NSDictionary = records as! NSDictionary{
                 var itemJSON: JSON = [
@@ -39,7 +40,7 @@ class F10_FUNDVALUE_1: BaseTestCase {
                     "GROWRATE": record["GROWRATE"]!
                 ]
                 resultJSON["\(record["NAVDATE"]!)"] = itemJSON
-                
+                i=i+1
             }
         }
         print(resultJSON)

@@ -32,14 +32,15 @@ class F10_FNDNAVINDEX_1: BaseTestCase {
         let fundValueResponse = resp as! MFundValueResponse
         XCTAssertNotNil(fundValueResponse.items)
         var resultJSON : JSON = [:]
+        var i=1
         for items in fundValueResponse.items{
             if let item: NSDictionary = items as! NSDictionary{
                 var itemJSON: JSON = [
                     "UnitNAV_": item["UnitNAV"]!,
                     "ENDDATE_": item["ENDDATE"]!
                 ]
-                resultJSON["\(item["ENDDATE"]!)"] = itemJSON
-                
+                resultJSON["\(i)"] = itemJSON
+                i=i+1
             }
         }
         print(resultJSON)

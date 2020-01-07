@@ -32,6 +32,7 @@ class F10_INDUSTRYPORTFOLIO_1: BaseTestCase {
         let fundIndustryPortfolioResponse = resp as! MFundIndustryPortfolioResponse
         XCTAssertNotNil(fundIndustryPortfolioResponse.records)
         var resultJSON : JSON = [:]
+        var i=1
         for items in fundIndustryPortfolioResponse.records{
             if let item: NSDictionary = items as! NSDictionary{
                 var itemJSON: JSON = [
@@ -40,8 +41,8 @@ class F10_INDUSTRYPORTFOLIO_1: BaseTestCase {
                     "FAIRVALUE":item["FAIRVALUE"]!,
                     "NAVRATIO":item["NAVRATIO"]!,
                 ]
-                resultJSON["\(item["ENDDATE"]!)"] = itemJSON
-                
+                resultJSON["\(i)"] = itemJSON
+                i=i+1
             }
             
         }

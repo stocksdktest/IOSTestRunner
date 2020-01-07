@@ -27,7 +27,12 @@ class F10_NEWSLIST_1: BaseTestCase {
         }
         
          mRequest.newsType = param["NEWSTYPE"].stringValue
-         mRequest.newsID = param["NEWSID"].stringValue
+        if param["NEWSID"].stringValue == "null"{
+            mRequest.newsID = "nil"
+        }else{
+            mRequest.newsID = param["NEWSID"].stringValue
+        }
+         
         if param["TYPE"] == "-1"{
             mRequest.type = F10NewsRequestType(rawValue: -1)!
         }else if param["TYPE"] == "5"{
@@ -40,6 +45,7 @@ class F10_NEWSLIST_1: BaseTestCase {
         let newsListResponse = resp as! MNewsListResponse
         XCTAssertNotNil(newsListResponse.newsItems)
         var resultJSON : JSON = [:]
+        var i=1
         for items in newsListResponse.newsItems{
           if let item: MNewsItem = items as! MNewsItem{
             var itemJSON: JSON = [
@@ -49,8 +55,8 @@ class F10_NEWSLIST_1: BaseTestCase {
                 "MEDIANAME_":item.source,
                 "ABSTRACTFORMAT_":item.format,
             ]
-            resultJSON["\(item.datetime!)"] = itemJSON
-            
+            resultJSON["\(i)"] = itemJSON
+            i=i+1
             }
      }
         print(resultJSON)

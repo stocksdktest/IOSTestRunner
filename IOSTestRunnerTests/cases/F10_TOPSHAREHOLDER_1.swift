@@ -34,6 +34,7 @@ class F10_TOPSHAREHOLDER_1: BaseTestCase {
             
         case .GA:
             var resultJSON : JSON = [:]
+            var i=1
             for records in topShareHolderResponse.records{
                 if let record:NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -45,14 +46,15 @@ class F10_TOPSHAREHOLDER_1: BaseTestCase {
                         "HOLDASHAREUR_": record["HOLDSHARE"]!,
                         "ENDDATE_": record["ENDDATE"]!
                     ]
-                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         case .CH:
             var resultJSON : JSON = [:]
+            var i=1
             for records in topShareHolderResponse.records{
                 if let record:NSDictionary = records as! NSDictionary{
                     var itemJSON: JSON = [
@@ -63,8 +65,8 @@ class F10_TOPSHAREHOLDER_1: BaseTestCase {
                         "SHCODE_":record["SHCODE"]!,
                         "HOLDASHAREUR_":record["HOLDASHAREUR"]!
                     ]
-                    resultJSON["\(record["ENDDATE"]!)"] = itemJSON
-                    
+                    resultJSON["\(i)"] = itemJSON
+                    i=i+1
                 }
             }
             print(resultJSON)

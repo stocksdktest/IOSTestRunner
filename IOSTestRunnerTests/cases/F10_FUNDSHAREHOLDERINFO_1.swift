@@ -34,7 +34,7 @@ class F10_FUNDSHAREHOLDERINFO_1: BaseTestCase {
             "COUNT_": fundShareHolderInfoResponse.count,
             "ENDDATE_": fundShareHolderInfoResponse.endDate
         ]
-        var jsonarr1 : JSON = [:]
+        var i = 1
         for records in fundShareHolderInfoResponse.records{
             if let list: NSDictionary = records as! NSDictionary{
                 
@@ -43,11 +43,10 @@ class F10_FUNDSHAREHOLDERINFO_1: BaseTestCase {
                     "PCTTOTALESHARE_": list["PCTTOTALESHARE"]!,
                     "HOLDINGVOL_": list["HOLDINGVOL"]!
                 ]
-                jsonarr1["\(list["CHINAMEABBR"]!)"] = jsonarr2
-                
+                resultJSON["\(i)"] = jsonarr2
+                i=i+1
             }
         }
-                resultJSON["list"] = jsonarr1
             
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
