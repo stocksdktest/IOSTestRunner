@@ -171,6 +171,7 @@
 		A1DA4153231E4D5A0019A5D4 /* StockTestObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA4152231E4D5A0019A5D4 /* StockTestObservation.swift */; };
 		A1DDD9B9239A62DA000640C3 /* MongoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDD9B8239A62DA000640C3 /* MongoCollector.swift */; };
 		A1DDD9BB239A62F1000640C3 /* LogCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDD9BA239A62F1000640C3 /* LogCollector.swift */; };
+		A1E182E523C57D7F00F760A4 /* SubscribeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E182E423C57D7F00F760A4 /* SubscribeTestCase.swift */; };
 		A1F7BF41231388DE00687389 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF40231388DE00687389 /* Utils.swift */; };
 		A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF422313D4D800687389 /* BaseTestCase.swift */; };
 		A1F7BF462313DB4D00687389 /* ParametrizedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F7BF452313DB4D00687389 /* ParametrizedTestCase.m */; };
@@ -385,6 +386,7 @@
 		A1DDD9B8239A62DA000640C3 /* MongoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoCollector.swift; sourceTree = "<group>"; };
 		A1DDD9BA239A62F1000640C3 /* LogCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCollector.swift; sourceTree = "<group>"; };
 		A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1E182E423C57D7F00F760A4 /* SubscribeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeTestCase.swift; sourceTree = "<group>"; };
 		A1F7BF40231388DE00687389 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1F7BF422313D4D800687389 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		A1F7BF442313DB1C00687389 /* ParametrizedTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParametrizedTestCase.h; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				21DBB69123BEC7C800D73536 /* TRADEQUOTE_1.swift */,
 				21DBB6AC23BEC7CB00D73536 /* UKQUOTE_1.swift */,
 				21DBB66423BEC7C300D73536 /* UPDOWNS_1.swift */,
+				A1E182E423C57D7F00F760A4 /* SubscribeTestCase.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				21DBB6DD23BEC7D000D73536 /* F10_STOCKSHAREINFO_1.swift in Sources */,
 				21DBB6FD23BEC7D000D73536 /* F10_STOCKPORTFOLIO_1.swift in Sources */,
 				971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */,
+				A1E182E523C57D7F00F760A4 /* SubscribeTestCase.swift in Sources */,
 				971816E123BDC51C0085A3E6 /* MOREPRICE_1.swift in Sources */,
 				21DBB75423BEC7D000D73536 /* ADDVALUE_1.swift in Sources */,
 				21DBB6FA23BEC7D000D73536 /* OVERLAYCHART_1.swift in Sources */,
