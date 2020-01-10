@@ -27,7 +27,7 @@ class TRADEDATE_2: BaseTestCase {
         XCTAssertNotNil(tradeDateResponse.dates)
         var resultJSON : JSON = [:]
         for dates in tradeDateResponse.dates{
-            var jsonarr2: JSON = [
+            let jsonarr2: JSON = [
                 "date": dates.date,
                 "isTrade": dates.type.rawValue,
                 "description": dates.desc

@@ -35,7 +35,7 @@ class SEARV2TEST_2: BaseTestCase {
         XCTAssertNotNil(searchResponse.resultItems)
         var resultJSON : JSON = [:]
         for items in searchResponse.resultItems {
-            var itemJSON: JSON = [
+            let itemJSON: JSON = [
                 "stockID": items.stockID,
                 "name": items.name,
                 "market": items.market,

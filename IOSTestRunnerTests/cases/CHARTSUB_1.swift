@@ -40,9 +40,9 @@ class CHARTSUB_1: BaseTestCase {
             case "7":
                 typeInt = typeInt | 1<<13
             default:
-                var typeInt1 = 1<<0 | 1<<1 | 1<<2 | 1<<3
-                var typeInt2 = 1<<4 | 1<<5 | 1<<6 | 1<<7
-                var typeInt3 = 1<<8
+                let typeInt1 = 1<<0 | 1<<1 | 1<<2 | 1<<3
+                let typeInt2 = 1<<4 | 1<<5 | 1<<6 | 1<<7
+                let typeInt3 = 1<<8
                 typeInt = typeInt1 | typeInt2 | typeInt3
             }
         }

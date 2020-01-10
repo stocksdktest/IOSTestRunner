@@ -31,7 +31,7 @@ class BROKERINFO_1: BaseTestCase {
         
         for buyitem in brokerSeatResponse.buyBrokerSeatItems{
             
-            var itemJSON: JSON = [
+            let itemJSON: JSON = [
                 "corp": buyitem.name,
                 "corporation": buyitem.fullName,
                 "state": "1"
@@ -41,7 +41,7 @@ class BROKERINFO_1: BaseTestCase {
             i = i + 1
         }
         for sellitem in brokerSeatResponse.sellBrokerSeatItems{
-            var itemJSON: JSON = [
+            let itemJSON: JSON = [
                 "corp": sellitem.name,
                 "corporation": sellitem.fullName,
                 "state": "0"

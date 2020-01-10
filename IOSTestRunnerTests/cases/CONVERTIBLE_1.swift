@@ -26,7 +26,7 @@ class CONVERTIBLE_1: BaseTestCase {
         XCTAssertNotNil(linkQuoteResponse.items)
         var resultJSON : JSON = [:]
         for items in linkQuoteResponse.items{
-        var itemJSON: JSON = [
+            let itemJSON: JSON = [
             "code":items.code,
             "name":items.name,
             "lastPrice":items.lastPrice,

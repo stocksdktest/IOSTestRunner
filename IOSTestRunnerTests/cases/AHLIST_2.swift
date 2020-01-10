@@ -37,7 +37,7 @@ class AHLIST_2: BaseTestCase {
         var resultJSON : JSON = [:]
         var i = 1
         for item in AHQuoteListResponse.ahItems{
-            var itemJSON:JSON = [
+            let itemJSON:JSON = [
                 "name" : item.name,
                 "codeA": item.codeA,
                 "lastPriceA": item.lastPriceA,

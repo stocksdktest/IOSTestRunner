@@ -54,9 +54,9 @@ class CHARTSUB_2: BaseTestCase {
             case "bigNetVolume":
                 typeInt = typeInt | 1<<13
             default:
-                var typeInt1 = 1<<0 | 1<<1 | 1<<2 | 1<<3
-                var typeInt2 = 1<<4 | 1<<5 | 1<<6 | 1<<7
-                var typeInt3 = 1<<8 | 1<<9
+                let typeInt1 = 1<<0 | 1<<1 | 1<<2 | 1<<3
+                let typeInt2 = 1<<4 | 1<<5 | 1<<6 | 1<<7
+                let typeInt3 = 1<<8 | 1<<9
                 typeInt = typeInt1 | typeInt2 | typeInt3
             }
         }

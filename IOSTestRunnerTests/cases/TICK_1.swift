@@ -69,7 +69,7 @@ class TICK_1: BaseTestCase {
 //            print(timeTickResponseNext)
 //            print(timeTickResponseNext.items.count)
             for item in timeTickResponseNext.items{
-                var itemJSON:JSON = [
+                let itemJSON:JSON = [
                     "type" : item.type.rawValue,
                     "time" : item.time,
                     "tradeVolume" : item.tradeVolume,

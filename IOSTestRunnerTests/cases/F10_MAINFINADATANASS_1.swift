@@ -71,9 +71,9 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
         case .CH:
             var resultJSON : JSON = [:]
             var i=1
-            if let arr1: NSArray = financialInfoResponse.jsonObject as? NSArray{
-                for item in arr1{
-                    if let dic1 : NSDictionary = item as? NSDictionary{
+//            if let arr1: NSArray = financialInfoResponse.jsonObject as? NSArray{
+//                for item in arr1{
+                    if let dic1 : NSDictionary = financialInfoResponse.jsonObject as? NSDictionary{
                         var itemJSON : JSON = [
                             "REPORTTITLE_": dic1["REPORTTITLE"]!,
                             "BasicEPS": dic1["BASICEPS"]!,
@@ -104,9 +104,9 @@ class F10_MAINFINADATANASS_1: BaseTestCase {
                         }
                         resultJSON["\(i)"] = itemJSON
                         i=i+1
-                    }
-                    
-                }
+//                    }
+//                    
+//                }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }

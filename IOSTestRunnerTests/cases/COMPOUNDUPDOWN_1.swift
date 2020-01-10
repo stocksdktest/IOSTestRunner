@@ -29,7 +29,7 @@ class COMPOUNDUPDOWN_1: BaseTestCase{
         var resultJSON : JSON = [:]
         
         for item in compoundUpdownsResponse.items{
-            var itemJSON : JSON = [
+            let itemJSON : JSON = [
                 "dateTime" : item.dateTime,
                 "riseCount": item.riseCount,
                 "fallCount": item.fallCount,

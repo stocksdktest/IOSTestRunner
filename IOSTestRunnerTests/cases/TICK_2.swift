@@ -23,7 +23,7 @@ class TICK_2: BaseTestCase {
         mRequest.subtype = param["SUBTYPE"].stringValue
         let paramI:NSArray = (param["page"].string?.split(separator: ",") as! NSArray)
         mRequest.pageSize = UInt(paramI[1] as! String)!
-        mRequest.index = paramI[0] as! String
+        mRequest.index = paramI[0] as? String
         mRequest.type = MTimeTickRequestType.init(rawValue: Int(paramI[2] as! String)!)!
         
         let resp = self.makeSyncRequest(request: mRequest)
@@ -31,7 +31,7 @@ class TICK_2: BaseTestCase {
         XCTAssertNotNil(timeTickResponse.items)
         var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
-            var itemJSON:JSON = [
+            let itemJSON:JSON = [
                 "type" : item.type.rawValue,
                 "time" : item.time,
                 "tradeVolume" : item.tradeVolume,

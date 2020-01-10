@@ -38,7 +38,7 @@ class CHARTV2TEST_6: BaseTestCase {
         XCTAssertNotNil(chartResponse.ohlcItems)
         var resultJSON : JSON = [:]
         for item in chartResponse.ohlcItems{
-            var itemJSON:JSON = [
+            let itemJSON:JSON = [
                 "datetime" : item.datetime,
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
@@ -54,7 +54,7 @@ class CHARTV2TEST_6: BaseTestCase {
         }
         if mRequest.returnAFData == true {
             for item in chartResponse.afItems{
-                var itemJSON:JSON = [
+                let itemJSON:JSON = [
                     "datetime": item.datetime,
                     "closePrice": item.closePrice,
                     "tradeVolume": item.tradeVolume,

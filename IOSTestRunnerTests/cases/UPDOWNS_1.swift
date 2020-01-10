@@ -24,7 +24,7 @@ class UPDOWNS_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let indexUpdownsResponse = resp as! MIndexUpdownsResponse
         XCTAssertNotNil(indexUpdownsResponse)
-        var resultJSON: JSON = [
+        let resultJSON: JSON = [
             "upCount":indexUpdownsResponse.advanceCount,
             "downCount":indexUpdownsResponse.declineCount,
             "sameCount":indexUpdownsResponse.equalCount,

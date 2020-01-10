@@ -24,7 +24,7 @@ class AHQUOTE_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let AHQuoteResponse = resp as! MAHQuoteResponse
         XCTAssertNotNil(AHQuoteResponse)
-            var resultJSON:JSON = [
+        let resultJSON:JSON = [
                 "code" : AHQuoteResponse.linkageCode,
                 "name" : AHQuoteResponse.linkageName,
                 "lastPrice": AHQuoteResponse.lastPrice,

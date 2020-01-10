@@ -27,7 +27,7 @@ class AFTERHOURSCHART_1: BaseTestCase {
         XCTAssertNotNil(afterHoursChartResponse.ohlcItems)
         var resultJSON : JSON = [:]
         for item in afterHoursChartResponse.ohlcItems {
-            var itemJSON: JSON = [
+            let itemJSON: JSON = [
                 "tickCount": afterHoursChartResponse.tickCount,
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,

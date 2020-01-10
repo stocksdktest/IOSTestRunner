@@ -39,8 +39,8 @@ class F10V2TEST_1: BaseTestCase {
         
         var resultJSON : JSON = [:]
                 if mRequest.requestType == "importantindex"{
-                    if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
-                        var resultJSON: JSON = [
+                    if let dic1: NSDictionary = f10Response.jsonObject as? NSDictionary{
+                        let resultJSON: JSON = [
                             "REPORTTITLE":dic1["REPORTTITLE"]!,
                             "EPSBASIC":dic1["EPSBASIC"]!,
                             "NAPS":dic1["NAPS"]!,
@@ -58,11 +58,11 @@ class F10V2TEST_1: BaseTestCase {
                       }
                    }
                 if mRequest.requestType == "businessinfo"{
-                    if let Lists: NSArray = f10Response.jsonObject as! NSArray{
+                    if let Lists: NSArray = f10Response.jsonObject as? NSArray{
                             
                             for List in Lists{
-                                if let dic2 : NSDictionary = List as! NSDictionary{
-                                    var jsonarr2: JSON = [
+                                if let dic2 : NSDictionary = List as? NSDictionary{
+                                    let jsonarr2: JSON = [
                                         "CLASSNAME":dic2["CLASSNAME"]!,
                                         "TCOREBIZINCOME":dic2["TCOREBIZINCOME"]!,
                                         "TYPESTYLE":dic2["TYPESTYLE"]!,

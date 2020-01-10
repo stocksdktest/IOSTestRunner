@@ -28,7 +28,7 @@ class BIDCHART_1: BaseTestCase {
         XCTAssertNotNil(bidChartResponse.bidItems)
         var resultJSON : JSON = [:]
         for item in bidChartResponse.bidItems{
-         var itemJSON: JSON = [
+            let itemJSON: JSON = [
               "closePrice":item.lastPrice,
               "referencePrice":item.referencePrice,
               "time":item.datetime,
