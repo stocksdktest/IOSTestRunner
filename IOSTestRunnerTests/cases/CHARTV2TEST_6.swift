@@ -26,7 +26,12 @@ class CHARTV2TEST_6: BaseTestCase {
             mRequest.chartType = MChartType(rawValue: 1)!
         }
         mRequest.returnAFData = param["RETURNAFDATA"].boolValue
-        mRequest.subtype = param["SUBTYPE"].stringValue
+        if param["RETURNAFDATA"].boolValue == true{
+            mRequest.subtype = "1006"
+        }else{
+            mRequest.subtype = param["SUBTYPE"].stringValue
+        }
+        
 
         let resp = self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse

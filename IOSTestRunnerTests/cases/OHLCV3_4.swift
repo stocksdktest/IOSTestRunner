@@ -40,14 +40,14 @@ class OHLCV3_4: BaseTestCase {
         }else{
             mRequest.period = MOHLCPeriod.init(rawValue:param["PERIOD"].uIntValue)!
         }
-        if param["BEGINDATE"] != "" && param["ENDDATE"] == ""{
-            mRequest.date = param["BEGINDATE"].stringValue
+        if param["BeginDate"] != "" && param["EndDate"] == ""{
+            mRequest.date = param["BeginDate"].stringValue
             mRequest.requestType = MRequestType(rawValue: 1)!
-        }else if param["ENDDATE"] != "" && param["BEGINDATE"] == ""{
-            mRequest.date = param["ENDDATE"].stringValue
+        }else if param["EndDate"] != "" && param["BeginDate"] == ""{
+            mRequest.date = param["EndDate"].stringValue
             mRequest.requestType = MRequestType(rawValue: 2)!
-        }else if param["ENDDATE"] != "" && param["BEGINDATE"] != ""{
-            mRequest.date = "\(param["BEGINDATE"]),\(param["ENDDATE"])"
+        }else if param["EndDate"] != "" && param["BeginDate"] != ""{
+            mRequest.date = "\(param["BeginDate"]),\(param["EndDate"])"
             mRequest.requestType = MRequestType(rawValue: 3)!
         }
         

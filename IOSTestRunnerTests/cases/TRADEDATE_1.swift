@@ -25,13 +25,23 @@ class TRADEDATE_1: BaseTestCase {
         let tradeDateResponse = resp as! MTradeDateResponse
         XCTAssertNotNil(tradeDateResponse.dates)
         var resultJSON : JSON = [:]
-        for dates in tradeDateResponse.dates{
-            var jsonarr2: JSON = [
-                "date": dates.date,
-                "isTrade": dates.type.rawValue,
-                "description": dates.desc
-            ]
-            resultJSON["\(dates.date!)"] = jsonarr2
+        for dates in tradeDateResponse.dates as! NSArray{
+            
+            if let date : NSArray = dates as! NSArray{
+                for items in date {
+                    if let item : MTradeDateItem = items as! MTradeDateItem{
+                        var jsonarr2: JSON = [
+                            "date": item.date,
+                            "isTrade": item.type.rawValue,
+                            "description": item.desc
+                        ]
+                        resultJSON["\(item.date!)"] = jsonarr2
+                    }
+                    
+                }
+            }
+            
+            
             
             
         }

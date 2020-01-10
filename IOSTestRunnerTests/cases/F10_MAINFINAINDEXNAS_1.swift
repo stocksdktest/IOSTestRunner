@@ -89,9 +89,9 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
         case .CH:
             var resultJSON : JSON = [:]
             var i=1
-            if let arr1: NSArray = financialSummaryResponse.jsonObject as? NSArray{
-                for item in arr1{
-                    if let dic1 : NSDictionary = item as? NSDictionary{
+//            if let arr1: NSArray = financialSummaryResponse.jsonObject as? NSArray{
+//                for item in arr1{
+                    if let dic1 : NSDictionary = financialSummaryResponse.jsonObject as? NSDictionary{
                         var itemJSON : JSON = [
                             "REPORTTITLE_": dic1["REPORTTITLE"]!,
                             "BasicEPS": dic1["BASICEPS"]!,
@@ -142,10 +142,10 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                         i=i+1
                     }
                     
-                }
+//                }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
-            }
+//            }
         }
     }
 }

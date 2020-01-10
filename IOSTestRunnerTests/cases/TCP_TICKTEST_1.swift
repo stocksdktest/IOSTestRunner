@@ -8,32 +8,30 @@
 
 import SwiftyJSON
 
-class SubscribeTestCase: BaseTestCase {
+class TCP_TICKTEST_1: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.SUBSCRIBE_EXAMPLE
+        return StockTestCaseName.TCP_TICKTEST_1
     }
     
-    internal var subscribeRecords: [JSON] = []
+    internal var subscribeRecords: JSON = [:]
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
+    internal var i = 1
     
     func testExample1() {
         let param = self.testCaseRoundConfig.getParam()
-        let code = param["CODES"].stringValue
+        let code = param["CODE"].stringValue
         let timeout = Int(param["SECONDS"].stringValue)!
+//        let mRequest = ML2TimeTickRequest()
+//        mRequest.code = code
+//        mRequest.type = MTimeTickRequestType(rawValue: -1)!
+//        let resp = self.makeSyncRequest(request: mRequest)
+//        XCTAssertEqual(resp.status, MResponseStatus.success)
+//        let quoteResponse = resp as! ML2TimeTickResponse
+//        XCTAssertNotNil(quoteResponse.items)
+//        print("订阅结果：\(quoteResponse.items)")
         
-        let mRequest = MSnapQuoteRequest()
-        mRequest.code = code
-        mRequest.stockFields = nil
-        
-        mRequest.tickCount = 10
-        let resp = self.makeSyncRequest(request: mRequest)
-        XCTAssertEqual(resp.status, MResponseStatus.success)
-        let quoteResponse = resp as! MSnapQuoteResponse
-        XCTAssertNotNil(quoteResponse.stockItem)
-        print("订阅结果：\(quoteResponse.stockItem.description)")
-        
-        MApi.subscribeCode(code, type: MApiTcpSubscribeType.snap)
+        MApi.subscribeCode(code, type: MApiTcpSubscribeType.tick)
         
         notificationExpectation = expectation(forNotification: NSNotification.Name.MApiTcpDidReceivedData, object: nil ) {
             [weak self] (notification) in
@@ -49,7 +47,7 @@ class SubscribeTestCase: BaseTestCase {
         notificationExpectation.isInverted = true
         waitForExpectations(timeout: TimeInterval(timeout)) {
             (error) in
-            MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.snap)
+            MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.tick)
             print("Stop subscription: \(code), error: \(error.debugDescription)")
             let result: JSON = [
                 "items": self.subscribeRecords
@@ -78,27 +76,38 @@ class SubscribeTestCase: BaseTestCase {
             let itemJSON = [
                 "average_price": item.averagePrice!
             ]
-            self.subscribeRecords.append([
-                "item": itemJSON,
-                "tradeDates": tradeDates,
-                "time": time
-            ])
+//            self.subscribeRecords.append([
+//                "item": itemJSON,
+//                "tradeDates": tradeDates,
+//                "time": time
+//            ])
             break
         case .snap:
             let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
             let itemJSON = [
                 "average_price": item.averagePrice
             ]
-            self.subscribeRecords.append([
-                "item": itemJSON
-            ])
+//            self.subscribeRecords.append([
+//                "item": itemJSON
+//            ])
             print("订阅结果：\(item)")
             break
         case .tick:
-            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-            self.subscribeRecords.append([
-                "item": item.debugDescription
-            ])
+            let items = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! NSArray
+            var resultJSON : JSON = [:]
+            for tickitems in items{
+                var item:MTimeTickItem = tickitems as! MTimeTickItem
+                var itemJSON:JSON = [
+                    "type" : item.type.rawValue,
+                    "time" : item.time,
+                    "tradeVolume" : item.tradeVolume,
+                    "tradePrice" : item.tradePrice
+                ]
+                resultJSON["\(item.time!)"] = itemJSON
+            }
+            
+            self.subscribeRecords["\(i)"] = resultJSON
+            i=i+1
             break
         default:
             break

@@ -22,7 +22,6 @@ class CHARTSUB_2: BaseTestCase {
         mRequest.code = param["CODE"].stringValue
         let TYPE:NSArray = (param["TYPE"].string?.split(separator: ",") as! NSArray)
         var typeInt = 0
-        print(TYPE)
         for typeVals in TYPE{
             let typeVal:String = typeVals as! String
             switch typeVal{

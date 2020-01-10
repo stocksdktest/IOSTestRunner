@@ -32,7 +32,7 @@ class CATESORTING_3: BaseTestCase {
         }
         mRequest.field = MCategorySortingField.init(rawValue: Int(paramI[2] as! String)!)!
         mRequest.includeSuspension = (paramI[4] as! NSString).boolValue
-        
+        print(mRequest.endIndex,paramI[1])
         if param["STOCKFIELDS"].stringValue == "NULL" || param["STOCKFIELDS"].stringValue == "-1"{
             mRequest.stockFields = nil
         }else{

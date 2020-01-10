@@ -39,7 +39,7 @@ class AFTERHOURSCHART_2: BaseTestCase {
                 "fp_volume": item.afterHoursVolume,
                 "fp_amount": item.afterHoursAmount
             ]
-            resultJSON["datetime"] = itemJSON
+            resultJSON["\(item.datetime!)"] = itemJSON
 
         }
         

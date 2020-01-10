@@ -20,6 +20,7 @@ class MOREPRICE_2: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MPriceVolumeRequest()
         mRequest.code = param["CODE"].stringValue
+        mRequest.subtype = "cff"
         
         let resp = self.makeSyncRequest(request: mRequest)
         let priceVolumeResponse = resp as! MPriceVolumeResponse

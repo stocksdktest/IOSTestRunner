@@ -33,7 +33,6 @@
 
 enum StockTestCaseName: String, CaseIterable {
     case QUOTE_REQUEST_EXAMPLE = "TESTCASE_0"
-    case SUBSCRIBE_EXAMPLE = "TESTCASE_1"
     case QUOTEDETAIL_1 = "QUOTEDETAIL_1"
     case QUOTEDETAIL_2 = "QUOTEDETAIL_2"
     case PlateIndexQuoteTestCase = "PlateIndexQuoteTestCase"
@@ -120,6 +119,12 @@ enum StockTestCaseName: String, CaseIterable {
     case SEARV2TEST_2 = "SEARV2TEST_2"
     case MOREVOLUMETEST_1 = "MOREVOLUMETEST_1"
     case BROKERINFO_1 = "BROKERINFO_1"
+    case SUBSCRIBE_EXAMPLE = "SUBSCRIBE_EXAMPLE"
+    case QUOTEDETAILTCPTEST_1 = "QUOTEDETAILTCPTEST_1"
+    case QUOTEDETAILTCPTEST_2 = "QUOTEDETAILTCPTEST_2"
+    case TCP_CHARTV2TEST_1 = "TCP_CHARTV2TEST_1"
+    case TCP_CHARTV2TEST_2 = "TCP_CHARTV2TEST_2"
+    case TCP_TICKTEST_1 = "TCP_TICKTEST_1"
 //    ///////////////////F10//////////////
     case  F10TestCase = "F10TestCase"
     case  F10_NEWINDEX_1 = "F10_NEWINDEX_1"
