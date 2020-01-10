@@ -85,8 +85,8 @@ class TCP_CHARTV2TEST_2: BaseTestCase {
             print("Subscribe code mismatch: \(subscribeCode), but got \(code).")
             return
         }
-        switch type {
-        case .line, .line5:
+//        switch type {
+//        case .line, .line5:
 //            let param = self.testCaseRoundConfig.getParam()
             let chartItems = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! NSArray
             let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! NSArray
@@ -121,25 +121,25 @@ class TCP_CHARTV2TEST_2: BaseTestCase {
                             
 //                }
                 
-            break
-        case .snap:
-            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
-            let itemJSON = [
-                "average_price": item.averagePrice
-            ]
-//            self.subscribeRecords.append([
-//                "item": itemJSON
-//            ])
-            print("订阅结果：\(item)")
-            break
-        case .tick:
-            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-//            self.subscribeRecords.append([
-//                "item": item.debugDescription
-//            ])
-            break
-        default:
-            break
-        }
+//            break
+//        case .snap:
+//            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
+//            let itemJSON = [
+//                "average_price": item.averagePrice
+//            ]
+////            self.subscribeRecords.append([
+////                "item": itemJSON
+////            ])
+//            print("订阅结果：\(item)")
+//            break
+//        case .tick:
+//            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
+////            self.subscribeRecords.append([
+////                "item": item.debugDescription
+////            ])
+//            break
+//        default:
+//            break
+//        }
     }
 }

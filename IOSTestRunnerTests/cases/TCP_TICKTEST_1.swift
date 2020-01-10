@@ -68,31 +68,31 @@ class TCP_TICKTEST_1: BaseTestCase {
             print("Subscribe code mismatch: \(subscribeCode), but got \(code).")
             return
         }
-        switch type {
-        case .line, .line5:
-            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
-            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
-            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
-            let itemJSON = [
-                "average_price": item.averagePrice!
-            ]
-//            self.subscribeRecords.append([
-//                "item": itemJSON,
-//                "tradeDates": tradeDates,
-//                "time": time
-//            ])
-            break
-        case .snap:
-            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
-            let itemJSON = [
-                "average_price": item.averagePrice
-            ]
-//            self.subscribeRecords.append([
-//                "item": itemJSON
-//            ])
-            print("订阅结果：\(item)")
-            break
-        case .tick:
+//        switch type {
+//        case .line, .line5:
+//            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
+//            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
+//            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
+//            let itemJSON = [
+//                "average_price": item.averagePrice!
+//            ]
+////            self.subscribeRecords.append([
+////                "item": itemJSON,
+////                "tradeDates": tradeDates,
+////                "time": time
+////            ])
+//            break
+//        case .snap:
+//            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
+//            let itemJSON = [
+//                "average_price": item.averagePrice
+//            ]
+////            self.subscribeRecords.append([
+////                "item": itemJSON
+////            ])
+//            print("订阅结果：\(item)")
+//            break
+//        case .tick:
             let items = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! NSArray
             var resultJSON : JSON = [:]
             for tickitems in items{
@@ -108,9 +108,9 @@ class TCP_TICKTEST_1: BaseTestCase {
             
             self.subscribeRecords["\(i)"] = resultJSON
             i=i+1
-            break
-        default:
-            break
-        }
+//            break
+//        default:
+//            break
+//        }
     }
 }

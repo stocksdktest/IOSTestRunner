@@ -80,29 +80,29 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
             print("Subscribe code mismatch: \(subscribeCode), but got \(code).")
             return
         }
-        switch type {
-        case .line, .line5:
-            let param = self.testCaseRoundConfig.getParam()
+//        switch type!.rawValue {
+//        case 1 << 1,1 << 2 :
+//            let param = self.testCaseRoundConfig.getParam()
             let chartItems = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! NSArray
             let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! NSArray
             let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
 //            var resultJSON : JSON = [:]
             for chartItem in chartItems{
                 let item: MOHLCItem = chartItem as! MOHLCItem
-                     var itemJSON:JSON = [
-                                   "datetime" : item.datetime,
-                                   "closePrice": item.closePrice,
-                                   "tradeVolume": item.tradeVolume,
-                                   "averagePrice": item.averagePrice,
-                                   "md": item.rgbar,
-                                   "openInterest": item.openInterest,
-                                   "iopv": item.iopv,
-                                   "iopvPre": item.referenceIOPVPrice,
-                                   
-                               ]
+                 var itemJSON:JSON = [
+                       "datetime" : item.datetime,
+                       "closePrice": item.closePrice,
+                       "tradeVolume": item.tradeVolume,
+                       "averagePrice": item.averagePrice,
+                       "md": item.rgbar,
+                       "openInterest": item.openInterest,
+                       "iopv": item.iopv,
+                       "iopvPre": item.referenceIOPVPrice,
+                       
+                   ]
 //                               resultJSON["\(item.datetime!)"] = itemJSON
-                               self.subscribeRecords["\(item.datetime!)"] = itemJSON
-                           }
+                   self.subscribeRecords["\(item.datetime!)"] = itemJSON
+            }
 //                           if param["RETURNAFDATA"].boolValue == true {
 //                               for item in chartResponse.afItems{
 //                                   var itemJSON:JSON = [
@@ -116,25 +116,25 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
                             
 //                }
                 
-            break
-        case .snap:
-            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
-            let itemJSON = [
-                "average_price": item.averagePrice
-            ]
-//            self.subscribeRecords.append([
-//                "item": itemJSON
-//            ])
-            print("订阅结果：\(item)")
-            break
-        case .tick:
-            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-//            self.subscribeRecords.append([
-//                "item": item.debugDescription
-//            ])
-            break
-        default:
-            break
-        }
+//            break
+//        case .snap:
+//            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
+//            let itemJSON = [
+//                "average_price": item.averagePrice
+//            ]
+////            self.subscribeRecords.append([
+////                "item": itemJSON
+////            ])
+//            print("订阅结果：\(item)")
+//            break
+//        case .tick:
+//            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
+////            self.subscribeRecords.append([
+////                "item": item.debugDescription
+////            ])
+//            break
+//        default:
+//            break
+//        }
     }
 }

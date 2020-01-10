@@ -70,21 +70,21 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
             print("Subscribe code mismatch: \(subscribeCode), but got \(code).")
             return
         }
-        switch type {
-        case .line, .line5:
-            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
-            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
-            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
-            let itemJSON = [
-                "average_price": item.averagePrice!
-            ]
-//            self.subscribeRecords.append([
-//                "item": itemJSON,
-//                "tradeDates": tradeDates,
-//                "time": time
-//            ])
-            break
-        case .snap:
+//        switch type {
+//        case .line, .line5:
+//            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
+//            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
+//            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
+//            let itemJSON = [
+//                "average_price": item.averagePrice!
+//            ]
+////            self.subscribeRecords.append([
+////                "item": itemJSON,
+////                "tradeDates": tradeDates,
+////                "time": time
+////            ])
+//            break
+//        case .snap:
             let items = userInfo[MApiTcpDidReceivedDataSnapKey]
             
             if items is MStockItem{
@@ -1337,15 +1337,15 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 self.subscribeRecords["\(item.datetime!)"] = resultJSON
             }
 //            print("订阅结果：\(items)")
-            break
-        case .tick:
-            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-//            self.subscribeRecords.append([
-//                "item": item.debugDescription
-//            ])
-            break
-        default:
-            break
-        }
+//            break
+//        case .tick:
+//            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
+////            self.subscribeRecords.append([
+////                "item": item.debugDescription
+////            ])
+//            break
+//        default:
+//            break
+//        }
     }
 }
