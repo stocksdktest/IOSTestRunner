@@ -43,7 +43,6 @@ class F10_STOCKNEWSLIST_2: BaseTestCase {
         let stockNewsListResponse = resp as! MStockNewsListResponse
         XCTAssertNotNil(stockNewsListResponse.stockNewsItems)
         var resultJSON : JSON = [:]
-        var i=1
         for items in stockNewsListResponse.stockNewsItems{
             if let item: MStockNewsItem = items as! MStockNewsItem{
                 var itemJSON: JSON = [
@@ -57,8 +56,7 @@ class F10_STOCKNEWSLIST_2: BaseTestCase {
                     "ENTRYDATE":item.entryDate,
                     "ENTRYTIME":item.entryTime,
                 ]
-                resultJSON["\(i)"] = itemJSON
-                i=i+1
+                resultJSON["\(item.id!)"] = itemJSON
             }
         }
         print(resultJSON)

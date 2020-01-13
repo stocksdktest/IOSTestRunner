@@ -5,7 +5,8 @@
 //  Created by liao xiangsen on 1/8/20.
 //  Copyright © 2020 liao xiangsen. All rights reserved.
 //
-
+import XCTest
+import os.log
 import SwiftyJSON
 
 class TCP_TICKTEST_1: BaseTestCase {

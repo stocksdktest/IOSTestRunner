@@ -39,9 +39,12 @@ class F10_STOCKBULLETIN_1: BaseTestCase {
                 "title":item.title,
                 "dataSource":item.source,
                 "Content":item.content,
-                "CONTENTFORMAT_":item.format,
-                "PURL":item.url,
+//                "CONTENTFORMAT_":item.format,
+                "PURL_":item.url,
             ]
+            if item.format != nil{
+                resultJSON["CONTENTFORMAT_"].stringValue = item.format
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }

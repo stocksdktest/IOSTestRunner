@@ -35,7 +35,7 @@ class F10_BNDINTERESTPAY_1: BaseTestCase {
                 "BONDNAME":item["BONDNAME"]!,
                 "BONDSNAME":item["BONDSNAME"]!,
                 "SYMBOL":item["SYMBOL"]!,
-                "EXERENDDATE":item["PERPAYDATEYEAR"]!,
+                "PERPAYDATEYEAR":item["PERPAYDATEYEAR"]!,
                 "PRETAXINT":item["PRETAXINT"]!,
                 "IPRATE":item["IPRATE"]!,
                 "EQURECORDDATE":item["EQURECORDDATE"]!,

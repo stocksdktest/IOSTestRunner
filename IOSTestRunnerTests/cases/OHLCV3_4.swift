@@ -90,7 +90,18 @@ class OHLCV3_4: BaseTestCase {
             } catch {
                 // ignore
             }
-            resultJSON["\(item.datetime!)"] = itemJSON
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }
+            //                                print(itemDic[itemKey]!)
+                                            
+                                        }
+                        resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
        print(resultJSON)

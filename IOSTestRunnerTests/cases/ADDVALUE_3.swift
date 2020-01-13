@@ -23,15 +23,11 @@ class ADDVALUE_3: BaseTestCase {
 
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
-        if param["FIELDS"].array != nil{
-            var fieldVal = [String]()
-            if let fields = param["FIELDS"].array{
-                
-                for field in fields{
-                    fieldVal.append(field.stringValue)
-                }
-            }
-            mRequest.fields = fieldVal
+        
+        if param["FIELDS"].stringValue != ""{
+            let fields:NSArray = (param["FIELDS"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.fields = fields as! [Any]
         }
         let resp = self.makeSyncRequest(request: mRequest)
         let addvalueResponse = resp as! MAddValueResponse
@@ -40,7 +36,10 @@ class ADDVALUE_3: BaseTestCase {
         var i = 1
         if addvalueResponse.addValueItems != nil{
             for addValueitems in addvalueResponse.addValueItems{
-                let addValueitem:MAddValueItem = addValueitems as! MAddValueItem
+                var itemJSON2 : JSON = [:]
+//                let addValueDic:NSDictionary = addValueitems as! NSDictionary
+                let addValueitem: MAddValueItem = addValueitems as! MAddValueItem
+
                 var itemJSON:JSON = [
                     "code" : addValueitem.code,
                     "date" : addValueitem.date,
@@ -52,8 +51,8 @@ class ADDVALUE_3: BaseTestCase {
                     "largeBuyVolume" : addValueitem.largeBuyVolume,
                     "largeSellVolume" : addValueitem.largeSellVolume,
                     "largeBuyAmount" : addValueitem.largeBuyAmount,
-                    
-                    
+
+
                 ]
                 let update1: JSON = [
                     "buyCount" : addValueitem.buyCount,
@@ -150,14 +149,33 @@ class ADDVALUE_3: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                resultJSON["\(i)"] = itemJSON
-                i = i + 1
+                var itemDic : Dictionary = [String:String]()
+                for itemKey in itemJSON.dictionaryValue.keys{
+                    
+                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                    if itemDic[itemKey] != ""{
+                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }
+//                    print(itemDic[itemKey]!)
+                    
+                }
+
+                resultJSON["\(i)"] = itemJSON2
+                i=i+1
+                }
+                
             }
-        }
-        
-        print(resultJSON)
-        onTestResult(param: param, result: resultJSON)
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
+//                resultJSON["\(i)"] = itemJSON
+//                i = i + 1
+//            }
+//        }
+//
+//        print(resultJSON)
+//        onTestResult(param: param, result: resultJSON)
     }
     
 }
+
 

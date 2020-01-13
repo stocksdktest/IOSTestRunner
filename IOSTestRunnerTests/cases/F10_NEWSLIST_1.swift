@@ -53,8 +53,11 @@ class F10_NEWSLIST_1: BaseTestCase {
                 "INIPUBDATE_":item.datetime,
                 "REPORTTITLE_":item.title,
                 "MEDIANAME_":item.source,
-                "ABSTRACTFORMAT_":item.format,
+//                "ABSTRACTFORMAT_":item.format,
             ]
+            if item.format != nil{
+                itemJSON["ABSTRACTFORMAT_"].stringValue = item.format
+            }
             resultJSON["\(i)"] = itemJSON
             i=i+1
             }

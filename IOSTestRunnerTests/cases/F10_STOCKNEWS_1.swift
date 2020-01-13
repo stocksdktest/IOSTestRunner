@@ -38,9 +38,12 @@ class F10_STOCKNEWS_1: BaseTestCase {
                 "reportTitle":item.title,
                 "MEDIANAME_":item.source,
                 "ABSTRACT_":item.content,
-                "ABSTRACTFORMAT_":item.format,
-                "PURL":item.url,
+//                "ABSTRACTFORMAT_":item.format,
+                "PURL_":item.url,
             ]
+            if item.format != nil{
+                resultJSON["ABSTRACTFORMAT_"].stringValue = item.format
+            }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
         }

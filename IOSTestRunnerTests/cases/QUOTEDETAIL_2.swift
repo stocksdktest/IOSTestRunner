@@ -23,23 +23,17 @@ class QUOTEDETAIL_2: BaseTestCase {
         if param["STOCKFIELDS"].stringValue == "-1" || param["STOCKFIELDS"].stringValue == ""{
             mRequest.stockFields = nil
         }else{
-            if let fields = param["STOCKFIELDS"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-                }
-            mRequest.stockFields = fieldVal
+            if param["STOCKFIELDS"].stringValue != ""{
+                let stockfields:NSArray = (param["STOCKFIELDS"].string?.split(separator: ",") as! NSArray)
+
+                mRequest.stockFields = stockfields as! [Any]
             }
         }
         mRequest.tickCount = param["TICKCOUNT"].intValue
-        if param["FIELDS"].array != nil{
-            var fieldVal = [String]()
-            if let fields = param["FIELDS"].array{
-                for field in fields{
-                    fieldVal.append(field.stringValue)
-                }
-            }
-            mRequest.addValueFields = fieldVal
+        if param["FIELDS"].stringValue != ""{
+            let fields:NSArray = (param["FIELDS"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.addValueFields = fields as! [Any]
         }
         
 //        mRequest.stockFields = ["-1"]
@@ -47,6 +41,8 @@ class QUOTEDETAIL_2: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let snapQuoteResponse = resp as! MSnapQuoteResponse
         XCTAssertNotNil(snapQuoteResponse.stockItem)
+        var itemJSON2: JSON = [:]
+        var resultJSON2: JSON = [:]
 
         if snapQuoteResponse.stockItem is MOptionItem{
             let item: MOptionItem = snapQuoteResponse.stockItem as! MOptionItem
@@ -405,10 +401,31 @@ class QUOTEDETAIL_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                resultJSON["addValue"] = itemJSON
-            }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
+
+                                resultJSON["addValue"] = itemJSON2
+                            }
+                            var resultDic : Dictionary = [String:String]()
+                            for resultKey in resultJSON.dictionaryValue.keys{
+                                
+                                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                                if resultDic[resultKey] != ""{
+                                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                                }
+                //                print(itemDic[itemKey]!)
+                                
+                            }
+                            print(resultJSON2)
+                            onTestResult(param: param, result: resultJSON2)
         }else if snapQuoteResponse.stockItem is MFuturesItem{
             let item:MFuturesItem = snapQuoteResponse.stockItem as! MFuturesItem
             
@@ -871,10 +888,31 @@ class QUOTEDETAIL_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                resultJSON["addValue"] = itemJSON
-            }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
+
+                                resultJSON["addValue"] = itemJSON2
+                            }
+                            var resultDic : Dictionary = [String:String]()
+                            for resultKey in resultJSON.dictionaryValue.keys{
+                                
+                                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                                if resultDic[resultKey] != ""{
+                                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                                }
+                //                print(itemDic[itemKey]!)
+                                
+                            }
+                            print(resultJSON2)
+                            onTestResult(param: param, result: resultJSON2)
         }else if snapQuoteResponse.stockItem is MStockItem{
             let item:MStockItem = snapQuoteResponse.stockItem
             
@@ -1299,10 +1337,31 @@ class QUOTEDETAIL_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                resultJSON["addValue"] = itemJSON
+                var itemDic : Dictionary = [String:String]()
+                for itemKey in itemJSON.dictionaryValue.keys{
+                    
+                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                    if itemDic[itemKey] != ""{
+                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }
+//                    print(itemDic[itemKey]!)
+                    
+                }
+
+                resultJSON["addValue"] = itemJSON2
             }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+            var resultDic : Dictionary = [String:String]()
+            for resultKey in resultJSON.dictionaryValue.keys{
+                
+                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                if resultDic[resultKey] != ""{
+                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                }
+//                print(itemDic[itemKey]!)
+                
+            }
+            print(resultJSON2)
+            onTestResult(param: param, result: resultJSON2)
         }
     }
     

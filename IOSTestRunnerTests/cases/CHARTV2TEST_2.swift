@@ -32,6 +32,7 @@ class CHARTV2TEST_2: BaseTestCase {
         XCTAssertNotNil(chartResponse.ohlcItems)
         var resultJSON : JSON = [:]
         for item in chartResponse.ohlcItems{
+            var itemJSON2 : JSON = [:]
             var itemJSON:JSON = [
                 "datetime" : item.datetime,
                 "closePrice": item.closePrice,
@@ -43,7 +44,18 @@ class CHARTV2TEST_2: BaseTestCase {
                 "iopvPre": item.referenceIOPVPrice,
                 
             ]
-            resultJSON["\(item.datetime!)"] = itemJSON
+            var itemDic : Dictionary = [String:String]()
+                            for itemKey in itemJSON.dictionaryValue.keys{
+                                
+                                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                if itemDic[itemKey] != ""{
+                                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                }
+            //                    print(itemDic[itemKey]!)
+                                
+                            }
+
+            resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
         if mRequest.returnAFData == true {

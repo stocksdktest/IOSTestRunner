@@ -70,38 +70,38 @@ class SubscribeTestCase: BaseTestCase {
             print("Subscribe code mismatch: \(subscribeCode), but got \(code).")
             return
         }
-        switch type {
-        case .line, .line5:
-            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
-            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
-            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
-            let itemJSON = [
-                "average_price": item.averagePrice!
-            ]
-            self.subscribeRecords.append([
-                "item": itemJSON,
-                "tradeDates": tradeDates,
-                "time": time
-            ])
-            break
-        case .snap:
-            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
-            let itemJSON = [
-                "average_price": item.averagePrice
-            ]
-            self.subscribeRecords.append([
-                "item": itemJSON
-            ])
-            print("订阅结果：\(item)")
-            break
-        case .tick:
-            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-            self.subscribeRecords.append([
-                "item": item.debugDescription
-            ])
-            break
-        default:
-            break
-        }
+//        switch type {
+//        case .line, .line5:
+//            let item = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! MOHLCItem
+//            let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! String
+//            let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
+//            let itemJSON = [
+//                "average_price": item.averagePrice!
+//            ]
+//            self.subscribeRecords.append([
+//                "item": itemJSON,
+//                "tradeDates": tradeDates,
+//                "time": time
+//            ])
+//            break
+//        case .snap:
+//            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
+//            let itemJSON = [
+//                "average_price": item.averagePrice
+//            ]
+//            self.subscribeRecords.append([
+//                "item": itemJSON
+//            ])
+//            print("订阅结果：\(item)")
+//            break
+//        case .tick:
+//            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
+//            self.subscribeRecords.append([
+//                "item": item.debugDescription
+//            ])
+//            break
+//        default:
+//            break
+//        }
     }
 }

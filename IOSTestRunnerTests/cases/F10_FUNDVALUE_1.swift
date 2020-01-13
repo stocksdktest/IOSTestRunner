@@ -39,7 +39,7 @@ class F10_FUNDVALUE_1: BaseTestCase {
                     "NAVDATE": record["NAVDATE"]!,
                     "GROWRATE": record["GROWRATE"]!
                 ]
-                resultJSON["\(record["NAVDATE"]!)"] = itemJSON
+                resultJSON["\(i)"] = itemJSON
                 i=i+1
             }
         }

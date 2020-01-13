@@ -59,6 +59,7 @@ class OHLCV3_1: BaseTestCase {
         print(oHLCResponse)
         var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
+            
             var itemJSON: JSON = [
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,
@@ -81,7 +82,18 @@ class OHLCV3_1: BaseTestCase {
             } catch {
                 // ignore
             }
-            resultJSON["\(item.datetime!)"] = itemJSON
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }
+            //                                print(itemDic[itemKey]!)
+                                            
+                                        }
+                        resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
        print(resultJSON)

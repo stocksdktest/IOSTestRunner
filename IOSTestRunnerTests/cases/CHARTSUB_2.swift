@@ -70,6 +70,7 @@ class CHARTSUB_2: BaseTestCase {
         var j = 1
 //        print(chartIndexResponse)
         for items in chartIndexResponse.ohlcItems{
+            var itemJSON2 : JSON = [:]
         var itemJSON: JSON = [
              "ddx":items.ddx,
              "ddy":items.ddy,
@@ -95,11 +96,23 @@ class CHARTSUB_2: BaseTestCase {
         } catch {
             // ignore
         }
-            resultJSON["\(j)"] = itemJSON
-            j = j + 1
+        var itemDic : Dictionary = [String:String]()
+                            for itemKey in itemJSON.dictionaryValue.keys{
+                                
+                                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                if itemDic[itemKey] != ""{
+                                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                }
+            //                    print(itemDic[itemKey]!)
+                                
+                            }
 
-      }
-        print(resultJSON)
-        onTestResult(param: param, result: resultJSON)
+                            resultJSON["\(j)"] = itemJSON2
+                            j=j+1
+                            }
+                            
+                        
+                        print(resultJSON)
+                        onTestResult(param: param, result: resultJSON)
     }
 }

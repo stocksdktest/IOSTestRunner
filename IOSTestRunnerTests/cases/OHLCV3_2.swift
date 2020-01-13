@@ -61,7 +61,7 @@ class OHLCV3_2: BaseTestCase {
         let oHLCResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCResponse.ohlcItems)
 //        XCTAssertNotNil(oHLCResponse.fqItems)
-        print(oHLCResponse)
+//        print(oHLCResponse)
         var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
             var itemJSON: JSON = [
@@ -86,7 +86,18 @@ class OHLCV3_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            resultJSON["\(item.datetime!)"] = itemJSON
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }
+            //                                print(itemDic[itemKey]!)
+                                            
+                                        }
+                        resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
        print(resultJSON)

@@ -36,7 +36,7 @@ class F10_FNDNAVINDEX_1: BaseTestCase {
         for items in fundValueResponse.items{
             if let item: NSDictionary = items as! NSDictionary{
                 var itemJSON: JSON = [
-                    "UnitNAV_": item["UnitNAV"]!,
+                    "UNITNAV_": item["UnitNAV"]!,
                     "ENDDATE_": item["ENDDATE"]!
                 ]
                 resultJSON["\(i)"] = itemJSON

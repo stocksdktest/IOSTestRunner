@@ -5,7 +5,8 @@
 //  Created by liao xiangsen on 1/8/20.
 //  Copyright © 2020 liao xiangsen. All rights reserved.
 //
-
+import XCTest
+import os.log
 import SwiftyJSON
 
 class QUOTEDETAILTCPTEST_2: BaseTestCase {
@@ -36,14 +37,10 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
             }
         }
         mRequest.tickCount = param["TICKCOUNT"].intValue
-        if param["FIELDS"].array != nil{
-            var fieldVal = [String]()
-            if let fields = param["FIELDS"].array{
-                for field in fields{
-                    fieldVal.append(field.stringValue)
-                }
-            }
-            mRequest.addValueFields = fieldVal
+        if param["FIELDS"].stringValue != ""{
+            let fields:NSArray = (param["FIELDS"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.addValueFields = fields as! [Any]
         }
         let resp = self.makeSyncRequest(request: mRequest)
         XCTAssertEqual(resp.status, MResponseStatus.success)

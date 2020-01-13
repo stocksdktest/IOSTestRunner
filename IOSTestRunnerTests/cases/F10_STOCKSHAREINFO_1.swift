@@ -43,8 +43,8 @@ class F10_STOCKSHAREINFO_1: BaseTestCase {
             ]
             let update1: JSON = [
                 "URRatio": record["URRATIO"]!,
-                "TotalShare": record["TOTALSHARE"]!,
-                "TotalShareL": record["TOTALSHAREL"]!,
+                "totalShare": record["TOTALSHARE"]!,
+                "totalShareL": record["TOTALSHAREL"]!,
                 "LRatio": record["LRATIO"]!,
                 "ULRatio": record["ULRATIO"]!,
                 "HTotalShare": record["HTOTALSHARE"]!
