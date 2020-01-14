@@ -80,8 +80,8 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
         }else{
             if let dic1:NSDictionary = marginInfoResponse.jsonObject as!NSDictionary{
                 var resultJSON: JSON = [
-                    "pageNumber": dic1["PageNumber"] as! String,
-                    "page": dic1["Page"]as! String
+                    "pageNumber": "\(dic1["PageNumber"])",
+                    "page": "\(dic1["Page"])"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1

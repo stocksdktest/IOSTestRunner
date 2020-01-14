@@ -58,7 +58,9 @@ class SEARTEST_5: BaseTestCase {
                 "stockType": items.flag.rawValue,
                 "st": items.subtypes
             ]
-            resultJSON["\(items.stockID!)"] = itemJSON
+            var itemID: String = items.stockID.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
             
         }
         print(resultJSON)

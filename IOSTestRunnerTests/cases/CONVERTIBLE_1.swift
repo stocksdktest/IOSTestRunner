@@ -34,7 +34,9 @@ class CONVERTIBLE_1: BaseTestCase {
             "changeRate":items.changeRate,
             "change":items.change,
          ]
-            resultJSON["\(items.code!)"] = itemJSON
+            var itemID: String = items.code.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
  
      }
         print(resultJSON)

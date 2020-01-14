@@ -207,16 +207,27 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
-                resultJSON["\(mRequest.code!)"] = itemJSON
+                
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
                     var JSONarr = [JSON]()
@@ -226,7 +237,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    itemJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -237,7 +248,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    itemJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -250,7 +261,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            itemJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -266,7 +277,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            itemJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -380,7 +391,18 @@ class QUOTE_2: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON1 : JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON1[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON1
                 }
             }else if items is MFuturesItem{
                 let item:MFuturesItem = items as! MFuturesItem
@@ -647,17 +669,26 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
-                resultJSON["\(mRequest.code!)"] = itemJSON
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
                     var JSONarr = [JSON]()
@@ -667,7 +698,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    itemJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -678,7 +709,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    itemJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -691,7 +722,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            itemJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -707,7 +738,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            itemJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -821,7 +852,18 @@ class QUOTE_2: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON1 : JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON1[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON1
                 }
             }else if items is MStockItem{
                 let item:MStockItem = items
@@ -1040,17 +1082,27 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
-                resultJSON["\(mRequest.code!)"] = itemJSON
+                
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
                     var JSONarr = [JSON]()
@@ -1060,7 +1112,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    itemJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -1071,7 +1123,7 @@ class QUOTE_2: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    itemJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -1084,7 +1136,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            itemJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -1100,7 +1152,7 @@ class QUOTE_2: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            itemJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -1214,12 +1266,26 @@ class QUOTE_2: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON1 : JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON1[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON1
                 }
+                var itemID: String = mRequest.code.replacingOccurrences(of: ".", with: "_")
+                
+                resultJSON["\(itemID)"] = itemJSON2
             }
             
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
         }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }

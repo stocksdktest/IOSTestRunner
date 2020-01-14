@@ -105,7 +105,9 @@ class BANKUAIQUOTE_1: BaseTestCase {
             } catch {
                 // ignore
             }
-            resultJSON["\(item.id!)"] = itemJSON
+            var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
         }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)

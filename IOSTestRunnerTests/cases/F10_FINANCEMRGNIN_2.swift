@@ -70,7 +70,10 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
             }
         }else{
             if let dic1:NSDictionary = marginInfoDiffResponse.jsonObject as!NSDictionary{
-                var resultJSON: JSON = [:]
+                var resultJSON: JSON = [
+                    "pageNumber": "\(dic1["PageNumber"])",
+                    "page": "\(dic1["Page"])"
+                ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1
                     for list in lists{

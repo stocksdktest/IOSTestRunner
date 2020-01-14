@@ -36,7 +36,7 @@ class OFFERQUOTE_1: BaseTestCase {
                     "startDate": item.startDate,
                     "endDate": item.endDate
                 ]
-                resultJSON["\(item.code!)"] = itemJSON
+                resultJSON["\(item.offerID!)"] = itemJSON
                 
             }
         }

@@ -132,7 +132,9 @@ class OPTIONLIST_1: BaseTestCase {
             case .drop:
                 resultJSON["changeRate"].string = "-"+item.changeRate
             }
-            resultJSON["\(item.id!)"] = itemJSON
+            var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
             
         }
     print(resultJSON)

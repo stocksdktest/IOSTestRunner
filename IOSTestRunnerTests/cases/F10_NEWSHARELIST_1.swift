@@ -63,7 +63,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "peaIssue": list["PEAISSUE"]!
                                     
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -90,7 +92,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "listingDate": list["LISTINGDATE"]!
                                     
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -117,7 +121,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "listingDate": list["LISTINGDATE"]!,
                                     "peaIssue": list["PEAISSUE"]!
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -143,7 +149,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "peaIssue": list["PEAISSUE"]!
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -169,7 +177,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "peaIssue": list["PEAISSUE"]!,
                                     "bookStartDateOn": list["BOOKSTARTDATEON"]!
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -215,7 +225,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                 } catch {
                                     // ignore
                                 }
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -254,7 +266,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                 } catch {
                                     // ignore
                                 }
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -294,7 +308,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                 } catch {
                                     // ignore
                                 }
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -333,7 +349,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                 } catch {
                                     // ignore
                                 }
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -372,7 +390,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                 } catch {
                                     // ignore
                                 }
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -404,7 +424,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
                                     "APPLYCODE": list["APPLYCODE"]!
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -428,7 +450,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "PREFERREDPLACINGCODE": list["PREFERREDPLACINGCODE"]!,
                                     "APPLYCODE": list["APPLYCODE"]!
                                 ]
-                                jsonarr1["\(list["APPLYCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1
@@ -449,7 +473,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "SECUABBR": list["SECUABBR"]!,
                                     "ALLOTRATEON": list["ALLOTRATEON"]!,
                                 ]
-                                jsonarr1["\(list["TRADINGCODE"]!)"] = jsonarr2
+                                var itemID: String = (list["TRADINGCODE"]as! String).replacingOccurrences(of: ".", with: "_")
+                                
+                                jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
                         itemJSON["dataList"] = jsonarr1

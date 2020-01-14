@@ -136,7 +136,9 @@ class CATEQUOTE_1: BaseTestCase {
             case .drop:
                 itemJSON["changeRate"].string = "-"+item.changeRate
             }
-            resultJSON["\(item.id!)"] = itemJSON
+            var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
             
         }
         

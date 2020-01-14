@@ -19,8 +19,12 @@ class SEARTEST_1: BaseTestCase {
     func testSearch() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockTableRequest()
-        mRequest.markets = param["MARKET"].arrayValue
         
+        if param["MARKET"].stringValue != ""{
+            let fields:NSArray = (param["MARKET"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.markets = fields as! [Any]
+        }
         
         let resp = self.makeSyncRequest(request: mRequest)
         let searchResponse = resp as! MStockTableResponse
@@ -36,7 +40,9 @@ class SEARTEST_1: BaseTestCase {
                 "stockType": items.flag.rawValue,
                 "st": items.subtypes
             ]
-            resultJSON["\(items.stockID!)"] = itemJSON
+            var itemID: String = items.stockID.replacingOccurrences(of: ".", with: "_")
+            
+            resultJSON["\(itemID)"] = itemJSON
             
         }
         print(resultJSON)

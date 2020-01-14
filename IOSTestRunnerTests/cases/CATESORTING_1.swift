@@ -223,15 +223,25 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var itemJSON2: JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
                 
                 if item.addValueItem != nil{
@@ -343,10 +353,20 @@ class CATESORTING_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    
-                    itemJSON["addValue"] = itemJSON1
+                    var itemJSON3: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON1.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON1[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON3[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON3
                 }
-                resultJSON["\(i)"] = itemJSON
+                resultJSON["\(i)"] = itemJSON2
                 i = i+1
             }else if items is MFuturesItem{
                 let item:MFuturesItem = items as! MFuturesItem
@@ -609,15 +629,25 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var itemJSON2: JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
                 
                 if item.addValueItem != nil{
@@ -729,9 +759,20 @@ class CATESORTING_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    itemJSON["addValue"] = itemJSON1
+                    var itemJSON3: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON1.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON1[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON3[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON3
                     }
-                resultJSON["\(i)"] = itemJSON
+                resultJSON["\(i)"] = itemJSON2
                 i = i+1
             }else if items is MStockItem{
                 let item:MStockItem = items
@@ -946,16 +987,26 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var itemJSON2: JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
                 
                 switch item.changeState{
                     
                 case .flat:
-                    itemJSON["changeRate"].string = item.changeRate
+                    itemJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    itemJSON["changeRate"].string = "+"+item.changeRate
+                    itemJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    itemJSON["changeRate"].string = "-"+item.changeRate
+                    itemJSON2["changeRate"].string = "-"+item.changeRate
                 }
                 
                 if item.addValueItem != nil{
@@ -1067,9 +1118,20 @@ class CATESORTING_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    itemJSON["addValue"] = itemJSON1
+                    var itemJSON3: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON1.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON1[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON3[itemKey].stringValue = itemDic[itemKey]!
+                                        }
+                    //                    print(itemDic[itemKey]!)
+                                        
+                                    }
+                    itemJSON2["addValue"] = itemJSON3
             }
-                resultJSON["\(i)"] = itemJSON
+                resultJSON["\(i)"] = itemJSON2
                 i = i+1
             }
             
