@@ -20,12 +20,17 @@ class SEARTEST_3: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequest()
          mRequest.keyword = param["KEYWORD"].stringValue
-        if let fields = param["CATEGORIES"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-            }
-                mRequest.categories = fieldVal
+//        if let fields = param["CATEGORIES"].array{
+//            var fieldVal = [String]()
+//            for field in fields{
+//                fieldVal.append(field.stringValue)
+//            }
+//                mRequest.categories = fieldVal
+//        }
+        if param["CATEGORIES"].stringValue != ""{
+            let fields:NSArray = (param["CATEGORIES"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.categories = fields as! [Any]
         }
          mRequest.searchLimit = param["SEARCHLIMIT"].uIntValue
          mRequest.returnRenamed = ("1" as NSString).boolValue

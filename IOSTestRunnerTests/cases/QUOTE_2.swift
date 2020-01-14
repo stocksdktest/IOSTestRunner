@@ -24,23 +24,19 @@ class QUOTE_2: BaseTestCase {
         if param["STOCKFIELDS"].stringValue == "-1"{
             mRequest.stockFields = nil
         }else{
-            if let fields = param["STOCKFIELDS"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-                }
-            mRequest.stockFields = fieldVal
-            }
-        }
-        if param["FIELDS"].array != nil{
-            var fieldVal = [String]()
-            if let fields = param["FIELDS"].array{
-                for field in fields{
-                    fieldVal.append(field.stringValue)
+            if param["STOCKFIELDS"].stringValue != ""{
+                    let stockfields:NSArray = (param["STOCKFIELDS"].string?.split(separator: ",") as! NSArray)
+
+                    mRequest.stockFields = stockfields as! [Any]
                 }
             }
-            mRequest.addValueFields = fieldVal
-        }
+            
+
+            if param["FIELDS"].stringValue != ""{
+                let addvalueFields:NSArray = (param["FIELDS"].string?.split(separator: ",") as! NSArray)
+
+                mRequest.addValueFields = addvalueFields as! [Any]
+            }
 //        mRequest.addValueFields = ["ddz", "largeSellCount", "mediumDiffer"]
         let resp = self.makeSyncRequest(request: mRequest)
         let quoteResponse = resp as! MQuoteResponse

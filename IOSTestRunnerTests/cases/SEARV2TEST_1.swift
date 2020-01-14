@@ -20,12 +20,11 @@ class SEARV2TEST_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequestV2()
          mRequest.keyword = param["KEYWORD"].stringValue
-        if let fields = param["MARKET"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-            }
-                mRequest.categories = fieldVal
+        
+        if param["MARKET"].stringValue != ""{
+            let fields:NSArray = (param["MARKET"].string?.split(separator: ",") as! NSArray)
+
+            mRequest.categories = fields as! [Any]
         }
 //         mRequest.searchLimit = param["SEARCHLIMIT"].uIntValue
     

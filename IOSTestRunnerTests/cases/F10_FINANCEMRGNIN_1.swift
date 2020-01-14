@@ -49,9 +49,10 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
         
         if keys.count != 0{
             if let dic1:NSDictionary = marginInfoResponse.jsonObject as!NSDictionary{
+//                let pageNumber = "\(dic1["PageNumber"])"
                 var resultJSON: JSON = [
-                    "pageNumber": dic1["PageNumber"]as! String,
-                    "page": dic1["Page"]as! String
+                    "pageNumber": "\(dic1["PageNumber"])",
+                    "page": "\(dic1["Page"])"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1

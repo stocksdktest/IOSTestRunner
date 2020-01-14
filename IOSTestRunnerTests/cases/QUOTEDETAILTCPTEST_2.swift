@@ -28,12 +28,11 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
         if param["STOCKFIELDS"].stringValue == "-1" || param["STOCKFIELDS"].stringValue == ""{
             mRequest.stockFields = nil
         }else{
-            if let fields = param["STOCKFIELDS"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-                }
-            mRequest.stockFields = fieldVal
+            if param["STOCKFIELDS"].stringValue != ""{
+                    let stockfields:NSArray = (param["STOCKFIELDS"].string?.split(separator: ",") as! NSArray)
+
+                    mRequest.stockFields = stockfields as! [Any]
+                
             }
         }
         mRequest.tickCount = param["TICKCOUNT"].intValue

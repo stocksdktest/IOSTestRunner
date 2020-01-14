@@ -64,8 +64,9 @@ class CHARTV2TEST_6: BaseTestCase {
             
         }
         if mRequest.returnAFData == true {
-            var itemJSON2 : JSON = [:]
+            
             for item in chartResponse.afItems{
+                var itemJSON2 : JSON = [:]
                 let itemJSON:JSON = [
                     "datetime": item.datetime,
                     "closePrice": item.closePrice,

@@ -21,6 +21,7 @@ class SEARTEST_1: BaseTestCase {
         let mRequest = MStockTableRequest()
         mRequest.markets = param["MARKET"].arrayValue
         
+        
         let resp = self.makeSyncRequest(request: mRequest)
         let searchResponse = resp as! MStockTableResponse
         XCTAssertNotNil(searchResponse.resultItems)

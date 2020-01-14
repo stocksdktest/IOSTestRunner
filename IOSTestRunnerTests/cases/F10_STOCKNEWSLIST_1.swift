@@ -56,9 +56,23 @@ class F10_STOCKNEWSLIST_1: BaseTestCase {
                     "ENTRYDATE":item.entryDate,
                     "ENTRYTIME":item.entryTime,
                 ]
-                resultJSON["\(item.id!)"] = itemJSON
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
+                var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
+                
+                resultJSON["\(itemID)"] = itemJSON2
             }
         }
+        
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }

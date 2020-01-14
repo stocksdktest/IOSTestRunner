@@ -43,6 +43,7 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
         let stockBulletinListResponse = resp as! MStockBulletinListResponse
         XCTAssertNotNil(stockBulletinListResponse.stockBulletinItems)
         var resultJSON : JSON = [:]
+        
         for items in stockBulletinListResponse.stockBulletinItems{
             if let item: MStockBulletinItem = items as! MStockBulletinItem{
                var itemJSON: JSON = [
@@ -55,12 +56,37 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
                     "ENTRYDATE":item.entryDate,
                     "ENTRYTIME":item.entryTime,
                 ]
-                resultJSON["\(item.id!)"] = itemJSON
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }
+                //                    print(itemDic[itemKey]!)
+                                    
+                                }
+                var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
+                
+                resultJSON["\(itemID)"] = itemJSON2
             }
            
             
         }
         print(resultJSON)
+//        var resultJSON2 : JSON = [:]
+//        var resultDic : Dictionary = [String:String]()
+//                    for resultKey in resultJSON.dictionaryValue.keys{
+//
+//                        resultDic[resultKey] = resultJSON[resultKey].stringValue
+//                        if resultDic[resultKey] != ""{
+//                            resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+//                        }
+//        //                print(itemDic[itemKey]!)
+//
+//                    }
+//        print(resultDic)
         onTestResult(param: param, result: resultJSON)
     }
 }

@@ -36,21 +36,18 @@ class CATESORTING_3: BaseTestCase {
         if param["STOCKFIELDS"].stringValue == "NULL" || param["STOCKFIELDS"].stringValue == "-1"{
             mRequest.stockFields = nil
         }else{
-            if let fields = param["STOCKFIELDS"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
+            if param["STOCKFIELDS"].stringValue != ""{
+                    let stockfields:NSArray = (param["STOCKFIELDS"].string?.split(separator: ",") as! NSArray)
+
+                    mRequest.stockFields = stockfields as! [Any]
                 }
-            mRequest.stockFields = fieldVal
             }
-        }
-        
-        if let fields = param["ADDVALUEFIELDS"].array{
-            var fieldVal = [String]()
-            for field in fields{
-                fieldVal.append(field.stringValue)
-                }
-            mRequest.addValueFields = fieldVal
+            
+
+            if param["ADDVALUEFIELDS"].stringValue != ""{
+                let addvalueFields:NSArray = (param["ADDVALUEFIELDS"].string?.split(separator: ",") as! NSArray)
+
+                mRequest.addValueFields = addvalueFields as! [Any]
             }
         
         let resp = self.makeSyncRequest(request: mRequest)
