@@ -33,7 +33,7 @@ class CHARTV2TEST_4: BaseTestCase {
         var resultJSON : JSON = [:]
         
         for item in chartResponse.ohlcItems{
-            var itemJSON2 : JSON = [:]
+            
             var itemJSON:JSON = [
                 "datetime" : item.datetime,
                 "closePrice": item.closePrice,
@@ -45,20 +45,23 @@ class CHARTV2TEST_4: BaseTestCase {
                 "iopvPre": item.referenceIOPVPrice,
                 
             ]
+            var itemJSON2 : JSON = [:]
             var itemDic : Dictionary = [String:String]()
-                            for itemKey in itemJSON.dictionaryValue.keys{
-                                
-                                itemDic[itemKey] = itemJSON[itemKey].stringValue
-                                if itemDic[itemKey] != ""{
-                                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
-                                }
-            //                    print(itemDic[itemKey]!)
-                                
-                            }
+            for itemKey in itemJSON.dictionaryValue.keys{
+                
+                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                if itemDic[itemKey] != ""{
+                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                }else{
+                    itemJSON2[itemKey].stringValue = "-"
+                }
+                
+            }
             resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
         if mRequest.returnAFData == true {
+            
             for item in chartResponse.afItems{
                 var itemJSON:JSON = [
                     "datetime": item.datetime,
@@ -66,7 +69,19 @@ class CHARTV2TEST_4: BaseTestCase {
                     "tradeVolume": item.tradeVolume,
                     "reference_price": item.referencePrice
                 ]
-                resultJSON["\(item.datetime!)"] = itemJSON
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                for itemKey in itemJSON.dictionaryValue.keys{
+                    
+                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                    if itemDic[itemKey] != ""{
+                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }else{
+                        itemJSON2[itemKey].stringValue = "-"
+                    }
+                    
+                }
+                resultJSON["\(item.datetime!)"] = itemJSON2
             }
             
         }

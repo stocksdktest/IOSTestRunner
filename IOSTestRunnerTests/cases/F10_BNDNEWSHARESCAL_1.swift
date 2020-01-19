@@ -44,9 +44,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     let key: String = info.key as! String
                     if key == "sglist"{
                         let sglists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日申购"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list:NSDictionary = sglist as! NSDictionary{
@@ -73,9 +71,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "wsslist"{
                         let wsslists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "未上市"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for wsslist in wsslists{
                             if let list:NSDictionary = wsslist as! NSDictionary{
@@ -102,9 +98,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "zqlist"{
                         let zqlists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日中签"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for zqlist in zqlists{
                             if let list:NSDictionary = zqlist as! NSDictionary{
@@ -131,9 +125,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "sslist"{
                         let sslists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日上市"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for sslist in sslists{
                             if let list:NSDictionary = sslist as! NSDictionary{
@@ -159,9 +151,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "jjfxlist"{
                         let jjfxlists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "即将发行"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for jjfxlist in jjfxlists{
                             if let list:NSDictionary = jjfxlist as! NSDictionary{
@@ -194,9 +184,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     let key: String = info.key as! String
                     if key == "sglist"{
                         let sglists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日申购"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list:NSDictionary = sglist as! NSDictionary{
@@ -235,9 +223,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "wsslist"{
                         let wsslists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "未上市"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for wsslist in wsslists{
                             if let list:NSDictionary = wsslist as! NSDictionary{
@@ -276,9 +262,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "zqlist"{
                         let zqlists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日中签"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for zqlist in zqlists{
                             if let list:NSDictionary = zqlist as! NSDictionary{
@@ -318,9 +302,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "sslist"{
                         let sslists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "今日上市"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for sslist in sslists{
                             if let list:NSDictionary = sslist as! NSDictionary{
@@ -359,9 +341,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                     }
                     if key == "jjfxlist"{
                         let jjfxlists:NSArray = info.value as! NSArray
-                        var itemJSON: JSON = [
-                            "title": "即将发行"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for jjfxlist in jjfxlists{
                             if let list:NSDictionary = jjfxlist as! NSDictionary{
@@ -409,9 +389,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                 let key: String = info.key as! String
                 if key == "sglist"{
                     if let sglists:NSArray = info.value as! NSArray{
-                        var itemJSON : JSON = [
-                            "title":"今日申购"
-                        ]
+                        var itemJSON : JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for sglist in sglists{
                             if let list: NSDictionary = sglist as! NSDictionary{
@@ -435,9 +413,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                 }
                 if key == "jjsglist"{
                     if let jjsglists:NSArray = info.value as! NSArray{
-                        var itemJSON : JSON = [
-                            "title":"即将申购"
-                        ]
+                        var itemJSON : JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for jjsglist in jjsglists{
                             if let list: NSDictionary = jjsglist as! NSDictionary{
@@ -461,9 +437,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                 }
                 if key == "dsslist"{
                     if let dsslists:NSArray = info.value as! NSArray{
-                        var itemJSON: JSON = [
-                            "title": "当日待上市列表"
-                        ]
+                        var itemJSON: JSON = [:]
                         var jsonarr1 : JSON = [:]
                         for dsslist in dsslists{
                             if let list: NSDictionary = dsslist as! NSDictionary{

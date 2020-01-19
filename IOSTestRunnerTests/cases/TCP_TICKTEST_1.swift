@@ -50,10 +50,10 @@ class TCP_TICKTEST_1: BaseTestCase {
             (error) in
             MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.tick)
             print("Stop subscription: \(code), error: \(error.debugDescription)")
-            let result: JSON = [
-                "items": self.subscribeRecords
-            ]
-            self.onTestResult(param: param, result: result)
+//            let result: JSON = [
+//                "items": self.subscribeRecords
+//            ]
+            self.onTestResult(param: param, result: self.subscribeRecords)
         }
     }
     
@@ -104,6 +104,14 @@ class TCP_TICKTEST_1: BaseTestCase {
                     "tradeVolume" : item.tradeVolume,
                     "tradePrice" : item.tradePrice
                 ]
+                switch String(item.type.rawValue) {
+                case "1":
+                    itemJSON["type"] = "B"
+                case "2":
+                    itemJSON["type"] = "S"
+                default:
+                    itemJSON["type"] = "-"
+                }
                 resultJSON["\(item.time!)"] = itemJSON
             }
             

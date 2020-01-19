@@ -39,6 +39,14 @@ class L2TICKDETAILV2_2: BaseTestCase {
                 "tradeVolume" : item.tradeVolume,
                 "tradePrice" : item.tradePrice
             ]
+            switch String(item.type.rawValue) {
+            case "1":
+                itemJSON["type"] = "B"
+            case "2":
+                itemJSON["type"] = "S"
+            default:
+                itemJSON["type"] = "-"
+            }
             resultJSON["\(item.time!)"] = itemJSON
             
         }

@@ -62,8 +62,9 @@ class F10_STOCKBULLETINLIST_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")

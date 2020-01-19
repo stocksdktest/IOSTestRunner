@@ -105,9 +105,21 @@ class BANKUAIQUOTE_1: BaseTestCase {
             } catch {
                 // ignore
             }
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }else{
+                                                itemJSON2[itemKey].stringValue = "-"
+                                            }
+                                            
+                                        }
             var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
             
-            resultJSON["\(itemID)"] = itemJSON
+            resultJSON["\(itemID)"] = itemJSON2
         }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)

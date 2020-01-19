@@ -32,7 +32,7 @@ class TRADEDATE_1: BaseTestCase {
                     if let item : MTradeDateItem = items as? MTradeDateItem{
                         let jsonarr2: JSON = [
                             "date": item.date,
-                            "isTrade": item.type.rawValue,
+                            "isTrade": String(item.type.rawValue),
                             "description": item.desc
                         ]
                         resultJSON["\(item.date!)"] = jsonarr2

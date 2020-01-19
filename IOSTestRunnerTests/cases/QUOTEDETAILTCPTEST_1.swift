@@ -52,10 +52,10 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
             (error) in
             MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.snap)
             print("Stop subscription: \(code), error: \(error.debugDescription)")
-            let result: JSON = [
-                "items": self.subscribeRecords
-            ]
-            self.onTestResult(param: param, result: result)
+//            let result: JSON = [
+//                "items": self.subscribeRecords
+//            ]
+            self.onTestResult(param: param, result: self.subscribeRecords)
         }
     }
     
@@ -167,7 +167,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update5: JSON = [
+                var update5: JSON = [
                     "rpd": item.fundAvailableDate,
                     "cdd": item.fundReceiptedDate,
                     "change2": item.change2,
@@ -179,6 +179,9 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     "DRConversionBase": item.drConversionBase,
                     "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update5["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try resultJSON.merge(with: update5)
                 } catch {
@@ -316,15 +319,26 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var resultJSON2: JSON = [:]
+                var resultDic : Dictionary = [String:String]()
+                            for resultKey in resultJSON.dictionaryValue.keys{
+                                
+                                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                                if resultDic[resultKey] != ""{
+                                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                                }else{
+                                    resultJSON2[resultKey].stringValue = "-"
+                                }
+                                
+                            }
                             switch item.changeState{
                 
                             case .flat:
-                                resultJSON["changeRate"].string = item.changeRate
+                                resultJSON2["changeRate"].string = item.changeRate
                             case .rise:
-                                resultJSON["changeRate"].string = "+"+item.changeRate
+                                resultJSON2["changeRate"].string = "+"+item.changeRate
                             case .drop:
-                                resultJSON["changeRate"].string = "-"+item.changeRate
+                                resultJSON2["changeRate"].string = "-"+item.changeRate
                             }
                             if let anyItems = item.tickItems{
                                 var jsonarray2 = [JSON]()
@@ -335,15 +349,23 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                     }
                 
                                     let tickitem:MTickItem = anyItem as! MTickItem
-                                    let jsonarray1: JSON = [
+                                    var jsonarray1: JSON = [
                                         "type": tickitem.type.rawValue,
                                         "time": tickitem.time,
                                         "tradeVolume": tickitem.tradeVolume,
                                         "tradePrice": tickitem.tradePrice
                                     ]
+                                    switch String(tickitem.type.rawValue) {
+                                    case "1":
+                                        jsonarray1["type"] = "B"
+                                    case "2":
+                                        jsonarray1["type"] = "S"
+                                    default:
+                                        jsonarray1["type"] = "-"
+                                    }
                                     jsonarray2.append(jsonarray1)
                                 }
-                                resultJSON["tradeTick"].arrayObject = jsonarray2
+                                resultJSON2["tradeTick"].arrayObject = jsonarray2
                             }
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
@@ -354,7 +376,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    resultJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -365,7 +387,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    resultJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -378,7 +400,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            resultJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -394,7 +416,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            resultJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -508,9 +530,22 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON2: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                        }else{
+                                            itemJSON2[itemKey].stringValue = "-"
+                                        }
+                                        
+                                    }
+
+                                    resultJSON2["addValue"] = itemJSON2
                 }
-                self.subscribeRecords["\(item.datetime!)"] = resultJSON
+                self.subscribeRecords["\(item.datetime!)"] = resultJSON2
             }else if items is MOptionItem{
                 let item:MOptionItem = items as! MOptionItem
                 var resultJSON: JSON = [
@@ -659,7 +694,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update9: JSON = [
+                var update9: JSON = [
                     "lowPrice": item.lowPrice,
                     "openPrice": item.openPrice,
                     "preClosePrice": item.preClosePrice,
@@ -671,20 +706,39 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     "limitDown": item.limitDown,
                     "averageValue": item.averagePrice,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update9["optionType"] = "C"
+                case "2":
+                    update9["optionType"] = "P"
+                default:
+                    update9["optionType"] = "-"
+                }
                 do {
                     try resultJSON.merge(with: update9)
                 } catch {
                     // ignore
                 }
-                
+                var resultJSON2 : JSON = [:]
+                var resultDic : Dictionary = [String:String]()
+                            for resultKey in resultJSON.dictionaryValue.keys{
+                                
+                                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                                if resultDic[resultKey] != ""{
+                                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                                }else{
+                                    resultJSON2[resultKey].stringValue = "-"
+                                }
+                                
+                            }
                 switch item.changeState{
                     
                 case .flat:
-                    resultJSON["changeRate"].string = item.changeRate
+                    resultJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    resultJSON["changeRate"].string = "+"+item.changeRate
+                    resultJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    resultJSON["changeRate"].string = "-"+item.changeRate
+                    resultJSON2["changeRate"].string = "-"+item.changeRate
                 }
                 if let anyItems = item.tickItems{
                     var jsonarray2 = [JSON]()
@@ -694,15 +748,23 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                         }
                         
                         let tickitem:MTickItem = anyItem as! MTickItem
-                        let jsonarray1: JSON = [
+                        var jsonarray1: JSON = [
                             "type": tickitem.type.rawValue,
                             "time": tickitem.time,
                             "tradeVolume": tickitem.tradeVolume,
                             "tradePrice": tickitem.tradePrice
                         ]
+                        switch String(tickitem.type.rawValue) {
+                        case "1":
+                            jsonarray1["type"] = "B"
+                        case "2":
+                            jsonarray1["type"] = "S"
+                        default:
+                            jsonarray1["type"] = "-"
+                        }
                         jsonarray2.append(jsonarray1)
                     }
-                    resultJSON["tradeTick"].arrayObject = jsonarray2
+                    resultJSON2["tradeTick"].arrayObject = jsonarray2
                 }
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
@@ -713,7 +775,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    resultJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -724,7 +786,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    resultJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -737,7 +799,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            resultJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -753,7 +815,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            resultJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -867,10 +929,22 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON2: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                        }else{
+                                            itemJSON2[itemKey].stringValue = "-"
+                                        }
+                                        
+                                    }
+
+                                    resultJSON2["addValue"] = itemJSON2
                 }
-                self.subscribeRecords["\(item.datetime!)"] = resultJSON
+                self.subscribeRecords["\(item.datetime!)"] = resultJSON2
             }else if items is MFuturesItem{
                 let item:MFuturesItem = items as! MFuturesItem
                 var resultJSON: JSON = [
@@ -1004,7 +1078,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update8: JSON = [
+                var update8: JSON = [
                     "IOPV": item.iopv,
                     "preIOPV": item.preIOPV,
                     "stateOfTransfer": item.zrzt,
@@ -1016,6 +1090,9 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     "change2": item.change2,
                     "hkTExchangeFlag": item.tradeType.rawValue,
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update8["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try resultJSON.merge(with: update8)
                 } catch {
@@ -1091,7 +1168,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update13: JSON = [
+                var update13: JSON = [
                     "netAsset": item.netAsset,
                     "pe": item.pe,
                     "pe2": item.spe,
@@ -1103,6 +1180,14 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     "earningsPerShareReportingPeriod": item.epsType,
                     "amplitudeRate": item.amplitudeRate,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update13["optionType"] = "C"
+                case "2":
+                    update13["optionType"] = "P"
+                default:
+                    update13["optionType"] = "-"
+                }
                 do {
                     try resultJSON.merge(with: update13)
                 } catch {
@@ -1142,15 +1227,26 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                
+                var resultJSON2 : JSON = [:]
+                var resultDic : Dictionary = [String:String]()
+                            for resultKey in resultJSON.dictionaryValue.keys{
+                                
+                                resultDic[resultKey] = resultJSON[resultKey].stringValue
+                                if resultDic[resultKey] != ""{
+                                    resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                                }else{
+                                    resultJSON2[resultKey].stringValue = "-"
+                                }
+                                
+                            }
                 switch item.changeState{
                     
                 case .flat:
-                    resultJSON["changeRate"].string = item.changeRate
+                    resultJSON2["changeRate"].string = item.changeRate
                 case .rise:
-                    resultJSON["changeRate"].string = "+"+item.changeRate
+                    resultJSON2["changeRate"].string = "+"+item.changeRate
                 case .drop:
-                    resultJSON["changeRate"].string = "-"+item.changeRate
+                    resultJSON2["changeRate"].string = "-"+item.changeRate
                 }
                 if let anyItems = item.tickItems{
                     var jsonarray2 = [JSON]()
@@ -1160,15 +1256,23 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                         }
                         
                         let tickitem:MTickItem = anyItem as! MTickItem
-                        let jsonarray1: JSON = [
+                        var jsonarray1: JSON = [
                             "type": tickitem.type.rawValue,
                             "time": tickitem.time,
                             "tradeVolume": tickitem.tradeVolume,
                             "tradePrice": tickitem.tradePrice
                         ]
+                        switch String(tickitem.type.rawValue) {
+                        case "1":
+                            jsonarray1["type"] = "B"
+                        case "2":
+                            jsonarray1["type"] = "S"
+                        default:
+                            jsonarray1["type"] = "-"
+                        }
                         jsonarray2.append(jsonarray1)
                     }
-                    resultJSON["tradeTick"].arrayObject = jsonarray2
+                    resultJSON2["tradeTick"].arrayObject = jsonarray2
                 }
                 if item.orderQuantityBuyItems != nil{
                     let orderQuantityBuyItems: NSArray = item.orderQuantityBuyItems! as NSArray
@@ -1179,7 +1283,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQBItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["buylist"].arrayObject = JSONarr
+                    resultJSON2["buylist"].arrayObject = JSONarr
                 }
                 if item.orderQuantitySellItems != nil{
                     let orderQuantitySellItems: NSArray = item.orderQuantitySellItems! as NSArray
@@ -1190,7 +1294,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                             var itemJSON: JSON = ["QUANTITY": OQSItem.volume]
                             JSONarr.append(itemJSON)
                         }
-                    resultJSON["selllist"].arrayObject = JSONarr
+                    resultJSON2["selllist"].arrayObject = JSONarr
                 }
                 if item.brokerSeatBuyItems != nil{
                     let brokerSeatBuyItems: NSArray = item.brokerSeatBuyItems! as NSArray
@@ -1203,7 +1307,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSBItem.fullName,
                                 "state": "1"
                             ]
-                            resultJSON["1_\(i)"] = itemJSON
+                            resultJSON2["1_\(i)"] = itemJSON
                             i = i + 1
                         }
                     
@@ -1219,7 +1323,7 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                                 "corporation": BSSItem.fullName,
                                 "state": "0"
                             ]
-                            resultJSON["0_\(i)"] = itemJSON
+                            resultJSON2["0_\(i)"] = itemJSON
                             i = i + 1
                         }
                 }
@@ -1332,10 +1436,23 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
                     } catch {
                         // ignore
                     }
-                    resultJSON["addValue"] = itemJSON
+                    var itemJSON2: JSON = [:]
+                    var itemDic : Dictionary = [String:String]()
+                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                        
+                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                        if itemDic[itemKey] != ""{
+                                            itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                        }else{
+                                            itemJSON2[itemKey].stringValue = "-"
+                                        }
+                                        
+                                    }
+
+                                    resultJSON2["addValue"] = itemJSON2
                 }
                 
-                self.subscribeRecords["\(item.datetime!)"] = resultJSON
+                self.subscribeRecords["\(item.datetime!)"] = resultJSON2
             }
 //            print("订阅结果：\(items)")
 //            break

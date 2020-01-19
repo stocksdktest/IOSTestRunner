@@ -173,7 +173,19 @@ class BANKUAISORTING_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            resultJSON["\(i)"] = itemJSON
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }else{
+                                                itemJSON2[itemKey].stringValue = "-"
+                                            }
+                                            
+                                        }
+            resultJSON["\(i)"] = itemJSON2
             i = i+1
         }
        print(resultJSON)

@@ -57,6 +57,16 @@ class HKSTOCKINFO_1: BaseTestCase {
                 "Side": item.side.rawValue,
                 "DataTimestamp": item.datetime
             ]
+            switch String(item.side.rawValue){
+            
+            case "1":
+                jsonarr2["Side"] = "0"
+            case "2":
+                jsonarr2["Side"] = "1"
+            default:
+                jsonarr2["Side"] = "-"
+            }
+            
             jsonarr1["\(item.orderId!)"] = jsonarr2
         }
         resultJSON["HKOtherItem"] = jsonarr1

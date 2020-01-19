@@ -155,8 +155,9 @@ class ADDVALUE_3: BaseTestCase {
                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                     if itemDic[itemKey] != ""{
                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }else{
+                        itemJSON2[itemKey].stringValue = "-"
                     }
-//                    print(itemDic[itemKey]!)
                     
                 }
 

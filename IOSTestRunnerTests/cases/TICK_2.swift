@@ -31,12 +31,20 @@ class TICK_2: BaseTestCase {
         XCTAssertNotNil(timeTickResponse.items)
         var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
-            let itemJSON:JSON = [
+            var itemJSON:JSON = [
                 "type" : item.type.rawValue,
                 "time" : item.time,
                 "tradeVolume" : item.tradeVolume,
                 "tradePrice" : item.tradePrice
             ]
+            switch String(item.type.rawValue) {
+            case "1":
+                itemJSON["type"] = "B"
+            case "2":
+                itemJSON["type"] = "S"
+            default:
+                itemJSON["type"] = "-"
+            }
             resultJSON["\(item.time!)"] = itemJSON
             
         }

@@ -50,8 +50,9 @@ class CHARTV2TEST_2: BaseTestCase {
                                 itemDic[itemKey] = itemJSON[itemKey].stringValue
                                 if itemDic[itemKey] != ""{
                                     itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                }else{
+                                    itemJSON2[itemKey].stringValue = "-"
                                 }
-            //                    print(itemDic[itemKey]!)
                                 
                             }
 
@@ -59,6 +60,7 @@ class CHARTV2TEST_2: BaseTestCase {
             
         }
         if mRequest.returnAFData == true {
+            
             for item in chartResponse.afItems{
                 var itemJSON:JSON = [
                     "datetime": item.datetime,
@@ -66,7 +68,19 @@ class CHARTV2TEST_2: BaseTestCase {
                     "tradeVolume": item.tradeVolume,
                     "reference_price": item.referencePrice
                 ]
-                resultJSON["\(item.datetime!)"] = itemJSON
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                for itemKey in itemJSON.dictionaryValue.keys{
+                    
+                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                    if itemDic[itemKey] != ""{
+                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }else{
+                        itemJSON2[itemKey].stringValue = "-"
+                    }
+                    
+                }
+                resultJSON["\(item.datetime!)"] = itemJSON2
             }
             
         }

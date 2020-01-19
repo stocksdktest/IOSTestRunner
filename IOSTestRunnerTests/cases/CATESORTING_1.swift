@@ -119,7 +119,7 @@ class CATESORTING_1: BaseTestCase {
                 }
                 let update4: JSON = [
                     "askvol1": item.sellVolume,
-                    "upf": item.unprofitableFlag.rawValue,
+                    "upf": String(item.unprofitableFlag.rawValue),
                     "contractID": item.contractID,
                     "objectID": item.stockID,
                     "stockSymble": item.stockSymble,
@@ -152,7 +152,7 @@ class CATESORTING_1: BaseTestCase {
                     // ignore
                 }
                 let update6: JSON = [
-                    "hk_paramStatus": item.hkInfoStatus.rawValue,
+                    "hk_paramStatus": String(item.hkInfoStatus.rawValue),
                     
                     "sumBuy": item.totalBuyVolume,
                     "sumSell": item.totalSellVolume,
@@ -206,7 +206,7 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update9: JSON = [
+                var update9: JSON = [
                     "lastPrice": item.lastPrice,
                     "highPrice": item.highPrice,
                     "lowPrice": item.lowPrice,
@@ -215,9 +215,17 @@ class CATESORTING_1: BaseTestCase {
                     "volume": item.volume,
                     "nowVolume": item.nowVolume,
                     "turnoverRate": item.turnoverRate,
-                    "optionType":item.optionType.rawValue,
+                    "optionType": String(item.optionType.rawValue),
                     "limitUP": item.limitUp,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update9["optionType"] = "C"
+                case "2":
+                    update9["optionType"] = "P"
+                default:
+                    update9["optionType"] = "-"
+                } 
                 do {
                     try itemJSON.merge(with: update9)
                 } catch {
@@ -230,8 +238,9 @@ class CATESORTING_1: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 switch item.changeState{
@@ -496,7 +505,7 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update23: JSON = [
+                var update23: JSON = [
                     "stateOfTransfer": item.zrzt,
                     "typeOfTransfer": item.zrlx,
                     "exRighitDividend": item.cqcx,
@@ -504,17 +513,20 @@ class CATESORTING_1: BaseTestCase {
                     "rpd": item.fundAvailableDate,
                     "cdd": item.fundReceiptedDate,
                     "change2": item.change2,
-                    "hkTExchangeFlag": item.tradeType.rawValue,
-                    "vote": item.voteFlag.rawValue,
-                    "upf": item.unprofitableFlag.rawValue,
+                    "hkTExchangeFlag": String(item.tradeType.rawValue),
+                    "vote": String(item.voteFlag.rawValue),
+                    "upf": String(item.unprofitableFlag.rawValue),
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update23["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update23)
                 } catch {
                     // ignore
                 }
                 let update24: JSON = [
-                    "ts": item.tsFlag.rawValue,
+                    "ts": String(item.tsFlag.rawValue),
                     "buy_cancel_count": item.withdrawBuyCount,
                     "buy_cancel_num": item.withdrawBuyVolume,
                     "buy_cancel_amount": item.withdrawBuyAmount,
@@ -530,16 +542,16 @@ class CATESORTING_1: BaseTestCase {
                     // ignore
                 }
                 let update25: JSON = [
-                    "qf": item.investorRequirementsFlag.rawValue,
-                    "qc": item.investorRequirementsType.rawValue,
-                    "ah": item.ahFlag.rawValue,
-                    "VCMFlag": item.vcmFlag.rawValue,
-                    "CASFlag": item.casFlag.rawValue,
+                    "qf": String(item.investorRequirementsFlag.rawValue),
+                    "qc": String(item.investorRequirementsType.rawValue),
+                    "ah": String(item.ahFlag.rawValue),
+                    "VCMFlag": String(item.vcmFlag.rawValue),
+                    "CASFlag": String(item.casFlag.rawValue),
                     "rp": item.termRepo,
                     "cd": item.takeUpDays,
-                    "hg": item.hgFlag.rawValue,
-                    "sg": item.sgFlag.rawValue,
-                    "fx": item.fxFlag.rawValue,
+                    "hg": String(item.hgFlag.rawValue),
+                    "sg": String(item.sgFlag.rawValue),
+                    "fx": String(item.fxFlag.rawValue),
                 ]
                 do {
                     try itemJSON.merge(with: update25)
@@ -547,28 +559,28 @@ class CATESORTING_1: BaseTestCase {
                     // ignore
                 }
                 let update26: JSON = [
-                    "hk_paramStatus": item.hkInfoStatus.rawValue,
+                    "hk_paramStatus": String(item.hkInfoStatus.rawValue),
                     "sumBuy": item.totalBuyVolume,
                     "sumSell": item.totalSellVolume,
                     "averageBuy": item.averageBuyPrice,
                     "averageSell": item.averageSellPrice,
-                    "zh": item.sFlag.rawValue,
-                    "hh": item.hFlag.rawValue,
+                    "zh": String(item.sFlag.rawValue),
+                    "hh": String(item.hFlag.rawValue),
                     
                     "st": item.subtypes,
                     
-                    "bu": item.financeFlag.rawValue,
-                    "su": item.securityFlag.rawValue,
+                    "bu": String(item.financeFlag.rawValue),
+                    "su": String(item.securityFlag.rawValue),
                 ]
                 do {
                     try itemJSON.merge(with: update26)
                 } catch {
                     // ignore
                 }
-                let update27: JSON = [
+                var update27: JSON = [
                     "capitalization": item.capitalization,
                     "circulatingShares": item.circulatingShare,
-                    "optionType":item.optionType.rawValue,
+                    "optionType":String(item.optionType.rawValue),
                     "earningsPerShare" :item.eps,
                     "earningsPerShareReportingPeriod": item.epsType,
                     
@@ -578,6 +590,14 @@ class CATESORTING_1: BaseTestCase {
                     "exerciseWay": item.exeType,
                     "orderRatio": item.orderRatio,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update27["optionType"] = "C"
+                case "2":
+                    update27["optionType"] = "P"
+                default:
+                    update27["optionType"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update27)
                 } catch {
@@ -636,8 +656,9 @@ class CATESORTING_1: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 switch item.changeState{
@@ -853,18 +874,21 @@ class CATESORTING_1: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update41: JSON = [
+                var update41: JSON = [
                     "securityLevel": item.zqjb,
                     "rpd": item.fundAvailableDate,
                     "cdd": item.fundReceiptedDate,
                     "change2": item.change2,
-                    "hkTExchangeFlag": item.tradeType.rawValue,
-                    "vote": item.voteFlag.rawValue,
-                    "upf": item.unprofitableFlag.rawValue,
+                    "hkTExchangeFlag": String(item.tradeType.rawValue),
+                    "vote": String(item.voteFlag.rawValue),
+                    "upf": String(item.unprofitableFlag.rawValue),
                     "DRCurrentShare": item.drCurrentShare,
                     "DRPreviousClosingShare": item.drPreviousClosingShare,
                     "DRConversionBase": item.drConversionBase,
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update41["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update41)
                 } catch {
@@ -888,15 +912,15 @@ class CATESORTING_1: BaseTestCase {
                     // ignore
                 }
                 let update43: JSON = [
-                    "ah": item.ahFlag.rawValue,
-                    "VCMFlag": item.vcmFlag.rawValue,
-                    "CASFlag": item.casFlag.rawValue,
+                    "ah": String(item.ahFlag.rawValue),
+                    "VCMFlag": String(item.vcmFlag.rawValue),
+                    "CASFlag": String(item.casFlag.rawValue),
                     "rp": item.termRepo,
                     "cd": item.takeUpDays,
-                    "hg": item.hgFlag.rawValue,
-                    "sg": item.sgFlag.rawValue,
-                    "fx": item.fxFlag.rawValue,
-                    "ts": item.tsFlag.rawValue,
+                    "hg": String(item.hgFlag.rawValue),
+                    "sg": String(item.sgFlag.rawValue),
+                    "fx": String(item.fxFlag.rawValue),
+                    "ts": String(item.tsFlag.rawValue),
                     "buy_cancel_count": item.withdrawBuyCount,
                 ]
                 do {
@@ -908,15 +932,15 @@ class CATESORTING_1: BaseTestCase {
                     "sumSell": item.totalSellVolume,
                     "averageBuy": item.averageBuyPrice,
                     "averageSell": item.averageSellPrice,
-                    "zh": item.sFlag.rawValue,
-                    "hh": item.hFlag.rawValue,
+                    "zh": String(item.sFlag.rawValue),
+                    "hh": String(item.hFlag.rawValue),
                     
                     "st": item.subtypes,
                     
-                    "bu": item.financeFlag.rawValue,
-                    "su": item.securityFlag.rawValue,
-                    "qf": item.investorRequirementsFlag.rawValue,
-                    "qc": item.investorRequirementsType.rawValue,
+                    "bu": String(item.financeFlag.rawValue),
+                    "su": String(item.securityFlag.rawValue),
+                    "qf": String(item.investorRequirementsFlag.rawValue),
+                    "qc": String(item.investorRequirementsType.rawValue),
                 ]
                 do {
                     try itemJSON.merge(with: update44)
@@ -933,7 +957,7 @@ class CATESORTING_1: BaseTestCase {
                     
                     "exerciseWay": item.exeType,
                     "orderRatio": item.orderRatio,
-                    "hk_paramStatus": item.hkInfoStatus.rawValue,
+                    "hk_paramStatus": String(item.hkInfoStatus.rawValue),
                     "sumBuy": item.totalBuyVolume,
                 ]
                 do {
@@ -994,8 +1018,9 @@ class CATESORTING_1: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 

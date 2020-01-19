@@ -24,24 +24,32 @@ class OHLCV3_1: BaseTestCase {
             mRequest.subtype = param["SUBTYPE"].stringValue
         }
         
-        if param["PERIOD"] == "3"{
-            mRequest.period = MOHLCPeriod(rawValue: 9)!
-        }else if param["PERIOD"] == "4"{
-            mRequest.period = MOHLCPeriod(rawValue: 8)!
-        }else if param["PERIOD"] == "5"{
+        switch param["PERIOD"] {
+        case "dayk":
+            mRequest.period = MOHLCPeriod(rawValue: 0)!
+        case "weekk":
+            mRequest.period = MOHLCPeriod(rawValue: 1)!
+        case "monthk":
+            mRequest.period = MOHLCPeriod(rawValue: 2)!
+        case "m5":
             mRequest.period = MOHLCPeriod(rawValue: 3)!
-        }else if param["PERIOD"] == "6"{
+        case "m15":
             mRequest.period = MOHLCPeriod(rawValue: 4)!
-        }else if param["PERIOD"] == "7"{
+        case "m30":
             mRequest.period = MOHLCPeriod(rawValue: 5)!
-        }else if param["PERIOD"] == "8"{
+        case "m60":
             mRequest.period = MOHLCPeriod(rawValue: 6)!
-        }else if param["PERIOD"] == "9"{
+        case "m120":
             mRequest.period = MOHLCPeriod(rawValue: 7)!
-        }else{
-            mRequest.period = MOHLCPeriod.init(rawValue:param["PERIOD"].uIntValue)!
+        case "m1":
+            mRequest.period = MOHLCPeriod(rawValue: 8)!
+        case "yeark":
+            mRequest.period = MOHLCPeriod(rawValue: 9)!
+        default:
+            mRequest.period = MOHLCPeriod(rawValue: 0)!
         }
         
+
         mRequest.requestType = MRequestType(rawValue: 0)!
         if param["PRICEADJUSTEDMODE"] == "0"{
             mRequest.priceAdjustedMode = MOHLCPriceAdjustedMode(rawValue: 1)!
@@ -55,8 +63,7 @@ class OHLCV3_1: BaseTestCase {
         let resp = self.makeSyncRequest(request: mRequest)
         let oHLCResponse = resp as! MOHLCResponse
         XCTAssertNotNil(oHLCResponse.ohlcItems)
-//        XCTAssertNotNil(oHLCResponse.fqItems)
-        print(oHLCResponse)
+
         var resultJSON : JSON = [:]
         for item in oHLCResponse.ohlcItems {
             
@@ -89,8 +96,9 @@ class OHLCV3_1: BaseTestCase {
                                             itemDic[itemKey] = itemJSON[itemKey].stringValue
                                             if itemDic[itemKey] != ""{
                                                 itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }else{
+                                                itemJSON2[itemKey].stringValue = "-"
                                             }
-            //                                print(itemDic[itemKey]!)
                                             
                                         }
                         resultJSON["\(item.datetime!)"] = itemJSON2

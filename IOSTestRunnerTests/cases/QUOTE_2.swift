@@ -192,7 +192,7 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update9: JSON = [
+                var update9: JSON = [
                     "highPrice": item.highPrice,
                     "lowPrice": item.lowPrice,
                     "openPrice": item.openPrice,
@@ -202,6 +202,14 @@ class QUOTE_2: BaseTestCase {
                     "turnoverRate": item.turnoverRate,
                     "optionType":item.optionType.rawValue,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update9["optionType"] = "C"
+                case "2":
+                    update9["optionType"] = "P"
+                default:
+                    update9["optionType"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update9)
                 } catch {
@@ -214,8 +222,9 @@ class QUOTE_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 switch item.changeState{
@@ -534,7 +543,7 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update8: JSON = [
+                var update8: JSON = [
                     "preIOPV": item.preIOPV,
                     "stateOfTransfer": item.zrzt,
                     "typeOfTransfer": item.zrlx,
@@ -546,6 +555,9 @@ class QUOTE_2: BaseTestCase {
                     "hkTExchangeFlag": item.tradeType.rawValue,
                     "vote": item.voteFlag.rawValue,
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update8["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update8)
                 } catch {
@@ -619,7 +631,7 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update13: JSON = [
+                var update13: JSON = [
                     "totalValue": item.totalValue,
                     "HKTotalValue": item.hkValue,
                     "flowValue": item.flowValue,
@@ -631,6 +643,14 @@ class QUOTE_2: BaseTestCase {
                     "circulatingShares": item.circulatingShare,
                     "optionType":item.optionType.rawValue,
                 ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update13["optionType"] = "C"
+                case "2":
+                    update13["optionType"] = "P"
+                default:
+                    update13["optionType"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update13)
                 } catch {
@@ -676,8 +696,9 @@ class QUOTE_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 switch item.changeState{
@@ -947,7 +968,7 @@ class QUOTE_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
-                let update5: JSON = [
+                var update5: JSON = [
                     "rpd": item.fundAvailableDate,
                     "cdd": item.fundReceiptedDate,
                     "change2": item.change2,
@@ -959,6 +980,9 @@ class QUOTE_2: BaseTestCase {
                     "DRConversionBase": item.drConversionBase,
                     "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
                 ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update5["hkTExchangeFlag"] = "-"
+                }
                 do {
                     try itemJSON.merge(with: update5)
                 } catch {
@@ -1089,8 +1113,9 @@ class QUOTE_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 switch item.changeState{

@@ -63,8 +63,9 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
@@ -75,18 +76,6 @@ class F10_STOCKBULLETINLIST_1: BaseTestCase {
             
         }
         print(resultJSON)
-//        var resultJSON2 : JSON = [:]
-//        var resultDic : Dictionary = [String:String]()
-//                    for resultKey in resultJSON.dictionaryValue.keys{
-//
-//                        resultDic[resultKey] = resultJSON[resultKey].stringValue
-//                        if resultDic[resultKey] != ""{
-//                            resultJSON2[resultKey].stringValue = resultDic[resultKey]!
-//                        }
-//        //                print(itemDic[itemKey]!)
-//
-//                    }
-//        print(resultDic)
         onTestResult(param: param, result: resultJSON)
     }
 }

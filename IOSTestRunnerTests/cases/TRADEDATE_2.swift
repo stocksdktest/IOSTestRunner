@@ -29,7 +29,7 @@ class TRADEDATE_2: BaseTestCase {
         for dates in tradeDateResponse.dates{
             let jsonarr2: JSON = [
                 "date": dates.date,
-                "isTrade": dates.type.rawValue,
+                "isTrade": String(dates.type.rawValue),
                 "description": dates.desc
             ]
             resultJSON["\(dates.date!)"] = jsonarr2

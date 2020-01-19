@@ -31,18 +31,31 @@ class SEARTEST_1: BaseTestCase {
         XCTAssertNotNil(searchResponse.resultItems)
         var resultJSON : JSON = [:]
         for items in searchResponse.resultItems {
+            
             let itemJSON: JSON = [
                 "stockID": items.stockID,
                 "name": items.name,
                 "market": items.market,
                 "pinyin": items.pinyin,
                 "subtype": items.subtype,
-                "stockType": items.flag.rawValue,
+                "stockType": String(items.flag.rawValue),
                 "st": items.subtypes
             ]
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+            for itemKey in itemJSON.dictionaryValue.keys{
+                
+                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                if itemDic[itemKey] != ""{
+                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                }else{
+                    itemJSON2[itemKey].stringValue = "-"
+                }
+                
+            }
             var itemID: String = items.stockID.replacingOccurrences(of: ".", with: "_")
             
-            resultJSON["\(itemID)"] = itemJSON
+            resultJSON["\(itemID)"] = itemJSON2
             
         }
         print(resultJSON)

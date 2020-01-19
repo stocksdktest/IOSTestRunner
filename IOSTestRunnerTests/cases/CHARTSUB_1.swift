@@ -87,8 +87,9 @@ class CHARTSUB_1: BaseTestCase {
                                 itemDic[itemKey] = itemJSON[itemKey].stringValue
                                 if itemDic[itemKey] != ""{
                                     itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                }else{
+                                    itemJSON2[itemKey].stringValue = "-"
                                 }
-            //                    print(itemDic[itemKey]!)
                                 
                             }
 

@@ -17,6 +17,7 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
     
     internal var subscribeRecords: JSON = [:]
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
+    internal var i = 1
     
     func testExample1() {
         let param = self.testCaseRoundConfig.getParam()
@@ -62,10 +63,10 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
                 MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.line5)
             }
             print("Stop subscription: \(code), error: \(error.debugDescription)")
-            let result: JSON = [
-                "items": self.subscribeRecords
-            ]
-            self.onTestResult(param: param, result: result)
+//            let result: JSON = [
+//                "items": self.subscribeRecords
+//            ]
+            self.onTestResult(param: param, result: self.subscribeRecords)
         }
     }
     
@@ -87,7 +88,7 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
             let chartItems = userInfo[MApiTcpDidReceivedDataLineItemsKey] as! NSArray
             let tradeDates = userInfo[MApiTcpDidReceivedDataLineTradeDatesKey] as! NSArray
             let time = userInfo[MApiTcpDidReceivedDataLineTimeKey] as! String
-//            var resultJSON : JSON = [:]
+            var resultJSON : JSON = [:]
             for chartItem in chartItems{
                 let item: MOHLCItem = chartItem as! MOHLCItem
                  var itemJSON:JSON = [
@@ -99,43 +100,23 @@ class TCP_CHARTV2TEST_1: BaseTestCase {
                        "openInterest": item.openInterest,
                        "iopv": item.iopv,
                        "iopvPre": item.referenceIOPVPrice,
-                       
+                       "reference_price": item.referencePrice
                    ]
-//                               resultJSON["\(item.datetime!)"] = itemJSON
-                   self.subscribeRecords["\(item.datetime!)"] = itemJSON
+                var itemJSON2 : JSON = [:]
+                var itemDic : Dictionary = [String:String]()
+                                for itemKey in itemJSON.dictionaryValue.keys{
+                                    
+                                    itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                    if itemDic[itemKey] != ""{
+                                        itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
+                                    }
+                                    
+                                }
+                   resultJSON["\(item.datetime!)"] = itemJSON2
             }
-//                           if param["RETURNAFDATA"].boolValue == true {
-//                               for item in chartResponse.afItems{
-//                                   var itemJSON:JSON = [
-//                                       "datetime": item.datetime,
-//                                       "closePrice": item.closePrice,
-//                                       "tradeVolume": item.tradeVolume,
-//                                       "reference_price": item.referencePrice
-//                                   ]
-//                                   resultJSON["\(item.datetime!)"] = itemJSON
-//                               }
-                            
-//                }
-                
-//            break
-//        case .snap:
-//            let item = userInfo[MApiTcpDidReceivedDataSnapKey] as! MStockItem
-//            let itemJSON = [
-//                "average_price": item.averagePrice
-//            ]
-////            self.subscribeRecords.append([
-////                "item": itemJSON
-////            ])
-//            print("订阅结果：\(item)")
-//            break
-//        case .tick:
-//            let item = userInfo[MApiTcpDidReceivedDataTimeTickKey] as! Array<AnyObject>
-////            self.subscribeRecords.append([
-////                "item": item.debugDescription
-////            ])
-//            break
-//        default:
-//            break
-//        }
+        self.subscribeRecords["\(i)"] = resultJSON
+        i=i+1
     }
 }

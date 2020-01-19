@@ -51,36 +51,39 @@ class CHARTV2TEST_6: BaseTestCase {
                 
             ]
             var itemDic : Dictionary = [String:String]()
-                            for itemKey in itemJSON.dictionaryValue.keys{
-                                
-                                itemDic[itemKey] = itemJSON[itemKey].stringValue
-                                if itemDic[itemKey] != ""{
-                                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
-                                }
-//                                print(itemDic[itemKey]!)
-                                
-                            }
+            for itemKey in itemJSON.dictionaryValue.keys{
+                
+                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                if itemDic[itemKey] != ""{
+                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                }else{
+                    itemJSON2[itemKey].stringValue = "-"
+                }
+                
+            }
             resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
         if mRequest.returnAFData == true {
             
             for item in chartResponse.afItems{
-                var itemJSON2 : JSON = [:]
+                
                 let itemJSON:JSON = [
                     "datetime": item.datetime,
                     "closePrice": item.closePrice,
                     "tradeVolume": item.tradeVolume,
                     "reference_price": item.referencePrice
                 ]
+                var itemJSON2 : JSON = [:]
                 var itemDic : Dictionary = [String:String]()
                                 for itemKey in itemJSON.dictionaryValue.keys{
                                     
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
                 resultJSON["\(item.datetime!)"] = itemJSON2

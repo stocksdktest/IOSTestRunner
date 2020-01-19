@@ -208,7 +208,7 @@ class CATESORTING_3: BaseTestCase {
                             } catch {
                                 // ignore
                             }
-                            let update9: JSON = [
+                            var update9: JSON = [
                                 "lastPrice": item.lastPrice,
                                 "highPrice": item.highPrice,
                                 "lowPrice": item.lowPrice,
@@ -220,6 +220,14 @@ class CATESORTING_3: BaseTestCase {
                                 "optionType":item.optionType.rawValue,
                                 "limitUP": item.limitUp,
                             ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update9["optionType"] = "C"
+                case "2":
+                    update9["optionType"] = "P"
+                default:
+                    update9["optionType"] = "-"
+                }
                             do {
                                 try itemJSON.merge(with: update9)
                             } catch {
@@ -232,8 +240,9 @@ class CATESORTING_3: BaseTestCase {
                                                 itemDic[itemKey] = itemJSON[itemKey].stringValue
                                                 if itemDic[itemKey] != ""{
                                                     itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                                }else{
+                                                    itemJSON2[itemKey].stringValue = "-"
                                                 }
-                            //                    print(itemDic[itemKey]!)
                                                 
                                             }
                             switch item.changeState{
@@ -498,7 +507,7 @@ class CATESORTING_3: BaseTestCase {
                             } catch {
                                 // ignore
                             }
-                            let update23: JSON = [
+                            var update23: JSON = [
                                 "stateOfTransfer": item.zrzt,
                                 "typeOfTransfer": item.zrlx,
                                 "exRighitDividend": item.cqcx,
@@ -510,6 +519,9 @@ class CATESORTING_3: BaseTestCase {
                                 "vote": item.voteFlag.rawValue,
                                 "upf": item.unprofitableFlag.rawValue,
                             ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update23["hkTExchangeFlag"] = "-"
+                }
                             do {
                                 try itemJSON.merge(with: update23)
                             } catch {
@@ -567,7 +579,7 @@ class CATESORTING_3: BaseTestCase {
                             } catch {
                                 // ignore
                             }
-                            let update27: JSON = [
+                            var update27: JSON = [
                                 "capitalization": item.capitalization,
                                 "circulatingShares": item.circulatingShare,
                                 "optionType":item.optionType.rawValue,
@@ -580,6 +592,14 @@ class CATESORTING_3: BaseTestCase {
                                 "exerciseWay": item.exeType,
                                 "orderRatio": item.orderRatio,
                             ]
+                switch String(item.optionType.rawValue) {
+                case "1":
+                    update27["optionType"] = "C"
+                case "2":
+                    update27["optionType"] = "P"
+                default:
+                    update27["optionType"] = "-"
+                }
                             do {
                                 try itemJSON.merge(with: update27)
                             } catch {
@@ -638,8 +658,9 @@ class CATESORTING_3: BaseTestCase {
                                                 itemDic[itemKey] = itemJSON[itemKey].stringValue
                                                 if itemDic[itemKey] != ""{
                                                     itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                                }else{
+                                                    itemJSON2[itemKey].stringValue = "-"
                                                 }
-                            //                    print(itemDic[itemKey]!)
                                                 
                                             }
                             switch item.changeState{
@@ -855,7 +876,7 @@ class CATESORTING_3: BaseTestCase {
                             } catch {
                                 // ignore
                             }
-                            let update41: JSON = [
+                            var update41: JSON = [
                                 "securityLevel": item.zqjb,
                                 "rpd": item.fundAvailableDate,
                                 "cdd": item.fundReceiptedDate,
@@ -867,6 +888,9 @@ class CATESORTING_3: BaseTestCase {
                                 "DRPreviousClosingShare": item.drPreviousClosingShare,
                                 "DRConversionBase": item.drConversionBase,
                             ]
+                if String(item.tradeType.rawValue) == "-1"{
+                    update41["hkTExchangeFlag"] = "-"
+                }
                             do {
                                 try itemJSON.merge(with: update41)
                             } catch {
@@ -996,8 +1020,9 @@ class CATESORTING_3: BaseTestCase {
                                                 itemDic[itemKey] = itemJSON[itemKey].stringValue
                                                 if itemDic[itemKey] != ""{
                                                     itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                                }else{
+                                                    itemJSON2[itemKey].stringValue = "-"
                                                 }
-                            //                    print(itemDic[itemKey]!)
                                                 
                                             }
                             

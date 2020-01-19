@@ -174,7 +174,7 @@ class OPTIONTQUOTE_1: BaseTestCase {
             } catch {
                 // ignore
             }
-            let update9: JSON = [
+            var update9: JSON = [
                 "highPrice": item.highPrice,
                 "lowPrice": item.lowPrice,
                 "openPrice": item.openPrice,
@@ -184,24 +184,43 @@ class OPTIONTQUOTE_1: BaseTestCase {
                 "turnoverRate": item.turnoverRate,
                 "optionType":item.optionType.rawValue,
             ]
+            switch String(item.optionType.rawValue) {
+            case "1":
+                update9["optionType"] = "C"
+            case "2":
+                update9["optionType"] = "P"
+            default:
+                update9["optionType"] = "-"
+            }
             do {
                 try itemJSON.merge(with: update9)
             } catch {
                 // ignore
             }
-            
+            var itemJSON2 : JSON = [:]
+            var itemDic : Dictionary = [String:String]()
+                                        for itemKey in itemJSON.dictionaryValue.keys{
+                                            
+                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                            if itemDic[itemKey] != ""{
+                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                            }else{
+                                                itemJSON2[itemKey].stringValue = "-"
+                                            }
+                                            
+                                        }
             switch item.changeState{
                 
             case .flat:
-                itemJSON["changeRate"].string = item.changeRate
+                itemJSON2["changeRate"].string = item.changeRate
             case .rise:
-                itemJSON["changeRate"].string = "+"+item.changeRate
+                itemJSON2["changeRate"].string = "+"+item.changeRate
             case .drop:
-                itemJSON["changeRate"].string = "-"+item.changeRate
+                itemJSON2["changeRate"].string = "-"+item.changeRate
             }
             var itemID: String = item.id.replacingOccurrences(of: ".", with: "_")
             
-            resultJSON["\(itemID)"] = itemJSON
+            resultJSON["\(itemID)"] = itemJSON2
         }
         
         print(resultJSON)

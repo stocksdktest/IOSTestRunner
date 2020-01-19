@@ -193,7 +193,7 @@ class QUOTEDETAIL_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            let update9: JSON = [
+            var update9: JSON = [
                 "lowPrice": item.lowPrice,
                 "openPrice": item.openPrice,
                 "preClosePrice": item.preClosePrice,
@@ -205,6 +205,14 @@ class QUOTEDETAIL_2: BaseTestCase {
                 "limitDown": item.limitDown,
                 "averageValue": item.averagePrice,
             ]
+            switch String(item.optionType.rawValue) {
+            case "1":
+                update9["optionType"] = "C"
+            case "2":
+                update9["optionType"] = "P"
+            default:
+                update9["optionType"] = "-"
+            }
             do {
                 try resultJSON.merge(with: update9)
             } catch {
@@ -216,8 +224,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                             resultDic[resultKey] = resultJSON[resultKey].stringValue
                             if resultDic[resultKey] != ""{
                                 resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                            }else{
+                                resultJSON2[resultKey].stringValue = "-"
                             }
-            //                print(itemDic[itemKey]!)
                             
                         }
             switch item.changeState{
@@ -237,12 +246,20 @@ class QUOTEDETAIL_2: BaseTestCase {
                     }
                     
                     let tickitem:MTickItem = anyItem as! MTickItem
-                    let jsonarray1: JSON = [
+                    var jsonarray1: JSON = [
                         "type": tickitem.type.rawValue,
                         "time": tickitem.time,
                         "tradeVolume": tickitem.tradeVolume,
                         "tradePrice": tickitem.tradePrice
                     ]
+                    switch String(tickitem.type.rawValue) {
+                    case "1":
+                        jsonarray1["type"] = "B"
+                    case "2":
+                        jsonarray1["type"] = "S"
+                    default:
+                        jsonarray1["type"] = "-"
+                    }
                     jsonarray2.append(jsonarray1)
                 }
                 resultJSON2["tradeTick"].arrayObject = jsonarray2
@@ -416,8 +433,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
 
@@ -560,7 +578,7 @@ class QUOTEDETAIL_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            let update8: JSON = [
+            var update8: JSON = [
                 "IOPV": item.iopv,
                 "preIOPV": item.preIOPV,
                 "stateOfTransfer": item.zrzt,
@@ -572,6 +590,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                 "change2": item.change2,
                 "hkTExchangeFlag": item.tradeType.rawValue,
             ]
+            if String(item.tradeType.rawValue) == "-1"{
+                update8["hkTExchangeFlag"] = "-"
+            }
             do {
                 try resultJSON.merge(with: update8)
             } catch {
@@ -647,7 +668,7 @@ class QUOTEDETAIL_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            let update13: JSON = [
+            var update13: JSON = [
                 "netAsset": item.netAsset,
                 "pe": item.pe,
                 "pe2": item.spe,
@@ -659,6 +680,14 @@ class QUOTEDETAIL_2: BaseTestCase {
                 "earningsPerShareReportingPeriod": item.epsType,
                 "amplitudeRate": item.amplitudeRate,
             ]
+            switch String(item.optionType.rawValue) {
+            case "1":
+                update13["optionType"] = "C"
+            case "2":
+                update13["optionType"] = "P"
+            default:
+                update13["optionType"] = "-"
+            }
             do {
                 try resultJSON.merge(with: update13)
             } catch {
@@ -704,8 +733,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                             resultDic[resultKey] = resultJSON[resultKey].stringValue
                             if resultDic[resultKey] != ""{
                                 resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                            }else{
+                                resultJSON2[resultKey].stringValue = "-"
                             }
-            //                print(itemDic[itemKey]!)
                             
                         }
             switch item.changeState{
@@ -725,12 +755,20 @@ class QUOTEDETAIL_2: BaseTestCase {
                     }
                     
                     let tickitem:MTickItem = anyItem as! MTickItem
-                    let jsonarray1: JSON = [
+                    var jsonarray1: JSON = [
                         "type": tickitem.type.rawValue,
                         "time": tickitem.time,
                         "tradeVolume": tickitem.tradeVolume,
                         "tradePrice": tickitem.tradePrice
                     ]
+                    switch String(tickitem.type.rawValue) {
+                    case "1":
+                        jsonarray1["type"] = "B"
+                    case "2":
+                        jsonarray1["type"] = "S"
+                    default:
+                        jsonarray1["type"] = "-"
+                    }
                     jsonarray2.append(jsonarray1)
                 }
                 resultJSON2["tradeTick"].arrayObject = jsonarray2
@@ -903,8 +941,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                                     if itemDic[itemKey] != ""{
                                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                    }else{
+                                        itemJSON2[itemKey].stringValue = "-"
                                     }
-                //                    print(itemDic[itemKey]!)
                                     
                                 }
 
@@ -996,7 +1035,7 @@ class QUOTEDETAIL_2: BaseTestCase {
             } catch {
                 // ignore
             }
-            let update5: JSON = [
+            var update5: JSON = [
                 "rpd": item.fundAvailableDate,
                 "cdd": item.fundReceiptedDate,
                 "change2": item.change2,
@@ -1008,6 +1047,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                 "DRConversionBase": item.drConversionBase,
                 "DRDepositoryInstitutionCode": item.drDepositoryInstitutionCode,
             ]
+            if String(item.tradeType.rawValue) == "-1"{
+                update5["hkTExchangeFlag"] = "-"
+            }
             do {
                 try resultJSON.merge(with: update5)
             } catch {
@@ -1151,8 +1193,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                             resultDic[resultKey] = resultJSON[resultKey].stringValue
                             if resultDic[resultKey] != ""{
                                 resultJSON2[resultKey].stringValue = resultDic[resultKey]!
+                            }else{
+                                resultJSON2[resultKey].stringValue = "-"
                             }
-            //                print(itemDic[itemKey]!)
                             
                         }
                         switch item.changeState{
@@ -1173,12 +1216,20 @@ class QUOTEDETAIL_2: BaseTestCase {
                                 }
             
                                 let tickitem:MTickItem = anyItem as! MTickItem
-                                let jsonarray1: JSON = [
+                                var jsonarray1: JSON = [
                                     "type": tickitem.type.rawValue,
                                     "time": tickitem.time,
                                     "tradeVolume": tickitem.tradeVolume,
                                     "tradePrice": tickitem.tradePrice
                                 ]
+                                switch String(tickitem.type.rawValue) {
+                                case "1":
+                                    jsonarray1["type"] = "B"
+                                case "2":
+                                    jsonarray1["type"] = "S"
+                                default:
+                                    jsonarray1["type"] = "-"
+                                }
                                 jsonarray2.append(jsonarray1)
                             }
                             resultJSON2["tradeTick"].arrayObject = jsonarray2
@@ -1352,8 +1403,9 @@ class QUOTEDETAIL_2: BaseTestCase {
                     itemDic[itemKey] = itemJSON[itemKey].stringValue
                     if itemDic[itemKey] != ""{
                         itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                    }else{
+                        itemJSON2[itemKey].stringValue = "-"
                     }
-//                    print(itemDic[itemKey]!)
                     
                 }
 

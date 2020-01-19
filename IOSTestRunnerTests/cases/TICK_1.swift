@@ -36,6 +36,14 @@ class TICK_1: BaseTestCase {
                 "tradeVolume" : item.tradeVolume,
                 "tradePrice" : item.tradePrice
             ]
+            switch String(item.type.rawValue) {
+            case "1":
+                itemJSON["type"] = "B"
+            case "2":
+                itemJSON["type"] = "S"
+            default:
+                itemJSON["type"] = "-"
+            }
             resultJSON["\(item.time!)"] = itemJSON
             
         }
@@ -69,12 +77,20 @@ class TICK_1: BaseTestCase {
 //            print(timeTickResponseNext)
 //            print(timeTickResponseNext.items.count)
             for item in timeTickResponseNext.items{
-                let itemJSON:JSON = [
+                var itemJSON:JSON = [
                     "type" : item.type.rawValue,
                     "time" : item.time,
                     "tradeVolume" : item.tradeVolume,
                     "tradePrice" : item.tradePrice
                 ]
+                switch String(item.type.rawValue) {
+                case "1":
+                    itemJSON["type"] = "B"
+                case "2":
+                    itemJSON["type"] = "S"
+                default:
+                    itemJSON["type"] = "-"
+                }
                 result["\(item.time!)"] = itemJSON
                 
             }
