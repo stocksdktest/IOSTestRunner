@@ -30,7 +30,7 @@ class AHQUOTE_1: BaseTestCase {
                 "lastPrice": AHQuoteResponse.lastPrice,
                 "premium": AHQuoteResponse.premiumRate,
                 "preClosePrice": AHQuoteResponse.preClosePrice,
-                "premiumHA": item.premiumRateHA,
+                "premiumHA": AHQuoteResponse.premiumRateHA,
                 "changeRate": AHQuoteResponse.changeRate
             ]
             print(resultJSON)

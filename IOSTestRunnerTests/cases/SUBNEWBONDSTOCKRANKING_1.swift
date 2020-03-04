@@ -50,7 +50,7 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
                 "turnoverRate":items.turnoverRate,
                 "amount":items.amount,
                 "mainforceMoneyNetInflow":items.capitalInflow,
-                "pe":items.PE,
+                "pe":items.pe,
                 "totalValue":items.totalValue,
                 "flowValue":items.flowValue,
                 "bu":String(items.financeFlag.rawValue),
