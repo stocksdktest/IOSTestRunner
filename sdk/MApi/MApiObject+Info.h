@@ -698,13 +698,12 @@ __attribute__((deprecated("已弃用")))
 @end
 
 /*! @brief 新股(债)信息请求类
- *  只支持MF10DataSourceCH
  */
 @interface MIPOShareDetailRequest : MDataRequest
 /** 股号 */
 @property (nonatomic, copy) NSString *code;
 /** IPO类型，默认为新股：MIPOTypeStock */
-@property (nonatomic, assign)MIPOType type __attribute__((deprecated));
+@property (nonatomic, assign)MIPOType type;
 @end
 
 

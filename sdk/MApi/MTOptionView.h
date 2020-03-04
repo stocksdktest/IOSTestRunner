@@ -154,5 +154,8 @@ typedef NS_ENUM(NSInteger, MSortingField){
  *  排序栏位
  */
 @property (nonatomic, assign) MSortingField field;
+/** 是否需要显示调整和未调整期权 */
+@property (nonatomic, assign) BOOL isV2;
+
 
 @end

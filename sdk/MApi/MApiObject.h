@@ -10,7 +10,7 @@
 #if __has_extension(objc_generics)
 @class MTickItem, MTimeTickItem, MTimeTickDetailItem, MPriceVolumeItem, MStockItem, MOHLCItem, MAddValueItem,
 MOptionItem, MSectionRankingItem, MSectionSortingItem,
-MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoItem, MSubnewStockRankingItem,MSubnewBondRankingItem, MFQItem,MAHQuoteItem,MTradeItem,MTradeDateItem,MLinkItem,MDRQuoteItem,MUKItem,MBidItem,MPlateIndexItem,MUpdownsItem,MOfferItem;
+MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoItem, MSubnewStockRankingItem,MSubnewBondRankingItem, MFQItem,MAHQuoteItem,MTradeItem,MTradeDateItem,MLinkItem,MDRQuoteItem,MUKItem,MBidItem,MPlateIndexItem,MUpdownsItem,MOfferItem,MCirculatingShareItem,MExpireMonthItem;
 
 
 #define MAPI_OBJ_TICK_TYPE                 <MTickItem *>
@@ -39,6 +39,8 @@ MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoI
 #define MAPI_OBJ_SUBNEW_BOND_RANKING_TYPE  <MSubnewBondRankingItem *>
 #define MAPI_OBJ_TRADE_DATE_TYPE <MTradeDateItem *>
 #define MAPI_OBJ_OFFER_TYPE           <MOfferItem *>
+#define MAPI_OBJ_EXPIRE_MONTH_TYPE     <MExpireMonthItem *>
+#define MAPI_OBJ_CIRCULATING_SHARE_TYPE  <MCirculatingShareItem *>
 #else
 #define MAPI_OBJ_TICK_TYPE
 #define MAPI_OBJ_TIME_TICK_TYPE
@@ -66,6 +68,8 @@ MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoI
 #define MAPI_OBJ_SUBNEW_BOND_RANKING_TYPE
 #define MAPI_OBJ_TRADE_DATE_TYPE
 #define MAPI_OBJ_OFFER_TYPE
+#define MAPI_OBJ_EXPIRE_MONTH_TYPE
+#define MAPI_OBJ_CIRCULATING_SHARE_TYPE
 #endif
 #endif
 
@@ -228,7 +232,8 @@ typedef NS_ENUM(NSInteger, MStockStage) {
     MStockStageClosed        = 5,  // 已收盘
     MStockStageLunchBreak    = 6,  // 休市
     MStockStageOnTrading     = 7,   // 交易中 已弃用
-    MStockStageAfterHoursTrading = 8 //盘后交易
+    MStockStageAfterHoursTrading = 8, //盘后交易
+    MStockStageVolatilityInterruption = 9 //波动性中断
 };
 
 typedef NS_ENUM(NSInteger, MOHLCPriceAdjustedMode) {
@@ -238,7 +243,6 @@ typedef NS_ENUM(NSInteger, MOHLCPriceAdjustedMode) {
 };
 
 typedef NS_ENUM(NSInteger, MCategorySortingField) {
-    //除全球外汇外共有
     MCategorySortingFieldStatus = 0,    //股票状态
     MCategorySortingFieldID = 1,        //代码
     MCategorySortingFieldName = 2,      //名称
@@ -251,33 +255,29 @@ typedef NS_ENUM(NSInteger, MCategorySortingField) {
     MCategorySortingFieldChangeRate = 12,       //涨跌幅
     MCategorySortingFieldVolume = 13,           //总量
     MCategorySortingFieldNowVolume = 14,        //当前成交量
+    MCategorySortingFieldTurnoverRate = 15,     //换手率
     MCategorySortingFieldChange = 19,           //涨跌额
     MCategorySortingFieldAmount = 20,           //成交额
+    MCategorySortingFieldVolumeRatio = 21,      //量比
     MCategorySortingFieldBuyVolume = 24,        //外盘量
     MCategorySortingFieldSellVolume = 25,       //内盘量
-    MCategorySortingFieldOrderRatio = 53,       //委比
-    MCategorySortingFieldEntrustDiff = 54,       //委差
-    
-    //沪深港新三板
-    MCategorySortingFieldTurnoverRate = 15,     //换手率
-    MCategorySortingFieldVolumeRatio = 21,      //量比
     MCategorySortingFieldTotalValue = 26,       //总值
     MCategorySortingFieldFlowValue = 27,        //流值
     MCategorySortingFieldNetAsset = 28,         //每股净资产
-    MCategorySortingFieldPE = 29,               //动态市盈
+    MCategorySortingFieldPE = 29,               //动态市盈 (支持沪、深、港、新三板)
     MCategorySortingFieldROE = 30,              //市净率
     MCategorySortingFieldCapitalization = 31,   //总股本
     MCategorySortingFieldCirculatingShare = 32, //流通股
     MCategorySortingFieldAmplitudeRate = 37,    //振幅
     MCategorySortingFieldReceipts = 38,         //每股收益
-    MCategorySortingFieldCFFOrderRatio = 40,    //委比(新三板 废弃)
-    MCategorySortingFieldSPE = 42,              //静态市盈
+    MCategorySortingFieldCFFOrderRatio = 40,    //委比 (新三板)
+    MCategorySortingFieldSPE = 42,              //静态市盈 (支持沪、深、港)
+    MCategorySortingFieldOrderRatio = 53,       //委比 (沪深港)
+    MCategorySortingFieldEntrustDiff = 54,       //委差
     MCategorySortingFieldDRCurrentShare = 57,   //当前份额 (沪伦通)
     MCategorySortingFieldDRPreviousClosingShare = 58, // 前收盘份额 (沪伦通)
     MCategorySortingFieldAfterHoursVolume = 72,       //盘后成交量
     MCategorySortingFieldAfterHoursAmount = 73,       //盘后成交额
-    
-    //增值指标
     MCategorySortingFieldUltraLargeNetInflow = -19, //超大单净流入
     MCategorySortingFieldLargeNetInflow = -20,      //大单净流入
     MCategorySortingFieldMediumNetInflow = -21,     //中单净流入
@@ -300,43 +300,6 @@ typedef NS_ENUM(NSInteger, MCategorySortingField) {
     MCategorySortingFieldNetInflowRate10 = -62,         //10日主力资金净流入占比
     MCategorySortingFieldNetInflowRate20 = -63,         //20日主力资金净流入占比
 
-    //期货
-    MCategorySortingFuturesFieldAvgPrice = 200,         //均价
-    MCategorySortingFuturesFieldTradingDay = 201,       //交易日
-    MCategorySortingFuturesFieldSettlementGroupID = 202,//结算组代码
-    MCategorySortingFuturesFieldSettlementID = 203,     //结算编号
-    MCategorySortingFuturesFieldPreSettlement = 204,    //昨结算
-    MCategorySortingFuturesFieldPreOpenInterest = 205,  //昨持仓量
-    MCategorySortingFuturesFieldOpenInterest = 206,     //持仓量
-    MCategorySortingFuturesFieldPositionChg = 207,      //日增
-    MCategorySortingFuturesFieldClose = 208,            //今收盘价
-    MCategorySortingFuturesFieldSettlement = 209,       //今结算价
-    MCategorySortingFuturesFieldLimitUp = 210,  //涨停价
-    MCategorySortingFuturesFieldLimitDown = 211,//跌停价
-    MCategorySortingFuturesFieldPreDelta = 212, //昨虚实度
-    MCategorySortingFuturesFieldCurrDelta = 213,//今虚实度
-    MCategorySortingFuturesFieldUpdateMillisec = 214,   //最后修改毫秒
-    MCategorySortingFuturesFieldBuyPrice = 215, //买1价
-    MCategorySortingFuturesFieldBuyVol = 216,   //买1量
-    MCategorySortingFuturesFieldSellPrice = 217,//卖1价
-    MCategorySortingFuturesFieldSellVol = 218,  //卖1量
-    MCategorySortingFuturesFieldChange1 = 219,  //涨跌1
-    MCategorySortingFuturesFieldIntersectionNum = 220,  //交割点数
-    MCategorySortingFuturesFieldEntrustBuyVolume = 221, //委买
-    MCategorySortingFuturesFieldEntrustSellVolume = 222,//委卖
-    MCategorySortingFuturesFieldPosDiff = 223,          //仓差
-    MCategorySortingFuturesFieldAmplitudeRate = 224,    //振幅
-    MCategorySortingFuturesFieldExcercisePx = 225,      //行权价
-    MCategorySortingFuturesFieldPremiumRate = 226,      //溢价率
-    MCategorySortingFuturesFieldImpliedVolatility = 227,//隐含波动率
-    MCategorySortingFuturesFieldRiskFreeInterestRate = 228,//无风险利率
-    MCategorySortingFuturesFieldLeverageRatio = 229,    //杠杆比率
-    MCategorySortingFuturesFieldRemainDays = 230,       //剩余天数
-    //股指期货
-    MCategorySortingFuturesFieldUnderlyingLastPx = 231,//标的现价
-    MCategorySortingFuturesFieldUnderlyingPreClose = 232,//标的昨收
-    MCategorySortingFuturesFieldUnderlyingChange = 233,//标的涨跌
-    MCategorySortingFuturesFieldUnderlyingSymbol = 234,//标的名称
     
     //全球、外汇
     MCategorySortingSSEFieldLastPrice= 300,         //最新价
@@ -424,6 +387,13 @@ typedef NS_ENUM(NSInteger, MSubnewStockRankingField) {
     MSubnewStockRankingFieldIPODate = 4,
     MSubnewStockRankingFieldContinuousLimitUpDays = 5,
     MSubnewStockRankingFieldTotalRate = 8,
+    MSubnewStockRankingFieldChange = 9,
+    MSubnewStockRankingFieldTurnoverRate = 10,
+    MSubnewStockRankingFieldAmount = 11,
+    MSubnewStockRankingFieldCapitalInflow = 12,
+    MSubnewStockRankingFieldPE = 13,
+    MSubnewStockRankingFieldTotalValue = 14,
+    MSubnewStockRankingFieldFlowValue = 15
 };
 
 typedef NS_ENUM(NSInteger, MSubnewBondRankingField) {
@@ -435,6 +405,13 @@ typedef NS_ENUM(NSInteger, MSubnewBondRankingField) {
     MSubnewBondRankingFieldSubtype = 5,     //按次类别排序
     MSubnewBondRankingFieldPreClosePrice = 6,//按昨收价排序
     MSubnewBondRankingFieldTotalRate = 7,
+    MSubnewBondRankingFieldChange = 8,
+    MSubnewBondRankingFieldTurnoverRate = 9,
+    MSubnewBondRankingFieldAmount = 10,
+    MSubnewBondRankingFieldCapitalInflow = 11,
+    MSubnewBondRankingFieldPE = 12,
+    MSubnewBondRankingFieldTotalValue = 13,
+    MSubnewBondRankingFieldFlowValue = 14
 };
 
 typedef NS_ENUM(NSUInteger, MHKOddSide) {
@@ -569,7 +546,7 @@ typedef  NS_ENUM(NSInteger, MApiTcpSubscribeType) {
     MApiTcpSubscribeTypeLine5   = 1 << 2,
     MApiTcpSubscribeTypeTick    = 1 << 3,
     MApiTcpSubscribeTypeTickDetail    = 1 << 4,
-    MApiTcpSubscribeTypeAll     = 11111111
+    MApiTcpSubscribeTypeAll     = 0B11111111
 };
 
 typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
@@ -865,7 +842,6 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 
 /*! @brief 历史行情(K线数据)请求类
  */
-__attribute__((deprecated("已弃用, 使用MOHLCRequestV2")))
 @interface MOHLCRequest : MRequest
 /** 股票代码 */
 @property (nonatomic, copy) NSString *code;
@@ -978,7 +954,7 @@ __attribute__((deprecated("已弃用, 使用MOHLCRequestV2")))
 /* 排序栏位，期货排序栏位请参考CFFSortingField */
 @property (nonatomic, assign) MCategorySortingField field;
 /* 期货排序栏位 参照下方自定义 */
-@property (nonatomic, copy) NSString *CFFSortingField __attribute__((deprecated));
+@property (nonatomic, copy) NSString *CFFSortingField;
 /**
  * 特别说明：新三板不支持自定义
  * 自定义请求字段，参照MAddValueItem, MStockItem属性,!!! 如果是中金股票，参照MFuturesItem属性
@@ -1174,7 +1150,9 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 /*! @brief 标的证券列表请求类
  */
 @interface MUnderlyingStockRequest : MRequest
-
+/** 市场：上海期权：sh，深圳期权：sz 多个市场期权用逗号分隔，如沪深期权：sh,sz
+ */
+@property (nonatomic, copy) NSString *market;
 @end
 
 /*! @brief 交割月列表请求类
@@ -1182,6 +1160,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @interface MExpireMonthRequest : MRequest
 /** 标的证券代码 */
 @property (nonatomic, copy) NSString *stockID;
+/** V2会返回期权交割月和剩余日期，其中期权交割月2003A表示调整，2003M表示未调整*/
+@property (nonatomic, assign) BOOL isV2;
 @end
 
 #pragma mark 分价
@@ -1453,8 +1433,10 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *preClosePrice;
 /** 联动代码涨跌幅 */
 @property (nonatomic, copy) NSString *changeRate;
-/** 联动代码溢价率 */
+/** 联动代码AH溢价率 */
 @property (nonatomic, copy) NSString *premiumRate;
+/** 联动代码HA溢价率 */
+@property (nonatomic, copy) NSString *premiumRateHA;
 @end
 
 /*! @brief 可转债与正股联动应答类
@@ -1660,6 +1642,10 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, strong) NSArray MAPI_OBJ_OHLC_TYPE *OHLCItems;
 /** 复权信息（当请求前后复权时返回） */
 @property (nonatomic, strong) NSArray MAPI_OBJ_FQ_TYPE *FQItems;
+/** 流通股本信息 */
+@property (nonatomic, strong) NSArray MAPI_OBJ_CIRCULATING_SHARE_TYPE *circulatingShareItems;
+/** 计算当前一笔换手率 仅支持沪深*/
++ (NSString *)turnoverRateByItem:(MOHLCItem *)item andCirculatingShareItems:(NSArray *)circulatingShareItems;
 /** 补足当前一笔资料 */
 - (NSArray *)OHLCItemsByPeriodType:(MOHLCPeriod)period andSnapshotStockItem:(MStockItem *)stockItem __attribute__((deprecated("已弃用，返回的数据已经包括当前第一笔资料")));
 @end
@@ -1675,8 +1661,16 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 /*! @brief 期权行情应答类
  */
 @interface MOptionResponse : MResponse
-/** 期权行情列表 */
-@property (nonatomic, strong) NSArray MAPI_OBJ_OPTION_TYPE *optionItems;
+/** 期权行情列表
+    当为上证、深圳期权时返回数据类型为MOptionItem
+    档位期货期权时返回数据类型为MFuturesItem
+ */
+@property (nonatomic, strong) NSArray *optionItems;
+/** 处理过的T型报价数据：{price:行权价，put:认沽，call:认购} */
+@property (nonatomic, strong) NSArray *processedItems;
+/** 标的行情数据（上证、深圳期权返回） */
+@property (nonatomic, strong) MStockItem *stockItem;
+
 @end
 
 /*! @brief 交割月应答类
@@ -1684,6 +1678,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @interface MExpireMonthResponse : MResponse
 /** 交割月列表 */
 @property (nonatomic, strong) NSArray *expireMonths;
+/** 交割月 和 剩余天数*/
+@property (nonatomic, strong) NSArray MAPI_OBJ_EXPIRE_MONTH_TYPE*v2ExpireMonths;
 @end
 
 /*! @brief 标的证券应答类
@@ -1785,33 +1781,6 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @end
 
 /*! @brief 分量表应答类
- 
- 各区间段说明(共24个区间)：  债券和股票是10倍关系
- 分量统计区间编码单位为股，转化交易单位后区间为：AB股       债券
- 0 = 0-99                               0-1(手)    0-10(张)
- 1 = 100-199                            1-2(手)    10-20(张)
- 2 = 200-299                             ...        ...
- 3 = 300-499
- 4 = 500-699
- 5 = 700-999
- 6 = 1000-1499
- 7 = 1500-1999
- 8 = 2000-2999
- 9 = 3000-4999
- 10 = 5000-6999
- 11 = 7000-9999
- 12 = 10000-14999
- 13 = 15000-19999
- 14 = 20000-29999
- 15 = 30000-49999
- 16 = 50000-69999
- 17 = 70000-99999
- 18 = 100000-149999
- 19 = 150000-199999
- 20 = 200000-299999
- 21 = 300000-499999
- 22 = 500000-699999
- 23 = 700000以上
  */
 @interface MVolumeResponse : MResponse
 /** 区间段分量表数组 */
@@ -1918,7 +1887,7 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
  */
 @interface MTradeDateResponse : MResponse
 /** 日期数组 */
-@property (nonatomic, strong) NSArray MAPI_OBJ_TRADE_DATE_TYPE *dates;
+@property (nonatomic, strong) NSArray *dates;
 @property (nonatomic, strong) NSArray *infos __attribute__((deprecated("已弃用，请使用dates")));
 @end
 
@@ -2003,8 +1972,10 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *lowPrice;
 /** 收盘价 */
 @property (nonatomic, copy) NSString *closePrice;
-/** 交易量 */
+/** 交易量(手) */
 @property (nonatomic, copy) NSString *tradeVolume;
+/** 交易量原始值(股) */
+@property (nonatomic, copy) NSString *originalTradeVolume;
 /** 均价 */
 @property (nonatomic, copy) NSString *averagePrice;
 /** 昨收价 */
@@ -2027,6 +1998,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *afterHoursVolume;
 /** 盘后成交额*/
 @property (nonatomic, copy) NSString *afterHoursAmount;
+/** 量比（当日分时走势才有值） */
+@property (nonatomic, copy) NSString *volumeRatio;
 @end
 
 /*! @brief 走势指标
@@ -2081,6 +2054,15 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *increaseVolume;
 /** 配股比例 */
 @property (nonatomic, copy) NSString *allotmentProportion;
+@end
+
+/*! @brief 股票股本信息
+*/
+@interface MCirculatingShareItem : MBaseItem
+/** 股本变动时间*/
+@property (nonatomic, copy) NSString *dateTime;
+/** 流通股本*/
+@property (nonatomic, copy) NSString *circulatingShare;
 @end
 
 /*! @brief 股票集合竞价信息
@@ -2143,8 +2125,16 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *preClosePrice;
 /** 均价 */
 @property (nonatomic, copy) NSString *averagePrice;
-/** 涨跌比率 */
+/** 涨跌幅（不带正负号，根据changeStateb判断） */
 @property (nonatomic, copy) NSString *changeRate;
+/** 本月涨跌幅 */
+@property (nonatomic, copy)NSString *monthChangeRate;
+/** 本年涨跌幅 */
+@property (nonatomic, copy)NSString *yearChangeRate;
+/** 近月涨跌幅 */
+@property (nonatomic, copy)NSString *nMonthChangeRate;
+/** 近年涨跌幅 */
+@property (nonatomic, copy)NSString *nYearChangeRate;
 /** 总量 */
 @property (nonatomic, copy) NSString *volume;
 /** 现量 */
@@ -2153,9 +2143,9 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *lastMinuteVolume;
 /** 换手率 */
 @property (nonatomic, copy) NSString *turnoverRate;
-/** 涨停价 对于要约业务，存放其收购/回购价格*/
+/** 涨停价 */
 @property (nonatomic, copy) NSString *limitUp;
-/** 跌停价 对于要约业务，存放其收购/回购价格*/
+/** 跌停价 */
 @property (nonatomic, copy) NSString *limitDown;
 /** 涨跌 */
 @property (nonatomic, copy) NSString *change;
@@ -2239,8 +2229,6 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
  计算方式参考涨幅上限价格
  */
 @property (nonatomic, copy)NSString *UDFlag;
-/** 价格档位*/
-@property (nonatomic, copy) NSString *priceUnit;
 
 /**
  *  科创板
@@ -2283,7 +2271,10 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
  *  可转债
  */
 @property (nonatomic, strong) NSArray *linkCode;
-
+/** 前结算价 */
+@property (nonatomic, strong) NSString *presetPrice;
+/** 持仓量*/
+@property (nonatomic, copy) NSString *openInterest;
 
 /**
  *  国债逆回购 专有
@@ -2341,6 +2332,11 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, assign) MFlag AHFlag;
 /** 港股通是否可交易 */
 @property (nonatomic, assign) MHKTTradeType tradeType;
+/** 仓差 */
+@property (nonatomic, copy) NSString *posDiff;
+/** 挂牌类型：A=当日新股，E=存续合约，1=品种新挂，2=到期加挂，3=调整加挂，4=波动加挂 */
+@property (nonatomic, copy) NSString *GPLX;
+
 
 /**
  *  股票类型
@@ -2415,9 +2411,9 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 /**
  *  新三板 专有
  */
-/** 转让状态 N’表示正常状态，‘Y’表示首日挂牌，‘D’ 表示新增股票挂牌转让*/
+/** 转让状态 N’表示正常状态，‘Y’表示首日挂牌，‘D’ 表示新增股票挂牌转让，'I'表示询价，'F'表示申购*/
 @property (nonatomic, copy) NSString *ZRZT;
-/** 转让类型 ‘T’表示协议转让方式;‘M’表示做市转让 方式;‘B’表示集合竞价+连续竞价转让方式;‘C’表示集合竞价转让方式; ‘O’表示其他类型*/
+/** 转让类型 ‘T’表示协议转让方式;‘M’表示做市转让 方式;‘B’表示集合竞价+连续竞价转让方式;‘C’表示集合竞价转让方式;'P'表示发行方式; ‘O’表示其他类型*/
 @property (nonatomic, copy) NSString *ZRLX;
 /** 除权除息 ‘N’表示正常状态，‘E’表示除权，‘D’ 表示除息，‘A’表示除权除息*/
 @property (nonatomic, copy) NSString *CQCX;
@@ -2425,10 +2421,25 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
             ‘B’表示对应证券是两网公司及退市公司股票;
             ‘O’表示对应证券是仅提供行权功 能的期权;
             ‘P’表示对应证券是持有人数存在 200 人限制的证券
-            ‘R’表示对应证券是其他类型的业务*/
+            ‘F’表示发行业务*/
 @property (nonatomic, copy) NSString *ZQJB;
+/** 较上一幅涨跌*/
+@property (nonatomic, copy) NSString *change2;
+
+/** 基础证券标的证券 */
+@property (nonatomic, copy) NSString *underlyingSecurity;
+/** 挂牌日期 格式:CCYYMMDD   如果交易状态为I-询价，则填写‘99991231’；如果交易状态为F-申购，则填写发行日期*/
+@property (nonatomic, copy) NSString *listDate;
+/** 起息日 对于优先股，该字段存放其起息日；对于要约业务，该字段存放其要约开始日期。对于发行业务，该字段存放其询价开始日期。*/
+@property (nonatomic, copy) NSString *valueDate;
+/** 到期日 对于要约业务，该字段存放其要约结束日期。对于发行业务，该字段存放其询价结束日期。*/
+@property (nonatomic, copy) NSString *expiringDate;
 /** 停牌标志 F’表示正常转让；‘T’表示停牌，不接受转让申报；‘H’表示停牌，接受转让申报*/
 @property (nonatomic, copy) NSString *TPBZ;
+/** 每笔限量 如果交易状态为I-询价，则填写最大询价数量；如果交易状态为F-申购，则填写网上投资者最大申购数量*/
+@property (nonatomic, copy) NSString *MBXL;
+/** 最小申报数量 存放除做市商外其他投资者在正常交易时段的每笔最小申报数量*/
+@property (nonatomic, copy) NSString *ZXSBSL;
 
 /** 其他业务状态
  * 第一个元素
@@ -2441,27 +2452,7 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
  * */
 @property (nonatomic, copy) NSArray *QTYW;
 
-/** 较上一幅涨跌*/
-@property (nonatomic, copy) NSString *change2;
-/** 基础证券标的券 */
-@property (nonatomic, copy) NSString *underlyingSecurity;
-/** 挂牌日期*/
-@property (nonatomic, copy) NSString *listDate;
-/** 起息日*/
-@property (nonatomic, copy) NSString *valueDate;
-/** 到息日 */
-@property (nonatomic, copy) NSString *expiringDate;
-/** 买数量单位*/
-@property (nonatomic, copy) NSString *buyQtyUnit;
-/** 卖数量单位*/
-@property (nonatomic, copy) NSString *sellQtyUnit;
 
-/** 做市商数量 仅针对采用做市转让方式的证券提供做市报价的做市商数量，采用其他转让方式的证券该字段的值默认为0*/
-@property (nonatomic, copy) NSString *marketMarkerNumber;
-/** 每股收益(上年度) */
-@property (nonatomic, copy) NSString *preReceipts;
-/** 净资产收益率*/
-@property (nonatomic, copy) NSString *PBR;
 
 /**
  *  沪伦通
@@ -2495,7 +2486,7 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 /** 上市日期(CDR或GDR)*/
 @property (nonatomic, copy) NSString *DRListingDate;
 
-/** 行权方式 E：欧式期权，A：美式期权 */
+/** 行权方式 E：欧式期权，A：美式期权，B：百慕大式 */
 @property (nonatomic, copy) NSString *exeType;
 
 //板块指数
@@ -2624,6 +2615,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *market;
 /** 类型 */
 @property (nonatomic, copy) NSString *subtype;
+/** 品种 */
+@property (nonatomic, copy) NSString *en;
 /** 证券代码*/
 @property (nonatomic, copy) NSString *ID;
 /** 股票代码(不含市场) */
@@ -2646,9 +2639,9 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *lastPrice;
 /** 均价 */
 @property (nonatomic, copy) NSString *avgPrice;
-/** 涨跌 期货和昨结比较;新三板和昨收比较*/
+/** 涨跌2 */
 @property (nonatomic, copy) NSString *change;
-/** 涨跌 期货和昨收比较;新三板和上一幅比较*/
+/** 涨跌1 */
 @property (nonatomic, copy) NSString *change1;/////////
 /** 涨跌比率 */
 @property (nonatomic, copy) NSString *changeRate;
@@ -2672,8 +2665,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *settlementGroupID;
 /** 结算编号*/
 @property (nonatomic, copy) NSString *settlementID;
-/** 昨结算*/
-@property (nonatomic, copy) NSString *preSettlement;
+/** 前结算价 */
+@property (nonatomic, copy) NSString *preSettlement __attribute__((deprecated("改用父类presetPrice")));
 /** 昨持仓量*/
 @property (nonatomic, copy) NSString *preOpenInterest;
 /** 持仓量*/
@@ -2690,9 +2683,15 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *close;
 /** 今结算价*/
 @property (nonatomic, copy) NSString *settlement;
-/** 涨停价 */
+/** 涨停价
+ 对于要约业务，存放其收购/回购价格。
+ 对于发行业务，如果交易状态为I-询价，存放询价价格区间上限，如果交易状态为F-申购，存放申购价格上限
+ */
 @property (nonatomic, copy) NSString *limitUp;
-/** 跌停价 */
+/** 跌停价
+ 对于要约业务，存放其收购/回购价格。
+ 对于发行业务，如果交易状态为I-询价，存放询价价格区间下限，如果交易状态为F-申购，存放申购价格下限
+ */
 @property (nonatomic, copy) NSString *limitDown;
 /** 昨虚实度 */
 @property (nonatomic, copy) NSString *preDelta;
@@ -2965,8 +2964,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *expDate;
 /** 合约版号 */
 @property (nonatomic, copy) NSString *version;
-/** 前结算价 */
-@property (nonatomic, copy) NSString *presetPrice;
+/** 当日结算价 */
+@property (nonatomic, copy) NSString *setPrice;
 /** 标的证券昨收 */
 @property (nonatomic, copy) NSString *stockClose;
 /** 标的证券价格 */
@@ -3045,7 +3044,7 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 /** 今日结算价*/
 @property (nonatomic, copy) NSString *settlement;
 /** 昨日结算价*/
-@property (nonatomic, copy) NSString *preSettlement;
+@property (nonatomic, copy) NSString *preSettlement __attribute__((deprecated("改用父类presetPrice")));
 /** 外盘量 */
 @property (nonatomic, copy) NSString *buyVolume;
 /** 内盘量 */
@@ -3115,8 +3114,12 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *changeRateH;
 /** H股交易时间 */
 @property (nonatomic, copy) NSString *datetimeH;
-/** 联动代码溢价率 */
+/** 联动代码AH溢价率 */
 @property (nonatomic, copy) NSString *premiumRate;
+/** 联动代码HA溢价率 */
+@property (nonatomic, copy) NSString *premiumRateHA;
+/** H股名称 */
+@property (nonatomic, copy) NSString *nameH;
 @end
 
 
@@ -3513,6 +3516,8 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *code;
 /** 股票名称 */
 @property (nonatomic, copy) NSString *name;
+/** 次类别 */
+@property (nonatomic, copy) NSString *subtype;
 /** 发行价 */
 @property (nonatomic, copy) NSString *IPOPrice;
 /** 最新价 */
@@ -3527,6 +3532,32 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *rate;
 /** 累计涨跌幅 */
 @property (nonatomic, copy) NSString *totalRate;
+/** 涨跌 */
+@property (nonatomic, copy) NSString *change;
+/** 涨跌状态 */
+@property (nonatomic, assign) MChangeState changeState;
+/** 换手率 */
+@property (nonatomic, copy) NSString *turnoverRate;
+/** 成交金额 */
+@property (nonatomic, copy) NSString *amount;
+/** 主力资金流入 */
+@property (nonatomic, copy) NSString *capitalInflow;
+/** 每股收益*/
+@property (nonatomic, copy) NSString *EPS;
+/** 总股本 */
+@property (nonatomic, copy) NSString *capitalization;
+/** 流通股 */
+@property (nonatomic, copy) NSString *circulatingShare;
+/** 流通股本*/
+@property (nonatomic, copy) NSString *flowValue;
+/** 总市值 */
+@property (nonatomic, copy) NSString *totalValue;
+/** 动态市盈*/
+@property (nonatomic, copy) NSString *PE;
+/** 融资标识 */
+@property (nonatomic, assign) MFlag financeFlag;
+/** 融券标识 */
+@property (nonatomic, assign) MFlag securityFlag;
 @end
 
 /*! @brief 次新债
@@ -3550,7 +3581,32 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, copy) NSString *rate;
 /** 累计涨跌幅 */
 @property (nonatomic, copy) NSString *totalRate;
-
+/** 涨跌 */
+@property (nonatomic, copy) NSString *change;
+/** 涨跌状态 */
+@property (nonatomic, assign) MChangeState changeState;
+/** 换手率 */
+@property (nonatomic, copy) NSString *turnoverRate;
+/** 成交金额 */
+@property (nonatomic, copy) NSString *amount;
+/** 主力资金流入 */
+@property (nonatomic, copy) NSString *capitalInflow;
+/** 每股收益*/
+@property (nonatomic, copy) NSString *EPS;
+/** 总股本 */
+@property (nonatomic, copy) NSString *capitalization;
+/** 流通股 */
+@property (nonatomic, copy) NSString *circulatingShare;
+/** 流通股本*/
+@property (nonatomic, copy) NSString *flowValue;
+/** 总市值 */
+@property (nonatomic, copy) NSString *totalValue;
+/** 动态市盈*/
+@property (nonatomic, copy) NSString *PE;
+/** 融资标识 */
+@property (nonatomic, assign) MFlag financeFlag;
+/** 融券标识 */
+@property (nonatomic, assign) MFlag securityFlag;
 @end
 
 @interface MAddValueItem : MBaseItem
@@ -3748,6 +3804,14 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @end
 
 
+/*! 期权交割月行情
+*/
+@interface MExpireMonthItem : MBaseItem
+/** 交割月 */
+@property (nonatomic, copy) NSString *time;
+/** 剩余天数 */
+@property (nonatomic, copy) NSString *day;
+@end
 
 #pragma mark 不建议使用
 

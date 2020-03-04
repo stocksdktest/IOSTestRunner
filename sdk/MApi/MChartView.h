@@ -6,7 +6,7 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "MApiObject.h"
 #pragma mark - 图型化接口
 
 /** 注册查价线开始查询时的NotificationKey */
@@ -69,6 +69,14 @@ typedef NS_OPTIONS(NSInteger, MChartEnquiryLineMode) {
 @property (nonatomic, readwrite) UIColor *enquiryTextColor;
 /** 查价线模式, 默认 MChartEnquiryLineModeSticky */
 @property (nonatomic, assign) MChartEnquiryLineMode enquiryLineMode;
+/** 查价时X轴显示的时间label
+ *  如果需要点击事件，可以再此label上添加点击事件
+ */
+@property (nonatomic, readonly) UILabel *enquiryTimeLabel;
+/** 查价时X轴显示的时间label自定义格式赋值
+ *  如果需要点击事件，可以再此label上添加点击事件
+ */
+@property (nonatomic, copy) NSString *(^formatEnquiryTimeString)(NSString *time);
 
 @property (nonatomic, strong) NSDictionary *options;
 @property (nonatomic, assign) UIEdgeInsets yAxisLabelInsets;
@@ -82,7 +90,10 @@ typedef NS_OPTIONS(NSInteger, MChartEnquiryLineMode) {
  */
 - (void)reloadData;
 - (void)reloadDataWithStockItem:(MStockItem *)stockItem;
-
+/*! @brief 结束查价
+ *  查价时，调用此方法直接取消查价
+ */
+- (void)endEnquire;
 @end
 
 @interface MChartView4Trend : MChartView
@@ -229,6 +240,14 @@ extern NSString * const MOHLCChartViewPreviousItemNotificationInfoKey;
 @property (nonatomic, strong) __kindof MChartTheme<MChartBorderTheme> *theme;
 /** 加载提示颜色 */
 @property (nonatomic, strong) UIColor *indicatorColor;
+/** 日期：yyyyMMdd，仅当绘制分时图有效，设置此参数时绘制当天的历史分时 */
+@property (nonatomic, copy) NSString *date;
+/** 设置此参数时，线图会在当前queryIndex对于的数据出绘制查价十字光标 */
+@property (nonatomic, assign, setter=setEnquireIndex:) NSInteger enquireIndex;
+/** 走势数据 */
+@property (nonatomic, readonly) NSArray <MOHLCItem *>*items;
+
+
 /** 主图设定按钮 */
 @property (nonatomic, strong) UIButton *majorPlotSettingButton __attribute__((deprecated("请改用majorPlotLeftButtons")));
 /** 主图切换索引按钮 */
@@ -698,6 +717,10 @@ withMaxValue:(double)maxValue
 
 @interface MBigNetVolumePlot : MPlot4Trend
 
+@end
+
+#pragma mark - MVOLRatio
+@interface MVOLRatioPlot : MPlot4Trend
 @end
 
 #pragma mark - MChartBorderTheme
