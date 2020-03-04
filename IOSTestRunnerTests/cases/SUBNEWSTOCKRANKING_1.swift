@@ -45,15 +45,15 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
                 "preClosePrice":items.preClosePrice,
                 "rate":items.rate,
                 "allRate":items.totalRate,
-                "change": item.change,
-                "turnoverRate":item.turnoverRate,
-                "amount":item.amount,
-                "mainforceMoneyNetInflow":item.capitalInflow,
-                "pe":item.PE,
-                "totalValue":item.totalValue,
-                "flowValue":item.flowValue,
-                "bu":String(item.financeFlag.rawValue),
-                "su":String(item.securityFlag.rawValue)
+                "change": items.change,
+                "turnoverRate":items.turnoverRate,
+                "amount":items.amount,
+                "mainforceMoneyNetInflow":items.capitalInflow,
+                "pe":items.PE,
+                "totalValue":items.totalValue,
+                "flowValue":items.flowValue,
+                "bu":String(items.financeFlag.rawValue),
+                "su":String(items.securityFlag.rawValue)
             ]
             resultJSON["\(i)"] = itemJSON
             i=i+1
