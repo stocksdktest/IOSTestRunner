@@ -65,59 +65,70 @@ class OHLCV3_1: BaseTestCase {
         XCTAssertNotNil(oHLCResponse.ohlcItems)
 
         var resultJSON : JSON = [:]
-        for item in oHLCResponse.ohlcItems {
-            
+        for i in 0 ..< oHLCResponse.ohlcItems.count{
+            let item : MOHLCItem = oHLCResponse.ohlcItems[i]
+            let circulatingShareItem : MCirculatingShareItem = oHLCResponse.circulatingShareItems[i]
             var itemJSON: JSON = [
-                "datetime": item.datetime,
-                "openPrice": item.openPrice,
-                "highPrice": item.highPrice,
-                "lowPrice": item.lowPrice,
-                "closePrice": item.closePrice,
-                "tradeVolume": item.tradeVolume,
-                "iopv": item.IOPV
-                
-            ]
-            let update1: JSON = [
-                "averagePrice": item.averagePrice,
-                "reference_price": item.referencePrice,
-                "transaction_price": item.amount,
-                "openInterest": item.openInterest,
-                "fp_volume": item.afterHoursVolume,
-                "fp_amount": item.afterHoursAmount
-            ]
-            do {
-                try itemJSON.merge(with: update1)
-            } catch {
-                // ignore
-            }
-            if oHLCResponse.circulatingShareItems != nil{
-                var i = 1
-//                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
-                for circulatingShareItem in oHLCResponse.circulatingShareItems{
-                    var jsonarr2: JSON = [
-                        "date":circulatingShareItem.dateTime,
-                        "gb":circulatingShareItem.circulatingShare,
-                    ]
-                    itemJSON["\(i)"] = jsonarr2
-                    i = i + 1
-                }
-            }
-            
-            var itemJSON2 : JSON = [:]
-            var itemDic : Dictionary = [String:String]()
-                                        for itemKey in itemJSON.dictionaryValue.keys{
-                                            
-                                            itemDic[itemKey] = itemJSON[itemKey].stringValue
-                                            if itemDic[itemKey] != ""{
-                                                itemJSON2[itemKey].stringValue = itemDic[itemKey]!
-                                            }else{
-                                                itemJSON2[itemKey].stringValue = "-"
-                                            }
-                                            
-                                        }
-                        resultJSON["\(item.datetime!)"] = itemJSON2
-            
+                            "datetime": item.datetime,
+                            "openPrice": item.openPrice,
+                            "highPrice": item.highPrice,
+                            "lowPrice": item.lowPrice,
+                            "closePrice": item.closePrice,
+                            "tradeVolume": item.tradeVolume,
+                            "iopv": item.IOPV
+                            
+                        ]
+            //            let turnoverRate = turnoverRateByItem(item,oHLCResponse.circulatingShareItems)
+                        let update1: JSON = [
+                            "averagePrice": item.averagePrice,
+                            "reference_price": item.referencePrice,
+                            "transaction_price": item.amount,
+                            "openInterest": item.openInterest,
+                            "fp_volume": item.afterHoursVolume,
+                            "fp_amount": item.afterHoursAmount,
+                            "date":circulatingShareItem.dateTime,
+                            "gb":circulatingShareItem.circulatingShare,
+                        ]
+                        do {
+                            try itemJSON.merge(with: update1)
+                        } catch {
+                            // ignore
+                        }
+                        
+                        
+                        var itemJSON2 : JSON = [:]
+                        var itemDic : Dictionary = [String:String]()
+                                                    for itemKey in itemJSON.dictionaryValue.keys{
+                                                        
+                                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                                        if itemDic[itemKey] != ""{
+                                                            itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                                        }else{
+                                                            itemJSON2[itemKey].stringValue = "-"
+                                                        }
+                                                        
+                                                    }
+                                    resultJSON["\(item.datetime!)"] = itemJSON2
         }
+//        for item in oHLCResponse.ohlcItems {
+//
+//
+//
+//        }
+//        if oHLCResponse.circulatingShareItems != nil{
+//                        var i = 1
+//            var circulatingShareItemJSON : JSON = [:]
+//        //                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
+//                        for circulatingShareItem in oHLCResponse.circulatingShareItems{
+//                            var jsonarr2: JSON = [
+//                                "date":circulatingShareItem.dateTime,
+//                                "gb":circulatingShareItem.circulatingShare,
+//                            ]
+//                            circulatingShareItemJSON["\(i)"] = jsonarr2
+//                            i = i + 1
+//                        }
+//                    }
+//        resultJSON[""]
        print(resultJSON)
        onTestResult(param: param, result: resultJSON)
     }

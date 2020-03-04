@@ -5,22 +5,22 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//期权-交割月列表
+//期权-交割月列表v2
 import XCTest
 import os.log
 import SwiftyJSON
 
-class OPTIONEXPIRE_1: BaseTestCase {
+class OPTIONEXPIRE_2: BaseTestCase {
     
     override var stockTestCaseName: StockTestCaseName {
-        return StockTestCaseName.OPTIONEXPIRE_1
+        return StockTestCaseName.OPTIONEXPIRE_2
     }
     
     func testExpireMonth() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
-                mRequest.isV2 = false
+                mRequest.isV2 = param["adjusted"].boolValue
              
                 let resp = self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse

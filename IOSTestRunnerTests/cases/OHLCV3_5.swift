@@ -70,7 +70,9 @@ class OHLCV3_5: BaseTestCase {
 //        XCTAssertNotNil(oHLCResponse.fqItems)
         print(oHLCResponse)
         var resultJSON : JSON = [:]
-        for item in oHLCResponse.ohlcItems {
+        for i in 0 ..< oHLCResponse.ohlcItems.count{
+        let item : MOHLCItem = oHLCResponse.ohlcItems[i]
+        let circulatingShareItem : MCirculatingShareItem = oHLCResponse.circulatingShareItems[i]
             var itemJSON: JSON = [
                 "datetime": item.datetime,
                 "openPrice": item.openPrice,
@@ -87,25 +89,16 @@ class OHLCV3_5: BaseTestCase {
                 "transaction_price": item.amount,
                 "openInterest": item.openInterest,
                 "fp_volume": item.afterHoursVolume,
-                "fp_amount": item.afterHoursAmount
+                "fp_amount": item.afterHoursAmount,
+                "date":circulatingShareItem.dateTime,
+                "gb":circulatingShareItem.circulatingShare,
             ]
             do {
                 try itemJSON.merge(with: update1)
             } catch {
                 // ignore
             }
-            if oHLCResponse.circulatingShareItems != nil{
-                            var i = 1
-            //                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
-                            for circulatingShareItem in oHLCResponse.circulatingShareItems{
-                                var jsonarr2: JSON = [
-                                    "date":circulatingShareItem.dateTime,
-                                    "gb":circulatingShareItem.circulatingShare,
-                                ]
-                                itemJSON["\(i)"] = jsonarr2
-                                i = i + 1
-                            }
-                        }
+            
             var itemJSON2 : JSON = [:]
             var itemDic : Dictionary = [String:String]()
                                         for itemKey in itemJSON.dictionaryValue.keys{
