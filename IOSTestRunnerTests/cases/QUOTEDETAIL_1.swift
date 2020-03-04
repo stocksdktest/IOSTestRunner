@@ -965,7 +965,7 @@ class QUOTEDETAIL_1: BaseTestCase {
                 "recentYearChangeRate": item.nYearChangeRate,
             ]
             do {
-                try itemJSON.merge(with: update3_3_0_002)
+                try resultJSON.merge(with: update3_3_0_002)
             } catch {
                 // ignore
             }
