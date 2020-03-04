@@ -75,7 +75,7 @@ class OHLCV3_1: BaseTestCase {
                             "lowPrice": item.lowPrice,
                             "closePrice": item.closePrice,
                             "tradeVolume": item.tradeVolume,
-                            "iopv": item.IOPV
+                            "iopv": item.iopv
                             
                         ]
             //            let turnoverRate = turnoverRateByItem(item,oHLCResponse.circulatingShareItems)

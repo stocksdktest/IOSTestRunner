@@ -84,7 +84,7 @@ class OHLCV3_4: BaseTestCase {
                 "lowPrice": item.lowPrice,
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
-                "iopv": item.IOPV
+                "iopv": item.iopv
                 
             ]
             let update1: JSON = [
