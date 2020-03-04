@@ -27,6 +27,7 @@ class OPTIONTQUOTE_1: BaseTestCase {
         XCTAssertNotNil(optionResponse.optionItems)
         var resultJSON : JSON = [:]
         for item in optionResponse.optionItems {
+            
             var itemJSON: JSON = [
                 "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
                 "id": item.id,

@@ -45,6 +45,9 @@ class AHLIST_1: BaseTestCase {
                 "datetimeA": item.datetimeA,
                 "codeH": item.codeH,
                 "lastPriceH": item.lastPriceH,
+                
+            ]
+            let update1: JSON = [
                 "preClosePriceH": item.preClosePriceH,
                 "datetimeH": item.datetimeH,
                 "premiumAH": item.premiumRate,
@@ -52,6 +55,11 @@ class AHLIST_1: BaseTestCase {
                 "changeRateH": item.changeRateH,
                 "premiumHA": item.premiumRateHA,
             ]
+            do {
+                try itemJSON.merge(with: update1)
+            } catch {
+                // ignore
+            }
             resultJSON["\(i)"] = itemJSON
             i=i+1
         }

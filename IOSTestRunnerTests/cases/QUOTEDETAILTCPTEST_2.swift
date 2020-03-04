@@ -112,11 +112,19 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
                     "market": item.market,
                     "subtype": item.subtype,
                     "lastPrice": item.lastPrice,
+                    
+                ]
+                let update3_3_0_002: JSON = [
                     "monthChangeRate": item.monthChangeRate,
                     "yearChangeRate": item.yearChangeRate,
                     "recentMonthChangeRate": item.nMonthChangeRate,
                     "recentYearChangeRate": item.nYearChangeRate,
                 ]
+                do {
+                    try itemJSON.merge(with: update3_3_0_002)
+                } catch {
+                    // ignore
+                }
                 let update1: JSON = [
                     "buyPrices": item.buyPrices,
                     "buyVolumes":item.buyVolumes,

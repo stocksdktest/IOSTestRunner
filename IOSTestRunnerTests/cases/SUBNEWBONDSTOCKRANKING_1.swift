@@ -46,6 +46,9 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
                 "preClosePrice":items.preClosePrice,
                 "rate":items.rate,
                 "allRate":items.totalRate,
+                
+            ]
+            let update3_3_0_002: JSON = [
                 "change": items.change,
                 "turnoverRate":items.turnoverRate,
                 "amount":items.amount,
@@ -56,6 +59,11 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
                 "bu":String(items.financeFlag.rawValue),
                 "su":String(items.securityFlag.rawValue)
             ]
+            do {
+                try itemJSON.merge(with: update3_3_0_002)
+            } catch {
+                // ignore
+            }
             resultJSON["\(i)"] = itemJSON
             i=i+1
         }
