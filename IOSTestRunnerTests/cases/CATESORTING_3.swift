@@ -807,6 +807,10 @@ class CATESORTING_3: BaseTestCase {
                                 "market": item.market,
                                 "subtype": item.subtype,
                                 "lastPrice": item.lastPrice,
+                                "monthChangeRate": item.monthChangeRate,
+                                "yearChangeRate": item.yearChangeRate,
+                                "recentMonthChangeRate": item.nMonthChangeRate,
+                                "recentYearChangeRate": item.nYearChangeRate,
                             ]
                             let update37: JSON = [
                                 "buyPrices": item.buyPrices,

@@ -46,6 +46,15 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
                 "preClosePrice":items.preClosePrice,
                 "rate":items.rate,
                 "allRate":items.totalRate,
+                "change": item.change,
+                "turnoverRate":item.turnoverRate,
+                "amount":item.amount,
+                "mainforceMoneyNetInflow":item.capitalInflow,
+                "pe":item.PE,
+                "totalValue":item.totalValue,
+                "flowValue":item.flowValue,
+                "bu":String(item.financeFlag.rawValue),
+                "su":String(item.securityFlag.rawValue)
             ]
             resultJSON["\(i)"] = itemJSON
             i=i+1

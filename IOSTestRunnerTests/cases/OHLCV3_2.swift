@@ -78,6 +78,7 @@ class OHLCV3_2: BaseTestCase {
                 "lowPrice": item.lowPrice,
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
+                "iopv": item.IOPV
                 
             ]
             let update1: JSON = [
@@ -93,6 +94,18 @@ class OHLCV3_2: BaseTestCase {
             } catch {
                 // ignore
             }
+            if oHLCResponse.circulatingShareItems != nil{
+                            var i = 1
+            //                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
+                            for circulatingShareItem in oHLCResponse.circulatingShareItems{
+                                var jsonarr2: JSON = [
+                                    "date":circulatingShareItem.dateTime,
+                                    "gb":circulatingShareItem.circulatingShare,
+                                ]
+                                itemJSON["\(i)"] = jsonarr2
+                                i = i + 1
+                            }
+                        }
             var itemJSON2 : JSON = [:]
             var itemDic : Dictionary = [String:String]()
                                         for itemKey in itemJSON.dictionaryValue.keys{

@@ -136,7 +136,7 @@ class CATESORTING_1: BaseTestCase {
                 }
                 let update5: JSON = [
                     "sell_cancel_amount": item.withdrawSellAmount,
-                    "vote":item.voteFlag,
+                    "vote":String(item.voteFlag.rawValue),
                     "change2": item.change2,
                     "earningsPerShare" :item.eps,
                     "earningsPerShareReportingPeriod": item.epsType,
@@ -805,6 +805,10 @@ class CATESORTING_1: BaseTestCase {
                     "market": item.market,
                     "subtype": item.subtype,
                     "lastPrice": item.lastPrice,
+                    "monthChangeRate": item.monthChangeRate,
+                    "yearChangeRate": item.yearChangeRate,
+                    "recentMonthChangeRate": item.nMonthChangeRate,
+                    "recentYearChangeRate": item.nYearChangeRate,
                 ]
                 let update37: JSON = [
                     "buyPrices": item.buyPrices,

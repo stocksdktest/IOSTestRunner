@@ -48,6 +48,7 @@ class OVERLAYCHART_1: BaseTestCase {
                 "md": item.rgbar,
                 "openInterest": item.openInterest,
                 "iopv": item.iopv,
+                "volRatio": item.volumeRatio,
                 "iopvPre": item.referenceIOPVPrice,
 //                "dayList": chartResponse.tradeDates
             ]
@@ -65,6 +66,7 @@ class OVERLAYCHART_1: BaseTestCase {
                     "md": SPitem.rgbar,
                     "openInterest": SPitem.openInterest,
                     "iopv": SPitem.iopv,
+                    "volRatio": item.volumeRatio,
                     "iopvPre": SPitem.referenceIOPVPrice
                 ]
                 jsonarr3["\(SPitem.datetime!)"] = jsonarr4

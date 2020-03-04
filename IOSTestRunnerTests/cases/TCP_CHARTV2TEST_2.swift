@@ -104,6 +104,7 @@ class TCP_CHARTV2TEST_2: BaseTestCase {
                        "md": item.rgbar,
                        "openInterest": item.openInterest,
                        "iopv": item.iopv,
+                       "volRatio": item.volumeRatio,
                        "iopvPre": item.referenceIOPVPrice,
                        "reference_price": item.referencePrice
                    ]

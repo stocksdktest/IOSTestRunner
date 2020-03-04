@@ -20,19 +20,29 @@ class OPTIONEXPIRE_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
-     
-        let resp = self.makeSyncRequest(request: mRequest)
-        let expireMonthResponse = resp as! MExpireMonthResponse
-        XCTAssertNotNil(expireMonthResponse.expireMonths)
-        
-            
-            var resultJSON: JSON = [
-                "list": expireMonthResponse.expireMonths
-            ]
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
-        
-        
-    }
-}
-
+                mRequest.isV2 = param["ISV2"].boolValue
+             
+                let resp = self.makeSyncRequest(request: mRequest)
+                let expireMonthResponse = resp as! MExpireMonthResponse
+        //        XCTAssertNotNil(expireMonthResponse.expireMonths)
+                
+                if param["ISV2"].boolValue == false{
+                    var resultJSON: JSON = [
+                        "list": expireMonthResponse.expireMonths
+                    ]
+                    print(resultJSON)
+                    onTestResult(param: param, result: resultJSON)
+                }else if param["ISV2"].boolValue == true{
+                    let v2ExpireMonths = expireMonthResponse.v2ExpireMonths as! MExpireMonthItem
+                    var resultJSON: JSON = [
+                        "time": v2ExpireMonths.time,
+                        "day": v2ExpireMonths.day
+                    ]
+                    print(resultJSON)
+                    onTestResult(param: param, result: resultJSON)
+                }
+                    
+                
+                
+            }
+        }

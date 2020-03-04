@@ -42,6 +42,7 @@ class QUOTEDETAIL_1: BaseTestCase {
                 "subtype": item.subtype,
                 "lastPrice": item.lastPrice,
                 "highPrice": item.highPrice,
+                
             ]
             let update1: JSON = [
                 "buyPrices": item.buyPrices,
@@ -444,6 +445,7 @@ class QUOTEDETAIL_1: BaseTestCase {
                 "subtype": item.subtype,
                 "lastPrice": item.lastPrice,
                 "highPrice": item.highPrice,
+                
             ]
             let update1: JSON = [
                 "buyPrices": item.buyPrices,
@@ -954,6 +956,10 @@ class QUOTEDETAIL_1: BaseTestCase {
                 "market": item.market,
                 "subtype": item.subtype,
                 "lastPrice": item.lastPrice,
+                "monthChangeRate": item.monthChangeRate,
+                "yearChangeRate": item.yearChangeRate,
+                "recentMonthChangeRate": item.nMonthChangeRate,
+                "recentYearChangeRate": item.nYearChangeRate,
             ]
             let update1: JSON = [
                 "buyPrices": item.buyPrices,

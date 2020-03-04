@@ -899,6 +899,10 @@ class QUOTE_2: BaseTestCase {
                     "highPrice": item.highPrice,
                     "lowPrice": item.lowPrice,
                     "openPrice": item.openPrice,
+                    "monthChangeRate": item.monthChangeRate,
+                    "yearChangeRate": item.yearChangeRate,
+                    "recentMonthChangeRate": item.nMonthChangeRate,
+                    "recentYearChangeRate": item.nYearChangeRate,
                 ]
                 let update1: JSON = [
                     "buyPrices": item.buyPrices,

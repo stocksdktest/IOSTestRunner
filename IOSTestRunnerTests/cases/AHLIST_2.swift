@@ -49,6 +49,7 @@ class AHLIST_2: BaseTestCase {
                 "datetimeH": item.datetimeH,
                 "premiumAH": item.premiumRate,
                 "changeRateA": item.changeRateA,
+                "premiumHA": item.premiumRateHA,
                 "changeRateH": item.changeRateH
             ]
             resultJSON["\(i)"] = itemJSON
