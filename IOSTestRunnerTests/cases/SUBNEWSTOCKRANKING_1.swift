@@ -35,7 +35,7 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
         var resultJSON : JSON = [:]
         var i = 1
         for items in subnewStockRankingResponse.items{
-            let itemJSON: JSON = [
+            var itemJSON: JSON = [
                 "code":items.code,
                 "name":items.name,
                 "lastestPrice":items.lastPrice,
