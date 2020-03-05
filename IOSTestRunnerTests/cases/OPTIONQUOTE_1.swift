@@ -40,7 +40,8 @@ class OPTIONQUOTE_1: BaseTestCase {
         XCTAssertNotNil(optionResponse.optionItems)
         
         var resultJSON : JSON = [:]
-        for item in optionResponse.optionItems {
+        for items in optionResponse.optionItems {
+            let item : MOptionItem = items as! MOptionItem
 //            print(item)
             var itemJSON: JSON = [
                 "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",

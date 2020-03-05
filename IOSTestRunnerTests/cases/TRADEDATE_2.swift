@@ -17,7 +17,29 @@ class TRADEDATE_2: BaseTestCase {
     }
     
     func testTradeDate() {
+        let param = self.testCaseRoundConfig.getParam()
+        let mRequest = MTradeDateRequest()
+        mRequest.market = param["MARKET"].stringValue
+        mRequest.date = param["DATE"].stringValue
+       
+        let resp = self.makeSyncRequest(request: mRequest)
+        let tradeDateResponse = resp as! MTradeDateResponse
+        XCTAssertNotNil(tradeDateResponse.dates)
+        var resultJSON : JSON = [:]
+        for date in tradeDateResponse.dates{
+            let dates : MTradeDateItem = date as! MTradeDateItem
+            let jsonarr2: JSON = [
+                "date": dates.date,
+                "isTrade": String(dates.type.rawValue),
+                "description": dates.desc
+            ]
+            resultJSON["\(dates.date!)"] = jsonarr2
+            
+            
+        }
         
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
 
     }
 }
