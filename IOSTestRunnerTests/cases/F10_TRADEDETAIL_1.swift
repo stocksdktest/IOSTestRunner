@@ -33,13 +33,13 @@ class F10_TRADEDETAIL_1: BaseTestCase {
         XCTAssertNotNil(tradeDetailInfoResponse.record)
         if let record = tradeDetailInfoResponse.record{
             var resultJSON: JSON = [
-                "payVolumeStock": record["PAYVOLSTOCK"]!,
-                "amountFinance": record["AMOUNTFINA"]!,
-                "payAmountFinance": record["PAYAMOUNTFINA"]!,
-                "buyAmountFinance": record["BUYAMOUNTFINA"]!,
-                "sellVolumeStock": record["SELLVOLSTOCK"]!,
-                "amountStock": record["AMOUNTSTOCK"]!,
-                "tradingDay": record["TRADINGDAY"]!
+//                "payVolumeStock": record["PAYVOLSTOCK"]!,
+//                "amountFinance": record["AMOUNTFINA"]!,
+//                "payAmountFinance": record["PAYAMOUNTFINA"]!,
+//                "buyAmountFinance": record["BUYAMOUNTFINA"]!,
+//                "sellVolumeStock": record["SELLVOLSTOCK"]!,
+//                "amountStock": record["AMOUNTSTOCK"]!,
+//                "tradingDay": record["TRADINGDAY"]!
             ]
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)

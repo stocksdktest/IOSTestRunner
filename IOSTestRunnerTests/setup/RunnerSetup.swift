@@ -35,18 +35,18 @@ class RunnerSetup {
     public let resultCollector: TestResultCollector
     
     private init() throws {
-        var infoDict: [String: Any]
-        if Bundle.main.infoDictionary == nil {
-            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
-        } else {
-            infoDict = Bundle.main.infoDictionary!
-            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
-                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
-                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
-            }
-        }
-        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
-//        let cfgStr = "CgRUSi0xEipSVU4tQS1hYzlkOGI3ZS0xMDliLTQ0MzEtODQyNy03MWRiMTY0YjBiNTMaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATIiLgoKVEVTVENBU0VfMBgDIh57IlFVT1RFX05VTUJFUlMiOiAiNjAwMDAwLnNoIn0qOQomaHR0cDovLzExNC4yMTIuODMuMTQ5OjgwMDAvdGVzdF9yZXN1bHQSBXN0b2NrGgh0ZXN0X2FkYg=="
+//        var infoDict: [String: Any]
+//        if Bundle.main.infoDictionary == nil {
+//            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
+//        } else {
+//            infoDict = Bundle.main.infoDictionary!
+//            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
+//                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
+//                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
+//            }
+//        }
+//        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
+        let cfgStr = "CgRUSi0xEipSVU4tQS02N2Y2OWNiOC1mOGVhLTQyNWMtYmUwZi0wZjJmMmUzZjU0MGUaYQosSjZJUGxrNUFFVSsyL1lpNTlyZlluc0ZRdGR0T2dBbzlHQXp5c3g4Y2lPTT0SLFZWVzBGbm83QkVadDFhL3k2S0xNMzZ1ajlxY2p3N0NBSER3V1pLRGxXRHM9IgMKATEidQoIT0hMQ1YzXzYQARgDImV7IkNPREUiOiAiNjAwMDAwLnNoIiwgIkRBVEUiOiAiMjAxOTEyMjMiLCAiUEVSSU9EIjogImRheWsiLCAiUFJJQ0VBREpVU1RFRE1PREUiOiAiMiIsICJDT1VOVCI6ICIzMDAifSpxCh1tb25nb2RiOi8vMjIxLjIyOC42Ni44MzozMDYxNxIMc3RvY2tTZGtUZXN0Ggt0ZXN0X3Jlc3VsdCI1aHR0cDovL21vbmdvLXB5dGhvbi1ldmUuc2RrLXRlc3Quc3ZjLmNsdXN0ZXIubG9jYWw6ODA="
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {
