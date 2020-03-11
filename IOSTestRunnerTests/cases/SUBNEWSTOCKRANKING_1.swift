@@ -47,7 +47,7 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
                 "allRate":items.totalRate,
                 
             ]
-            let update3_3_0_002: JSON = [
+            var update3_3_0_002: JSON = [
                 "change": items.change,
                 "turnoverRate":items.turnoverRate,
                 "amount":items.amount,
@@ -58,6 +58,14 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
                 "bu":String(items.financeFlag.rawValue),
                 "su":String(items.securityFlag.rawValue)
             ]
+            switch items.changeState{
+            case .flat:
+                update3_3_0_002["change"].string = items.change
+            case .rise:
+                update3_3_0_002["change"].string = "+"+items.change
+            case .drop:
+                update3_3_0_002["change"].string = "-"+items.change
+            }
             do {
                 try itemJSON.merge(with: update3_3_0_002)
             } catch {

@@ -864,7 +864,7 @@ extern NSString *const MNewsTypeOthers;          // 其他
  */
 @interface MTradeDetailInfoResponse : MResponse
 /** 融资融券对象 */
-@property (nonatomic, strong) NSDictionary *record;
+@property (nonatomic, strong) NSObject *record;
 @end
 
 /*! @brief 机构预测应答类

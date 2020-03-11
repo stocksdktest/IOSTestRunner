@@ -137,6 +137,8 @@
 		21DBB75323BEC7D000D73536 /* F10_STOCKBULLETINLIST_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DBB6D723BEC7CF00D73536 /* F10_STOCKBULLETINLIST_2.swift */; };
 		21DBB75423BEC7D000D73536 /* ADDVALUE_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DBB6D823BEC7CF00D73536 /* ADDVALUE_1.swift */; };
 		21DBB75523BEC7D000D73536 /* F10_BONDBASIC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DBB6D923BEC7CF00D73536 /* F10_BONDBASIC_1.swift */; };
+		41C0CAE92418ECF10008E015 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C0CAE82418ECF10008E015 /* libc++.tbd */; };
+		41C0CAEA2418ECFA0008E015 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D10231778A400B876D3 /* libMApi.a */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		531233985C2C7E85A6AA6CEC /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
@@ -156,7 +158,6 @@
 		971816EC23BDC51C0085A3E6 /* SUBNEWBONDSTOCKRANKING_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DC23BDC51C0085A3E6 /* SUBNEWBONDSTOCKRANKING_1.swift */; };
 		971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DD23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift */; };
 		971816EE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971816DE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift */; };
-		971816F923BDC5920085A3E6 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 971816EF23BDC5920085A3E6 /* libMApi.a */; };
 		971816FD23BDCEC70085A3E6 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971816FC23BDCEC60085A3E6 /* CoreServices.framework */; };
 		A11F65832314D3F6000071A2 /* config.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F65822314D3F6000071A2 /* config.pb.swift */; };
 		A11F869B23156AAB00F75635 /* TestCaseRoundConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F869A23156AAB00F75635 /* TestCaseRoundConfig.swift */; };
@@ -167,7 +168,6 @@
 		A153911523113DF3007648F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A153911323113DF3007648F4 /* LaunchScreen.storyboard */; };
 		A153912B23113DF3007648F4 /* IOSTestRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153912A23113DF3007648F4 /* IOSTestRunnerUITests.swift */; };
 		A1658D1623177FD100B876D3 /* SDKSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1658D1523177FD100B876D3 /* SDKSetup.swift */; };
-		A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D1A2317D4F400B876D3 /* libc++.tbd */; };
 		A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D362318E84700B876D3 /* SystemConfiguration.framework */; };
 		A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1658D3A2318E85900B876D3 /* CoreData.framework */; };
 		A1C0CEA7231F61E0002F1A26 /* record.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0CEA6231F61E0002F1A26 /* record.pb.swift */; };
@@ -335,6 +335,7 @@
 		21DBB6D923BEC7CF00D73536 /* F10_BONDBASIC_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10_BONDBASIC_1.swift; sourceTree = "<group>"; };
 		3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41C0CAE82418ECF10008E015 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		971816CF23BDC51C0085A3E6 /* L2TICKV2_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L2TICKV2_1.swift; sourceTree = "<group>"; };
 		971816D023BDC51C0085A3E6 /* F10V2TEST_4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10V2TEST_4.swift; sourceTree = "<group>"; };
@@ -423,12 +424,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C0CAEA2418ECFA0008E015 /* libMApi.a in Frameworks */,
+				41C0CAE92418ECF10008E015 /* libc++.tbd in Frameworks */,
 				971816FD23BDCEC70085A3E6 /* CoreServices.framework in Frameworks */,
 				A1FEE1C2235471DB007FD238 /* MobileCoreServices.framework in Frameworks */,
 				A1658DCC231AA0E100B876D3 /* CoreData.framework in Frameworks */,
-				971816F923BDC5920085A3E6 /* libMApi.a in Frameworks */,
 				A1658DCB231AA0DB00B876D3 /* SystemConfiguration.framework in Frameworks */,
-				A1658D1B2317D4F400B876D3 /* libc++.tbd in Frameworks */,
 				531233985C2C7E85A6AA6CEC /* Pods_IOSTestRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,6 +736,7 @@
 		A1C6839223124C5A001F7CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41C0CAE82418ECF10008E015 /* libc++.tbd */,
 				971816FC23BDCEC60085A3E6 /* CoreServices.framework */,
 				A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */,
 				A1FEE1C1235471DB007FD238 /* MobileCoreServices.framework */,
