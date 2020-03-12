@@ -51,8 +51,8 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
             var update3_3_0_002: JSON = [
                 "change": items.change,
                 "turnoverRate":items.turnoverRate,
-                "amount":items.amount,
-                "mainforceMoneyNetInflow":items.capitalInflow,
+                "amount":String((items.amount as NSString).intValue),
+                "mainforceMoneyNetInflow":String((items.capitalInflow as NSString).intValue),
                 "pe":items.pe,
                 "totalValue":items.totalValue,
                 "flowValue":items.flowValue,
