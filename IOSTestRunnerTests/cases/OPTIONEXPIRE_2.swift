@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//期权-交割月列表v2
+//期权-交割月列表
 import XCTest
 import os.log
 import SwiftyJSON
@@ -20,14 +20,15 @@ class OPTIONEXPIRE_2: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
-                mRequest.isV2 = param["adjusted"].boolValue
+//                mRequest.isV2 = false
+        mRequest.isV2 = param["ISV2"].boolValue
              
                 let resp = self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
         //        XCTAssertNotNil(expireMonthResponse.expireMonths)
                 
                 if param["ISV2"].boolValue == false{
-                    var resultJSON: JSON = [
+                    let resultJSON: JSON = [
                         "list": expireMonthResponse.expireMonths
                     ]
                     print(resultJSON)
@@ -37,14 +38,14 @@ class OPTIONEXPIRE_2: BaseTestCase {
                     var i = 1
                     
                     for v2ExpireMonths in expireMonthResponse.v2ExpireMonths{
-                        var itemJSON: JSON = [
+                        let itemJSON: JSON = [
                             "time": v2ExpireMonths.time,
                             "day": v2ExpireMonths.day
                         ]
                         v2ExpireMonthsJSON["\(i)"] = itemJSON
                         i=i+1
                     }
-                    var resultJSON : JSON = [
+                    let resultJSON : JSON = [
                         "list":v2ExpireMonthsJSON
                     ]
                     print(resultJSON)

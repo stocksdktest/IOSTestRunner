@@ -21,37 +21,32 @@ class OPTIONEXPIRE_1: BaseTestCase {
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
                 mRequest.isV2 = false
-             
                 let resp = self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
-        //        XCTAssertNotNil(expireMonthResponse.expireMonths)
-                
-                if param["ISV2"].boolValue == false{
-                    var resultJSON: JSON = [
+//                XCTAssertNotNil(expireMonthResponse.expireMonths)
+//                              if param["ISV2"].boolValue == false{
+                    let resultJSON: JSON = [
                         "list": expireMonthResponse.expireMonths
                     ]
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
-                }else if param["ISV2"].boolValue == true{
-                    var v2ExpireMonthsJSON : JSON = [:]
-                    var i = 1
-                    
-                    for v2ExpireMonths in expireMonthResponse.v2ExpireMonths{
-                        var itemJSON: JSON = [
-                            "time": v2ExpireMonths.time,
-                            "day": v2ExpireMonths.day
-                        ]
-                        v2ExpireMonthsJSON["\(i)"] = itemJSON
-                        i=i+1
-                    }
-                    var resultJSON : JSON = [
-                        "list":v2ExpireMonthsJSON
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
-                }
-                    
-                
-                
+//                }else if param["ISV2"].boolValue == true{
+//                    var v2ExpireMonthsJSON : JSON = [:]
+//                    var i = 1
+//
+//                    for v2ExpireMonths in expireMonthResponse.v2ExpireMonths{
+//                        let itemJSON: JSON = [
+//                            "time": v2ExpireMonths.time,
+//                            "day": v2ExpireMonths.day
+//                        ]
+//                        v2ExpireMonthsJSON["\(i)"] = itemJSON
+//                        i=i+1
+//                    }
+//                    let resultJSON : JSON = [
+//                        "list":v2ExpireMonthsJSON
+//                    ]
+//                    print(resultJSON)
+//                    onTestResult(param: param, result: resultJSON)
+//                }
             }
         }
