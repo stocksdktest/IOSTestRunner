@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/24.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-
+//证券行情列表
 import XCTest
 import os.log
 import SwiftyJSON
@@ -19,7 +19,11 @@ class QUOTE_1: BaseTestCase {
     func testQuote() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MQuoteRequest()
-        mRequest.code = param["CODE"].stringValue
+        let codeNSArray: NSArray = param["CODE"].string?.split(separator: ",") as! NSArray
+               for codeItem in codeNSArray{        //多code时发现skd返回值只有最后一个code的，故此处将code转为数组后进行遍历
+                   
+                   mRequest.code = codeItem as! String
+
         mRequest.stockFields = nil
 //        mRequest.addValueFields = ["ddz", "largeSellCount", "mediumDiffer"]
         let resp = self.makeSyncRequest(request: mRequest)
@@ -1309,4 +1313,5 @@ class QUOTE_1: BaseTestCase {
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }
+  }
 }
