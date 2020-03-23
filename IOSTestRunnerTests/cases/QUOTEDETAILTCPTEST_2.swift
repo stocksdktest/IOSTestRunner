@@ -64,7 +64,7 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
         waitForExpectations(timeout: TimeInterval(timeout)) {
             (error) in
             MApi.unSubscribeCode(code, type: MApiTcpSubscribeType.snap)
-            print("Stop subscription: \(code), error: \(error.debugDescription)")
+            print("Stop subscription: \(code), err-or: \(error.debugDescription)")
 //            let result: JSON = [
 //                "items": self.subscribeRecords
 //            ]
