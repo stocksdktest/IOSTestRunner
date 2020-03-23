@@ -572,7 +572,8 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
                                     resultJSON2["addValue"] = itemJSON2
                 }
                 self.subscribeRecords["\(item.datetime!)"] = resultJSON2
-            }else if items is MOptionItem{
+            }
+            else if items is MOptionItem{
                 let item:MOptionItem = items as! MOptionItem
                 var resultJSON: JSON = [
                     "status": "\(item.status.rawValue)" + "\(item.stage.rawValue)",
