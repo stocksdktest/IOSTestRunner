@@ -14,7 +14,7 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.QUOTEDETAILTCPTEST_2
     }
-    
+    var i = 1
     internal var subscribeRecords: JSON = [:]
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
     
@@ -571,7 +571,11 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
 
                                     resultJSON2["addValue"] = itemJSON2
                 }
-                self.subscribeRecords["\(item.datetime!)"] = resultJSON2
+                
+                print("\(i)个麻瓜")
+                i+=1
+                self.subscribeRecords["\(item.datetime!)optoptopt\(i)"] = resultJSON2
+                
             }
             else if items is MOptionItem{
                 let item:MOptionItem = items as! MOptionItem
