@@ -278,6 +278,10 @@ typedef NS_ENUM(NSInteger, MCategorySortingField) {
     MCategorySortingFieldDRPreviousClosingShare = 58, // 前收盘份额 (沪伦通)
     MCategorySortingFieldAfterHoursVolume = 72,       //盘后成交量
     MCategorySortingFieldAfterHoursAmount = 73,       //盘后成交额
+    MCategorySortingFieldMonthChangeRate = 86,      //本月涨跌幅
+    MCategorySortingFieldYearChangeRate = 87,       //本年涨跌幅
+    MCategorySortingFieldNMonthChangeRate = 88,     //近月涨跌幅
+    MCategorySortingFieldNYearChangeRate = 89,      //近年涨跌幅
     MCategorySortingFieldUltraLargeNetInflow = -19, //超大单净流入
     MCategorySortingFieldLargeNetInflow = -20,      //大单净流入
     MCategorySortingFieldMediumNetInflow = -21,     //中单净流入
