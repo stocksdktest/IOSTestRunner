@@ -14,6 +14,6 @@ protocol TestResultCollector {
     func onTestStart(testName: String)
     func onTestEnd(testName: String)
     func onTestResult(testName: String, param: JSON, result: JSON)
-    func onTestError(testName: String, description: String, filePath: String, lineNumber: Int)
+    func onTestError(testName: String, param: JSON, error: JSON)
     func afterAllTests()
 }
