@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SwiftyJSON
 
 class StockTestObservation : NSObject, XCTestObservation {
     private let collector: TestResultCollector
@@ -50,7 +51,12 @@ class StockTestObservation : NSObject, XCTestObservation {
     
     func testCase(_ testCase: XCTestCase, didFailWithDescription description: String, inFile filePath: String?, atLine lineNumber: Int) {
         if let baseClass = castToBaseClass(testCase) {
-            collector.onTestError(testName: baseClass.testName, description: description, filePath: filePath == nil ? "unknown" : filePath!, lineNumber: lineNumber)
+            let paramObj = baseClass.testCaseRoundConfig.getParam()
+            let errorObj: JSON = [
+                "description": description,
+                "location": "\(filePath):\(lineNumber)"
+            ]
+            collector.onTestError(testName: baseClass.testName, param: paramObj, error: errorObj)
             print("Test case error: \(baseClass.testName)")
         }
     }

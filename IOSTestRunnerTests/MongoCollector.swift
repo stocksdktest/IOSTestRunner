@@ -112,7 +112,7 @@ class TestResultMongoDBCollector : TestResultCollector {
         }
     }
     
-    func onTestError(testName: String, description: String, filePath: String, lineNumber: Int) {
+    func onTestError(testName: String, param: JSON, error: JSON) {
         if let entry = self.testStartTimeDict[testName] {
             self.testStartTimeDict.updateValue((entry.0, entry.1 && false), forKey: testName)
             var record = buildExecutionRecord()
@@ -120,12 +120,9 @@ class TestResultMongoDBCollector : TestResultCollector {
             record["startTime"].int64 = entry.0
             record["endTime"].int64 = Int64(Date().timeIntervalSince1970)
             record["isPass"].bool = false
-            let errorJSON: JSON = [
-                "description": description,
-                "location": "\(filePath):\(lineNumber)"
-            ]
             do {
-                record["exceptionData"].object = errorJSON
+                record["paramData"].object = param
+                record["exceptionData"].object = error
                 Utils.log(tag: "TestResultCollector", str: "On test error, encoding record: \(record)")
                 try self.insertExecutionRecord(data: record)
             } catch {

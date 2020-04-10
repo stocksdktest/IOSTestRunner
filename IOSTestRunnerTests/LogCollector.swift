@@ -72,7 +72,7 @@ class TestResultLogCollector : TestResultCollector {
         }
     }
     
-    func onTestError(testName: String, description: String, filePath: String, lineNumber: Int) {
+    func onTestError(testName: String, param: JSON, error: JSON) {
         if let entry = self.testStartTimeDict[testName] {
             self.testStartTimeDict.updateValue((entry.0, entry.1 && false), forKey: testName)
             var record = buildExecutionRecord()
@@ -80,12 +80,8 @@ class TestResultLogCollector : TestResultCollector {
             record.startTime = entry.0
             record.endTime = Int64(Date().timeIntervalSince1970)
             record.isPass = false
-            let errorJSON: JSON = [
-                "description": description,
-                "location": "\(filePath):\(lineNumber)"
-            ]
             do {
-                record.exceptionData = try errorJSON.rawData()
+                // record.exceptionData = try errorJSON.rawData()
                 Utils.log(tag: "TestResultCollector", str: "On test error, encoding record: \(record.textFormatString())")
                 try Utils.record(recordID: record.recordID, data: record.serializedData().base64EncodedData())
             } catch {
