@@ -20,7 +20,7 @@ class F10_TOPSHAREHOLDER_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTopShareHolderRequest()
         mRequest.code = param["CODE"].stringValue
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

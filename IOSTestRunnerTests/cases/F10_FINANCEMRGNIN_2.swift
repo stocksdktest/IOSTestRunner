@@ -20,10 +20,10 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MMarginInfoDiffRequest()
         mRequest.market =  param["MARKET"].stringValue
-        let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
+        let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
         mRequest.pageSize = Int(paramI[1] as! String)!
         mRequest.pageIndex = Int(paramI[0] as! String)!
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

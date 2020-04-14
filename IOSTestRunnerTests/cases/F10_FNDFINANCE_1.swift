@@ -21,7 +21,7 @@ class F10_FNDFINANCE_1: BaseTestCase {
         let mRequest = MFundFinanceRequest()
         mRequest.code = param["CODE"].stringValue
         
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

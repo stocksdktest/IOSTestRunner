@@ -19,7 +19,7 @@ class F10_STOCKREPORTLIST_1: BaseTestCase {
     func testStockReportList() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockReportListRequest()
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

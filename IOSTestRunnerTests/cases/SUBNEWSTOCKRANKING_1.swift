@@ -19,7 +19,7 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
     func testSubnewStockRanking() {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSubnewStockRankingRequest()
-        let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
+        let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
         mRequest.pageSize = Int(paramI[1] as! String)!
         mRequest.pageIndex = Int(paramI[0] as! String)!
         if paramI[3] as! String == "0"{

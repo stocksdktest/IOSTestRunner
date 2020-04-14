@@ -22,7 +22,7 @@ class CATESORTING_1: BaseTestCase {
         let mRequest = MCategorySortingRequest()
         mRequest.code = param["CateType"].stringValue
         
-        let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
+        let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
         mRequest.pageSize = Int(paramI[1] as! String)!
         mRequest.pageIndex = Int(paramI[0] as! String)!
         if paramI[3] as! String == "0"{

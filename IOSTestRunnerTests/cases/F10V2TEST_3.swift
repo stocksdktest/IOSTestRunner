@@ -21,7 +21,7 @@ class F10V2TEST_3: BaseTestCase {
         mRequest.code = param["CODE"].stringValue
         var TYPE = param["REQUESTTYPE"].stringValue.replacingOccurrences(of: "/", with: "")
         mRequest.requestType = TYPE
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

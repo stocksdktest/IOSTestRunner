@@ -23,7 +23,7 @@ class F10_STRUCTUREDFUND_1: BaseTestCase {
 //        mRequest.gradeFundType = param["GRADEFUNDTYPE"].stringValue
         var TYPE = param["GRADEFUNDTYPE"].stringValue.replacingOccurrences(of: "/", with: "")
         mRequest.gradeFundType = TYPE
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

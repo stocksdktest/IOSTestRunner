@@ -24,7 +24,7 @@ class F10_NEWS_1: BaseTestCase {
         }else{
             mRequest.newsID = param["NEWSID"].stringValue
         }
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

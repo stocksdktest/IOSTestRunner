@@ -21,7 +21,7 @@ class F10_STOCKBULLETIN_1: BaseTestCase {
         let mRequest = MStockBulletinRequest()
         mRequest.stockBulletinID = param["STOCKBULLETINID"].stringValue
         
-        let typeVal = param["SOURCETYPE"].stringValue
+        let typeVal = param["SRC"].stringValue
         if typeVal == "g"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 1)!
         }else if typeVal == "d"{

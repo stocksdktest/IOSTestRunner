@@ -14,7 +14,7 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.QUOTEDETAILTCPTEST_2
     }
-    var i = 1
+    var j = 1
     internal var subscribeRecords: JSON = [:]
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
     
@@ -55,8 +55,10 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
                 return false
             }
             print("onReceiveNotification of '\(code)'")
+            print("\(self!.j)次获取");self!.j+=1
             strongSelf.notificationExpectation.fulfill()
             strongSelf.onReceviveNotification(subscribeCode: code, notificaiont: notification)
+//            self!.onTestResult(param: param, result: self!.subscribeRecords)
             return true
         }
         notificationExpectation.expectedFulfillmentCount = Int.max
@@ -69,7 +71,8 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
 //                "items": self.subscribeRecords
 //            ]
             self.onTestResult(param: param, result: self.subscribeRecords)
-        }
+        };
+        
     }
     
     func onReceviveNotification(subscribeCode: String ,notificaiont: Notification) {
@@ -571,10 +574,7 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
 
                                     resultJSON2["addValue"] = itemJSON2
                 }
-                
-                print("\(i)个麻瓜")
-                i+=1
-                self.subscribeRecords["\(item.datetime!)optoptopt\(i)"] = resultJSON2
+                self.subscribeRecords["\(item.datetime!)"] = resultJSON2
                 
             }
             else if items is MOptionItem{

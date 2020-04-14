@@ -20,7 +20,7 @@ class BANKUAISORTING_2: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSectionSortingRequest()
         mRequest.code = param["SYMBOL"].stringValue
-        let paramI:NSArray = (param["param"].string?.split(separator: ",") as! NSArray)
+        let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
         mRequest.endIndex = Int(paramI[1] as! String)!
         mRequest.beginIndex = Int(paramI[0] as! String)!
         mRequest.ascending = (paramI[3] as! NSString).boolValue
