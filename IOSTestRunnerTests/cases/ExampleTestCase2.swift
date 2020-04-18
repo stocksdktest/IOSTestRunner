@@ -11,24 +11,26 @@ import os.log
 import SwiftyJSON
 
 class ExampleTestCase2: BaseTestCase {
-    
+
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.QUOTE_REQUEST_EXAMPLE
     }
-    
-    func testExample2() {
+
+    func testExample2() throws {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSnapQuoteRequest()
         mRequest.code = param["QUOTE_NUMBERS"].stringValue
         mRequest.tickCount = 10
 //        mRequest.stockFields = ["-1"]
 //        mRequest.addValueFields = []
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let snapQuoteResponse = resp as! MSnapQuoteResponse
-        XCTAssertNotNil(snapQuoteResponse.stockItem)
+        if (snapQuoteResponse.stockItem == nil) {
+            throw BaseTestError.assertFailedError(message: "SnapQuoteResponse stockItem is nil")
+        }
         if let item = snapQuoteResponse.stockItem {
-            
-            
+
+
 //            print("\(item)")
 //            print("\(item.id),\( item.name),\(item.lastPrice),\(item.openPrice),\(item.highPrice),\(item.lowPrice),\(item.preClosePrice),\(item.averagePrice),\(item.subtype2),\(item.tickItems)")
 //            print("最新价：\(item.lastPrice),最高价：\(item.highPrice)")
@@ -55,5 +57,5 @@ class ExampleTestCase2: BaseTestCase {
             onTestResult(param: param, result: resultJSON)
         }
     }
-    
+
 }

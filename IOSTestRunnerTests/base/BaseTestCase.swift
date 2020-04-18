@@ -25,6 +25,16 @@ class BaseTestCaseRun : XCTestCaseRun {
     }
 }
 
+enum BaseTestError: LocalizedError {
+    case assertFailedError(message: String = "", file: StaticString = #file, line: UInt = #line)
+    var errorDescription: String? {
+        switch self {
+        case let .assertFailedError(message, file, line):
+            return "AssertFailedError: \(message), at \(file): \(line)"
+        }
+    }
+}
+
 class BaseTestCase : ParametrizedTestCase {
     static var allowedTestNames: [_SelectedTestCase] = RunnerSetup.sharedInstance.getTestcaseNames().map{ item in
         return _SelectedTestCase(name: item.rawValue)
@@ -52,15 +62,7 @@ class BaseTestCase : ParametrizedTestCase {
         return BaseTestCase.allowedTestNames
     }
     
-//    override func setUp() {
-//        super.setUp()
-//    }
-//
-//    override func beforeAll() {
-//        super.beforeAll()
-//    }
-    
-    internal func makeSyncRequest(request: MRequest) -> MResponse {
+    internal func makeSyncRequest(request: MRequest) throws -> MResponse {
         var reqResponse: MResponse? = nil
         let runLoop = CFRunLoopGetCurrent()
         MApi.send(request, completionHandler: { resp in
@@ -68,8 +70,12 @@ class BaseTestCase : ParametrizedTestCase {
             CFRunLoopStop(runLoop)
         })
         let result = CFRunLoopRunInMode(CFRunLoopMode.defaultMode, CFTimeInterval(5.0), false)
-        XCTAssert(result == .stopped)
-        XCTAssertNotNil(reqResponse)
+        if (result != .stopped) {
+            throw BaseTestError.assertFailedError(message: "MApi request timeout")
+        }
+        if (reqResponse == nil) {
+            throw BaseTestError.assertFailedError(message: "MApi response is nil")
+        }
         return reqResponse!
     }
     
@@ -83,14 +89,6 @@ class BaseTestCase : ParametrizedTestCase {
                 testCaseRoundConfig.nextRound()
                 sleep(testCaseRoundConfig.sleepIntervalSec)
             }
-        }
-    }
-    
-    override var continueAfterFailure: Bool {
-        get {
-            return testCaseRoundConfig.continueWhenFailed
-        }
-        set {
         }
     }
     
