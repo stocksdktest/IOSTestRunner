@@ -16,7 +16,7 @@ class F10_CALENDAR_1: BaseTestCase {
         return StockTestCaseName.F10_CALENDAR_1
     }
     
-    func testIPODate() {
+    func testIPODate() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MIPODateRequest()
         let typeVal = param["SRC"].stringValue
@@ -28,9 +28,12 @@ class F10_CALENDAR_1: BaseTestCase {
         
         mRequest.type = MIPOType(rawValue: 0)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let iPODateResponse = resp as! MIPODateResponse
-        XCTAssertNotNil(iPODateResponse.infos)
+//        XCTAssertNotNil(iPODateResponse.infos)
+        if (iPODateResponse.infos == nil){
+            throw BaseTestError.assertFailedError(message: "iPODateResponse infos is nil")
+        }
         switch mRequest.type{
             
         case .stock:

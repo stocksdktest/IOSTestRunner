@@ -16,14 +16,17 @@ class CONVERTIBLE_1: BaseTestCase {
         return StockTestCaseName.CONVERTIBLE_1
     }
    
-    func testLinkQuote() {
+    func testLinkQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MLinkQuoteRequet()
         mRequest.code = param["CODE"].stringValue
     
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let linkQuoteResponse = resp as! MLinkQuoteResponse
-        XCTAssertNotNil(linkQuoteResponse.items)
+//        XCTAssertNotNil(linkQuoteResponse.items)
+        if (linkQuoteResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "linkQuoteResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         for items in linkQuoteResponse.items{
             let itemJSON: JSON = [

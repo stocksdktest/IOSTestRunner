@@ -16,7 +16,7 @@ class F10_FORECASTYEAR_1: BaseTestCase {
         return StockTestCaseName.F10_FORECASTYEAR_1
     }
 
-    func testForecastYeare() {
+    func testForecastYeare() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MForecastYearRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_FORECASTYEAR_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let forecastYearResponse = resp as! MForecastYearResponse
-        XCTAssertNotNil(forecastYearResponse.record)
+//        XCTAssertNotNil(forecastYearResponse.record)
+        if (forecastYearResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "forecastRatingResponse record is nil")
+        }
         if let record: NSDictionary = forecastYearResponse.record as NSDictionary{
             var resultJSON: JSON = [
                 "NETEPS_": record["NETEPS"]!,

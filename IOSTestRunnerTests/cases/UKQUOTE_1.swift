@@ -16,14 +16,17 @@ class UKQUOTE_1: BaseTestCase {
         return StockTestCaseName.UKQUOTE_1
     }
     
-    func testUKQuote() {
+    func testUKQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MUKQuoteRequest()
         mRequest.code = param["CODE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let uKQuoteResponse = resp as! MUKQuoteResponse
-        XCTAssertNotNil(uKQuoteResponse.stockItems)
+//        XCTAssertNotNil(uKQuoteResponse.stockItems)
+        if (uKQuoteResponse.stockItems == nil){
+            throw BaseTestError.assertFailedError(message: "uKQuoteResponse stockItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in uKQuoteResponse.stockItems {
         var itemJSON: JSON = [

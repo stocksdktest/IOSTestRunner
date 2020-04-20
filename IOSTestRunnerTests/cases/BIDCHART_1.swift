@@ -16,16 +16,19 @@ class BIDCHART_1: BaseTestCase {
         return StockTestCaseName.BIDCHART_1
     }
     
-    func testBidChart() {
+    func testBidChart() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBidChartRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let bidChartResponse = resp as! MBidChartResponse
         print(bidChartResponse)
-        XCTAssertNotNil(bidChartResponse.bidItems)
+//        XCTAssertNotNil(bidChartResponse.bidItems)
+        if (bidChartResponse.bidItems == nil){
+            throw BaseTestError.assertFailedError(message: "bidChartResponse bidItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in bidChartResponse.bidItems{
             let itemJSON: JSON = [

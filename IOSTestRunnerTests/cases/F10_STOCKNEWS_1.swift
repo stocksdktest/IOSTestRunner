@@ -16,7 +16,7 @@ class F10_STOCKNEWS_1: BaseTestCase {
         return StockTestCaseName.F10_STOCKNEWS_1
     }
     
-    func testStockNews() {
+    func testStockNews() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockNewsRequest()
         mRequest.stockNewsID = param["STOCKNEWSID"].stringValue
@@ -28,9 +28,12 @@ class F10_STOCKNEWS_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let stockNewsResponse = resp as! MStockNewsResponse
-        XCTAssertNotNil(stockNewsResponse.stockNewsDetailItem)
+//        XCTAssertNotNil(stockNewsResponse.stockNewsDetailItem)
+        if (stockNewsResponse.stockNewsDetailItem == nil){
+            throw BaseTestError.assertFailedError(message: "stockNewsResponse stockNewsDetailItem is nil")
+        }
         if let item = stockNewsResponse.stockNewsDetailItem{
             var resultJSON: JSON = [
                 "INIPUBDATE_":item.datetime,

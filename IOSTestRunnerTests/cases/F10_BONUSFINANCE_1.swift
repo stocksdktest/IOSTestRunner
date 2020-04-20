@@ -16,7 +16,7 @@ class F10_BONUSFINANCE_1: BaseTestCase {
         return StockTestCaseName.F10_BONUSFINANCE_1
     }
     
-    func testBonusFinance() {
+    func testBonusFinance() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBonusFinanceRequest()
         mRequest.code = param["CODE"].stringValue
@@ -26,9 +26,12 @@ class F10_BONUSFINANCE_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let bonusFinanceResponse = resp as! MBonusFinanceResponse
-        XCTAssertNotNil(bonusFinanceResponse.records)
+//        XCTAssertNotNil(bonusFinanceResponse.records)
+        if (bonusFinanceResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "bonusFinanceResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i=1
         for record in bonusFinanceResponse.records{

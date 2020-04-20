@@ -16,13 +16,14 @@ class MARKETUPDOWN_1: BaseTestCase {
         return StockTestCaseName.MARKETUPDOWN_1
     }
     
-    func testMarketUpdowns() {
+    func testMarketUpdowns() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MMarketUpdownsRequest()
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let marketUpdownsResponse = resp as! MMarketUpdownsResponse
-        XCTAssertNotNil(marketUpdownsResponse)
+//        XCTAssertNotNil(marketUpdownsResponse)
+        
         var resultJSON: JSON = [
             "tUp":marketUpdownsResponse.advanceCount,
             "tDown":marketUpdownsResponse.declineCount,

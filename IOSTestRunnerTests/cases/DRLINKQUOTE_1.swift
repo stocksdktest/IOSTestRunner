@@ -16,14 +16,14 @@ class DRLINKQUOTE_1: BaseTestCase {
         return StockTestCaseName.DRLINKQUOTE_1
     }
     
-    func testDRlink() {
+    func testDRlink() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MDRLinkRequest()
         mRequest.code = param["CODE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let dRLinkResponse = resp as! MDRLinkResponse
-        XCTAssertNotNil(dRLinkResponse)
+//        XCTAssertNotNil(dRLinkResponse)
         var resultJSON: JSON = [
                 "code":dRLinkResponse.code,
                 "name":dRLinkResponse.name,

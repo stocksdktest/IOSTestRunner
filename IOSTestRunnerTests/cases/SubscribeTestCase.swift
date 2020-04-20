@@ -17,7 +17,7 @@ class SubscribeTestCase: BaseTestCase {
     internal var subscribeRecords: [JSON] = []
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
     
-    func testExample1() {
+    func testExample1() throws{
         let param = self.testCaseRoundConfig.getParam()
         let code = param["CODES"].stringValue
         let timeout = Int(param["SECONDS"].stringValue)!
@@ -27,10 +27,13 @@ class SubscribeTestCase: BaseTestCase {
         mRequest.stockFields = nil
         
         mRequest.tickCount = 10
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         XCTAssertEqual(resp.status, MResponseStatus.success)
         let quoteResponse = resp as! MSnapQuoteResponse
-        XCTAssertNotNil(quoteResponse.stockItem)
+//        XCTAssertNotNil(quoteResponse.stockItem)
+        if (quoteResponse.stockItem == nil){
+            throw BaseTestError.assertFailedError(message: "quoteResponse stockItem is nil")
+        }
         print("订阅结果：\(quoteResponse.stockItem.description)")
         
         MApi.subscribeCode(code, type: MApiTcpSubscribeType.snap)

@@ -16,15 +16,18 @@ class AFTERHOURSCHART_1: BaseTestCase {
         return StockTestCaseName.AFTERHOURSCHART_1
     }
     
-    func testAfterHoursChart() {
+    func testAfterHoursChart() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MAfterHoursChartRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let afterHoursChartResponse = resp as! MAfterHoursChartResponse
-        XCTAssertNotNil(afterHoursChartResponse.ohlcItems)
+//        XCTAssertNotNil(afterHoursChartResponse.ohlcItems)
+        if (afterHoursChartResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "afterHoursChartResponse ohlcItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in afterHoursChartResponse.ohlcItems {
             let itemJSON: JSON = [

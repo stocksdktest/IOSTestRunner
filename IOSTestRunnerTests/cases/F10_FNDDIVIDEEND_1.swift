@@ -16,7 +16,7 @@ class F10_FNDDIVIDEEND_1: BaseTestCase {
         return StockTestCaseName.F10_FNDDIVIDEEND_1
     }
     
-    func testFundDividend() {
+    func testFundDividend() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFundDividendRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_FNDDIVIDEEND_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let fundDividendResponse = resp as! MFundDividendResponse
-        XCTAssertNotNil(fundDividendResponse.record)
+//        XCTAssertNotNil(fundDividendResponse.record)
+        if (fundDividendResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "fundDividendResponse record is nil")
+        }
       
         if let item = fundDividendResponse.record{
        

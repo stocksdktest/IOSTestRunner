@@ -15,13 +15,16 @@ class HKPRICEINFO_1: BaseTestCase {
         return StockTestCaseName.HKPRICEINFO_1
     }
     
-    func testHKPriceDiff() {
+    func testHKPriceDiff() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MHKPriceDiffRequest()
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let hKPriceDiffResponse = resp as! MHKPriceDiffResponse
-        XCTAssertNotNil(hKPriceDiffResponse)
+//        XCTAssertNotNil(hKPriceDiffResponse)
+        if (hKPriceDiffResponse.hkPriceDiffs == nil){
+            throw BaseTestError.assertFailedError(message: "hKPriceDiffResponse hkPriceDiffs is nil")
+        }
         if let hkPriceDiffs = hKPriceDiffResponse.hkPriceDiffs{
             var resultJSON : JSON = [:]
             var i = 1

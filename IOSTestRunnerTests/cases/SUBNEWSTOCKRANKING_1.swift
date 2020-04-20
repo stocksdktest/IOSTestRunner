@@ -16,7 +16,7 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
         return StockTestCaseName.SUBNEWSTOCKRANKING_1
     }
 
-    func testSubnewStockRanking() {
+    func testSubnewStockRanking() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSubnewStockRankingRequest()
         let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
@@ -29,9 +29,12 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
         }
         mRequest.field = MSubnewStockRankingField.init(rawValue: Int(paramI[2] as! String)!)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let subnewStockRankingResponse = resp as! MSubnewStockRankingResponse
-        XCTAssertNotNil(subnewStockRankingResponse.items)
+//        XCTAssertNotNil(subnewStockRankingResponse.items)
+        if (subnewStockRankingResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "subnewStockRankingResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for items in subnewStockRankingResponse.items{

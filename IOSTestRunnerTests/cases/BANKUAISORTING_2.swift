@@ -16,7 +16,7 @@ class BANKUAISORTING_2: BaseTestCase {
         return StockTestCaseName.BANKUAISORTING_2
     }
     
-    func testSectionSorting() {
+    func testSectionSorting() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSectionSortingRequest()
         mRequest.code = param["SYMBOL"].stringValue
@@ -93,9 +93,12 @@ class BANKUAISORTING_2: BaseTestCase {
         
         mRequest.field = MSectionSortingField.init(rawValue: sortingField["\(paramI[2])"]!)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let sectionSortingResponse = resp as! MSectionSortingResponse
-        XCTAssertNotNil(sectionSortingResponse.sectionSortingItems)
+//        XCTAssertNotNil(sectionSortingResponse.sectionSortingItems)
+        if (sectionSortingResponse.sectionSortingItems == nil){
+            throw BaseTestError.assertFailedError(message: "sectionSortingResponse sectionSortingItems is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for item in sectionSortingResponse.sectionSortingItems {

@@ -16,17 +16,26 @@ class MOREVOLUMETEST_1: BaseTestCase {
         return StockTestCaseName.MOREVOLUMETEST_1
     }
     
-    func testVolume() {
+    func testVolume() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MVolumeRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let volumeResponse = resp as! MVolumeResponse
-        XCTAssertNotNil(volumeResponse.buyVolumes)
-        XCTAssertNotNil(volumeResponse.sellVolumes)
-        XCTAssertNotNil(volumeResponse.volumes)
+//        XCTAssertNotNil(volumeResponse.buyVolumes)
+//        XCTAssertNotNil(volumeResponse.sellVolumes)
+//        XCTAssertNotNil(volumeResponse.volumes)
+        if (volumeResponse.buyVolumes == nil){
+            throw BaseTestError.assertFailedError(message: "volumeResponse buyVolumes is nil")
+        }
+        if (volumeResponse.sellVolumes == nil){
+            throw BaseTestError.assertFailedError(message: "volumeResponse sellVolumes is nil")
+        }
+        if (volumeResponse.volumes == nil){
+            throw BaseTestError.assertFailedError(message: "volumeResponse volumes is nil")
+        }
         var resultJSON : JSON = [
             "buyVolumes": volumeResponse.buyVolumes,
             "sellVolumes": volumeResponse.sellVolumes,

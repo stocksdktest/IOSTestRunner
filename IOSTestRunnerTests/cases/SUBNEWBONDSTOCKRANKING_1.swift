@@ -16,7 +16,7 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
         return StockTestCaseName.SUBNEWBONDSTOCKRANKING_1
     }
     //MAddValueItem
-    func testSubnewBondRanking() {
+    func testSubnewBondRanking() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSubnewBondRankingRequest()
         let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
@@ -30,9 +30,12 @@ class SUBNEWBONDSTOCKRANKING_1: BaseTestCase {
         mRequest.field = MSubnewBondRankingField.init(rawValue: Int(paramI[2] as! String)!)!
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let subnewBondRankingResponse = resp as! MSubnewBondRankingResponse
-        XCTAssertNotNil(subnewBondRankingResponse.items)
+//        XCTAssertNotNil(subnewBondRankingResponse.items)
+        if (subnewBondRankingResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "subnewBondRankingResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for items in subnewBondRankingResponse.items{

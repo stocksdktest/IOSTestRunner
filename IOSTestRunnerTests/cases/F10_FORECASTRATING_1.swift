@@ -16,7 +16,7 @@ class F10_FORECASTRATING_1: BaseTestCase {
         return StockTestCaseName.F10_FORECASTRATING_1
     }
     
-    func testForecastRating() {
+    func testForecastRating() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MForecastRatingRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_FORECASTRATING_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let forecastRatingResponse = resp as! MForecastRatingResponse
-        XCTAssertNotNil(forecastRatingResponse.records)
+//        XCTAssertNotNil(forecastRatingResponse.records)
+        if (forecastRatingResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "forecastRatingResponse records is nil")
+        }
         var resultJSON: JSON = [
             "RatingFlag": forecastRatingResponse.ratingFlag,
             "RatingDec": forecastRatingResponse.ratingDescription,

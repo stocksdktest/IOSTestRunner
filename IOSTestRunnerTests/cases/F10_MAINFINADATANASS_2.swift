@@ -16,7 +16,7 @@ class F10_MAINFINADATANASS_2: BaseTestCase {
         return StockTestCaseName.F10_MAINFINADATANASS_2
     }
     
-    func testFinancialInfo() {
+    func testFinancialInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFinancialInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -32,9 +32,12 @@ class F10_MAINFINADATANASS_2: BaseTestCase {
             mRequest.param = ["type":param["param"].stringValue]
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let financialInfoResponse = resp as! MFinancialInfoResponse
-        XCTAssertNotNil(financialInfoResponse.jsonObject)
+//        XCTAssertNotNil(financialInfoResponse.jsonObject)
+        if (financialInfoResponse.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "financialInfoResponse jsonObject is nil")
+        }
         switch mRequest.sourceType{
         case .GA:
             var resultJSON : JSON = [:]

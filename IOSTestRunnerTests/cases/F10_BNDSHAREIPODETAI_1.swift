@@ -16,7 +16,7 @@ class F10_BNDSHAREIPODETAI_1: BaseTestCase {
         return StockTestCaseName.F10_BNDSHAREIPODETAI_1
     }
     
-    func testIPOShareDetail() {
+    func testIPOShareDetail() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MIPOShareDetailRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_BNDSHAREIPODETAI_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         mRequest.type = MIPOType(rawValue: 1)!
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let iPOShareDetailResponse = resp as! MIPOShareDetailResponse
-        XCTAssertNotNil(iPOShareDetailResponse.info)
+//        XCTAssertNotNil(iPOShareDetailResponse.info)
+        if (iPOShareDetailResponse.info == nil){
+            throw BaseTestError.assertFailedError(message: "iPOShareDetailResponse info is nil")
+        }
             switch mRequest.type{
             case .stock:
                     if let item: NSDictionary = iPOShareDetailResponse.info as! NSDictionary{

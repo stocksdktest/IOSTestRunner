@@ -16,7 +16,7 @@ class L2TICKV2_2: BaseTestCase {
         return StockTestCaseName.L2TICKV2_2
     }
     
-    func testL2TimeTick() {
+    func testL2TimeTick() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = ML2TimeTickRequest()
         mRequest.code = param["CODE"].stringValue
@@ -25,9 +25,12 @@ class L2TICKV2_2: BaseTestCase {
         mRequest.pageSize = UInt(paramI[1] as! String)!
         mRequest.index = paramI[0] as! String
         mRequest.type = MTimeTickRequestType.init(rawValue: Int(paramI[2] as! String)!)!
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let timeTickResponse = resp as! ML2TimeTickResponse
-        XCTAssertNotNil(timeTickResponse.items)
+//        XCTAssertNotNil(timeTickResponse.items)
+        if (timeTickResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "timeTickResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
             var itemJSON:JSON = [

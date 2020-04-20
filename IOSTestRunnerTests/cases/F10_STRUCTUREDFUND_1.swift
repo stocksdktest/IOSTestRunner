@@ -16,7 +16,7 @@ class F10_STRUCTUREDFUND_1: BaseTestCase {
         return StockTestCaseName.F10_STRUCTUREDFUND_1
     }
     
-    func testGradeFund() {
+    func testGradeFund() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MGradeFundRequest()
         mRequest.code = param["CODE"].stringValue
@@ -31,9 +31,12 @@ class F10_STRUCTUREDFUND_1: BaseTestCase {
         }
 
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let gradeFundResponse = resp as! MGradeFundResponse
-        XCTAssertNotNil(gradeFundResponse.jsonObject)
+//        XCTAssertNotNil(gradeFundResponse.jsonObject)
+        if (gradeFundResponse.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "gradeFundResponse jsonObject is nil")
+        }
         if mRequest.gradeFundType == "fndclassinfo"{
             if let info:NSDictionary = gradeFundResponse.jsonObject as! NSDictionary{
                 

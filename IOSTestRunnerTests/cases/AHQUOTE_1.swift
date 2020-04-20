@@ -16,14 +16,17 @@ class AHQUOTE_1: BaseTestCase {
         return StockTestCaseName.AHQUOTE_1
     }
     
-    func testAHQuote() {
+    func testAHQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MAHQuoteRequest()
         mRequest.code = param["CODE"].stringValue
        
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let AHQuoteResponse = resp as! MAHQuoteResponse
-        XCTAssertNotNil(AHQuoteResponse)
+//        XCTAssertNotNil(AHQuoteResponse)
+//        if (AHQuoteResponse == nil){
+//            throw BaseTestError.assertFailedError(message: "AHQuoteResponse  is nil")
+//        }
         let resultJSON:JSON = [
                 "code" : AHQuoteResponse.linkageCode,
                 "name" : AHQuoteResponse.linkageName,

@@ -16,7 +16,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
         return StockTestCaseName.F10_BNDNEWSHARESCAL_1
     }
     
-    func testIPOCalendar() {
+    func testIPOCalendar() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MIPOCalendarRequest()
          mRequest.date = param["DATE"].stringValue
@@ -29,10 +29,12 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
         }
         mRequest.type = MIPOType(rawValue: 1)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let iPOCalendarResponse = resp as! MIPOCalendarResponse
-        XCTAssertNotNil(iPOCalendarResponse.info)
-        
+//        XCTAssertNotNil(iPOCalendarResponse.info)
+        if (iPOCalendarResponse.info == nil){
+            throw BaseTestError.assertFailedError(message: "iPOCalendarResponse info is nil")
+        }
         switch mRequest.type{
             
         case .stock:

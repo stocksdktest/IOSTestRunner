@@ -16,7 +16,7 @@ class F10_NEWINDEX_1: BaseTestCase {
         return StockTestCaseName.F10_NEWINDEX_1
     }
    
-    func testLatestIndex() {
+    func testLatestIndex() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MLatestIndexRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_NEWINDEX_1: BaseTestCase {
         }
     
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let latestIndexResponse = resp as! MLatestIndexResponse
-        XCTAssertNotNil(latestIndexResponse.record)
+//        XCTAssertNotNil(latestIndexResponse.record)
+        if (latestIndexResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "latestIndexResponse record is nil")
+        }
         switch mRequest.sourceType{
             
         case .GA:

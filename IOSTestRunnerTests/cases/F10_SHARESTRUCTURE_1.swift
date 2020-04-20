@@ -15,7 +15,7 @@ class F10_SHARESTRUCTURE_1: BaseTestCase {
         return StockTestCaseName.F10_SHARESTRUCTURE_1
     }
     
-    func testFundShareStruct() {
+    func testFundShareStruct() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFundShareStructRequest()
         mRequest.code = param["CODE"].stringValue
@@ -26,9 +26,12 @@ class F10_SHARESTRUCTURE_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let fundShareStructResponse = resp as! MFundShareStructResponse
-        XCTAssertNotNil(fundShareStructResponse.records)
+//        XCTAssertNotNil(fundShareStructResponse.records)
+        if (fundShareStructResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "fundShareStructResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i=1
         for items in fundShareStructResponse.records{

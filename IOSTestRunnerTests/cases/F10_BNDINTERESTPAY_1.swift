@@ -16,7 +16,7 @@ class F10_BNDINTERESTPAY_1: BaseTestCase {
         return StockTestCaseName.F10_BNDINTERESTPAY_1
     }
     
-    func testBondInterestPay() {
+    func testBondInterestPay() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBondInterestPayRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_BNDINTERESTPAY_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let bondInterestPayResponse = resp as! MBondInterestPayResponse
-        XCTAssertNotNil(bondInterestPayResponse.record)
+//        XCTAssertNotNil(bondInterestPayResponse.record)
+        if (bondInterestPayResponse.record == nil){
+                   throw BaseTestError.assertFailedError(message: "bondInterestPayResponse record is nil")
+               }
         if let item = bondInterestPayResponse.record{
             var resultJSON: JSON = [
                 "BONDNAME":item["BONDNAME"]!,

@@ -16,12 +16,15 @@ class OPTIONLIST_1: BaseTestCase {
         return StockTestCaseName.OPTIONLIST_1
     }
     
-    func testUnderlyingStock() {
+    func testUnderlyingStock() throws{
     let param = self.testCaseRoundConfig.getParam()
     let mRequest = MUnderlyingStockRequest()
-    let resp = self.makeSyncRequest(request: mRequest)
+    let resp = try self.makeSyncRequest(request: mRequest)
     let underlyingStockResponse = resp as! MUnderlyingStockResponse
-    XCTAssertNotNil(underlyingStockResponse.stockItems)
+//    XCTAssertNotNil(underlyingStockResponse.stockItems)
+        if (underlyingStockResponse.stockItems == nil){
+            throw BaseTestError.assertFailedError(message: "underlyingStockResponse stockItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in underlyingStockResponse.stockItems{
             var itemJSON: JSON = [

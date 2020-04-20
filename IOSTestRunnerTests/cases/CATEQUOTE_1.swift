@@ -16,15 +16,18 @@ class CATEQUOTE_1: BaseTestCase {
         return StockTestCaseName.CATEQUOTE_1
     }
     
-    func testCategoryQuoteList() {
+    func testCategoryQuoteList() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MCategoryQuoteListRequest()
         mRequest.categoryID = param["CATEGORYID"].stringValue
         mRequest.pageIndex = param["PAGEINDEX"].intValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let categoryQuoteListResponse = resp as! MCategoryQuoteListResponse
-        XCTAssertNotNil(categoryQuoteListResponse.categoryQuoteItems)
+//        XCTAssertNotNil(categoryQuoteListResponse.categoryQuoteItems)
+        if (categoryQuoteListResponse.categoryQuoteItems == nil){
+            throw BaseTestError.assertFailedError(message: "categoryQuoteListResponse categoryQuoteItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in categoryQuoteListResponse.categoryQuoteItems {
             var itemJSON: JSON = [

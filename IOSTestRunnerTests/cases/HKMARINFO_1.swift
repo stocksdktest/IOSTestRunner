@@ -16,13 +16,13 @@ class HKMARINFO_1: BaseTestCase {
         return StockTestCaseName.HKMARINFO_1
     }
    
-    func testHKMarketInfo() {
+    func testHKMarketInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MHKMarketInfoRequest()
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let hKMarketInfoResponse = resp as! MHKMarketInfoResponse
-        XCTAssertNotNil(hKMarketInfoResponse)
+//        XCTAssertNotNil(hKMarketInfoResponse)
         var resultJSON: JSON = [
             "shInitialQuota": hKMarketInfoResponse.shInitialQuota,
             "shRemainQuota": hKMarketInfoResponse.shRemainQuota,

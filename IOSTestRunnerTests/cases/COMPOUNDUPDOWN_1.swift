@@ -16,16 +16,19 @@ class COMPOUNDUPDOWN_1: BaseTestCase{
         return StockTestCaseName.COMPOUNDUPDOWN_1
     }
     
-    func testCompoundUpdowns(){
+    func testCompoundUpdowns() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MCompoundUpdownsRequest()
         mRequest.code = param["MARKET"].stringValue
         mRequest.type = MCompoundUpdownsType(rawValue: param["TYPE"].uIntValue)!
         mRequest.time = param["TIME"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let compoundUpdownsResponse = resp as! MCompoundUpdownsResponse
-        XCTAssertNotNil(compoundUpdownsResponse)
+//        XCTAssertNotNil(compoundUpdownsResponse)
+        if (compoundUpdownsResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "compoundUpdownsResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         
         for item in compoundUpdownsResponse.items{

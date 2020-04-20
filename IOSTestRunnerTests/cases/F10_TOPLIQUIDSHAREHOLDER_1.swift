@@ -16,7 +16,7 @@ class F10_TOPLIQUIDSHAREHOLDER_1: BaseTestCase {
         return StockTestCaseName.F10_TOPLIQUIDSHAREHOLDER_1
     }
     
-    func testTopLiquidShareHolder() {
+    func testTopLiquidShareHolder() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTopLiquidShareHolderRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_TOPLIQUIDSHAREHOLDER_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let topLiquidShareHolderResponse = resp as! MTopLiquidShareHolderResponse
-        XCTAssertNotNil(topLiquidShareHolderResponse.records)
+//        XCTAssertNotNil(topLiquidShareHolderResponse.records)
+        if (topLiquidShareHolderResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "topLiquidShareHolderResponse records is nil")
+        }
         switch mRequest.sourceType{
             
         case .GA:

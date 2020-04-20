@@ -16,7 +16,7 @@ class F10_COREBUSINESS_1: BaseTestCase {
         return StockTestCaseName.F10_COREBUSINESS_1
     }
     
-    func testCoreBusiness() {
+    func testCoreBusiness() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MCoreBusinessRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_COREBUSINESS_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let coreBusinessResponse = resp as! MCoreBusinessResponse
-        XCTAssertNotNil(coreBusinessResponse.records)
+//        XCTAssertNotNil(coreBusinessResponse.records)
+        if (coreBusinessResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "coreBusinessResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for records in coreBusinessResponse.records{

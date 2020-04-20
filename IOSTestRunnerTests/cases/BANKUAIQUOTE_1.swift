@@ -16,15 +16,18 @@ class BANKUAIQUOTE_1: BaseTestCase {
         return StockTestCaseName.BANKUAIQUOTE_1
     }
     
-    func testSectionQuote() {
+    func testSectionQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSectionQuoteRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.type = param["TYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let sectionQuoteResponse = resp as! MSectionQuoteResponse
-        XCTAssertNotNil(sectionQuoteResponse.sectionQuoteItems)
+//        XCTAssertNotNil(sectionQuoteResponse.sectionQuoteItems)
+        if (sectionQuoteResponse.sectionQuoteItems == nil){
+            throw BaseTestError.assertFailedError(message: "sectionQuoteResponse sectionQuoteItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in sectionQuoteResponse.sectionQuoteItems {
             var itemJSON: JSON = [

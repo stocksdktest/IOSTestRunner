@@ -16,7 +16,7 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
         return StockTestCaseName.F10_LEADERPERSONINFO_1
     }
     
-    func testLeaderPersonInfo() {
+    func testLeaderPersonInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MLeaderPersonInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,11 +28,13 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let leaderPersonInfoResponse = resp as! MLeaderPersonInfoResponse
-        XCTAssertNotNil(leaderPersonInfoResponse.records)
+//        XCTAssertNotNil(leaderPersonInfoResponse.records)
+        if (leaderPersonInfoResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "leaderPersonInfoResponse records is nil")
+        }
         switch mRequest.sourceType{
-            
         case .GA:
             var resultJSON : JSON = [:]
             var i=1

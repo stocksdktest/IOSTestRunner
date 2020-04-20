@@ -15,7 +15,7 @@ class F10V2TEST_4: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.F10V2TEST_4
     }
-    func testF10() {
+    func testF10() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MF10Request()
         mRequest.code = param["CODE"].stringValue
@@ -35,9 +35,12 @@ class F10V2TEST_4: BaseTestCase {
         
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let f10Response = resp as! MF10Response
-        XCTAssertNotNil(f10Response.jsonObject)
+//        XCTAssertNotNil(f10Response.jsonObject)
+        if (f10Response.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "f10Response jsonObject is nil")
+        }
         var resultJSON : JSON = [:]
                 if mRequest.requestType == "importantindex"{
                     if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{

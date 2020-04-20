@@ -16,7 +16,7 @@ class SEARV2TEST_2: BaseTestCase {
         return StockTestCaseName.SEARV2TEST_2
     }
     
-    func testSearch() {
+    func testSearch() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequestV2()
          mRequest.keyword = param["KEYWORD"].stringValue
@@ -28,9 +28,12 @@ class SEARV2TEST_2: BaseTestCase {
          mRequest.searchLimit = param["CATEGORIES"].uIntValue
     
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let searchResponse = resp as! MSearchResponse
-        XCTAssertNotNil(searchResponse.resultItems)
+//        XCTAssertNotNil(searchResponse.resultItems)
+        if (searchResponse.resultItems == nil){
+            throw BaseTestError.assertFailedError(message: "searchResponse resultItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in searchResponse.resultItems {
             var itemJSON: JSON = [

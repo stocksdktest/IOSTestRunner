@@ -19,7 +19,7 @@ class TCP_CHARTV2TEST_2: BaseTestCase {
     internal var notificationExpectation: XCTestExpectation = XCTestExpectation.init()
     internal var i = 1
     
-    func testExample1() {
+    func testExample1() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MChartRequest()
         let code = param["CODE"].stringValue
@@ -37,10 +37,13 @@ class TCP_CHARTV2TEST_2: BaseTestCase {
         }
         mRequest.code = code
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         XCTAssertEqual(resp.status, MResponseStatus.success)
         let chartResponse = resp as! MChartResponse
-        XCTAssertNotNil(chartResponse.ohlcItems)
+//        XCTAssertNotNil(chartResponse.ohlcItems)
+        if (chartResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "chartResponse ohlcItems is nil")
+        }
         print("订阅结果：\(chartResponse.ohlcItems.description)")
         
         if param["TYPE"] == "ChartTypeOneDay"{

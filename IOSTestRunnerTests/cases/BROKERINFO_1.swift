@@ -16,16 +16,22 @@ class BROKERINFO_1: BaseTestCase {
         return StockTestCaseName.BROKERINFO_1
     }
     
-    func testBrokerInfo() {
+    func testBrokerInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBrokerSeatRequest()
         mRequest.code = param["CODE"].stringValue
 
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let brokerSeatResponse = resp as! MBrokerSeatResponse
 //        print(brokerSeatResponse)
-        XCTAssertNotNil(brokerSeatResponse.buyBrokerSeatItems)
-        XCTAssertNotNil(brokerSeatResponse.sellBrokerSeatItems)
+//        XCTAssertNotNil(brokerSeatResponse.buyBrokerSeatItems)
+//        XCTAssertNotNil(brokerSeatResponse.sellBrokerSeatItems)
+        if (brokerSeatResponse.buyBrokerSeatItems == nil){
+            throw BaseTestError.assertFailedError(message: "brokerSeatResponse buyBrokerSeatItems is nil")
+        }
+        if (brokerSeatResponse.sellBrokerSeatItems == nil){
+            throw BaseTestError.assertFailedError(message: "brokerSeatResponse sellBrokerSeatItems is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         

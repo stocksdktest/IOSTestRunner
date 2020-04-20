@@ -16,7 +16,7 @@ class CHARTSUB_2: BaseTestCase {
         return StockTestCaseName.CHARTSUB_2
     }
    
-    func testChartIndex() {
+    func testChartIndex() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MChartIndexRequest()
         mRequest.code = param["CODE"].stringValue
@@ -63,9 +63,12 @@ class CHARTSUB_2: BaseTestCase {
         mRequest.type = MChartIndexType.init(rawValue: typeInt)
         mRequest.beginIndex = param["BEGIN"].intValue
         mRequest.endIndex   = param["END"].intValue
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let chartIndexResponse = resp as! MChartIndexResponse
-        XCTAssertNotNil(chartIndexResponse)
+//        XCTAssertNotNil(chartIndexResponse)
+        if (chartIndexResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "chartIndexResponse ohlcItems is nil")
+        }
         var resultJSON : JSON = [:]
         var j = 1
 //        print(chartIndexResponse)

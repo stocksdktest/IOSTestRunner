@@ -16,7 +16,7 @@ class OVERLAYCHART_1: BaseTestCase {
         return StockTestCaseName.OVERLAYCHART_1
     }
     
-    func testChart() {
+    func testChart() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MChartRequest()
         mRequest.code = param["CODE"].stringValue
@@ -34,10 +34,12 @@ class OVERLAYCHART_1: BaseTestCase {
         if let superpositionSubtypeVal = param["superpositionSubtype"].string{
             mRequest.superpositionSubtype = superpositionSubtypeVal
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse
-        XCTAssertNotNil(chartResponse.ohlcItems)
-        
+//        XCTAssertNotNil(.ohlcItems)
+        if (chartResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "chartResponse ohlcItems is nil")
+        }
         var jsonarr1 : JSON = [:]
         for item in chartResponse.ohlcItems{
             var jsonarr2:JSON = [

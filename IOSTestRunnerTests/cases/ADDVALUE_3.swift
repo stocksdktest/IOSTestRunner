@@ -16,7 +16,7 @@ class ADDVALUE_3: BaseTestCase {
         return StockTestCaseName.ADDVALUE_3
     }
     
-    func testAddValue() {
+    func testAddValue() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MAddValueRequest()
 
@@ -29,9 +29,12 @@ class ADDVALUE_3: BaseTestCase {
 
             mRequest.fields = fields as! [Any]
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let addvalueResponse = resp as! MAddValueResponse
 //        XCTAssertNotNil(addvalueResponse.addValueItems)
+        if (addvalueResponse.addValueItems == nil){
+            throw BaseTestError.assertFailedError(message: "addvalueResponse addValueItems is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         if addvalueResponse.addValueItems != nil{

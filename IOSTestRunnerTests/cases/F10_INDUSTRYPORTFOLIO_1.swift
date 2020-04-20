@@ -16,7 +16,7 @@ class F10_INDUSTRYPORTFOLIO_1: BaseTestCase {
         return StockTestCaseName.F10_INDUSTRYPORTFOLIO_1
     }
     
-    func testFundIndustryPortfolio() {
+    func testFundIndustryPortfolio() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFundIndustryPortfolioRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_INDUSTRYPORTFOLIO_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let fundIndustryPortfolioResponse = resp as! MFundIndustryPortfolioResponse
-        XCTAssertNotNil(fundIndustryPortfolioResponse.records)
+//        XCTAssertNotNil(fundIndustryPortfolioResponse.records)
+        if (fundIndustryPortfolioResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "fundIndustryPortfolioResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i=1
         for items in fundIndustryPortfolioResponse.records{

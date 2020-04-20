@@ -16,7 +16,7 @@ class F10_SHAREHOLDERHISTORYINFO_1: BaseTestCase {
         return StockTestCaseName.F10_SHAREHOLDERHISTORYINFO_1
     }
     
-    func testShareHolderHistoryInfo() {
+    func testShareHolderHistoryInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MShareHolderHistoryInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_SHAREHOLDERHISTORYINFO_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let shareHolderHistoryInfoResponse = resp as! MShareHolderHistoryInfoResponse
-        XCTAssertNotNil(shareHolderHistoryInfoResponse.records)
+//        XCTAssertNotNil(shareHolderHistoryInfoResponse.records)
+        if (shareHolderHistoryInfoResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "shareHolderHistoryInfoResponse records is nil")
+        }
         switch mRequest.sourceType{
             
         case .GA:

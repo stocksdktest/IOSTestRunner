@@ -16,7 +16,7 @@ class F10_BNDBUYBACKS_1: BaseTestCase {
         return StockTestCaseName.F10_BNDBUYBACKS_1
     }
     
-    func testBondBuyBacks() {
+    func testBondBuyBacks() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBondBuyBacksRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_BNDBUYBACKS_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let bondBuyBacksResponse = resp as! MBondBuyBacksResponse
-        XCTAssertNotNil(bondBuyBacksResponse.record)
+//        XCTAssertNotNil(bondBuyBacksResponse.record)
+        if (bondBuyBacksResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "bondBuyBacksResponse record is nil")
+        }
         if let item = bondBuyBacksResponse.record{
         var resultJSON: JSON = [
             "BONDNAME":item["BONDNAME"]!,

@@ -16,7 +16,7 @@ class L2TICKV2_1: BaseTestCase {
         return StockTestCaseName.L2TICKV2_1
     }
     
-    func testL2TimeTick() {
+    func testL2TimeTick() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = ML2TimeTickRequest()
         mRequest.code = param["CODE"].stringValue
@@ -24,9 +24,12 @@ class L2TICKV2_1: BaseTestCase {
         mRequest.pageSize = 100
 //        mRequest.index = "0"
         mRequest.type = MTimeTickRequestType.init(rawValue: -1)!
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let timeTickResponse = resp as! ML2TimeTickResponse
-        XCTAssertNotNil(timeTickResponse.items)
+//        XCTAssertNotNil(timeTickResponse.items)
+        if (timeTickResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "timeTickResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
             var itemJSON:JSON = [
@@ -54,7 +57,7 @@ class L2TICKV2_1: BaseTestCase {
         }
         while ItemsCount == 100{
             
-            timeTickNext(index: &EndIndex , count: &ItemsCount , result: &resultJSON)
+            try timeTickNext(index: &EndIndex , count: &ItemsCount , result: &resultJSON)
             if ItemsCount != 100{
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
@@ -62,7 +65,7 @@ class L2TICKV2_1: BaseTestCase {
         }
         
     }
-    func timeTickNext( index :  inout String , count : inout Int , result : inout JSON){
+    func timeTickNext( index :  inout String , count : inout Int , result : inout JSON) throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequestNext = ML2TimeTickRequest()
         mRequestNext.code = param["CODE"].stringValue
@@ -72,8 +75,11 @@ class L2TICKV2_1: BaseTestCase {
         if let typeValNext = MTimeTickRequestType.init(rawValue: 1){
             mRequestNext.type = typeValNext
         }
-        let resp = self.makeSyncRequest(request: mRequestNext)
+        let resp = try self.makeSyncRequest(request: mRequestNext)
         let timeTickResponseNext = resp as! ML2TimeTickResponse
+        if (timeTickResponseNext.items == nil){
+            throw BaseTestError.assertFailedError(message: "timeTickResponseNext items is nil")
+        }
         if timeTickResponseNext.items != nil{
             for item in timeTickResponseNext.items{
                 var itemJSON:JSON = [

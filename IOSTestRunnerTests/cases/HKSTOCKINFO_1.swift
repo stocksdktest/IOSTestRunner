@@ -16,15 +16,18 @@ class HKSTOCKINFO_1: BaseTestCase {
         return StockTestCaseName.HKSTOCKINFO_1
     }
     
-    func testHKQuoteInfo() {
+    func testHKQuoteInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MHKQuoteInfoRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let hKQuoteInfoResponse = resp as! MHKQuoteInfoResponse
-        XCTAssertNotNil(hKQuoteInfoResponse.oddInfoItems)
+//        XCTAssertNotNil(hKQuoteInfoResponse.oddInfoItems)
+        if (hKQuoteInfoResponse.oddInfoItems == nil){
+            throw BaseTestError.assertFailedError(message: "hKQuoteInfoResponse oddInfoItems is nil")
+        }
         var resultJSON: JSON = [
             "vcmDataTimestamp": hKQuoteInfoResponse.vcmDatetime,
             "vcmStartTime": hKQuoteInfoResponse.vcmStartTime,

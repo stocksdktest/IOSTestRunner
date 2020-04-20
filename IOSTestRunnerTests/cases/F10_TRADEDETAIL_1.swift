@@ -16,7 +16,7 @@ class F10_TRADEDETAIL_1: BaseTestCase {
         return StockTestCaseName.F10_TRADEDETAIL_1
     }
     
-    func testTradeDetailInfo() {
+    func testTradeDetailInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTradeDetailInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_TRADEDETAIL_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let tradeDetailInfoResponse = resp as! MTradeDetailInfoResponse
-        XCTAssertNotNil(tradeDetailInfoResponse.record)
+//        XCTAssertNotNil(tradeDetailInfoResponse.record)
+        if (tradeDetailInfoResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "tradeDetailInfoResponse record is nil")
+        }
         if let record = tradeDetailInfoResponse.record{
             var resultJSON: JSON = [
 //                "payVolumeStock": record["PAYVOLSTOCK"]!,

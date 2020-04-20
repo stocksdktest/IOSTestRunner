@@ -16,7 +16,7 @@ class CHARTV2TEST_2: BaseTestCase {
         return StockTestCaseName.CHARTV2TEST_2
     }
     
-    func testChart() {
+    func testChart() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MChartRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class CHARTV2TEST_2: BaseTestCase {
         }
         mRequest.subtype = param["SUBTYPE"].stringValue
 
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let chartResponse = resp as! MChartResponse
-        XCTAssertNotNil(chartResponse.ohlcItems)
+//        XCTAssertNotNil(chartResponse.ohlcItems)
+        if (chartResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "chartResponse ohlcItems is nil")
+        }
         var resultJSON : JSON = [:]
         for item in chartResponse.ohlcItems{
             var itemJSON2 : JSON = [:]

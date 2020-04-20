@@ -16,7 +16,7 @@ class OPTIONQUOTE_1: BaseTestCase {
         return StockTestCaseName.OPTIONQUOTE_1
     }
    
-    func testOption() {
+    func testOption() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOptionRequest()
         if param["STOCKID"].string!.contains("_"){
@@ -35,10 +35,12 @@ class OPTIONQUOTE_1: BaseTestCase {
         mRequest.pageIndex = param["PAGEINDEX"].intValue
 
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let optionResponse = resp as! MOptionResponse
-        XCTAssertNotNil(optionResponse.optionItems)
-        
+//        XCTAssertNotNil(optionResponse.)
+        if (optionResponse.optionItems == nil){
+            throw BaseTestError.assertFailedError(message: "optionResponse optionItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in optionResponse.optionItems {
             let item : MOptionItem = items as! MOptionItem

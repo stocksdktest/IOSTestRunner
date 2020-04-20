@@ -16,7 +16,7 @@ class QUOTE_2: BaseTestCase {
         return StockTestCaseName.QUOTE_2
     }
     
-    func testQuote() {
+    func testQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MQuoteRequest()
         let codeNSArray: NSArray = param["CODE"].string?.split(separator: ",") as! NSArray
@@ -38,9 +38,12 @@ class QUOTE_2: BaseTestCase {
             mRequest.addValueFields = addvalueFields as! [Any]
         }
 //        mRequest.addValueFields = ["ddz", "largeSellCount", "mediumDiffer"]
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let quoteResponse = resp as! MQuoteResponse
-        XCTAssertNotNil(quoteResponse.stockItems)
+//        XCTAssertNotNil(quoteResponse.stockItems)
+            if (quoteResponse.stockItems == nil){
+                throw BaseTestError.assertFailedError(message: "quoteResponse stockItems is nil")
+            }
         var resultJSON : JSON = [:]
         for items in quoteResponse.stockItems {
             if items is MOptionItem{

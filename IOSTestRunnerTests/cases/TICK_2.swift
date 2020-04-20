@@ -16,7 +16,7 @@ class TICK_2: BaseTestCase {
         return StockTestCaseName.TICK_2
     }
     
-    func testTimeTick() {
+    func testTimeTick() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTimeTickRequest()
         mRequest.code = param["CODE"].stringValue
@@ -26,9 +26,12 @@ class TICK_2: BaseTestCase {
         mRequest.index = paramI[0] as? String
         mRequest.type = MTimeTickRequestType.init(rawValue: Int(paramI[2] as! String)!)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let timeTickResponse = resp as! MTimeTickResponse
-        XCTAssertNotNil(timeTickResponse.items)
+//        XCTAssertNotNil(timeTickResponse.items)
+        if (timeTickResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "timeTickResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         for item in timeTickResponse.items{
             var itemJSON:JSON = [

@@ -16,7 +16,7 @@ class F10_NEWS_1: BaseTestCase {
         return StockTestCaseName.F10_NEWS_1
     }
     
-    func testNews() {
+    func testNews() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MNewsRequest()
         if param["NEWSID"].stringValue == "null"{
@@ -31,9 +31,12 @@ class F10_NEWS_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let newsResponse = resp as! MNewsResponse
-        XCTAssertNotNil(newsResponse.newsDetailItem)
+//        XCTAssertNotNil(newsResponse.newsDetailItem)
+        if (newsResponse.newsDetailItem == nil){
+            throw BaseTestError.assertFailedError(message: "newsResponse newsDetailItem is nil")
+        }
         if let item = newsResponse.newsDetailItem{
             var resultJSON: JSON = [
                 "ABSTRACT_":item.content,

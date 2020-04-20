@@ -16,7 +16,7 @@ class OFFERQUOTE_2: BaseTestCase {
         return StockTestCaseName.OFFERQUOTE_2
     }
     //MAddValueItem
-    func testOfferQuoteList() {
+    func testOfferQuoteList() throws{
         let param = self.testCaseRoundConfig.getParam()
          let mRequest = MOfferQuoteListRequest()
         
@@ -32,8 +32,11 @@ class OFFERQUOTE_2: BaseTestCase {
             mRequest.field = fieldVal
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let offerQuoteListResponse = resp as! MOfferQuoteResponse
+        if (offerQuoteListResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "offerQuoteListResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         if offerQuoteListResponse.items != nil{

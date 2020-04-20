@@ -16,7 +16,7 @@ class F10_FNDFINANCE_1: BaseTestCase {
         return StockTestCaseName.F10_FNDFINANCE_1
     }
     
-    func testFundFinance() {
+    func testFundFinance() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFundFinanceRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_FNDFINANCE_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let fundFinanceResponse = resp as! MFundFinanceResponse
-        XCTAssertNotNil(fundFinanceResponse.record)
+//        XCTAssertNotNil(fundFinanceResponse.record)
+        if (fundFinanceResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "fundFinanceResponse record is nil")
+        }
         if let item = fundFinanceResponse.record{
             var resultJSON: JSON = [
                 "PUBLISHDATE":item["PUBLISHDATE"]!,

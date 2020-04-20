@@ -16,7 +16,7 @@ class QUOTEDETAIL_2: BaseTestCase {
         return StockTestCaseName.QUOTEDETAIL_2
     }
     
-    func testSnapQuote() {
+    func testSnapQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSnapQuoteRequest()
         mRequest.code = param["CODE"].stringValue
@@ -38,9 +38,12 @@ class QUOTEDETAIL_2: BaseTestCase {
         
 //        mRequest.stockFields = ["-1"]
 //        mRequest.addValueFields = []
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let snapQuoteResponse = resp as! MSnapQuoteResponse
-        XCTAssertNotNil(snapQuoteResponse.stockItem)
+//        XCTAssertNotNil(snapQuoteResponse.stockItem)
+        if (snapQuoteResponse.stockItem == nil){
+            throw BaseTestError.assertFailedError(message: "snapQuoteResponse stockItem is nil")
+        }
         var itemJSON2: JSON = [:]
         var resultJSON2: JSON = [:]
 

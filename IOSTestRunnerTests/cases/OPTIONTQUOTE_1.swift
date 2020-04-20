@@ -16,15 +16,18 @@ class OPTIONTQUOTE_1: BaseTestCase {
         return StockTestCaseName.OPTIONTQUOTE_1
     }
    
-    func testOptionT() {
+    func testOptionT() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOptionTRequest()
         mRequest.stockID = param["CODE"].stringValue
         mRequest.expireMonth = param["EXPIREMONTH"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let optionResponse = resp as! MOptionResponse
-        XCTAssertNotNil(optionResponse.optionItems)
+//        XCTAssertNotNil(optionResponse.optionItems)
+        if (optionResponse.optionItems == nil){
+            throw BaseTestError.assertFailedError(message: "optionResponse optionItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in optionResponse.optionItems {
             let item : MOptionItem = items as! MOptionItem

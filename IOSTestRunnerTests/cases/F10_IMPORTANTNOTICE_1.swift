@@ -16,7 +16,7 @@ class F10_IMPORTANTNOTICE_1: BaseTestCase {
         return StockTestCaseName.F10_IMPORTANTNOTICE_1
     }
     
-    func testBigEventNotification() {
+    func testBigEventNotification() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MBigEventNotificationRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_IMPORTANTNOTICE_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let bigEventNotificationResponse = resp as! MBigEventNotificationResponse
-        XCTAssertNotNil(bigEventNotificationResponse.records)
+//        XCTAssertNotNil(bigEventNotificationResponse.records)
+        if (bigEventNotificationResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "bigEventNotificationResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for record in bigEventNotificationResponse.records{

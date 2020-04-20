@@ -16,14 +16,17 @@ class TRADEDATE_1: BaseTestCase {
         return StockTestCaseName.TRADEDATE_1
     }
     
-    func testTradeDate() {
+    func testTradeDate() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTradeDateRequest()
         mRequest.market = param["MARKET"].stringValue
        
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let tradeDateResponse = resp as! MTradeDateResponse
-        XCTAssertNotNil(tradeDateResponse.dates)
+//        XCTAssertNotNil(tradeDateResponse.dates)
+        if (tradeDateResponse.dates == nil){
+            throw BaseTestError.assertFailedError(message: "tradeDateResponse dates is nil")
+        }
         var resultJSON : JSON = [:]
         for dates in tradeDateResponse.dates! as NSArray{
             

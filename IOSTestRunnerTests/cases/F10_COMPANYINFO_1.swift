@@ -16,7 +16,7 @@ class F10_COMPANYINFO_1: BaseTestCase {
         return StockTestCaseName.F10_COMPANYINFO_1
     }
     
-    func testCompanyInfo() {
+    func testCompanyInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MCompanyInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_COMPANYINFO_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let companyInfoResponse = resp as! MCompanyInfoResponse
-        XCTAssertNotNil(companyInfoResponse.record)
+//        XCTAssertNotNil(companyInfoResponse.record)
+        if (companyInfoResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "companyInfoResponse record is nil")
+        }
         if let record: NSDictionary = companyInfoResponse.record as NSDictionary{
             switch mRequest.sourceType{
                 

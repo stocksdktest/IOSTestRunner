@@ -16,13 +16,16 @@ class HOLIDAY_1: BaseTestCase {
         return StockTestCaseName.HOLIDAY_1
     }
    
-    func testMarketHoliday() {
+    func testMarketHoliday() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MMarketHolidayRequest()
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let mMarketHolidayResponse = resp as! MMarketHolidayResponse
-        XCTAssertNotNil(mMarketHolidayResponse.jsonObject)
+//        XCTAssertNotNil(mMarketHolidayResponse.jsonObject)
+        if (mMarketHolidayResponse.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "mMarketHolidayResponse jsonObject is nil")
+        }
         let objects = mMarketHolidayResponse.jsonObject["hk"]
             let items: NSArray = objects as! NSArray
             var jsonarr1 = [String]()

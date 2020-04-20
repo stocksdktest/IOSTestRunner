@@ -16,7 +16,7 @@ class F10_STOCKREPORT_1: BaseTestCase {
         return StockTestCaseName.F10_STOCKREPORT_1
     }
     
-    func testStockReport() {
+    func testStockReport() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockReportRequest()
         mRequest.stockReportID = param["STOCKREPORTID"].stringValue
@@ -28,9 +28,12 @@ class F10_STOCKREPORT_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let stockReportListResponse = resp as! MStockReportResponse
-        XCTAssertNotNil(stockReportListResponse.stockReportDetailItem)
+//        XCTAssertNotNil(stockReportListResponse.stockReportDetailItem)
+        if (stockReportListResponse.stockReportDetailItem == nil){
+            throw BaseTestError.assertFailedError(message: "stockReportListResponse stockReportDetailItem is nil")
+        }
           if let item = stockReportListResponse.stockReportDetailItem{
                 var resultJSON: JSON = [
          

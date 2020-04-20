@@ -16,7 +16,7 @@ class DRQUOTELIST_1: BaseTestCase {
         return StockTestCaseName.DRQUOTELIST_1
     }
    
-    func testDRQuoteList() {
+    func testDRQuoteList() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MDRQuoteListRequest()
         mRequest.code = param["DRCODE"].stringValue
@@ -30,9 +30,12 @@ class DRQUOTELIST_1: BaseTestCase {
         }
         mRequest.field = MDRQuoteListField.init(rawValue: Int(paramI[2] as! String)!)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let dRQuoteListResponse = resp as! MDRQuoteListResponse
-        XCTAssertNotNil(dRQuoteListResponse.items)
+//        XCTAssertNotNil(dRQuoteListResponse.items)
+        if (dRQuoteListResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "dRQuoteListResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for items in dRQuoteListResponse.items {

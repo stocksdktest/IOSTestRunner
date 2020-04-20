@@ -16,7 +16,7 @@ class SEARTEST_5: BaseTestCase {
         return StockTestCaseName.SEARTEST_5
     }
     
-    func testSearch() {
+    func testSearch() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSearchRequest()
          mRequest.keyword = param["KEYWORD"].stringValue
@@ -44,9 +44,12 @@ class SEARTEST_5: BaseTestCase {
          }
     
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let searchResponse = resp as! MSearchResponse
-        XCTAssertNotNil(searchResponse.resultItems)
+//        XCTAssertNotNil(searchResponse.resultItems)
+        if (searchResponse.resultItems == nil){
+            throw BaseTestError.assertFailedError(message: "searchResponse resultItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in searchResponse.resultItems {
             var itemJSON: JSON = [

@@ -16,15 +16,17 @@ class TRADEQUOTE_1: BaseTestCase {
         return StockTestCaseName.TRADEQUOTE_1
     }
 
-    func testTradeQuote() {
+    func testTradeQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTradeQuoteRequest()
         mRequest.code = param["CODE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let tradeQuoteResponse = resp as! MTradeQuoteResponse
-        XCTAssertNotNil(tradeQuoteResponse.tradeItem)
-        
+//        XCTAssertNotNil(tradeQuoteResponse.tradeItem)
+        if (tradeQuoteResponse.tradeItem == nil){
+            throw BaseTestError.assertFailedError(message: "tradeQuoteResponse tradeItem is nil")
+        }
         if let item = tradeQuoteResponse.tradeItem{
             var resultJSON: JSON = [
                 "id": item.code,

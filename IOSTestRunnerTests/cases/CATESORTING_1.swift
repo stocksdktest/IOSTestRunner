@@ -17,7 +17,7 @@ class CATESORTING_1: BaseTestCase {
         return StockTestCaseName.CATESORTING_1
     }
     
-    func testCategorySorting() {
+    func testCategorySorting() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MCategorySortingRequest()
         mRequest.code = param["CateType"].stringValue
@@ -48,9 +48,12 @@ class CATESORTING_1: BaseTestCase {
 
             mRequest.addValueFields = addvalueFields as! [Any]
         }
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let categorySortingResponse = resp as! MCategorySortingResponse
-        XCTAssertNotNil(categorySortingResponse.stockItems)
+//        XCTAssertNotNil(categorySortingResponse.stockItems)
+        if (categorySortingResponse.stockItems == nil){
+            throw BaseTestError.assertFailedError(message: "categorySortingResponse stockItems is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for items in categorySortingResponse.stockItems {

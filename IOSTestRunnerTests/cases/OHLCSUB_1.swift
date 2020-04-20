@@ -16,16 +16,19 @@ class OHLCSUB_1: BaseTestCase {
         return StockTestCaseName.OHLCSUB_1
     }
     
-    func testOHLCSub() {
+    func testOHLCSub() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOHLCRequestV2()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         mRequest.period = MOHLCPeriod.init(rawValue:0)!
         mRequest.priceAdjustedMode = MOHLCPriceAdjustedMode.init(rawValue:0)!
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let oHLCSubResponse = resp as! MOHLCResponse
-        XCTAssertNotNil(oHLCSubResponse.fqItems)
+//        XCTAssertNotNil(oHLCSubResponse.fqItems)
+        if (oHLCSubResponse.fqItems == nil){
+            throw BaseTestError.assertFailedError(message: "oHLCSubResponse fqItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in oHLCSubResponse.fqItems{
             var jsonarr2: JSON = [

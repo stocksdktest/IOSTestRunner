@@ -16,16 +16,19 @@ class HISTORYCHART_2: BaseTestCase {
         return StockTestCaseName.HISTORYCHART_2
     }
     
-    func testHistoryChart() {
+    func testHistoryChart() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MHistoryChartRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         mRequest.date = param["DATE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let historyChartResponse = resp as! MHistoryChartResponse
-        XCTAssertNotNil(historyChartResponse.ohlcItems)
+//        XCTAssertNotNil(historyChartResponse.ohlcItems)
+        if (historyChartResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "historyChartResponse ohlcItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in historyChartResponse.ohlcItems{
         var itemJSON: JSON = [

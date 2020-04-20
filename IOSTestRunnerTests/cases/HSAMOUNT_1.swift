@@ -15,13 +15,13 @@ class HSAMOUNT_1: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.HSAMOUNT_1
     }
-    func testSAmount() {
+    func testSAmount() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MHSAmountRequest()
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let hSAmountResponse = resp as! MHSAmountResponse
-        XCTAssertNotNil(hSAmountResponse)
+//        XCTAssertNotNil(hSAmountResponse)
         var resultJSON: JSON = [
             "shInitialQuota":hSAmountResponse.shInitialAmount,
             "shRemainQuota":hSAmountResponse.shRemainingAmount,

@@ -16,7 +16,7 @@ class AHLIST_1: BaseTestCase {
         return StockTestCaseName.AHLIST_1
     }
     
-    func testAHQuoteList() {
+    func testAHQuoteList() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MAHQuoteListRequest()
         
@@ -31,9 +31,12 @@ class AHLIST_1: BaseTestCase {
         
         mRequest.field = MAHQuoteListField.init(rawValue: Int(paramI[2] as! String)!)!
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let AHQuoteListResponse = resp as! MAHQuoteListResponse
-        XCTAssertNotNil(AHQuoteListResponse.ahItems)
+//        XCTAssertNotNil(AHQuoteListResponse.ahItems)
+        if (AHQuoteListResponse.ahItems == nil){
+            throw BaseTestError.assertFailedError(message: "AHQuoteListResponse ahItems is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for item in AHQuoteListResponse.ahItems{

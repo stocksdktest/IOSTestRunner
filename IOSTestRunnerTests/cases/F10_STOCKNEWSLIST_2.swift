@@ -16,7 +16,7 @@ class F10_STOCKNEWSLIST_2: BaseTestCase {
         return StockTestCaseName.F10_STOCKNEWSLIST_2
     }
     
-    func testStockNewsList() {
+    func testStockNewsList() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockNewsListRequest()
         let typeVal = param["SRC"].stringValue
@@ -39,9 +39,12 @@ class F10_STOCKNEWSLIST_2: BaseTestCase {
         
         mRequest.pageSize = param["PAGESIZE"].intValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let stockNewsListResponse = resp as! MStockNewsListResponse
-        XCTAssertNotNil(stockNewsListResponse.stockNewsItems)
+//        XCTAssertNotNil(stockNewsListResponse.stockNewsItems)
+        if (stockNewsListResponse.stockNewsItems == nil){
+            throw BaseTestError.assertFailedError(message: "stockNewsListResponse stockNewsItems is nil")
+        }
         var resultJSON : JSON = [:]
         for items in stockNewsListResponse.stockNewsItems{
             if let item: MStockNewsItem = items as! MStockNewsItem{

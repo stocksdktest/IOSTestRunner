@@ -16,17 +16,22 @@ class OPTIONEXPIRE_2: BaseTestCase {
         return StockTestCaseName.OPTIONEXPIRE_2
     }
     
-    func testExpireMonth() {
+    func testExpireMonth() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
 //                mRequest.isV2 = false
         mRequest.isV2 = param["ISV2"].boolValue
              
-                let resp = self.makeSyncRequest(request: mRequest)
+                let resp = try self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
         //        XCTAssertNotNil(expireMonthResponse.expireMonths)
-                
+                if (expireMonthResponse.expireMonths == nil){
+                    throw BaseTestError.assertFailedError(message: "expireMonthResponse expireMonths is nil")
+                }
+                if (expireMonthResponse.v2ExpireMonths == nil){
+                    throw BaseTestError.assertFailedError(message: "expireMonthResponse v2ExpireMonths is nil")
+                }
                 if param["ISV2"].boolValue == false{
                     let resultJSON: JSON = [
                         "list": expireMonthResponse.expireMonths

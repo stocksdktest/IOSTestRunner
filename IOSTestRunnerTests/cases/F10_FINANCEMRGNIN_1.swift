@@ -16,7 +16,7 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
         return StockTestCaseName.F10_FINANCEMRGNIN_1
     }
     
-    func testMarginInfo() {
+    func testMarginInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MMarginInfoRequest()
         let marketI:NSArray = (param["MARKET"].string?.split(separator: "_") as! NSArray)
@@ -42,9 +42,12 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
         }
         
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let marginInfoResponse = resp as! MMarginInfoResponse
-        XCTAssertNotNil(marginInfoResponse.jsonObject)
+//        XCTAssertNotNil(marginInfoResponse.jsonObject)
+        if (marginInfoResponse.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "marginInfoResponse jsonObject is nil")
+        }
         let keys:NSArray = param["OPTIONS"].string?.split(separator: ",")as! NSArray
         
         if keys.count != 0{

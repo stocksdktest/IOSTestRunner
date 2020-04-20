@@ -16,16 +16,20 @@ class ORDERQUANTITY_2: BaseTestCase {
         return StockTestCaseName.ORDERQUANTITY_2
     }
     
-    func testOrderQuantity() {
+    func testOrderQuantity() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOrderQuantityRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let orderQuantityResponse = resp as! MOrderQuantityResponse
-        
-
+        if (orderQuantityResponse.buyItems == nil){
+            throw BaseTestError.assertFailedError(message: "orderQuantityResponse buyItems is nil")
+        }
+        if (orderQuantityResponse.sellItems == nil){
+            throw BaseTestError.assertFailedError(message: "orderQuantityResponse sellItems is nil")
+        }
         var jsonarr1 = [String]()
         if orderQuantityResponse.buyItems != nil{
             for buyitem in orderQuantityResponse.buyItems{

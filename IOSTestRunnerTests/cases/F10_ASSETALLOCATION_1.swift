@@ -16,7 +16,7 @@ class F10_ASSETALLOCATION_1: BaseTestCase {
         return StockTestCaseName.F10_ASSETALLOCATION_1
     }
     
-    func testFundAssetAllocation() {
+    func testFundAssetAllocation() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MFundAssetAllocationRequest()
         mRequest.code = param["CODE"].stringValue
@@ -28,9 +28,12 @@ class F10_ASSETALLOCATION_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let fundAssetAllocationResponse = resp as! MFundAssetAllocationResponse
-        XCTAssertNotNil(fundAssetAllocationResponse.records)
+//        XCTAssertNotNil(fundAssetAllocationResponse.records)
+        if (fundAssetAllocationResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "fundAssetAllocationResponse records is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for items in fundAssetAllocationResponse.records{

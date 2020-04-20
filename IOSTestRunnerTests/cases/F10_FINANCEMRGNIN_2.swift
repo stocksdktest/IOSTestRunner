@@ -16,7 +16,7 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
         return StockTestCaseName.F10_FINANCEMRGNIN_2
     }
     
-    func testMarginInfoDiff() {
+    func testMarginInfoDiff() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MMarginInfoDiffRequest()
         mRequest.market =  param["MARKET"].stringValue
@@ -34,10 +34,12 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
             mRequest.options = val
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let marginInfoDiffResponse = resp as! MMarginInfoDiffResponse
-        XCTAssertNotNil(marginInfoDiffResponse.jsonObject)
-        
+//        XCTAssertNotNil(marginInfoDiffResponse.jsonObject)
+        if (marginInfoDiffResponse.jsonObject == nil){
+            throw BaseTestError.assertFailedError(message: "marginInfoDiffResponse jsonObject is nil")
+        }
         let keys:NSArray = param["OPTIONS"].string?.split(separator: ",")as! NSArray
         if keys.count != 0{
             if let dic1:NSDictionary = marginInfoDiffResponse.jsonObject as!NSDictionary{

@@ -16,15 +16,18 @@ class MOREPRICE_1: BaseTestCase {
         return StockTestCaseName.MOREPRICE_1
     }
    
-    func testPriceVolume() {
+    func testPriceVolume() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MPriceVolumeRequest()
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let priceVolumeResponse = resp as! MPriceVolumeResponse
-        XCTAssertNotNil(priceVolumeResponse.items)
+//        XCTAssertNotNil(priceVolumeResponse.items)
+        if (priceVolumeResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "priceVolumeResponse items is nil")
+        }
         var resultJSON : JSON = [:]
         var i = 1
         for item in priceVolumeResponse.items {

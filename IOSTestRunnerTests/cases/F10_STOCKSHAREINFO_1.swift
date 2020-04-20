@@ -16,7 +16,7 @@ class F10_STOCKSHAREINFO_1: BaseTestCase {
         return StockTestCaseName.F10_STOCKSHAREINFO_1
     }
     
-    func testStockShareInfo() {
+    func testStockShareInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockShareInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_STOCKSHAREINFO_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let stockShareInfoResponse = resp as! MStockShareInfoResponse
-        XCTAssertNotNil(stockShareInfoResponse.record)
+//        XCTAssertNotNil(stockShareInfoResponse.record)
+        if (stockShareInfoResponse.record == nil){
+            throw BaseTestError.assertFailedError(message: "stockShareInfoResponse record is nil")
+        }
         if let record: NSDictionary = stockShareInfoResponse.record as! NSDictionary{
             var resultJSON: JSON = [
                 "totalShareUL": record["TOTALSHAREUL"]!,

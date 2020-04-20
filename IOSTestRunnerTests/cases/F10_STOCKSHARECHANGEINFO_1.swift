@@ -16,7 +16,7 @@ class F10_STOCKSHARECHANGEINFO_1: BaseTestCase {
         return StockTestCaseName.F10_STOCKSHARECHANGEINFO_1
     }
     
-    func testStockShareChangeInfo() {
+    func testStockShareChangeInfo() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MStockShareChangeInfoRequest()
         mRequest.code = param["CODE"].stringValue
@@ -27,9 +27,12 @@ class F10_STOCKSHARECHANGEINFO_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let stockShareChangeInfoResponse = resp as! MStockShareChangeInfoResponse
-        XCTAssertNotNil(stockShareChangeInfoResponse.records)
+//        XCTAssertNotNil(stockShareChangeInfoResponse.records)
+        if (stockShareChangeInfoResponse.records == nil){
+            throw BaseTestError.assertFailedError(message: "stockShareChangeInfoResponse records is nil")
+        }
         switch mRequest.sourceType{
             
         case .GA:

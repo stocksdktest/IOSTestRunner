@@ -16,7 +16,7 @@ class OHLCV3_5: BaseTestCase {
         return StockTestCaseName.OHLCV3_5
     }
     
-    func testOHLCV2() {
+    func testOHLCV2() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MOHLCRequestV2()
         mRequest.code = param["CODE"].stringValue
@@ -64,9 +64,12 @@ class OHLCV3_5: BaseTestCase {
         }
         mRequest.count = param["COUNT"].uIntValue
    
-        let resp = self.makeSyncRequest(request: mRequest)
+        let resp = try self.makeSyncRequest(request: mRequest)
         let oHLCResponse = resp as! MOHLCResponse
-        XCTAssertNotNil(oHLCResponse.ohlcItems)
+//        XCTAssertNotNil(oHLCResponse.ohlcItems)
+        if (oHLCResponse.ohlcItems == nil){
+            throw BaseTestError.assertFailedError(message: "oHLCResponse ohlcItems is nil")
+        }
 //        XCTAssertNotNil(oHLCResponse.fqItems)
         print(oHLCResponse)
         var resultJSON : JSON = [:]
