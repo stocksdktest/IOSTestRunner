@@ -26,10 +26,16 @@ class BaseTestCaseRun : XCTestCaseRun {
 }
 
 enum BaseTestError: LocalizedError {
-    case assertFailedError(message: String = "", file: StaticString = #file, line: UInt = #line)
+    case _assertFailedError(message: String, file: StaticString, line: UInt)
+    private init(message: String, file: StaticString, line: UInt) {
+        self = ._assertFailedError(message: message, file: file, line: line)
+    }
+    static func assertFailedError(message: String = "", file: StaticString = #file, line: UInt = #line) -> BaseTestError {
+        return BaseTestError.init(message: message, file: file, line: line)
+    }
     var errorDescription: String? {
         switch self {
-        case let .assertFailedError(message, file, line):
+        case let ._assertFailedError(message, file, line):
             return "AssertFailedError: \(message), at \(file): \(line)"
         }
     }
