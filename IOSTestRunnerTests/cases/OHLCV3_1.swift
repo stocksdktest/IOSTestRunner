@@ -77,7 +77,7 @@ class OHLCV3_1: BaseTestCase {
                             "closePrice": item.closePrice,
                             "tradeVolume": item.tradeVolume,
                             "iopv": item.iopv,
-                            "turnoverRate":MOHLCResponse .turnoverRate(by: item, andCirculatingShareItems: oHLCResponse.circulatingShareItems),
+                            "turnoverRate":MOHLCResponse.turnoverRate(by: item, andCirculatingShareItems: oHLCResponse.circulatingShareItems),
                             
                         ]
             
@@ -110,30 +110,24 @@ class OHLCV3_1: BaseTestCase {
                                                     }
                                     resultJSON["\(item.datetime!)"] = itemJSON2
         }
-//        for item in oHLCResponse.ohlcItems {
-//
-//
-//
-//        }
+
         if oHLCResponse.circulatingShareItems != nil{
-                        var i = 1
+//            var i = 1
             var circulatingShareItemJSON : JSON = [:]
-        //                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
-                        for circulatingShareItem in oHLCResponse.circulatingShareItems{
-                            var jsonarr2: JSON = [
-                                "date":circulatingShareItem.dateTime,
-                                "gb":circulatingShareItem.circulatingShare,
-                            ]
-                            circulatingShareItemJSON["\(i)"] = jsonarr2
-                            i = i + 1
-                            
-                            resultJSON["\(circulatingShareItem.dateTime!)"] = circulatingShareItemJSON
-                        }
-                     
-                    }
-//        resultJSON[""]
-       print(resultJSON)
-       onTestResult(param: param, result: resultJSON)
+//            let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
+            for circulatingShareItem in oHLCResponse.circulatingShareItems{
+                let jsonarr2: JSON = [
+                    "date":circulatingShareItem.dateTime,
+                    "gb":circulatingShareItem.circulatingShare,
+                ]
+                circulatingShareItemJSON["\(circulatingShareItem.dateTime!)"] = jsonarr2
+//                i = i + 1
+            }
+            resultJSON["gblist"] = circulatingShareItemJSON
+                        
+        }
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
     }
 }
 

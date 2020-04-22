@@ -112,23 +112,23 @@ class OHLCV3_3: BaseTestCase {
             
         }
         if oHLCResponse.circulatingShareItems != nil{
-                        var i = 1
-            var circulatingShareItemJSON : JSON = [:]
-        //                let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
-                        for circulatingShareItem in oHLCResponse.circulatingShareItems{
-                            var jsonarr2: JSON = [
-                                "date":circulatingShareItem.dateTime,
-                                "gb":circulatingShareItem.circulatingShare,
-                            ]
-                            circulatingShareItemJSON["\(i)"] = jsonarr2
-                            i = i + 1
-                            
-                            resultJSON["\(circulatingShareItem.dateTime!)"] = circulatingShareItemJSON
-                        }
-                     
+        //            var i = 1
+                    var circulatingShareItemJSON : JSON = [:]
+        //            let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
+                    for circulatingShareItem in oHLCResponse.circulatingShareItems{
+                        let jsonarr2: JSON = [
+                            "date":circulatingShareItem.dateTime,
+                            "gb":circulatingShareItem.circulatingShare,
+                        ]
+                        circulatingShareItemJSON["\(circulatingShareItem.dateTime!)"] = jsonarr2
+        //                i = i + 1
                     }
-       print(resultJSON)
-       onTestResult(param: param, result: resultJSON)
+                    resultJSON["gblist"] = circulatingShareItemJSON
+                                
+        }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
     }
 }
+
 
