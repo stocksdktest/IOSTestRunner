@@ -34,15 +34,16 @@ class F10_TRADEDETAIL_1: BaseTestCase {
         if (tradeDetailInfoResponse.record == nil){
             throw BaseTestError.assertFailedError(message: "tradeDetailInfoResponse record is nil")
         }
-        if let record = tradeDetailInfoResponse.record{
+        print("/*sa-da/*\(tradeDetailInfoResponse.record)")
+        if let record: NSDictionary = tradeDetailInfoResponse.record as? NSDictionary{
             var resultJSON: JSON = [
-//                "payVolumeStock": record["PAYVOLSTOCK"]!,
-//                "amountFinance": record["AMOUNTFINA"]!,
-//                "payAmountFinance": record["PAYAMOUNTFINA"]!,
-//                "buyAmountFinance": record["BUYAMOUNTFINA"]!,
-//                "sellVolumeStock": record["SELLVOLSTOCK"]!,
-//                "amountStock": record["AMOUNTSTOCK"]!,
-//                "tradingDay": record["TRADINGDAY"]!
+                "payVolumeStock": record["PAYVOLSTOCK"] ?? "-",
+                "amountFinance": record["AMOUNTFINA"] ?? "-",
+                "payAmountFinance": record["PAYAMOUNTFINA"] ?? "-",
+                "buyAmountFinance": record["BUYAMOUNTFINA"] ?? "-",
+                "sellVolumeStock": record["SELLVOLSTOCK"] ?? "-",
+                "amountStock": record["AMOUNTSTOCK"] ?? "-",
+                "tradingDay": record["TRADINGDAY"] ?? "-"
             ]
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)

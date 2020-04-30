@@ -30,6 +30,7 @@ class MOREPRICE_2: BaseTestCase {
         }
         var resultJSON : JSON = [:]
         var i = 1
+//        print("/d*as/*\(mRequest.ip)")
         for item in priceVolumeResponse.items {
             var itemJSON: JSON = [
                 "price": item.price,

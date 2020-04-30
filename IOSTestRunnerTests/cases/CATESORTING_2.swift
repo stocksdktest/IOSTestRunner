@@ -40,15 +40,14 @@ class CATESORTING_2: BaseTestCase {
                     let stockfields:NSArray = (param["STOCKFIELDS"].string?.split(separator: ",") as! NSArray)
 
                     mRequest.stockFields = stockfields as! [Any]
-                }
             }
+        }
             
+        if param["ADDVALUEFIELDS"].stringValue != ""{
+            let addvalueFields:NSArray = (param["ADDVALUEFIELDS"].string?.split(separator: ",") as! NSArray)
 
-            if param["ADDVALUEFIELDS"].stringValue != ""{
-                let addvalueFields:NSArray = (param["ADDVALUEFIELDS"].string?.split(separator: ",") as! NSArray)
-
-                mRequest.addValueFields = addvalueFields as! [Any]
-            }
+            mRequest.addValueFields = addvalueFields as! [Any]
+        }
         
         let resp = try self.makeSyncRequest(request: mRequest)
         let categorySortingResponse = resp as! MCategorySortingResponse

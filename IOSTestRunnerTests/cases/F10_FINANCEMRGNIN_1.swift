@@ -54,8 +54,8 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
             if let dic1:NSDictionary = marginInfoResponse.jsonObject as!NSDictionary{
 //                let pageNumber = "\(dic1["PageNumber"])"
                 var resultJSON: JSON = [
-                    "pageNumber": "\(dic1["PageNumber"])",
-                    "page": "\(dic1["Page"])"
+                    "pageNumber": dic1["PageNumber"] ?? "-",
+                    "page": dic1["Page"] ?? "-"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1
@@ -83,8 +83,8 @@ class F10_FINANCEMRGNIN_1: BaseTestCase {
         }else{
             if let dic1:NSDictionary = marginInfoResponse.jsonObject as!NSDictionary{
                 var resultJSON: JSON = [
-                    "pageNumber": "\(dic1["PageNumber"])",
-                    "page": "\(dic1["Page"])"
+                    "pageNumber": dic1["PageNumber"] ?? "-",
+                    "page": dic1["Page"] ?? "-"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1

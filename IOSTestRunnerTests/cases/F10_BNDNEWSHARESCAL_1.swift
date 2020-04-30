@@ -409,8 +409,10 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                                 jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
-                        itemJSON["dataList"] = jsonarr1
-                        resultJSON["sglist"] = itemJSON
+                        if jsonarr1.count != 0{
+                            itemJSON["dataList"] = jsonarr1
+                            resultJSON["sglist"] = itemJSON
+                        }
                     }
                 }
                 if key == "jjsglist"{
@@ -433,8 +435,10 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                                 jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
-                        itemJSON["dataList"] = jsonarr1
-                        resultJSON["jjsglist"] = itemJSON
+                        if jsonarr1.count != 0{
+                            itemJSON["dataList"] = jsonarr1
+                            resultJSON["jjsglist"] = itemJSON
+                        }
                     }
                 }
                 if key == "dsslist"{
@@ -454,8 +458,10 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                                 jsonarr1["\(itemID)"] = jsonarr2
                             }
                         }
-                        itemJSON["dataList"] = jsonarr1
-                        resultJSON["dsslist"] = itemJSON
+                        if jsonarr1.count != 0{
+                            itemJSON["dataList"] = jsonarr1
+                            resultJSON["dsslist"] = itemJSON
+                        }
                     }
                 }
             }

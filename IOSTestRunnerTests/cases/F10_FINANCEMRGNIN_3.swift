@@ -40,7 +40,7 @@ class F10_FINANCEMRGNIN_3: BaseTestCase {
         if (marginInfoShareResponse.jsonObject == nil){
             throw BaseTestError.assertFailedError(message: "marginInfoShareResponse jsonObject is nil")
         }
-            let keys:NSArray = param["OPTIONS"].string?.split(separator: ",")as! NSArray
+            let keys:NSArray = (param["OPTIONS"].string?.split(separator: ",") ?? [])as NSArray
         if keys.count != 0{
             if let dic1:NSDictionary = marginInfoShareResponse.jsonObject as!NSDictionary{
                 var resultJSON: JSON = [:]

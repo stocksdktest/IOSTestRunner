@@ -29,7 +29,9 @@ class TRADEDATE_1: BaseTestCase {
         }
         var resultJSON : JSON = [:]
         for dates in tradeDateResponse.dates! as NSArray{
-            
+//            print("站点信息:\(mRequest.ip)")
+//            print("请求数据:\(mRequest)")
+//            print("返回值:\(tradeDateResponse)")
             if let date : NSArray = dates as? NSArray{
                 for items in date {
                     if let item : MTradeDateItem = items as? MTradeDateItem{
@@ -43,10 +45,6 @@ class TRADEDATE_1: BaseTestCase {
                     
                 }
             }
-            
-            
-            
-            
         }
         
         print(resultJSON)

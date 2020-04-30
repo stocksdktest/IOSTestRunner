@@ -30,7 +30,7 @@ class F10V2TEST_4: BaseTestCase {
         if param["part"] != ""{
             mRequest.param = ["param":param["PARAMS"].stringValue,"type":param["part"].stringValue]
         }else if param["type"] != ""{
-            mRequest.param = ["param":param["param"].stringValue,"type":param["type"].stringValue]
+            mRequest.param = ["param":param["PARAMS"].stringValue,"type":param["type"].stringValue]
         }
         
         

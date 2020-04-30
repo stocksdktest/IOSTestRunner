@@ -19,17 +19,18 @@ class ADDVALUE_3: BaseTestCase {
     func testAddValue() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MAddValueRequest()
-
+        let custom = ["code","time","ultraLargeBuyVolume","ultraLargeSellVolume","ultraLargeBuyAmount","ultraLargeSellAmount","largeBuyVolume","largeSellVolume","largeBuyAmount","largeSellAmount","mediumBuyVolume","mediumSellVolume","mediumBuyAmount","mediumSellAmount","smallBuyVolume","smallSellVolume","smallBuyAmount","smallSellAmount","ultraLargeNetInflow","largeNetInflow","mediumNetInflow","smallNetInflow","netCapitalInflow","fundsInflows","fundsOutflows","othersFundsInflows","othersFundsOutflows","lastTradeDates","ultraLargeDiffer","largeDiffer","mediumDiffer","smallDiffer","largeBuyDealCount","largeSellDealCount","dealCountMovingAverage","buyCount","sellCount","bbd","bbd5","bbd10","ddx","ddx5","ddx10","ddy","ddy5","ddy10","ddz","ratioBS","fiveMinRise","ultraLargeBuyCount","ultraLargeSellCount","largeBuyCount","largeSellCount","mediumBuyCount","mediumSellCount","smallBuyCount","smallSellCount","netInflow5","netInflow10","netInflow20","netInflowRate5","netInflowRate10","netInflowRate20"]
 
         mRequest.code = param["CODE"].stringValue
         mRequest.subtype = param["SUBTYPE"].stringValue
-        
-        if param["FIELDS"].stringValue != ""{
-            let fields:NSArray = (param["FIELDS"].string?.split(separator: ",") as! NSArray)
+        if param["FIELDS"].stringValue != "" && param["FIELDS"].stringValue != "-1"{
 
-            mRequest.fields = fields as! [Any]
+            mRequest.fields = ((param["FIELDS"].string?.split(separator: ","))! as NSArray) as? [Any]
+        }else{
+            mRequest.fields = custom
         }
         let resp = try self.makeSyncRequest(request: mRequest)
+        print("dsak99///*\(mRequest)")
         let addvalueResponse = resp as! MAddValueResponse
 //        XCTAssertNotNil(addvalueResponse.addValueItems)
         if (addvalueResponse.addValueItems == nil){

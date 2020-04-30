@@ -58,7 +58,7 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                     "OperProfitYOY":dic1["OPERPROFITYOY"]!,
                     "NETPROFITPARENTCOMYOY_":dic1["NETPROFITPARENTCOMYOY"]!,
                     "NetCashFlowOperYOY":dic1["NETCASHFLOWOPERYOY"]!,
-                    "ROEYOY":dic1["ROEYOY"]!,
+                    "ROEYOY_":dic1["ROEYOY"]!,
                     "NetAssetYOY":dic1["NETASSETYOY"]!,
                     "TotalAssetYOY":dic1["TOTALASSETYOY"]!
                 ]
@@ -115,7 +115,7 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                             "OperProfitYOY":dic1["OPERPROFITYOY"]!,
                             "NETPROFITPARENTCOMYOY_":dic1["NETPROFITPARENTCOMYOY"]!,
                             "NetCashFlowOperYOY":dic1["NETCASHFLOWOPERYOY"]!,
-                            "ROEYOY":dic1["ROEYOY"]!,
+                            "ROEYOY_":dic1["ROEYOY"]!,
                             "NetAssetYOY":dic1["NETASSETYOY"]!,
                             "TotalAssetYOY":dic1["TOTALASSETYOY"]!
                         ]

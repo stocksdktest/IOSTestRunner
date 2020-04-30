@@ -21,8 +21,9 @@ class AHLIST_1: BaseTestCase {
         let mRequest = MAHQuoteListRequest()
         
         let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
-        mRequest.endIndex = Int(paramI[1] as! String)!
-        mRequest.beginIndex = Int(paramI[0] as! String)!
+        mRequest.pageSize = Int(paramI[1] as! String)!
+        mRequest.pageIndex = Int(paramI[0] as! String)!
+        
         if paramI[3] as! String == "0"{
             mRequest.ascending = ("1" as NSString).boolValue
         }else if paramI[3] as! String == "1"{

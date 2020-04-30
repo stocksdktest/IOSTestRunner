@@ -40,12 +40,12 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
         if (marginInfoDiffResponse.jsonObject == nil){
             throw BaseTestError.assertFailedError(message: "marginInfoDiffResponse jsonObject is nil")
         }
-        let keys:NSArray = param["OPTIONS"].string?.split(separator: ",")as! NSArray
+        let keys:NSArray = (param["OPTIONS"].string?.split(separator: ",") ?? [])as NSArray
         if keys.count != 0{
             if let dic1:NSDictionary = marginInfoDiffResponse.jsonObject as!NSDictionary{
                 var resultJSON: JSON = [
-                    "pageNumber": "\(dic1["PageNumber"])",
-                    "page": "\(dic1["Page"])"
+                    "pageNumber": dic1["PageNumber"] ?? "-",
+                    "page": dic1["Page"] ?? "-"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     
@@ -73,8 +73,8 @@ class F10_FINANCEMRGNIN_2: BaseTestCase {
         }else{
             if let dic1:NSDictionary = marginInfoDiffResponse.jsonObject as!NSDictionary{
                 var resultJSON: JSON = [
-                    "pageNumber": "\(dic1["PageNumber"])",
-                    "page": "\(dic1["Page"])"
+                    "pageNumber": dic1["PageNumber"] ?? "-",
+                    "page": dic1["Page"] ?? "-"
                 ]
                 if let lists:NSArray = dic1["List"] as! NSArray{
                     var j = 1

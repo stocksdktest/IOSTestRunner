@@ -66,7 +66,7 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
                             "leadUnderwriter":item["LEADUNDERWRITER"]!,
                             "issuePricePlan":item["ISSUEPRICEPLAN"]!,
                             "capplyPricePlan":item["CAPPLYPRICEPLAN"]!,
-                            "cappleSharePlan":item["CAPPLYSHAREPLAN"]!,
+                            "capplySharePlan":item["CAPPLYSHAREPLAN"]!,
                             "newTotRaiseAmt":item["NEWTOTRAISEAMT"]!,
                             "newNetRaiseAmt":item["NEWNETRAISEAMT"]!,
                             "keyCode":item["KEYCODE"]!

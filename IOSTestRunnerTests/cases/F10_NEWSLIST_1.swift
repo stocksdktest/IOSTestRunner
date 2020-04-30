@@ -26,7 +26,7 @@ class F10_NEWSLIST_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         
-         mRequest.newsType = param["NEWSTYPE"].stringValue
+        mRequest.newsType = param["NEWSTYPE"].string
         if param["NEWSID"].stringValue == "null"{
             mRequest.newsID = "nil"
         }else{
@@ -47,6 +47,9 @@ class F10_NEWSLIST_1: BaseTestCase {
         if (newsListResponse.newsItems == nil){
             throw BaseTestError.assertFailedError(message: "newsListResponse newsItems is nil")
         }
+        print("/*/***/*/*/*/*\(mRequest.ip)")
+        print("/*/***/*/*/*/*\(mRequest)")
+        print("/*/***/*/*/*/*\(newsListResponse)")
         var resultJSON : JSON = [:]
         var i=1
         for items in newsListResponse.newsItems{
