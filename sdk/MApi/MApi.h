@@ -44,6 +44,10 @@ extern NSString * const MApiTcpDidReceivedDataLineTimeKey;
 extern NSString * const MApiTcpDidReceivedDataTimeTickKey;
 /// 推送逐笔明细数据键值，值为NSArray
 extern NSString * const MApiTcpDidReceivedDataTimeTickDetailKey;
+/// 推送起始引索数据键值，值为NSString
+extern NSString * const MApiTcpDidReceivedDataStartIndexKey;
+/// 推送结束引索数据键值，值为NSString
+extern NSString * const MApiTcpDidReceivedDataEndIndexKey;
 
 
 /// 上海, ref: @"sh"
