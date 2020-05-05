@@ -21,7 +21,14 @@ class OPTIONEXPIRE_2: BaseTestCase {
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
 //                mRequest.isV2 = false
-        mRequest.isV2 = param["ISV2"].boolValue
+//        mRequest.isV2 = param["adjusted"].boolValue
+        print("/da*d/*|\(param["adjusted"].boolValue)")
+        if param["adjusted"] == "true"{
+            mRequest.isV2 = true
+        }
+        if param["adjusted"] == "false"{
+            mRequest.isV2 = false
+        }
              
                 let resp = try self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
@@ -29,7 +36,7 @@ class OPTIONEXPIRE_2: BaseTestCase {
                 if (expireMonthResponse.expireMonths == nil){
                     throw BaseTestError.assertFailedError(message: "expireMonthResponse expireMonths is nil")
                 }
-                if (expireMonthResponse.v2ExpireMonths == nil){
+                if (mRequest.isV2 == true)&&(expireMonthResponse.v2ExpireMonths == nil){
                     throw BaseTestError.assertFailedError(message: "expireMonthResponse v2ExpireMonths is nil")
                 }
                 if param["ISV2"].boolValue == false{

@@ -19,7 +19,7 @@ class TRADEDATE_1: BaseTestCase {
     func testTradeDate() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTradeDateRequest()
-        mRequest.market = param["MARKET"].stringValue
+        mRequest.market = param["MARKET"].stringValue.uppercased()
        
         let resp = try self.makeSyncRequest(request: mRequest)
         let tradeDateResponse = resp as! MTradeDateResponse
@@ -28,10 +28,10 @@ class TRADEDATE_1: BaseTestCase {
             throw BaseTestError.assertFailedError(message: "tradeDateResponse dates is nil")
         }
         var resultJSON : JSON = [:]
+        //            print("站点信息:\(mRequest.ip)")
+        //            print("请求数据:\(mRequest)")
+        //            print("返回值:\(tradeDateResponse)")
         for dates in tradeDateResponse.dates! as NSArray{
-//            print("站点信息:\(mRequest.ip)")
-//            print("请求数据:\(mRequest)")
-//            print("返回值:\(tradeDateResponse)")
             if let date : NSArray = dates as? NSArray{
                 for items in date {
                     if let item : MTradeDateItem = items as? MTradeDateItem{
@@ -42,7 +42,6 @@ class TRADEDATE_1: BaseTestCase {
                         ]
                         resultJSON["\(item.date!)"] = jsonarr2
                     }
-                    
                 }
             }
         }

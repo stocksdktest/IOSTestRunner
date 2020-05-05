@@ -29,18 +29,17 @@ class TRADEDATE_2: BaseTestCase {
             throw BaseTestError.assertFailedError(message: "tradeDateResponse dates is nil")
         }
         var resultJSON : JSON = [:]
-        for date in tradeDateResponse.dates{
-            let dates : MTradeDateItem = date as! MTradeDateItem
-            let jsonarr2: JSON = [
-                "date": dates.date,
-                "isTrade": String(dates.type.rawValue),
-                "description": dates.desc
-            ]
-            resultJSON["\(dates.date!)"] = jsonarr2
-            
-            
+        for dates in tradeDateResponse.dates {
+            for date in dates as! NSArray{
+                let item : MTradeDateItem = date as! MTradeDateItem
+                let jsonarr2: JSON = [
+                    "date": item.date,
+                    "isTrade": String(item.type.rawValue),
+                    "description": item.desc
+                ]
+                resultJSON["\(item.date!)"] = jsonarr2
+            }
         }
-        
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
 
