@@ -126,6 +126,8 @@ enum StockTestCaseName: String, CaseIterable {
     case TCP_CHARTV2TEST_1 = "TCP_CHARTV2TEST_1"
     case TCP_CHARTV2TEST_2 = "TCP_CHARTV2TEST_2"
     case TCP_TICKTEST_1 = "TCP_TICKTEST_1"
+    case TONGLINETEST_1 = "TONGLINETEST_1"
+    case ZTSORTINGTEST_1 = "ZTSORTINGTEST_1"
 //    ///////////////////F10//////////////
     case  F10TestCase = "F10TestCase"
     case  F10_NEWINDEX_1 = "F10_NEWINDEX_1"
