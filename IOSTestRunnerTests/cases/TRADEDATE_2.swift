@@ -19,8 +19,11 @@ class TRADEDATE_2: BaseTestCase {
     func testTradeDate() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTradeDateRequest()
-        mRequest.market = param["MARKET"].stringValue
-        mRequest.date = param["DATE"].stringValue
+        mRequest.market = param["MARKET"].stringValue.uppercased()
+        if param["DATE"] == "null"{}
+        else{
+            mRequest.date = param["DATE"].string
+        }
        
         let resp = try self.makeSyncRequest(request: mRequest)
         let tradeDateResponse = resp as! MTradeDateResponse
