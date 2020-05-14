@@ -36,6 +36,7 @@ class SEARV2TEST_1: BaseTestCase {
             throw BaseTestError.assertFailedError(message: "searchResponse resultItems is nil")
         }
         var resultJSON : JSON = [:]
+        var i = 1
         for items in searchResponse.resultItems {
             var itemJSON: JSON = [
                 "stockID": items.stockID,
@@ -61,8 +62,8 @@ class SEARV2TEST_1: BaseTestCase {
             }
             var itemID: String = items.stockID.replacingOccurrences(of: ".", with: "_")
             
-            resultJSON["\(itemID)"] = itemJSON2
-            
+            resultJSON["\(i)"] = itemJSON2
+            i += 1
         }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)

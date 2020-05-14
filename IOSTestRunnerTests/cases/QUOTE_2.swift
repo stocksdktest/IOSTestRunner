@@ -19,7 +19,8 @@ class QUOTE_2: BaseTestCase {
     func testQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MQuoteRequest()
-        let codeNSArray: NSArray = param["CODE"].string?.split(separator: ",") as! NSArray
+        let codeNSArray: NSArray = param["CODES"].string?.split(separator: ",") as! NSArray
+        var resultJSON : JSON = [:]
         for codeItem in codeNSArray{        //多code时发现skd返回值只有最后一个code的，故此处将code转为数组后进行遍历
             
             mRequest.code = codeItem as! String
@@ -44,7 +45,6 @@ class QUOTE_2: BaseTestCase {
             if (quoteResponse.stockItems == nil){
                 throw BaseTestError.assertFailedError(message: "quoteResponse stockItems is nil")
             }
-        var resultJSON : JSON = [:]
         for items in quoteResponse.stockItems {
             if items is MOptionItem{
                 let item: MOptionItem = items as! MOptionItem
@@ -1323,10 +1323,9 @@ class QUOTE_2: BaseTestCase {
                 
                 resultJSON["\(itemID)"] = itemJSON2
             }
-            
         }
-        print(resultJSON)
-        onTestResult(param: param, result: resultJSON)
     }
+    print(resultJSON)
+    onTestResult(param: param, result: resultJSON)
     }
 }

@@ -36,7 +36,6 @@ class QUOTEDETAILTCPTEST_1: BaseTestCase {
             throw BaseTestError.assertFailedError(message: "quoteResponse stockItem is nil")
         }
         print("订阅结果：\(quoteResponse.stockItem.description)")
-        
         MApi.subscribeCode(code, type: MApiTcpSubscribeType.snap)
         
         notificationExpectation = expectation(forNotification: NSNotification.Name.MApiTcpDidReceivedData, object: nil ) {
