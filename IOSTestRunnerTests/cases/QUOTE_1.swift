@@ -19,12 +19,10 @@ class QUOTE_1: BaseTestCase {
     func testQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MQuoteRequest()
-        let codeNSArray: NSArray = param["CODES"].string?.split(separator: ",") as! NSArray
+//        let codeNSArray: NSArray = param["CODES"].string?.split(separator: ",") as! NSArray
         var resultJSON : JSON = [:]
-               for codeItem in codeNSArray{
-                   
-                   mRequest.code = codeItem as! String
-
+//               for codeItem in codeNSArray{
+        mRequest.code = param["CODES"].stringValue
         mRequest.stockFields = nil
 //        mRequest.addValueFields = ["ddz", "largeSellCount", "mediumDiffer"]
         let resp = try self.makeSyncRequest(request: mRequest)
@@ -32,8 +30,10 @@ class QUOTE_1: BaseTestCase {
 //        XCTAssertNotNil(quoteResponse.stockItems)
         if (quoteResponse.stockItems == nil){
             throw BaseTestError.assertFailedError(message: "quoteResponse stockItems is nil")
+//            continue
         }
         for items in quoteResponse.stockItems {
+            
             if items is MOptionItem{
                 let item: MOptionItem = items as! MOptionItem
                 
@@ -1307,13 +1307,13 @@ class QUOTE_1: BaseTestCase {
                                     }
                     itemJSON2["addValue"] = itemJSON1
                 }
-                var itemID: String = mRequest.code.replacingOccurrences(of: ".", with: "_")
+                var itemID: String = items.id.replacingOccurrences(of: ".", with: "_")
                 
                 resultJSON["\(itemID)"] = itemJSON2
             }
             
         }
-    }
+//    }
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
   }

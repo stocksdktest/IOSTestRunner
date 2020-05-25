@@ -19,12 +19,11 @@ class QUOTE_2: BaseTestCase {
     func testQuote() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MQuoteRequest()
-        let codeNSArray: NSArray = param["CODES"].string?.split(separator: ",") as! NSArray
+//        let codeNSArray: NSArray = param["CODES"].string?.split(separator: ",") as! NSArray
         var resultJSON : JSON = [:]
-        for codeItem in codeNSArray{        //多code时发现skd返回值只有最后一个code的，故此处将code转为数组后进行遍历
-            
-            mRequest.code = codeItem as! String
-        
+//        for codeItem in codeNSArray{
+//            mRequest.code = codeItem as! String
+        mRequest.code = param["CODES"].stringValue
         if param["STOCKFIELDS"].stringValue == "-1"{
             mRequest.stockFields = nil
         }else{
@@ -1319,12 +1318,12 @@ class QUOTE_2: BaseTestCase {
                                     }
                     itemJSON2["addValue"] = itemJSON1
                 }
-                var itemID: String = mRequest.code.replacingOccurrences(of: ".", with: "_")
+                var itemID: String = items.id.replacingOccurrences(of: ".", with: "_")
                 
                 resultJSON["\(itemID)"] = itemJSON2
             }
         }
-    }
+//    }
     print(resultJSON)
     onTestResult(param: param, result: resultJSON)
     }

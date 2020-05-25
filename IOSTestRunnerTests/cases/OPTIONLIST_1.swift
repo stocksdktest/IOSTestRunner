@@ -19,6 +19,7 @@ class OPTIONLIST_1: BaseTestCase {
     func testUnderlyingStock() throws{
     let param = self.testCaseRoundConfig.getParam()
     let mRequest = MUnderlyingStockRequest()
+        mRequest.market = param["MARKET"].stringValue
     let resp = try self.makeSyncRequest(request: mRequest)
     let underlyingStockResponse = resp as! MUnderlyingStockResponse
 //    XCTAssertNotNil(underlyingStockResponse.stockItems)
