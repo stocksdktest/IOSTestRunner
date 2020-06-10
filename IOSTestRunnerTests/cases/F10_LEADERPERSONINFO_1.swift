@@ -68,8 +68,11 @@ class F10_LEADERPERSONINFO_1: BaseTestCase {
                     i=i+1
                 }
             }
-            print(resultJSON)
-            onTestResult(param: param, result: resultJSON)
+        case .CLS:
+            var resultJSON: JSON = []
+            
+        print(resultJSON)
+        onTestResult(param: param, result: resultJSON)
         }
         
         

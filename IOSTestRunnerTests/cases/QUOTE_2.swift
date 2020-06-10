@@ -904,10 +904,10 @@ class QUOTE_2: BaseTestCase {
                     
                 ]
                 let update3_3_0_002: JSON = [
-                    "monthChangeRate": item.monthChangeRate,
-                    "yearChangeRate": item.yearChangeRate,
-                    "recentMonthChangeRate": item.nMonthChangeRate,
-                    "recentYearChangeRate": item.nYearChangeRate,
+//                    "monthChangeRate": item.monthChangeRate,
+//                    "yearChangeRate": item.yearChangeRate,
+//                    "recentMonthChangeRate": item.nMonthChangeRate,
+//                    "recentYearChangeRate": item.nYearChangeRate,
                 ]
                 do {
                     try itemJSON.merge(with: update3_3_0_002)

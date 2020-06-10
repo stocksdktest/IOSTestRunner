@@ -149,6 +149,10 @@ class F10_MAINFINAINDEXNAS_1: BaseTestCase {
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
 //            }
+        case .CLS:
+            var resultJSON: JSON = ["default":"I'm just kidding you"]
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
         }
     }
 }

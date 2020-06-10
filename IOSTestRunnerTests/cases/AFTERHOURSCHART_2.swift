@@ -40,7 +40,7 @@ class AFTERHOURSCHART_2: BaseTestCase {
                 "tradeVolume": item.tradeVolume,
                 "reference_price": item.referencePrice,
                 "fp_volume": item.afterHoursVolume,
-                "volRatio": item.volumeRatio,
+//                "volRatio": item.volumeRatio,
                 "fp_amount": item.afterHoursAmount
             ]
             resultJSON["\(item.datetime!)"] = itemJSON

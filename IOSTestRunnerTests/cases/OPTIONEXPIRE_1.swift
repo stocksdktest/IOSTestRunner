@@ -20,7 +20,7 @@ class OPTIONEXPIRE_1: BaseTestCase {
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MExpireMonthRequest()
         mRequest.stockID = param["CODE"].stringValue
-                mRequest.isV2 = false
+//                mRequest.isV2 = false
                 let resp = try self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
 //                XCTAssertNotNil(expireMonthResponse.expireMonths)

@@ -46,7 +46,7 @@ class CHARTV2TEST_5: BaseTestCase {
                 "openInterest": item.openInterest,
                 "iopv": item.iopv,
                 "iopvPre": item.referenceIOPVPrice,
-                "volRatio": item.volumeRatio,
+//                "volRatio": item.volumeRatio,
                 
             ]
             var itemDic : Dictionary = [String:String]()

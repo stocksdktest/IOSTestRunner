@@ -43,7 +43,7 @@ class CHARTV2TEST_1: BaseTestCase {
                 "averagePrice": item.averagePrice,
                 "md": item.rgbar,
                 "openInterest": item.openInterest,
-                "volRatio": item.volumeRatio,
+//                "volRatio": item.volumeRatio,
                 "iopv": item.iopv,
                 "iopvPre": item.referenceIOPVPrice,
                 

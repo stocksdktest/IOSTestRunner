@@ -50,31 +50,31 @@ class SUBNEWSTOCKRANKING_1: BaseTestCase {
                 "allRate":items.totalRate,
                 
             ]
-            var update3_3_0_002: JSON = [
-                "change": items.change,
-                "turnoverRate":items.turnoverRate,
-                "amount":String((items.amount as NSString).intValue),
-                "mainforceMoneyNetInflow":String((items.capitalInflow as NSString).intValue),
-                "pe":items.pe,
-                "changeState":items.changeState,
-                "totalValue":items.totalValue,
-                "flowValue":items.flowValue,
-                "bu":String(items.financeFlag.rawValue),
-                "su":String(items.securityFlag.rawValue)
-            ]
-            switch items.changeState{
-            case .flat:
-                update3_3_0_002["change"].string = items.change
-            case .rise:
-                update3_3_0_002["change"].string = "+"+items.change
-            case .drop:
-                update3_3_0_002["change"].string = "-"+items.change
-            }
-            do {
-                try itemJSON.merge(with: update3_3_0_002)
-            } catch {
-                // ignore
-            }
+//            var update3_3_0_002: JSON = [
+//                "change": items.change,
+//                "turnoverRate":items.turnoverRate,
+//                "amount":String((items.amount as NSString).intValue),
+//                "mainforceMoneyNetInflow":String((items.capitalInflow as NSString).intValue),
+//                "pe":items.pe,
+//                "changeState":items.changeState,
+//                "totalValue":items.totalValue,
+//                "flowValue":items.flowValue,
+//                "bu":String(items.financeFlag.rawValue),
+//                "su":String(items.securityFlag.rawValue)
+//            ]
+//            switch items.changeState{
+//            case .flat:
+//                update3_3_0_002["change"].string = items.change
+//            case .rise:
+//                update3_3_0_002["change"].string = "+"+items.change
+//            case .drop:
+//                update3_3_0_002["change"].string = "-"+items.change
+//            }
+//            do {
+//                try itemJSON.merge(with: update3_3_0_002)
+//            } catch {
+//                // ignore
+//            }
             resultJSON["\(i)"] = itemJSON
             i=i+1
         }

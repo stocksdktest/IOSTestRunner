@@ -44,6 +44,8 @@ class QUOTEDETAIL_2: BaseTestCase {
         if (snapQuoteResponse.stockItem == nil){
             throw BaseTestError.assertFailedError(message: "snapQuoteResponse stockItem is nil")
         }
+        print("/*//*/*//*")
+        print(snapQuoteResponse.stockItem)
         var itemJSON2: JSON = [:]
         var resultJSON2: JSON = [:]
 
@@ -974,10 +976,10 @@ class QUOTEDETAIL_2: BaseTestCase {
                 
             ]
             let update3_3_0_002: JSON = [
-                "monthChangeRate": item.monthChangeRate,
-                "yearChangeRate": item.yearChangeRate,
-                "recentMonthChangeRate": item.nMonthChangeRate,
-                "recentYearChangeRate": item.nYearChangeRate,
+//                "monthChangeRate": item.monthChangeRate,
+//                "yearChangeRate": item.yearChangeRate,
+//                "recentMonthChangeRate": item.nMonthChangeRate,
+//                "recentYearChangeRate": item.nYearChangeRate,
             ]
             do {
                 try resultJSON.merge(with: update3_3_0_002)

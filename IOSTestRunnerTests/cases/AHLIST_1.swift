@@ -57,7 +57,7 @@ class AHLIST_1: BaseTestCase {
                 "premiumAH": item.premiumRate,
                 "changeRateA": item.changeRateA,
                 "changeRateH": item.changeRateH,
-                "premiumHA": item.premiumRateHA,
+//                "premiumHA": item.premiumRateHA,
             ]
             do {
                 try itemJSON.merge(with: update1)

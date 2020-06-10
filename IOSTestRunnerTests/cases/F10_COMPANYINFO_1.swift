@@ -62,6 +62,8 @@ class F10_COMPANYINFO_1: BaseTestCase {
                     "PARVALUE": record["PARVALUE"]!,
                     "DEBTBOARDLOT": record["DEBTBOARDLOT"]!
                 ]
+            case .CLS:
+                var resultJSON: JSON = ["default":"I'm just kidding you"]
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }

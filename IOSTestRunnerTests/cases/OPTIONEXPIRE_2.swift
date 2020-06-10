@@ -23,12 +23,12 @@ class OPTIONEXPIRE_2: BaseTestCase {
 //                mRequest.isV2 = false
 //        mRequest.isV2 = param["adjusted"].boolValue
         print("/da*d/*|\(param["adjusted"].boolValue)")
-        if param["adjusted"] == "true"{
-            mRequest.isV2 = true
-        }
-        if param["adjusted"] == "false"{
-            mRequest.isV2 = false
-        }
+//        if param["adjusted"] == "true"{
+//            mRequest.isV2 = true
+//        }
+//        if param["adjusted"] == "false"{
+//            mRequest.isV2 = false
+//        }
              
                 let resp = try self.makeSyncRequest(request: mRequest)
                 let expireMonthResponse = resp as! MExpireMonthResponse
@@ -36,33 +36,34 @@ class OPTIONEXPIRE_2: BaseTestCase {
                 if (expireMonthResponse.expireMonths == nil){
                     throw BaseTestError.assertFailedError(message: "expireMonthResponse expireMonths is nil")
                 }
-                if (mRequest.isV2 == true)&&(expireMonthResponse.v2ExpireMonths == nil){
-                    throw BaseTestError.assertFailedError(message: "expireMonthResponse v2ExpireMonths is nil")
-                }
+//                if (mRequest.isV2 == true)&&(expireMonthResponse.v2ExpireMonths == nil){
+//                    throw BaseTestError.assertFailedError(message: "expireMonthResponse v2ExpireMonths is nil")
+//                }
                 if param["ISV2"].boolValue == false{
                     let resultJSON: JSON = [
                         "list": expireMonthResponse.expireMonths
                     ]
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
-                }else if param["ISV2"].boolValue == true{
-                    var v2ExpireMonthsJSON : JSON = [:]
-                    var i = 1
-                    
-                    for v2ExpireMonths in expireMonthResponse.v2ExpireMonths{
-                        let itemJSON: JSON = [
-                            "time": v2ExpireMonths.time,
-                            "day": v2ExpireMonths.day
-                        ]
-                        v2ExpireMonthsJSON["\(i)"] = itemJSON
-                        i=i+1
-                    }
-                    let resultJSON : JSON = [
-                        "list":v2ExpireMonthsJSON
-                    ]
-                    print(resultJSON)
-                    onTestResult(param: param, result: resultJSON)
                 }
+//                else if param["ISV2"].boolValue == true{
+//                    var v2ExpireMonthsJSON : JSON = [:]
+//                    var i = 1
+//
+//                    for v2ExpireMonths in expireMonthResponse.v2ExpireMonths{
+//                        let itemJSON: JSON = [
+//                            "time": v2ExpireMonths.time,
+//                            "day": v2ExpireMonths.day
+//                        ]
+//                        v2ExpireMonthsJSON["\(i)"] = itemJSON
+//                        i=i+1
+//                    }
+//                    let resultJSON : JSON = [
+//                        "list":v2ExpireMonthsJSON
+//                    ]
+//                    print(resultJSON)
+//                    onTestResult(param: param, result: resultJSON)
+//                }
                     
                 
                 

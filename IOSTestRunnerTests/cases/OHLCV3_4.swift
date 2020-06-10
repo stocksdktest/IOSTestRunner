@@ -87,7 +87,7 @@ class OHLCV3_4: BaseTestCase {
                 "closePrice": item.closePrice,
                 "tradeVolume": item.tradeVolume,
                 "iopv": item.iopv,
-                "turnoverRate":MOHLCResponse .turnoverRate(by: item, andCirculatingShareItems: oHLCResponse.circulatingShareItems),
+//                "turnoverRate":MOHLCResponse .turnoverRate(by: item, andCirculatingShareItems: oHLCResponse.circulatingShareItems),
                 
             ]
             let update1: JSON = [
@@ -119,21 +119,21 @@ class OHLCV3_4: BaseTestCase {
                         resultJSON["\(item.datetime!)"] = itemJSON2
             
         }
-        if oHLCResponse.circulatingShareItems != nil{
-        //            var i = 1
-                    var circulatingShareItemJSON : JSON = [:]
-        //            let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
-                    for circulatingShareItem in oHLCResponse.circulatingShareItems{
-                        let jsonarr2: JSON = [
-                            "date":circulatingShareItem.dateTime,
-                            "gb":circulatingShareItem.circulatingShare,
-                        ]
-                        circulatingShareItemJSON["\(circulatingShareItem.dateTime!)"] = jsonarr2
-        //                i = i + 1
-                    }
-                    resultJSON["gblist"] = circulatingShareItemJSON
-                                
-        }
+//        if oHLCResponse.circulatingShareItems != nil{
+//        //            var i = 1
+//                    var circulatingShareItemJSON : JSON = [:]
+//        //            let circulatingShareItems = oHLCResponse.circulatingShareItems as! MCirculatingShareItem
+//                    for circulatingShareItem in oHLCResponse.circulatingShareItems{
+//                        let jsonarr2: JSON = [
+//                            "date":circulatingShareItem.dateTime,
+//                            "gb":circulatingShareItem.circulatingShare,
+//                        ]
+//                        circulatingShareItemJSON["\(circulatingShareItem.dateTime!)"] = jsonarr2
+//        //                i = i + 1
+//                    }
+//                    resultJSON["gblist"] = circulatingShareItemJSON
+//                                
+//        }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
     }

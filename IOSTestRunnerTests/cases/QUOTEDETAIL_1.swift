@@ -32,6 +32,8 @@ class QUOTEDETAIL_1: BaseTestCase {
         if (snapQuoteResponse.stockItem == nil){
             throw BaseTestError.assertFailedError(message: "snapQuoteResponse stockItem is nil")
         }
+//        print("/*//*/*//*")
+//        print(snapQuoteResponse.stockItem)
         if snapQuoteResponse.stockItem is MOptionItem{
             let item: MOptionItem = snapQuoteResponse.stockItem as! MOptionItem
             
@@ -946,7 +948,6 @@ class QUOTEDETAIL_1: BaseTestCase {
             onTestResult(param: param, result: resultJSON2)
         }else if snapQuoteResponse.stockItem is MStockItem{
             let item:MStockItem = snapQuoteResponse.stockItem
-            
 //            let orderQuantitySellItems: NSArray = snapQuoteResponse.orderQuantitySellItems! as NSArray
 //            let buyBrokerSeatItems: NSArray = snapQuoteResponse.buyBrokerSeatItems! as NSArray
 //            let sellBrokerSeatItems: NSArray = snapQuoteResponse.sellBrokerSeatItems! as NSArray
@@ -961,10 +962,10 @@ class QUOTEDETAIL_1: BaseTestCase {
                 
             ]
             let update3_3_0_002: JSON = [
-                "monthChangeRate": item.monthChangeRate,
-                "yearChangeRate": item.yearChangeRate,
-                "recentMonthChangeRate": item.nMonthChangeRate,
-                "recentYearChangeRate": item.nYearChangeRate,
+//                "monthChangeRate": item.monthChangeRate,
+//                "yearChangeRate": item.yearChangeRate,
+//                "recentMonthChangeRate": item.nMonthChangeRate,
+//                "recentYearChangeRate": item.nYearChangeRate,
             ]
             do {
                 try resultJSON.merge(with: update3_3_0_002)

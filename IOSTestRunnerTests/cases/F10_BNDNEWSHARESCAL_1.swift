@@ -381,8 +381,10 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                         resultJSON["jjfxlist"] = itemJSON
                     }
                 }
-                print(resultJSON)
-                onTestResult(param: param, result: resultJSON)
+            case .CLS:
+                var resultJSON: JSON = ["default":"I'm just kidding you"]
+            print(resultJSON)
+            onTestResult(param: param, result: resultJSON)
             }
             
         case .bond:

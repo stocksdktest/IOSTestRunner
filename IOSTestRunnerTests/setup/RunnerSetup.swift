@@ -35,18 +35,18 @@ class RunnerSetup {
     public let resultCollector: TestResultCollector
     
     private init() throws {
-//        var infoDict: [String: Any]
-//        if Bundle.main.infoDictionary == nil {
-//            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
-//        } else {
-//            infoDict = Bundle.main.infoDictionary!
-//            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
-//                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
-//                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
-//            }
-//        }
-//        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
-        let cfgStr = "CgRUSi0xEipSVU4tQS02NjE3OTIyZi0zNmU5LTQ2MDEtYWRmZS00NWQyNDc3MmZmZTca0AYKLEo2SVBsazVBRVUrMi9ZaTU5cmZZbnNGUXRkdE9nQW85R0F6eXN4OGNpT009EixWVlcwRm5vN0JFWnQxYS95NktMTTM2dWo5cWNqdzdDQUhEd1daS0RsV0RzPRolCgV0Y3BzaBIcChp0Y3A6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNxo/CgJzaBI5ChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYKGnRjcDovLzExNC44MC4xNTUuMTM0OjIyMDE3GiUKBGhrZHoSHQobaHR0cDovLzExNC44MC4xNTUuMTM5OjIyMDE2GiMKAmdmEh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzNDoyMjAxMxokCgJuZhIeChxodHRwOi8vMTQwLjIwNy4yNDEuMTk3OjIyMDEzGiQKA2NmZhIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYaJAoDaGsxEh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNholCgRoa2ExEh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNhojCgJwYhIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYaJAoDaGs1Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNholCgV0Y3BzehIcChp0Y3A6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNxojCgJiahIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYaIwoCY2YSHQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2GiMKAnN6Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNholCgRoa2F6Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNhokCgRzaGwyEhwKGmh0dHA6Ly8xMTQuODAuMTU1LjYyOjIyMDE2GiQKBHN6bDISHAoaaHR0cDovLzExNC44MC4xNTUuNDc6MjIwMTYaJQoEaGtkMRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzk6MjIwMTYaJQoEaGsxMBIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzM6MjIwMTYiAwoBMSKDAQoRVENQX0NIQVJUVjJURVNUXzEQARgDImp7IkNPREUiOiAiNjAwMDAwLnNoIiwgIlRZUEUiOiAiQ2hhcnRUeXBlT25lRGF5IiwgIlBvaW50QWRkVHlwZSI6ICIyIiwgIlNFQ09ORFMiOiAiMTAwIiwgIlNVQlRZUEUiOiAiMTAwMSJ9KnEKHW1vbmdvZGI6Ly8yMjEuMjI4LjY2LjgzOjMwNjE3EgxzdG9ja1Nka1Rlc3QaC3Rlc3RfcmVzdWx0IjVodHRwOi8vbW9uZ28tcHl0aG9uLWV2ZS5zZGstdGVzdC5zdmMuY2x1c3Rlci5sb2NhbDo4MA=="
+        var infoDict: [String: Any]
+        if Bundle.main.infoDictionary == nil {
+            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
+        } else {
+            infoDict = Bundle.main.infoDictionary!
+            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
+                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
+                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
+            }
+        }
+        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
+//        let cfgStr = "CgRUSi0xEipSVU4tQS1lZmJjM2YzMy00Y2M0LTRhN2EtOGMzNS1kMmRmNTg3ZThlMTYazwYKLEo2SVBsazVBRVUrMi9ZaTU5cmZZbnNGUXRkdE9nQW85R0F6eXN4OGNpT009EixWVlcwRm5vN0JFWnQxYS95NktMTTM2dWo5cWNqdzdDQUhEd1daS0RsV0RzPRolCgRoa2R6Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzOToyMjAxNhojCgJnZhIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTMaJAoCbmYSHgocaHR0cDovLzE0MC4yMDcuMjQxLjE5NzoyMjAxMxokCgNjZmYSHQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2GiQKA2hrMRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzM6MjIwMTYaJQoEaGthMRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzM6MjIwMTYaIwoCcGISHQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2GiQKA2hrNRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzM6MjIwMTYaJQoFdGNwc3oSHAoadGNwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTcaIwoCYmoSHQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2GiMKAmNmEh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNhoiCgJzehIcChpodHRwOi8vMTE0LjgwLjE1NS41ODoyMjAxNholCgRoa2F6Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNhokCgRzaGwyEhwKGmh0dHA6Ly8xMTQuODAuMTU1LjYyOjIyMDE2GiQKBHN6bDISHAoaaHR0cDovLzExNC44MC4xNTUuNDc6MjIwMTYaJQoEaGtkMRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzk6MjIwMTYaJQoEaGsxMBIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzM6MjIwMTYaJQoFdGNwc2gSHAoadGNwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTcaPwoCc2gSOQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2Chp0Y3A6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNyIDCgExImIKDVFVT1RFREVUQUlMXzEQARgDIk17IkNPREUiOiAiNjAwMDAwLnNoIiwgIlRJQ0tDT1VOVCI6ICIxMCIsICJTVE9DS0ZJRUxEUyI6ICItMSIsICJGSUVMRFMiOiAiLTEifSpxCh1tb25nb2RiOi8vMjIxLjIyOC42Ni44MzozMDYxNxIMc3RvY2tTZGtUZXN0Ggt0ZXN0X3Jlc3VsdCI1aHR0cDovL21vbmdvLXB5dGhvbi1ldmUuc2RrLXRlc3Quc3ZjLmNsdXN0ZXIubG9jYWw6ODA="
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {
