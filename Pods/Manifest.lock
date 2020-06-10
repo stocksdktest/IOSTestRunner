@@ -1,0 +1,20 @@
+PODS:
+  - SwiftProtobuf (1.4.0)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - SwiftProtobuf (= 1.4.0)
+  - SwiftyJSON (= 4.2)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - SwiftProtobuf
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  SwiftProtobuf: b06646ed6cdcfc3fecd074c6000fe0c413140e4f
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: b37eb4b9f905c0ea2823a643572c7c86397677fd
+
+COCOAPODS: 1.8.4
