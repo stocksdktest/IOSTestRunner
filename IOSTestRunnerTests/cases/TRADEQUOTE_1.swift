@@ -54,8 +54,29 @@ class TRADEQUOTE_1: BaseTestCase {
             } catch {
                 // ignore
             }
+            let update2: JSON = [
+                "buyQtyUpperLimit": item.buyQtyUpperLimit,
+                "sellQtyUpperLimit": item.sellQtyUpperLimit,
+                "marketBuyQtyUpperLimit": item.marketBuyQtyUpperLimit,
+                "marketSellQtyUpperLimit": item.marketSellQtyUpperLimit,
+                "marketBuyQtyUnit": item.marketBuyQtyUnit,
+                "marketSellQtyUnit": item.marketSellQtyUnit,
+                "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
+                "afterHoursBuyQtyUpperLimit": item.afSellQtyUpperLimit,
+                "afterHoursBuyQtyUnit": item.afBuyQtyUnit,
+                "afterHoursSellQtyUnit": item.afSellQtyUnit,
+            ]
+            do {
+                try resultJSON.merge(with: update2)
+            } catch {
+                // ignore
+            }
+            for temp in resultJSON.dictionaryValue.keys{
+                if resultJSON[temp].string == nil && resultJSON[temp].array == nil{
+                    resultJSON[temp] = "-"
+                }
+            }
             switch item.changeState{
-                
             case .flat:
                 resultJSON["changeRate"].string = item.changeRate
             case .rise:

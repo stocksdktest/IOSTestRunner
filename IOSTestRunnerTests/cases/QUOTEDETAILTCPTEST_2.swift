@@ -351,6 +351,58 @@ class QUOTEDETAILTCPTEST_2: BaseTestCase {
                 } catch {
                     // ignore
                 }
+                var update55: JSON = [
+                                "securityStatus": item.securityStatus,
+                                "buyQtyUpperLimit": item.buyQtyUpperLimit,
+                                "sellQtyUpperLimit": item.sellQtyUpperLimit,
+                                "marketBuyQtyUpperLimit": item.marketBuyQtyUpperLimit,
+                                "marketSellQtyUpperLimit": item.marketSellQtyUpperLimit,
+                                "buyAuctionRange": item.buyActionRange,
+                                "sellAuctionRange": item.sellActionRange,
+                                "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
+                                "afterHoursBuyQtyUpperLimit": item.afSellQtyUpperLimit
+                            ]
+                if item.buyActionRange != nil{
+                    update55["buyAuctionRange"].stringValue = item.buyActionRange.description
+                }
+                if item.buyActionRange != nil{
+                    update55["sellAuctionRange"].stringValue = item.sellActionRange.description
+                }
+                do {
+                    try resultJSON.merge(with: update55)
+                } catch {
+                    // ignore
+                }
+                var update56:JSON = [
+                    "reg": item.regFlag.rawValue,
+                    "vie": item.vieFlag.rawValue,
+                    "mf": item.mfFlag.rawValue,
+                    "rslf": item.rslfFlag.rawValue,
+                    "mmf": item.mmfFlag.rawValue,
+                ]
+                if update56["mf"] == 0{
+                    update56["mf"] = "N"
+                }
+                if update56["mf"] == 1{
+                    update56["mf"] = "Y"
+                }
+                if update56["rslf"] == 0{
+                    update56["rslf"] = "N"
+                }
+                if update56["rslf"] == 1{
+                    update56["rslf"] = "Y"
+                }
+                if update56["mmf"] == 0{
+                    update56["mmf"] = "N"
+                }
+                if update56["mmf"] == 1{
+                    update56["mmf"] = "Y"
+                }
+                do {
+                    try resultJSON.merge(with: update56)
+                } catch {
+                    // ignore
+                }
                 var resultJSON2 : JSON = [:]
                 var resultDic : Dictionary = [String:String]()
                             for resultKey in resultJSON.dictionaryValue.keys{
