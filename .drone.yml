@@ -60,7 +60,7 @@ steps:
 volumes:
 - name: build-deps
   host:
-    path: /root/ftp-cache/sdk/iOS/v3.3.0.004
+    path: /root/ftp-cache/sdk/iOS/v3.1.7.003
 - name: rsa-private-key
   host:
     path: /root/.ssh
