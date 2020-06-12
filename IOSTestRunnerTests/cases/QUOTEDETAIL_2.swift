@@ -44,8 +44,8 @@ class QUOTEDETAIL_2: BaseTestCase {
         if (snapQuoteResponse.stockItem == nil){
             throw BaseTestError.assertFailedError(message: "snapQuoteResponse stockItem is nil")
         }
-        print("/*//*/*//*")
-        print(snapQuoteResponse.stockItem)
+//        print("/*//*/*//*")
+//        print(snapQuoteResponse.stockItem)
         var itemJSON2: JSON = [:]
         var resultJSON2: JSON = [:]
 
@@ -1215,7 +1215,7 @@ class QUOTEDETAIL_2: BaseTestCase {
                             "buyAuctionRange": item.buyActionRange,
                             "sellAuctionRange": item.sellActionRange,
                             "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
-                            "afterHoursBuyQtyUpperLimit": item.afSellQtyUpperLimit
+                            "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit
                         ]
             if item.buyActionRange != nil{
                 update14["buyAuctionRange"].stringValue = item.buyActionRange.description

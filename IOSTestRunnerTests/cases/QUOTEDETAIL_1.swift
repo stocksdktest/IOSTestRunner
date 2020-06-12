@@ -1201,7 +1201,7 @@ class QUOTEDETAIL_1: BaseTestCase {
                             "buyAuctionRange": item.buyActionRange,
                             "sellAuctionRange": item.sellActionRange,
                             "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
-                            "afterHoursBuyQtyUpperLimit": item.afSellQtyUpperLimit
+                            "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit
                         ]
             if item.buyActionRange != nil{
                 update14["buyAuctionRange"].stringValue = item.buyActionRange.description

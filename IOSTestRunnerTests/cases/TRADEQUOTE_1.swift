@@ -62,7 +62,7 @@ class TRADEQUOTE_1: BaseTestCase {
                 "marketBuyQtyUnit": item.marketBuyQtyUnit,
                 "marketSellQtyUnit": item.marketSellQtyUnit,
                 "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
-                "afterHoursBuyQtyUpperLimit": item.afSellQtyUpperLimit,
+                "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit,
                 "afterHoursBuyQtyUnit": item.afBuyQtyUnit,
                 "afterHoursSellQtyUnit": item.afSellQtyUnit,
             ]
