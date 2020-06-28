@@ -39,6 +39,7 @@ class F10V2TEST_1: BaseTestCase {
         if (f10Response.jsonObject == nil){
             throw BaseTestError.assertFailedError(message: "f10Response jsonObject is nil")
         }
+        print("asda/*/*\(mRequest.requestType)")
         var resultJSON : JSON = [:]
                 if mRequest.requestType == "importantindex"{
                     if let dic1: NSDictionary = f10Response.jsonObject as? NSDictionary{

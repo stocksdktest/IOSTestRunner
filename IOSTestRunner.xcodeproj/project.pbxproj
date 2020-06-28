@@ -140,6 +140,8 @@
 		41250547245FAB65003F7B33 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41250546245FAB65003F7B33 /* libMApi.a */; };
 		41250548245FAB6E003F7B33 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C0CAE82418ECF10008E015 /* libc++.tbd */; };
 		413E22C1241B6AA20030E020 /* OPTIONEXPIRE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */; };
+		41ACA5AA24A83B310070432D /* F10V2CLSTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACA5A924A83B310070432D /* F10V2CLSTEST_1.swift */; };
+		41ACA5AF24A85D790070432D /* abcdefg.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ACA5AE24A85D790070432D /* abcdefg.m */; };
 		41CEFB4B24625A62000BAD82 /* TONGLINETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */; };
 		41CEFB4D24626C3C000BAD82 /* ZTSORTINGTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
@@ -340,6 +342,9 @@
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41250546245FAB65003F7B33 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../../../../Downloads/SDK/IOS_北京水晶森林数码科技有限公司_全真v3.4.0.001/libMApi.a"; sourceTree = "<group>"; };
 		413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTIONEXPIRE_2.swift; sourceTree = "<group>"; };
+		41ACA5A924A83B310070432D /* F10V2CLSTEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F10V2CLSTEST_1.swift; sourceTree = "<group>"; };
+		41ACA5AD24A85D770070432D /* IOSTestRunner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOSTestRunner-Bridging-Header.h"; sourceTree = "<group>"; };
+		41ACA5AE24A85D790070432D /* abcdefg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = abcdefg.m; sourceTree = "<group>"; };
 		41C0CAE82418ECF10008E015 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TONGLINETEST_1.swift; sourceTree = "<group>"; };
 		41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTSORTINGTEST_1.swift; sourceTree = "<group>"; };
@@ -618,6 +623,7 @@
 				21DBB66423BEC7C300D73536 /* UPDOWNS_1.swift */,
 				41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */,
 				41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */,
+				41ACA5A924A83B310070432D /* F10V2CLSTEST_1.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -671,12 +677,14 @@
 		A153910923113DF3007648F4 /* IOSTestRunner */ = {
 			isa = PBXGroup;
 			children = (
+				41ACA5AE24A85D790070432D /* abcdefg.m */,
 				A153910A23113DF3007648F4 /* AppDelegate.swift */,
 				A153910C23113DF3007648F4 /* ViewController.swift */,
 				A153910E23113DF3007648F4 /* Main.storyboard */,
 				A153911123113DF3007648F4 /* Assets.xcassets */,
 				A153911323113DF3007648F4 /* LaunchScreen.storyboard */,
 				A153911623113DF3007648F4 /* Info.plist */,
+				41ACA5AD24A85D770070432D /* IOSTestRunner-Bridging-Header.h */,
 			);
 			path = IOSTestRunner;
 			sourceTree = "<group>";
@@ -846,6 +854,7 @@
 				TargetAttributes = {
 					A153910623113DF3007648F4 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Manual;
 					};
 					A153911A23113DF3007648F4 = {
@@ -992,6 +1001,7 @@
 			files = (
 				A153910D23113DF3007648F4 /* ViewController.swift in Sources */,
 				A153910B23113DF3007648F4 /* AppDelegate.swift in Sources */,
+				41ACA5AF24A85D790070432D /* abcdefg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1065,7 @@
 				971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */,
 				A1E182E523C57D7F00F760A4 /* SubscribeTestCase.swift in Sources */,
 				971816E123BDC51C0085A3E6 /* MOREPRICE_1.swift in Sources */,
+				41ACA5AA24A83B310070432D /* F10V2CLSTEST_1.swift in Sources */,
 				21DBB75423BEC7D000D73536 /* ADDVALUE_1.swift in Sources */,
 				21DBB6FA23BEC7D000D73536 /* OVERLAYCHART_1.swift in Sources */,
 				21DBB72223BEC7D000D73536 /* QUOTEDETAIL_2.swift in Sources */,
@@ -1320,6 +1331,7 @@
 			baseConfigurationReference = 4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1343,7 +1355,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.CrystalTouch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "IOSTestRunner/IOSTestRunner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1355,6 +1368,7 @@
 			baseConfigurationReference = 02210385DFA559ED7FC610E5 /* Pods-IOSTestRunner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1374,7 +1388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitake.ssetest.CrystalTouch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "IOSTestRunner/IOSTestRunner-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
