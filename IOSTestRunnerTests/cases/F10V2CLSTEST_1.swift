@@ -34,7 +34,7 @@ class F10V2CLSTEST_1: BaseTestCase {
         if (f10Response.jsonObject == nil){
             throw BaseTestError.assertFailedError(message: "f10Response jsonObject is nil")
         }
-        print("ip:\(mRequest.ip)\n/*/*--//*/*++:\(f10Response)")
+//        print("ip:\(mRequest.ip)\n/*/*--//*/*++:\(f10Response)")
         var resultJSON : JSON = [:]
         var resultJSON1 : JSON = [:]
             //财联社—电报、加红
@@ -299,7 +299,6 @@ class F10V2CLSTEST_1: BaseTestCase {
                             "PUBDATE":TD["PUBDATE"] ?? "-",
                             "TITLE":TD["TITLE"] ?? "-",
                             "BRIEF":TD["BRIEF"] ?? "-",
-                            "RECOMMEND":TD["RECOMMEND"] ?? "-",
                             "TRADING":TD["TRADING"] ?? "-",
                             "ISPDF":TD["ISPDF"] ?? "-",
                         ]
