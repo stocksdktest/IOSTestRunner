@@ -1193,16 +1193,16 @@ class QUOTEDETAIL_1: BaseTestCase {
                 // ignore
             }
             var update14: JSON = [
-                            "securityStatus": item.securityStatus,
-                            "buyQtyUpperLimit": item.buyQtyUpperLimit,
-                            "sellQtyUpperLimit": item.sellQtyUpperLimit,
-                            "marketBuyQtyUpperLimit": item.marketBuyQtyUpperLimit,
-                            "marketSellQtyUpperLimit": item.marketSellQtyUpperLimit,
-                            "buyAuctionRange": item.buyActionRange,
-                            "sellAuctionRange": item.sellActionRange,
-                            "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
-                            "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit
-                        ]
+                "securityStatus": item.securityStatus,
+                "buyQtyUpperLimit": item.buyQtyUpperLimit,
+                "sellQtyUpperLimit": item.sellQtyUpperLimit,
+                "marketBuyQtyUpperLimit": item.marketBuyQtyUpperLimit,
+                "marketSellQtyUpperLimit": item.marketSellQtyUpperLimit,
+                "buyAuctionRange": item.buyActionRange,
+                "sellAuctionRange": item.sellActionRange,
+                "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
+                "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit
+            ]
             if item.buyActionRange != nil{
                 update14["buyAuctionRange"].stringValue = item.buyActionRange.description
             }
