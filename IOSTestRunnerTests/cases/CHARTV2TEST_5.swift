@@ -47,6 +47,9 @@ class CHARTV2TEST_5: BaseTestCase {
                 "iopv": item.iopv,
                 "iopvPre": item.referenceIOPVPrice,
                 "volRatio": item.volumeRatio,
+                "buyNum": item.entrustBuyVolume,
+                "sellNum": item.entrustSellVolume,
+                "entrustDiff": item.entrustDiff,
                 
             ]
             var itemDic : Dictionary = [String:String]()

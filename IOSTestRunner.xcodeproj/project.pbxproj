@@ -140,6 +140,8 @@
 		41250547245FAB65003F7B33 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41250546245FAB65003F7B33 /* libMApi.a */; };
 		41250548245FAB6E003F7B33 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C0CAE82418ECF10008E015 /* libc++.tbd */; };
 		413E22C1241B6AA20030E020 /* OPTIONEXPIRE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */; };
+		416AD3B724FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */; };
+		41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */; };
 		41CEFB4B24625A62000BAD82 /* TONGLINETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */; };
 		41CEFB4D24626C3C000BAD82 /* ZTSORTINGTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
@@ -340,6 +342,8 @@
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41250546245FAB65003F7B33 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../../../../Downloads/SDK/IOS_北京水晶森林数码科技有限公司_全真v3.4.0.001/libMApi.a"; sourceTree = "<group>"; };
 		413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTIONEXPIRE_2.swift; sourceTree = "<group>"; };
+		416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONVERTIBLEDEBTLIST_1.swift; sourceTree = "<group>"; };
+		41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10V2CLSTEST_1.swift; sourceTree = "<group>"; };
 		41C0CAE82418ECF10008E015 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TONGLINETEST_1.swift; sourceTree = "<group>"; };
 		41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTSORTINGTEST_1.swift; sourceTree = "<group>"; };
@@ -618,6 +622,8 @@
 				21DBB66423BEC7C300D73536 /* UPDOWNS_1.swift */,
 				41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */,
 				41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */,
+				41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */,
+				416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -1055,6 +1061,7 @@
 				971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */,
 				A1E182E523C57D7F00F760A4 /* SubscribeTestCase.swift in Sources */,
 				971816E123BDC51C0085A3E6 /* MOREPRICE_1.swift in Sources */,
+				41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */,
 				21DBB75423BEC7D000D73536 /* ADDVALUE_1.swift in Sources */,
 				21DBB6FA23BEC7D000D73536 /* OVERLAYCHART_1.swift in Sources */,
 				21DBB72223BEC7D000D73536 /* QUOTEDETAIL_2.swift in Sources */,
@@ -1117,6 +1124,7 @@
 				21DBB70D23BEC7D000D73536 /* TRADEQUOTE_1.swift in Sources */,
 				21DBB6E223BEC7D000D73536 /* F10_BNDINTERESTPAY_1.swift in Sources */,
 				21DBB72623BEC7D000D73536 /* SEARTEST_3.swift in Sources */,
+				416AD3B724FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift in Sources */,
 				21DBB71323BEC7D000D73536 /* F10_SHARESTRUCTURE_1.swift in Sources */,
 				971816EA23BDC51C0085A3E6 /* BANKUAIQUOTE_1.swift in Sources */,
 				971816E323BDC51C0085A3E6 /* BANKUAISORTING_2.swift in Sources */,

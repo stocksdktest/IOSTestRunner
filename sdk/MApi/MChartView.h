@@ -201,6 +201,7 @@ typedef NS_ENUM(NSInteger,MOHLCChartXAxisTextLocation) {
 };
 
 extern NSString * const MOHLCChartViewPreviousItemNotificationInfoKey;
+extern NSString * const MOHLCChartViewCirculatingShareItemsNotificationInfoKey;
 
 @protocol MChartBorderTheme;
 @class MChartTheme;
@@ -721,6 +722,11 @@ withMaxValue:(double)maxValue
 
 #pragma mark - MVOLRatio
 @interface MVOLRatioPlot : MPlot4Trend
+@end
+
+#pragma mark - MEntrust
+@interface MEntrustPlot : MPlot4Trend
+
 @end
 
 #pragma mark - MChartBorderTheme

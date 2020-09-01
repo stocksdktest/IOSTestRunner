@@ -27,6 +27,9 @@ class F10_CALENDAR_1: BaseTestCase {
         }
         
         mRequest.type = MIPOType(rawValue: 0)!
+        if param["marketType"].string != nil{
+            mRequest.marketType = param["marketType"].stringValue
+        }
         
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPODateResponse = resp as! MIPODateResponse

@@ -71,6 +71,7 @@ class BaseTestCase : ParametrizedTestCase {
     internal func makeSyncRequest(request: MRequest) throws -> MResponse {
         var reqResponse: MResponse? = nil
         let runLoop = CFRunLoopGetCurrent()
+        print("当前SDK版本为：\(MApi.version())")
         MApi.send(request, completionHandler: { resp in
             reqResponse = resp
             CFRunLoopStop(runLoop)

@@ -27,7 +27,9 @@ typedef NS_ENUM(NSUInteger, MF10DataSourceType) {
     /** 港澳数据 */
     MF10DataSourceGA = 1,
     /** 财汇数据 */
-    MF10DataSourceCH = 2
+    MF10DataSourceCH = 2,
+    /** 财联社 */
+    MF10DataSourceCLS = 3
 };
 
 /** IPO类型 */
@@ -336,6 +338,85 @@ extern NSString *const  MF10RequestTypeExptperformance;
 extern NSString *const  MF10RequestTypeProindicdata;
 /** 董秘问答 */
 extern NSString *const  MF10RequestTypeNewsInteractive;
+
+/** 财联社—电报、加红
+   请求中code参数：0：全部,1：加红
+   请求中param参数：@{@"param":@"id1,id2"} 其中id1:页数,id2:每页条数
+*/
+extern NSString *const  MF10RequestTypeCLSTelegrammedList;
+/** 财联社-要闻：全部、金融、股市、公司、地产、环球、基金、科创板、财富、保险
+   请求中code参数：0：全部,1：金融,2：股市,3：公司,4：地产,5：环球,6：基金,7：科创板,8：财富,9：保险,10：头条（宏观、环球、基金和科创板）,11：题材,12：宏观,13：头条(科创板)，14：头条（宏观、环球、基金和科创板）、要闻栏目重复，要闻栏目重复数据去重，15：头条（科创板）、科创板栏目重复，科创板栏目重复数据去重
+   请求中param参数：@{@"param":@"id1,id2"} 其中id1:页数,id2:每页条数
+*/
+extern NSString *const  MF10RequestTypeCLSImportantnewsList;
+/** 财联社-vip: 栏目_盘中宝、栏目_风口研报、栏目_财联社早知道、栏目_公告全知道、栏目_龙虎榜、栏目_九点特供、 栏目_研选、栏目_有声早报
+   请求中code参数: 0：栏目_盘中宝,1：栏目_风口研报,2：栏目_财联社早知道,3：栏目_公告全知道,4：栏目_龙虎榜,5：栏目_九点特供,6：栏目_研选
+   请求中param参数：@{@"param":@"id1,id2"} 其中id1:页数,id2:每页条数
+*/
+extern NSString *const  MF10RequestTypeCLSVIPList;
+/** 财联社-要闻：详细内容
+    请求中code参数: 要闻列表中的ID
+ */
+extern NSString *const  MF10RequestTypeCLSImportantnews;
+/** 财联社-vip：详细内容
+    请求中code参数: vip列表中的ID
+ */
+extern NSString *const  MF10RequestTypeCLSVIP;
+/** 财联社-风口-内参
+    请求中code参数：0：每日投资预警，1：午报，2：每日收评，3：每日焦点板块复盘，4：明日三大猜想，5：涨停预测，6：隔夜环球市场，7：盘后公告，8：明日主题前瞻，9：新闻联播，10：证监会发布，11：每日投资预警、每日焦点板块复盘、明日三大猜想、新闻联播，12：每日投资预警、午报、每日收评、每日焦点板块复盘、明日三大猜想、涨停预测、隔夜环球市场、盘后公告、明日主题前瞻、新闻联播、证监会发布
+    请求中param参数：@{@"param":@"id1,id2",@"type":@"all"} 其中id1:页数,id2:每页条数
+*/
+extern NSString *const  MF10RequestTypeCLSInparamslist;
+/** 财联社-风口-内参:详细内容
+    请求中code参数: 内参列表中的ID
+ */
+extern NSString *const  MF10RequestTypeCLSInparams;
+/** 财联社-个股新闻列表
+请求中param参数：股票代码
+请求中param参数：@{@"param":@"id1,id2,id3"}
+ {id1} 若带-1则显示最新的10笔新闻，若带ID则显示该ID后10笔新闻{id2} 通常可不带，若id1带-1，id2带ID则显示该ID之前更新的资料，若更新3笔，只显示3笔，超过10笔只显示10笔{id3} 每页条数，默认10条。说明：id1、id2、id3可组合结果："-1"，"-1,newid"，"-1,newid,num"，"-1,,num"，"newid"，"newid,num"
+*/
+extern NSString *const  MF10RequestTypeCLSNewslist;
+/** 财联社-个股新闻详细内容
+    请求中code参数: 个股新闻中的ID
+ */
+extern NSString *const  MF10RequestTypeCLSNews;
+/** 财联社-个股研报列表
+ 请求中param参数：股票代码
+ 请求中param参数：@{@"param":@"id1,id2,id3"}
+    id1若带-1则显示最新的10笔新闻，若带ID则显示该ID后10笔新闻,{id2} 通常可不带，若id1带-1，id2带ID则显示该ID之前更新的资料，若更新3笔，只显示3笔，超过10笔只显示10笔,{id3} 每页条数，默认10条。说明：id1、id2、id3可组合结果："-1"，"-1,newid"，"-1,newid,num"，"-1,,num"，"newid"，"newid,num"
+ */
+extern NSString *const  MF10RequestTypeCLSReportlist;
+/** 财联社-个股研报详细内容
+    请求中code参数: 个股研报中的ID
+ */
+extern NSString *const  MF10RequestTypeCLSReport;
+/** 财联社-个股公告列表
+ 请求中param参数：股票代码
+ 请求中param参数：@{@"param":@"id1,id2,id3"}
+    id1若带-1则显示最新的10笔新闻，若带ID则显示该ID后10笔新闻,{id2} 通常可不带，若id1带-1，id2带ID则显示该ID之前更新的资料，若更新3笔，只显示3笔，超过10笔只显示10笔,{id3} 每页条数，默认10条。说明：id1、id2、id3可组合结果："-1"，"-1,newid"，"-1,newid,num"，"-1,,num"，"newid"，"newid,num"
+ */
+extern NSString *const  MF10RequestTypeCLSBulletinlist;
+/** 财联社-个股公告详细内容 */
+extern NSString *const  MF10RequestTypeCLSBulletin;
+/** 财联社-风口
+请求中code参数：0：今日潜力题材，1：代表中长线机会，2：代表文章前瞻，3：今日风口，4：代表短期潜伏
+请求中param参数：@{@"param":@"id1,id2"} 其中id1:页数,id2:每页条数
+*/
+extern NSString *const MF10RequestTypeCLSRecommendlist;
+/** 财联社-风口详情 */
+extern NSString *const MF10RequestTypeCLSRecommend;
+/** 财联社-全部话题
+ 请求中code参数：0: 汽车（暂时未上市）,1: 股市,2: 电报 ,3: 主题,4: 原创报道,5: 宏观,6: 环球,7: 公司,8: 地产,9: 金融,10: 基金,11: 券商,12: 保险,13: 财富,14: FICC,15: 分析师,16: 科创板,17: 题材,18: 内参,19: 自媒体,20: 科创公司,21: 科创专栏,22: 科创研究,23: 科创人物
+ 请求中param参数：@{@"param":@"id1,id2"} 其中id1:页数,id2:每页条数
+ */
+extern NSString *const MF10RequestTypeCLSClstopicsublist;
+/** 财联社-全部话题:详细内容 */
+extern NSString *const MF10RequestTypeCLSClstopicsub;
+/** 财汇-场内基金十大持股 支持沪深市场 */
+extern NSString *const MF10RequestTypeFundholdings10;
+
+
 
 /*! @brief 最新指标请求类
  */
@@ -686,6 +767,8 @@ __attribute__((deprecated("已弃用")))
 @interface MIPODateRequest : MDataRequest
 /** IPO类型，默认为新股：MIPOTypeStock */
 @property (nonatomic, assign)MIPOType type;
+/** 不传默认返回:沪深  传bj:新三板*/
+@property (nonatomic, copy) NSString *marketType;
 @end
 
 /*! @brief 某日的所有新股(债)信息请求类
@@ -695,6 +778,8 @@ __attribute__((deprecated("已弃用")))
 @property (nonatomic, copy) NSString *date;
 /** IPO类型，默认为新股：MIPOTypeStock */
 @property (nonatomic, assign)MIPOType type;
+/** 不传默认返回:沪深  传bj:新三板*/
+@property (nonatomic, copy) NSString *marketType;
 @end
 
 /*! @brief 新股(债)信息请求类
@@ -1160,6 +1245,7 @@ extern NSString *const MNewsTypeOthers;          // 其他
 /*! @brief 某日的所有新股(债)信息应答类
  */
 @interface MIPOCalendarResponse : MResponse
+
 /** 新股(债)列表信息 */
 @property (nonatomic, strong) NSDictionary *info;
 @end

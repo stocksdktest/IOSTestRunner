@@ -28,7 +28,9 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         mRequest.type = MIPOType(rawValue: 1)!
-        
+        if param["marketType"].string != nil{
+            mRequest.marketType = param["marketType"].stringValue
+        }
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPOCalendarResponse = resp as! MIPOCalendarResponse
 //        XCTAssertNotNil(iPOCalendarResponse.info)
@@ -381,6 +383,10 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
                         resultJSON["jjfxlist"] = itemJSON
                     }
                 }
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
+            case .CLS:
+                var resultJSON: JSON = ["default":"I'm just kidding you"]
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
             }

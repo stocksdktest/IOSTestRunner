@@ -34,8 +34,10 @@ extern NSString * const MApiTcpDidReceivedDataTypeKey;
 extern NSString * const MApiTcpDidReceivedDataCodeKey;
 /// 推送快照数据键，值为MStockItem
 extern NSString * const MApiTcpDidReceivedDataSnapKey;
-/// 推送走势数据键，值为MOHLCItem数据
+/// 推送走势数据键，值为MOHLCItem数组
 extern NSString * const MApiTcpDidReceivedDataLineItemsKey;
+/// 推送走势盘后数据键，值为MOHLCItem数据
+extern NSString * const MApiTcpDidReceivedDataAFItemsKey;
 /// 推送走势交易日键，值为NSString数组
 extern NSString * const MApiTcpDidReceivedDataLineTradeDatesKey;
 /// 推送走势系统时间键，值为NSString
@@ -48,6 +50,13 @@ extern NSString * const MApiTcpDidReceivedDataTimeTickDetailKey;
 extern NSString * const MApiTcpDidReceivedDataStartIndexKey;
 /// 推送结束引索数据键值，值为NSString
 extern NSString * const MApiTcpDidReceivedDataEndIndexKey;
+
+/// 推送K线数据键值,值为MOHLCItem数组
+extern NSString * const MApiTcpDidReceivedDataKKey;
+/// 推送复权数据键值，值为NSArray
+extern NSString * const MApiTcpDidReceivedDataFQKey;
+/// 推送股本数据键值，值为NSArray
+extern NSString * const MApiTcpDidReceivedDataCSKey;
 
 
 /// 上海, ref: @"sh"

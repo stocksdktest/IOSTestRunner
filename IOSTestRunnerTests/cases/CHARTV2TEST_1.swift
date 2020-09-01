@@ -46,6 +46,9 @@ class CHARTV2TEST_1: BaseTestCase {
                 "volRatio": item.volumeRatio,
                 "iopv": item.iopv,
                 "iopvPre": item.referenceIOPVPrice,
+                "buyNum": item.entrustBuyVolume,
+                "sellNum": item.entrustSellVolume,
+                "entrustDiff": item.entrustDiff,
                 
             ]
             var itemJSON2 : JSON = [:]

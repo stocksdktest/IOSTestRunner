@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//新股（债）列表
+//新股列表
 import XCTest
 import os.log
 import SwiftyJSON
@@ -28,7 +28,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         mRequest.type = MIPOType(rawValue: 0)!
-        
+        if param["marketType"].string != nil{
+            mRequest.marketType = param["marketType"].stringValue
+        }
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPOCalendarResponse = resp as! MIPOCalendarResponse
 //        XCTAssertNotNil(iPOCalendarResponse.info)
@@ -179,6 +181,7 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "peaIssue": list["PEAISSUE"]!,
                                     "bookStartDateOn": list["BOOKSTARTDATEON"]!
                                 ]
+                                
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
                                 
                                 jsonarr1["\(itemID)"] = jsonarr2
@@ -222,8 +225,15 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                let update2: JSON = [
+                                    "profit":list["ISPROFIT"] ?? "-",
+                                    "vote":list["ISDIFFVOTE"] ?? "-",
+                                    "rie":list["ISVIEFRAME"] ?? "-",
+                                    "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                ]
                                 do {
                                     try jsonarr2.merge(with: update1)
+                                    try jsonarr2.merge(with: update2)
                                 } catch {
                                     // ignore
                                 }
@@ -263,8 +273,15 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                let update2: JSON = [
+                                    "profit":list["ISPROFIT"] ?? "-",
+                                    "vote":list["ISDIFFVOTE"] ?? "-",
+                                    "rie":list["ISVIEFRAME"] ?? "-",
+                                    "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                ]
                                 do {
                                     try jsonarr2.merge(with: update1)
+                                    try jsonarr2.merge(with: update2)
                                 } catch {
                                     // ignore
                                 }
@@ -305,8 +322,15 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                let update2: JSON = [
+                                    "profit":list["ISPROFIT"] ?? "-",
+                                    "vote":list["ISDIFFVOTE"] ?? "-",
+                                    "rie":list["ISVIEFRAME"] ?? "-",
+                                    "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                ]
                                 do {
                                     try jsonarr2.merge(with: update1)
+                                    try jsonarr2.merge(with: update2)
                                 } catch {
                                     // ignore
                                 }
@@ -346,8 +370,15 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                let update2: JSON = [
+                                    "profit":list["ISPROFIT"] ?? "-",
+                                    "vote":list["ISDIFFVOTE"] ?? "-",
+                                    "rie":list["ISVIEFRAME"] ?? "-",
+                                    "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                ]
                                 do {
                                     try jsonarr2.merge(with: update1)
+                                    try jsonarr2.merge(with: update2)
                                 } catch {
                                     // ignore
                                 }
@@ -387,8 +418,15 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "issuePricePlan": list["ISSUEPRICEPLAN"]!,
                                     "keyCode": list["KEYCODE"]!
                                 ]
+                                let update2: JSON = [
+                                    "profit":list["ISPROFIT"] ?? "-",
+                                    "vote":list["ISDIFFVOTE"] ?? "-",
+                                    "rie":list["ISVIEFRAME"] ?? "-",
+                                    "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                ]
                                 do {
                                     try jsonarr2.merge(with: update1)
+                                    try jsonarr2.merge(with: update2)
                                 } catch {
                                     // ignore
                                 }
@@ -403,7 +441,14 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                 }
                 print(resultJSON)
                 onTestResult(param: param, result: resultJSON)
+            case .CLS:
+                var resultJSON: JSON = ["default":"I'm just kidding you"]
+                print(resultJSON)
+                onTestResult(param: param, result: resultJSON)
             }
+         
+            
+            
             
         case .bond:
             var resultJSON : JSON = [:]

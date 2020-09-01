@@ -16,7 +16,7 @@ class ZTSORTINGTEST_1: BaseTestCase {
         return StockTestCaseName.ZTSORTINGTEST_1
     }
     
-    func testIndexUpdowns() throws{
+    func testZTSorting() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MZTSortingRequest()
         let paramI = (param["PARAMS"].stringValue.split(separator: ",") as NSArray)
@@ -40,13 +40,13 @@ class ZTSORTINGTEST_1: BaseTestCase {
             mRequest.type = MZTSortingType(rawValue: 2)!
         }
         let resp = try self.makeSyncRequest(request: mRequest)
-        let ZTSortingResponse = resp as! MZTSortingResponse
-        if (ZTSortingResponse.items == nil){
-            throw BaseTestError.assertFailedError(message: "ZTSortingResponse items is nil")
+        let ztSortingResponse = resp as! MZTSortingResponse
+        if (ztSortingResponse.items == nil){
+            throw BaseTestError.assertFailedError(message: "ztSortingResponse items is nil")
         }
         var resultJSON: JSON = [:]
         var i = 1
-        for item in ZTSortingResponse.items{
+        for item in ztSortingResponse.items{
             print(item.financeFlag.rawValue)
             var resultJSON1: JSON = [
                 "ztdateTime":item.ztdateTime,

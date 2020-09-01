@@ -578,6 +578,25 @@ class F10V2TEST_4: BaseTestCase {
                     print(resultJSON)
                     onTestResult(param: param, result: resultJSON)
                 }
+                if mRequest.requestType == "fundholdings10"{
+                    if let Arr: NSArray = f10Response.jsonObject as? NSArray{
+                        for List in Arr{
+                            if let dict : NSDictionary = List as? NSDictionary{
+                                let jsonarr2: JSON = [
+                                    "PUBLISHDATE":dict["PUBLISHDATE"] ?? "-",
+                                    "TRADINGCODE":dict["TRADINGCODE"] ?? "-",
+                                    "SKNAME":dict["SKNAME"] ?? "-",
+                                    "NAVRTO":dict["NAVRTO"] ?? "-",
+                                    "ACCSTKRTO":dict["ACCSTKRTO"] ?? "-",
+                                    "ACCCIRCRTO":dict["ACCCIRCRTO"] ?? "-",
+                                ]
+                                resultJSON["\(dict["TRADINGCODE"] ?? "股票代码丢失")"] = jsonarr2
+                            }
+                        }
+                        print(resultJSON)
+                        onTestResult(param: param, result: resultJSON)
+                    }
+                }       
                 
         }
         }

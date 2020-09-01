@@ -16,7 +16,7 @@ class TONGLINETEST_1: BaseTestCase {
         return StockTestCaseName.TONGLINETEST_1
     }
     
-    func testIndexUpdowns() throws{
+    func testTongLine() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTongLineRequest()
         mRequest.type = param["TYPE"].stringValue

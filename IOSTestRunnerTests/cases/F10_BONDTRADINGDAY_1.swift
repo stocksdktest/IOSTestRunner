@@ -27,7 +27,9 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
         }
         
         mRequest.type = MIPOType(rawValue: 1)!
-        
+        if param["marketType"].string != nil{
+            mRequest.marketType = param["marketType"].stringValue
+        }
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPODateResponse = resp as! MIPODateResponse
 //        XCTAssertNotNil(iPODateResponse.infos)

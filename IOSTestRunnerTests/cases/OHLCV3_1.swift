@@ -98,17 +98,17 @@ class OHLCV3_1: BaseTestCase {
                         
                         var itemJSON2 : JSON = [:]
                         var itemDic : Dictionary = [String:String]()
-                                                    for itemKey in itemJSON.dictionaryValue.keys{
+                            for itemKey in itemJSON.dictionaryValue.keys{
 
-                                                        itemDic[itemKey] = itemJSON[itemKey].stringValue
-                                                        if itemDic[itemKey] != ""{
-                                                            itemJSON2[itemKey].stringValue = itemDic[itemKey]!
-                                                        }else{
-                                                            itemJSON2[itemKey].stringValue = "-"
-                                                        }
+                                itemDic[itemKey] = itemJSON[itemKey].stringValue
+                                if itemDic[itemKey] != ""{
+                                    itemJSON2[itemKey].stringValue = itemDic[itemKey]!
+                                }else{
+                                    itemJSON2[itemKey].stringValue = "-"
+                                }
 
-                                                    }
-                                    resultJSON["\(item.datetime!)"] = itemJSON2
+                            }
+                            resultJSON["\(item.datetime!)"] = itemJSON2
         }
 
         if oHLCResponse.circulatingShareItems != nil{

@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//新股（债）详情
+//新债详情
 import XCTest
 import os.log
 import SwiftyJSON

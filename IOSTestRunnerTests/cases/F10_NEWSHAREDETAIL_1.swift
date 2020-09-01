@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//新股（债）详情
+//新股详情
 import XCTest
 import os.log
 import SwiftyJSON
@@ -27,7 +27,7 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-//        mRequest.type = MIPOType(rawValue: 0)!
+        mRequest.type = MIPOType(rawValue: 0)!
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPOShareDetailResponse = resp as! MIPOShareDetailResponse
 //        XCTAssertNotNil(iPOShareDetailResponse.info)
@@ -71,9 +71,17 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
                             "newNetRaiseAmt":item["NEWNETRAISEAMT"]!,
                             "keyCode":item["KEYCODE"]!
                         ]
+                        let update3: JSON = [
+                            "type":item["TYPE"] ?? "-",
+                            "profit":item["ISPROFIT"] ?? "-",
+                            "vote":item["ISDIFFVOTE"] ?? "-",
+                            "rie":item["ISVIEFRAME"] ?? "-",
+                            "issuanceSystem":item["ISSSYSTEM"] ?? "-",
+                        ]
                         do {
                             try resultJSON.merge(with: update1)
                             try resultJSON.merge(with: update2)
+                            try resultJSON.merge(with: update3)
                         } catch {
                             // ignore
                         }

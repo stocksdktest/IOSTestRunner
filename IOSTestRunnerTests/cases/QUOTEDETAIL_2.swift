@@ -44,6 +44,8 @@ class QUOTEDETAIL_2: BaseTestCase {
         if (snapQuoteResponse.stockItem == nil){
             throw BaseTestError.assertFailedError(message: "snapQuoteResponse stockItem is nil")
         }
+//        print("/*//*/*//*")
+//        print(snapQuoteResponse.stockItem)
         var itemJSON2: JSON = [:]
         var resultJSON2: JSON = [:]
 
@@ -1201,6 +1203,58 @@ class QUOTEDETAIL_2: BaseTestCase {
             ]
             do {
                 try resultJSON.merge(with: update13)
+            } catch {
+                // ignore
+            }
+            var update14: JSON = [
+                "securityStatus": item.securityStatus,
+                "buyQtyUpperLimit": item.buyQtyUpperLimit,
+                "sellQtyUpperLimit": item.sellQtyUpperLimit,
+                "marketBuyQtyUpperLimit": item.marketBuyQtyUpperLimit,
+                "marketSellQtyUpperLimit": item.marketSellQtyUpperLimit,
+                "buyAuctionRange": item.buyActionRange,
+                "sellAuctionRange": item.sellActionRange,
+                "afterHoursBuyQtyUpperLimit": item.afBuyQtyUpperLimit,
+                "afterHoursSellQtyUpperLimit": item.afSellQtyUpperLimit
+            ]
+            if item.buyActionRange != nil{
+                update14["buyAuctionRange"].stringValue = item.buyActionRange.description
+            }
+            if item.buyActionRange != nil{
+                update14["sellAuctionRange"].stringValue = item.sellActionRange.description
+            }
+            do {
+                try resultJSON.merge(with: update14)
+            } catch {
+                // ignore
+            }
+            var update15:JSON = [
+                "reg": item.regFlag.rawValue,
+                "vie": item.vieFlag.rawValue,
+                "mf": item.mfFlag.rawValue,
+                "rslf": item.rslfFlag.rawValue,
+                "mmf": item.mmfFlag.rawValue,
+            ]
+            if update15["mf"] == 0{
+                update15["mf"] = "N"
+            }
+            if update15["mf"] == 1{
+                update15["mf"] = "Y"
+            }
+            if update15["rslf"] == 0{
+                update15["rslf"] = "N"
+            }
+            if update15["rslf"] == 1{
+                update15["rslf"] = "Y"
+            }
+            if update15["mmf"] == 0{
+                update15["mmf"] = "N"
+            }
+            if update15["mmf"] == 1{
+                update15["mmf"] = "Y"
+            }
+            do {
+                try resultJSON.merge(with: update15)
             } catch {
                 // ignore
             }
