@@ -11,6 +11,7 @@ import os.log
 import SwiftyJSON
 
 class BANKUAISORTING_1: BaseTestCase {
+    var jjj = 0
     
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.BANKUAISORTING_1
@@ -19,6 +20,7 @@ class BANKUAISORTING_1: BaseTestCase {
     func testSectionSorting() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MSectionSortingRequest()
+        jjj+=1
         mRequest.code = param["SYMBOL"].stringValue
        
         let paramI:NSArray = (param["PARAMS"].string?.split(separator: ",") as! NSArray)
@@ -77,6 +79,8 @@ class BANKUAISORTING_1: BaseTestCase {
             "szzh" : 16 , //总市值
             "wb" : 17 , //委比
             "wc" : 18 , //委差
+            "wm3" : 0, //委买
+            "wm4" : 0, //委卖
             "hsl" : 19 , //换手率
             "zf" : 20 , //振幅
             //涨跌家数
@@ -191,6 +195,7 @@ class BANKUAISORTING_1: BaseTestCase {
             resultJSON["\(i)"] = itemJSON2
             i = i+1
         }
+        print("执行至第\(jjj)个")
         print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }

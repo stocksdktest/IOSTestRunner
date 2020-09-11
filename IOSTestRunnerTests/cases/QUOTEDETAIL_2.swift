@@ -1280,7 +1280,7 @@ class QUOTEDETAIL_2: BaseTestCase {
                         }
                         if let anyItems = item.tickItems{
                             var jsonarray2 = [JSON]()
-                            for i in 0 ..< mRequest.tickCount{
+                            for i in 0 ..< anyItems.count{
                                 let anyItem = anyItems[i]
                                 if !(anyItem is MTickItem){
                                     continue
