@@ -144,6 +144,7 @@
 		41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */; };
 		41CEFB4B24625A62000BAD82 /* TONGLINETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */; };
 		41CEFB4D24626C3C000BAD82 /* ZTSORTINGTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */; };
+		41FDC7E925369DAE00C99290 /* HSAMOUNTALL_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FDC7E825369DAE00C99290 /* HSAMOUNTALL_1.swift */; };
 		4889D9AABFA7B1DBD71B43C9 /* Pods_IOSTestRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3DC3C8A823E79661CF21C1 /* Pods_IOSTestRunnerUITests.framework */; };
 		531233985C2C7E85A6AA6CEC /* Pods_IOSTestRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDD9BD239BA874000640C3 /* Pods_IOSTestRunnerTests.framework */; };
 		6785ABBAD5E48E3A33F6E05B /* Pods_IOSTestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A94600D5B65976CE633A43 /* Pods_IOSTestRunner.framework */; };
@@ -347,6 +348,7 @@
 		41C0CAE82418ECF10008E015 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TONGLINETEST_1.swift; sourceTree = "<group>"; };
 		41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTSORTINGTEST_1.swift; sourceTree = "<group>"; };
+		41FDC7E825369DAE00C99290 /* HSAMOUNTALL_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAMOUNTALL_1.swift; sourceTree = "<group>"; };
 		4EB4EE57B2D9E4412B12A130 /* Pods-IOSTestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSTestRunner.debug.xcconfig"; path = "Target Support Files/Pods-IOSTestRunner/Pods-IOSTestRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		971816CF23BDC51C0085A3E6 /* L2TICKV2_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L2TICKV2_1.swift; sourceTree = "<group>"; };
 		971816D023BDC51C0085A3E6 /* F10V2TEST_4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10V2TEST_4.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				21DBB69523BEC7C900D73536 /* CHARTV2TEST_5.swift */,
 				21DBB68E23BEC7C800D73536 /* CHARTV2TEST_6.swift */,
 				21DBB67D23BEC7C600D73536 /* COMPOUNDUPDOWN_1.swift */,
+				416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */,
 				21DBB66E23BEC7C500D73536 /* CONVERTIBLE_1.swift */,
 				21DBB6CF23BEC7CE00D73536 /* DRLINKQUOTE_1.swift */,
 				21DBB68723BEC7C700D73536 /* DRQUOTELIST_1.swift */,
@@ -557,6 +560,7 @@
 				21DBB6C923BEC7CE00D73536 /* F10_TOPLIQUIDSHAREHOLDER_1.swift */,
 				21DBB6AB23BEC7CB00D73536 /* F10_TOPSHAREHOLDER_1.swift */,
 				21DBB68323BEC7C700D73536 /* F10_TRADEDETAIL_1.swift */,
+				41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */,
 				971816D923BDC51C0085A3E6 /* F10V2TEST_1.swift */,
 				971816D223BDC51C0085A3E6 /* F10V2TEST_2.swift */,
 				971816D723BDC51C0085A3E6 /* F10V2TEST_3.swift */,
@@ -568,6 +572,7 @@
 				21DBB6C223BEC7CD00D73536 /* HKSTOCKINFO_1.swift */,
 				21DBB66323BEC7C300D73536 /* HOLIDAY_1.swift */,
 				21DBB6AE23BEC7CB00D73536 /* HSAMOUNT_1.swift */,
+				41FDC7E825369DAE00C99290 /* HSAMOUNTALL_1.swift */,
 				971816DD23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift */,
 				971816DB23BDC51C0085A3E6 /* L2TICKDETAILV2_2.swift */,
 				971816CF23BDC51C0085A3E6 /* L2TICKV2_1.swift */,
@@ -615,15 +620,13 @@
 				2171CCA023C847E60046070A /* TCP_TICKTEST_1.swift */,
 				21DBB67323BEC7C500D73536 /* TICK_1.swift */,
 				21DBB67823BEC7C600D73536 /* TICK_2.swift */,
+				41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */,
 				21DBB67023BEC7C500D73536 /* TRADEDATE_1.swift */,
 				21DBB6A823BEC7CB00D73536 /* TRADEDATE_2.swift */,
 				21DBB69123BEC7C800D73536 /* TRADEQUOTE_1.swift */,
 				21DBB6AC23BEC7CB00D73536 /* UKQUOTE_1.swift */,
 				21DBB66423BEC7C300D73536 /* UPDOWNS_1.swift */,
-				41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */,
 				41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */,
-				41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */,
-				416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				971816ED23BDC51C0085A3E6 /* L2TICKDETAILV2_1.swift in Sources */,
 				A1E182E523C57D7F00F760A4 /* SubscribeTestCase.swift in Sources */,
 				971816E123BDC51C0085A3E6 /* MOREPRICE_1.swift in Sources */,
+				41FDC7E925369DAE00C99290 /* HSAMOUNTALL_1.swift in Sources */,
 				41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */,
 				21DBB75423BEC7D000D73536 /* ADDVALUE_1.swift in Sources */,
 				21DBB6FA23BEC7D000D73536 /* OVERLAYCHART_1.swift in Sources */,

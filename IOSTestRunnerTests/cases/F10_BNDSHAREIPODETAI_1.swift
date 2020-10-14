@@ -27,7 +27,7 @@ class F10_BNDSHAREIPODETAI_1: BaseTestCase {
         }else if typeVal == "d"{
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
-        mRequest.type = MIPOType(rawValue: 1)!
+//        mRequest.type = MIPOType(rawValue: 1)!
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPOShareDetailResponse = resp as! MIPOShareDetailResponse
 //        XCTAssertNotNil(iPOShareDetailResponse.info)
@@ -114,7 +114,8 @@ class F10_BNDSHAREIPODETAI_1: BaseTestCase {
                         onTestResult(param: param, result: resultJSON)
                     }
                 
-           }
+            case .BJ:break
+            }
     
        }
    

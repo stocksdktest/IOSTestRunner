@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//新股（债）上市日期信息
+//新债上市日期信息
 import XCTest
 import os.log
 import SwiftyJSON
@@ -27,9 +27,9 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
         }
         
         mRequest.type = MIPOType(rawValue: 1)!
-        if param["marketType"].string != nil{
-            mRequest.marketType = param["marketType"].stringValue
-        }
+//        if param["marketType"].string != nil{
+//            mRequest.marketType = param["marketType"].stringValue
+//        }
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPODateResponse = resp as! MIPODateResponse
 //        XCTAssertNotNil(iPODateResponse.infos)
@@ -72,6 +72,7 @@ class F10_BONDTRADINGDAY_1: BaseTestCase {
             }
            print(resultJSON)
            onTestResult(param: param, result: resultJSON)
+        case .BJ: break
         }
     
    }

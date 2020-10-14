@@ -5,7 +5,7 @@
 //  Created by liao xiangsen on 2019/8/27.
 //  Copyright © 2019年 liao xiangsen. All rights reserved.
 //
-//新股（债）列表
+//新债列表
 import XCTest
 import os.log
 import SwiftyJSON
@@ -28,9 +28,9 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
             mRequest.sourceType = MF10DataSourceType(rawValue: 2)!
         }
         mRequest.type = MIPOType(rawValue: 1)!
-        if param["marketType"].string != nil{
-            mRequest.marketType = param["marketType"].stringValue
-        }
+//        if param["marketType"].string != nil{
+//            mRequest.marketType = param["marketType"].stringValue
+//        }
         let resp = try self.makeSyncRequest(request: mRequest)
         let iPOCalendarResponse = resp as! MIPOCalendarResponse
 //        XCTAssertNotNil(iPOCalendarResponse.info)
@@ -473,6 +473,7 @@ class F10_BNDNEWSHARESCAL_1: BaseTestCase {
             }
             print(resultJSON)
             onTestResult(param: param, result: resultJSON)
+        case .BJ:break
         }
         
     }

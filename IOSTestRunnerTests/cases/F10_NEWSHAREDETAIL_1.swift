@@ -122,7 +122,8 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
                         onTestResult(param: param, result: resultJSON)
                     }
                 
-           }
+            case .BJ:break
+            }
     
        }
    

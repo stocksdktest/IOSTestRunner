@@ -37,7 +37,9 @@ typedef NS_ENUM(NSUInteger, MIPOType) {
     /** 新股 */
     MIPOTypeStock,
     /** 新债 */
-    MIPOTypeBond
+    MIPOTypeBond,
+    /** 新三板 */
+    MIPOTypeBJ
 };
 
 #pragma mark 个股资讯
@@ -425,12 +427,6 @@ extern NSString *const MF10RequestTypeFundholdings10;
 @property (nonatomic, copy) NSString *code;
 @end
 
-/*! @brief 大事提醒请求类
- */
-@interface MBigEventNotificationRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
 
 /*! @brief 分红配送请求类
  */
@@ -446,27 +442,6 @@ extern NSString *const MF10RequestTypeFundholdings10;
 @property (nonatomic, copy) NSString *code;
 @end
 
-/*! @brief 机构预测请求类
- */
-@interface MForecastYearRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
-
-/*! @brief 机构评等请求类
- */
-@interface MForecastRatingRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
-
-/*! @brief 大宗交易请求类（已弃用）
- */
-__attribute__((deprecated("已弃用")))
-@interface MBlockTradeInfoRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
 
 #pragma mark 个股简况
 
@@ -477,24 +452,9 @@ __attribute__((deprecated("已弃用")))
 @property (nonatomic, copy) NSString *code;
 @end
 
-/*! @brief 主要业务请求类
- */
-@interface MCoreBusinessRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
-
 /*! @brief 管理层请求类
  */
 @interface MLeaderPersonInfoRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
-
-/*! @brief 发行上市请求类（已弃用）
- */
-__attribute__((deprecated("已弃用")))
-@interface MIPOInfoRequest : MDataRequest
 /** 股票代码 */
 @property (nonatomic, copy) NSString *code;
 @end
@@ -547,20 +507,6 @@ __attribute__((deprecated("已弃用")))
 
 #pragma mark 个股股东
 
-/*! @brief 控股股东请求类（已弃用）
- */
-__attribute__((deprecated("已弃用")))
-@interface MControlingShareHolderRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
-
-/*! @brief 股本结构请求类
- */
-@interface MStockShareInfoRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
 
 /*! @brief 股本变动请求类
  */
@@ -590,12 +536,6 @@ __attribute__((deprecated("已弃用")))
 @property (nonatomic, copy) NSString *code;
 @end
 
-/*! @brief 最新基金持股请求类
- */
-@interface MFundShareHolderInfoRequest : MDataRequest
-/** 股票代码 */
-@property (nonatomic, copy) NSString *code;
-@end
 
 /*! @brief 基金概况请求类
  */
@@ -768,7 +708,7 @@ __attribute__((deprecated("已弃用")))
 /** IPO类型，默认为新股：MIPOTypeStock */
 @property (nonatomic, assign)MIPOType type;
 /** 不传默认返回:沪深  传bj:新三板*/
-@property (nonatomic, copy) NSString *marketType;
+@property (nonatomic, copy) NSString *marketType __attribute__((deprecated("使用type参数")));
 @end
 
 /*! @brief 某日的所有新股(债)信息请求类
@@ -779,7 +719,7 @@ __attribute__((deprecated("已弃用")))
 /** IPO类型，默认为新股：MIPOTypeStock */
 @property (nonatomic, assign)MIPOType type;
 /** 不传默认返回:沪深  传bj:新三板*/
-@property (nonatomic, copy) NSString *marketType;
+@property (nonatomic, copy) NSString *marketType __attribute__((deprecated("使用type参数")));
 @end
 
 /*! @brief 新股(债)信息请求类
@@ -812,53 +752,6 @@ extern NSString *const MGradeFundTypeSplit;      // 合并、拆分
 extern NSString *const MGradeFundTypeConvert;    // 折算说明
 extern NSString *const MGradeFundTypeParentFund; // 母基金费用说明
 
-#pragma mark 新闻资讯
-
-/*! @brief 财经资讯列表请求类
- */
-@interface MNewsListRequest : MListRequest
-/** 数据来源 */
-@property (nonatomic , assign) MF10DataSourceType sourceType;
-/** 新闻类别, 参照下方定义 */
-@property (nonatomic, copy) NSString *newsType;
-/** 查询数据类别*/
-@property (nonatomic, assign) F10NewsRequestType type;
-/** 公告ID 第一次传nil*/
-@property (nonatomic, copy) NSString * newsID;
-
-/** 页次 */
-@property (nonatomic, assign) NSInteger pageIndex __attribute__((deprecated("使用newsID+type")));
-/** 刷新或是取得更多 */
-@property (nonatomic) MNewsListSendType newsListSendType __attribute__((deprecated));
-
-@end
-
-extern NSString *const MNewsTypeImportant;       // 要闻
-extern NSString *const MNewsTypeRoll;            // 滚动
-extern NSString *const MNewsTypeFinance;         // 财经
-extern NSString *const MNewsTypeIndustry;        // 行业
-extern NSString *const MNewsTypeStock;           // 股票
-extern NSString *const MNewsTypeFuture;          // 期货
-extern NSString *const MNewsTypeForeignExchange; // 外汇
-extern NSString *const MNewsTypeFund;            // 基金
-extern NSString *const MNewsTypeBond;            // 债券
-extern NSString *const MNewsTypeGold;            // 黄金
-extern NSString *const MNewsTypeOthers;          // 其他
-
-
-/*! @brief 财经资讯明细请求类
- */
-@interface MNewsRequest : MDataRequest
-/** 财经资讯序号 */
-@property (nonatomic, copy) NSString *newsID;
-@end
-
-/*! @brief 财经资讯图片请求类
- */
-@interface MNewsImgRequest : MDataRequest
-/** 财经资讯序号 */
-@property (nonatomic, copy) NSString *newsID;
-@end
 
 /*! @brief 基金净值(12个月)请求类
  */
@@ -932,13 +825,6 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) NSDictionary *record;
 @end
 
-/*! @brief 大事提醒应答类
- */
-@interface MBigEventNotificationResponse : MResponse
-/** 大事提醒列表 */
-@property (nonatomic, strong) NSArray *records;
-@end
-
 /*! @brief 分红配送应答类
  */
 @interface MBonusFinanceResponse : MResponse
@@ -953,33 +839,6 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) NSObject *record;
 @end
 
-/*! @brief 机构预测应答类
- */
-@interface MForecastYearResponse : MResponse
-/** 机构预测对象 */
-@property (nonatomic, strong) NSDictionary *record;
-@end
-
-/*! @brief 机构评等应答类
- */
-@interface MForecastRatingResponse : MResponse
-/** 评级 */
-@property (nonatomic, copy) NSString *ratingFlag;
-/** 评级敘述 */
-@property (nonatomic, copy) NSString *ratingDescription;
-/** 更新日期 */
-@property (nonatomic, copy) NSString *dateTitle;
-/** 机构评等列表 */
-@property (nonatomic, strong) NSArray *records;
-@end
-
-/*! @brief 发行上市应答类
- */
-@interface MIPOInfoResponse : MResponse
-/** 发行上市对象 */
-@property (nonatomic, strong) NSDictionary *record;
-@end
-
 #pragma mark 个股概况
 
 /*! @brief 基本情况应答类
@@ -989,13 +848,6 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) NSDictionary *record;
 @end
 
-/*! @brief 主要业务应答类
- */
-@interface MCoreBusinessResponse : MResponse
-/** 主要业务列表 */
-@property (nonatomic, strong) NSArray *records;
-@end
-
 /*! @brief 管理层应答类
  */
 @interface MLeaderPersonInfoResponse : MResponse
@@ -1003,28 +855,7 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) NSArray *records;
 @end
 
-/*! @brief 大宗交易应答类
- */
-@interface MBlockTradeInfoResponse : MResponse
-/** 大宗交易列表 */
-@property (nonatomic, strong) NSArray *records;
-@end
-
 #pragma mark 个股股东
-
-/*! @brief 控股股东应答类
- */
-@interface MControlingShareHolderResponse : MResponse
-/** 控股股东对象 */
-@property (nonatomic, strong) NSArray *records;
-@end
-
-/*! @brief 股本结构应答类
- */
-@interface MStockShareInfoResponse : MResponse
-/** 股本结构对象 */
-@property (nonatomic, strong) NSDictionary *record;
-@end
 
 /*! @brief 股本变动应答类
  */
@@ -1054,14 +885,6 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) NSArray *records;
 @end
 
-/*! @brief 最新基金持股应答类
- */
-@interface MFundShareHolderInfoResponse : MResponse
-@property (nonatomic, readonly) NSInteger count;
-@property (nonatomic, readonly) NSString *endDate;
-/** 基金持股列表 */
-@property (nonatomic, strong) NSArray *records;
-@end
 
 #pragma mark 个股财务
 
@@ -1210,29 +1033,6 @@ extern NSString *const MNewsTypeOthers;          // 其他
 @property (nonatomic, strong) MStockReportDetailItem *stockReportDetailItem;
 @end
 
-#pragma mark 新闻资讯
-
-/*! @brief 财经资讯列表应答类
- */
-@interface MNewsListResponse : MResponse
-/** 财经资讯列表 */
-@property (nonatomic, strong) NSArray *newsItems;
-/** 是否超过10笔资料更新 */
-@property (nonatomic) BOOL overpage;
-@end
-
-/*! @brief 财经资讯明细应答类
- */
-@interface MNewsResponse : MResponse
-/** 财经资讯明细对象 */
-@property (nonatomic, strong) MNewsDetailItem *newsDetailItem;
-@end
-
-@interface MNewsImgResponse : MResponse
-/** 财经资讯图片NSdata */
-@property (nonatomic, strong) NSData *imageData;
-@end
-
 #pragma mark 新股(债)资讯
 
 /*! @brief 新股(债)上市日期信息应答类
@@ -1298,4 +1098,245 @@ extern NSString *const MNewsTypeOthers;          // 其他
 /** 融资融券信息 */
 @property (nonatomic, strong) NSObject *JSONObject;
 @end
+
+
+
+
+
+
+
+
+#pragma mark Deprecated Request
+
+/*! @brief 控股股东请求类（已弃用）
+ */
+__attribute__((deprecated("已弃用")))
+@interface MControlingShareHolderRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 大宗交易请求类（已弃用）
+ */
+__attribute__((deprecated("已弃用")))
+@interface MBlockTradeInfoRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 大事提醒请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MBigEventNotificationRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 机构预测请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MForecastYearRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 机构评等请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MForecastRatingRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 主要业务请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MCoreBusinessRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 股本结构请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MStockShareInfoRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 最新基金持股请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MFundShareHolderInfoRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+/*! @brief 财经资讯列表请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MNewsListRequest : MListRequest
+/** 数据来源 */
+@property (nonatomic , assign) MF10DataSourceType sourceType;
+/** 新闻类别, 参照下方定义 */
+@property (nonatomic, copy) NSString *newsType;
+/** 查询数据类别*/
+@property (nonatomic, assign) F10NewsRequestType type;
+/** 公告ID 第一次传nil*/
+@property (nonatomic, copy) NSString * newsID;
+
+/** 页次 */
+@property (nonatomic, assign) NSInteger pageIndex __attribute__((deprecated("使用newsID+type")));
+/** 刷新或是取得更多 */
+@property (nonatomic) MNewsListSendType newsListSendType __attribute__((deprecated));
+
+@end
+
+extern NSString *const MNewsTypeImportant;       // 要闻
+extern NSString *const MNewsTypeRoll;            // 滚动
+extern NSString *const MNewsTypeFinance;         // 财经
+extern NSString *const MNewsTypeIndustry;        // 行业
+extern NSString *const MNewsTypeStock;           // 股票
+extern NSString *const MNewsTypeFuture;          // 期货
+extern NSString *const MNewsTypeForeignExchange; // 外汇
+extern NSString *const MNewsTypeFund;            // 基金
+extern NSString *const MNewsTypeBond;            // 债券
+extern NSString *const MNewsTypeGold;            // 黄金
+extern NSString *const MNewsTypeOthers;          // 其他
+
+
+/*! @brief 财经资讯明细请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MNewsRequest : MDataRequest
+/** 财经资讯序号 */
+@property (nonatomic, copy) NSString *newsID;
+@end
+
+/*! @brief 财经资讯图片请求类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MNewsImgRequest : MDataRequest
+/** 财经资讯序号 */
+@property (nonatomic, copy) NSString *newsID;
+@end
+
+/*! @brief 发行上市请求类（已弃用）
+ */
+__attribute__((deprecated("已弃用")))
+@interface MIPOInfoRequest : MDataRequest
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+
+
+#pragma mark Deprecated Response
+
+/*! @brief 控股股东应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MControlingShareHolderResponse : MResponse
+/** 控股股东对象 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 大宗交易应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MBlockTradeInfoResponse : MResponse
+/** 大宗交易列表 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 大事提醒应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MBigEventNotificationResponse : MResponse
+/** 大事提醒列表 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 机构预测应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MForecastYearResponse : MResponse
+/** 机构预测对象 */
+@property (nonatomic, strong) NSDictionary *record;
+@end
+
+/*! @brief 机构评等应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MForecastRatingResponse : MResponse
+/** 评级 */
+@property (nonatomic, copy) NSString *ratingFlag;
+/** 评级敘述 */
+@property (nonatomic, copy) NSString *ratingDescription;
+/** 更新日期 */
+@property (nonatomic, copy) NSString *dateTitle;
+/** 机构评等列表 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 主要业务应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MCoreBusinessResponse : MResponse
+/** 主要业务列表 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 股本结构应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MStockShareInfoResponse : MResponse
+/** 股本结构对象 */
+@property (nonatomic, strong) NSDictionary *record;
+@end
+
+/*! @brief 最新基金持股应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MFundShareHolderInfoResponse : MResponse
+@property (nonatomic, readonly) NSInteger count;
+@property (nonatomic, readonly) NSString *endDate;
+/** 基金持股列表 */
+@property (nonatomic, strong) NSArray *records;
+@end
+
+/*! @brief 财经资讯列表应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MNewsListResponse : MResponse
+/** 财经资讯列表 */
+@property (nonatomic, strong) NSArray *newsItems;
+/** 是否超过10笔资料更新 */
+@property (nonatomic) BOOL overpage;
+@end
+
+/*! @brief 财经资讯明细应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MNewsResponse : MResponse
+/** 财经资讯明细对象 */
+@property (nonatomic, strong) MNewsDetailItem *newsDetailItem;
+@end
+
+__attribute__((deprecated("已弃用")))
+@interface MNewsImgResponse : MResponse
+/** 财经资讯图片NSdata */
+@property (nonatomic, strong) NSData *imageData;
+@end
+
+
+/*! @brief 发行上市应答类
+ */
+__attribute__((deprecated("已弃用")))
+@interface MIPOInfoResponse : MResponse
+/** 发行上市对象 */
+@property (nonatomic, strong) NSDictionary *record;
+@end
+
+
 
