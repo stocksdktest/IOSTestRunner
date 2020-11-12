@@ -15,7 +15,8 @@ class L2TICKDETAILV2_2: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.L2TICKDETAILV2_2
     }
-    
+    var i = 1
+    var str = ""
     func testL2TimeTickDetail() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = ML2TimeTickDetailRequest()
@@ -50,13 +51,20 @@ class L2TICKDETAILV2_2: BaseTestCase {
             default:
                 itemJSON["type"] = "-"
             }
-            resultJSON["\(item.time!)"] = itemJSON
+            if(str == "\(item.time!)"){
+                resultJSON["\(item.time!)\(i)"] = itemJSON
+                i=i+1
+            }else{
+                resultJSON["\(item.time!)"] = itemJSON
+                i = 1
+            }
+            str = "\(item.time!)"
             
         }
         
         
         
-        print(resultJSON)
+//        print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }
     

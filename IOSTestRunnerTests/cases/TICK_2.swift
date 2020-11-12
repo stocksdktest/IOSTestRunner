@@ -15,7 +15,8 @@ class TICK_2: BaseTestCase {
     override var stockTestCaseName: StockTestCaseName {
         return StockTestCaseName.TICK_2
     }
-    
+    var i = 0
+    var str = ""
     func testTimeTick() throws{
         let param = self.testCaseRoundConfig.getParam()
         let mRequest = MTimeTickRequest()
@@ -48,10 +49,16 @@ class TICK_2: BaseTestCase {
             default:
                 itemJSON["type"] = "-"
             }
-            resultJSON["\(item.time!)"] = itemJSON
+            if(str == "\(item.time!)"){
+                resultJSON["\(item.time!)\(i)"] = itemJSON
+                i=i+1
+            }else{
+                resultJSON["\(item.time!)"] = itemJSON
+                i = 1
+            }
             
         }
-        print(resultJSON)
+//        print(resultJSON)
         onTestResult(param: param, result: resultJSON)
     }
     
