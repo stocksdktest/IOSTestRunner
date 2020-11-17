@@ -68,7 +68,10 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "capplyShare": list["CAPPLYSHARE"]!,
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
-                                    "peaIssue": list["PEAISSUE"]!
+                                    "peaIssue": list["PEAISSUE"]!,
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                     
                                 ]
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
@@ -97,7 +100,10 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
-                                    "listingDate": list["LISTINGDATE"]!
+                                    "listingDate": list["LISTINGDATE"]!,
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                     
                                 ]
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
@@ -127,7 +133,10 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
                                     "listingDate": list["LISTINGDATE"]!,
-                                    "peaIssue": list["PEAISSUE"]!
+                                    "peaIssue": list["PEAISSUE"]!,
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
                                 
@@ -155,7 +164,10 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
                                     "allotrateon": list["ALLOTRATEON"]!,
-                                    "peaIssue": list["PEAISSUE"]!
+                                    "peaIssue": list["PEAISSUE"]!,
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
                                 
@@ -183,7 +195,10 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "capplyPrice": list["CAPPLYPRICE"]!,
                                     "applyCode": list["APPLYCODE"]!,
                                     "peaIssue": list["PEAISSUE"]!,
-                                    "bookStartDateOn": list["BOOKSTARTDATEON"]!
+                                    "bookStartDateOn": list["BOOKSTARTDATEON"]!,
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 
                                 var itemID: String = (list["APPLYCODE"]as! String).replacingOccurrences(of: ".", with: "_")
@@ -234,6 +249,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "vote":list["ISDIFFVOTE"] ?? "-",
                                     "rie":list["ISVIEFRAME"] ?? "-",
                                     "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 do {
                                     try jsonarr2.merge(with: update1)
@@ -282,6 +300,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "vote":list["ISDIFFVOTE"] ?? "-",
                                     "rie":list["ISVIEFRAME"] ?? "-",
                                     "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 do {
                                     try jsonarr2.merge(with: update1)
@@ -331,6 +352,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "vote":list["ISDIFFVOTE"] ?? "-",
                                     "rie":list["ISVIEFRAME"] ?? "-",
                                     "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 do {
                                     try jsonarr2.merge(with: update1)
@@ -379,6 +403,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "vote":list["ISDIFFVOTE"] ?? "-",
                                     "rie":list["ISVIEFRAME"] ?? "-",
                                     "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 do {
                                     try jsonarr2.merge(with: update1)
@@ -427,6 +454,9 @@ class F10_NEWSHARELIST_1: BaseTestCase {
                                     "vote":list["ISDIFFVOTE"] ?? "-",
                                     "rie":list["ISVIEFRAME"] ?? "-",
                                     "issuanceSystem":list["ISSSYSTEM"] ?? "-",
+                                    "setype":list["SETYPE"]!,
+                                    "stockcbx":list["STOCKCBX"]!,
+                                    "cdrcby":list["CDRCBY"]!
                                 ]
                                 do {
                                     try jsonarr2.merge(with: update1)

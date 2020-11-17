@@ -141,6 +141,7 @@
 		41250548245FAB6E003F7B33 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C0CAE82418ECF10008E015 /* libc++.tbd */; };
 		413E22C1241B6AA20030E020 /* OPTIONEXPIRE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */; };
 		416AD3B724FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */; };
+		418F5B1F256362C4008838C5 /* MOREPRICE_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F5B1E256362C4008838C5 /* MOREPRICE_3.swift */; };
 		41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */; };
 		41CEFB4B24625A62000BAD82 /* TONGLINETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */; };
 		41CEFB4D24626C3C000BAD82 /* ZTSORTINGTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */; };
@@ -344,6 +345,7 @@
 		41250546245FAB65003F7B33 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../../../../Downloads/SDK/IOS_北京水晶森林数码科技有限公司_全真v3.4.0.001/libMApi.a"; sourceTree = "<group>"; };
 		413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTIONEXPIRE_2.swift; sourceTree = "<group>"; };
 		416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONVERTIBLEDEBTLIST_1.swift; sourceTree = "<group>"; };
+		418F5B1E256362C4008838C5 /* MOREPRICE_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOREPRICE_3.swift; sourceTree = "<group>"; };
 		41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10V2CLSTEST_1.swift; sourceTree = "<group>"; };
 		41C0CAE82418ECF10008E015 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		41CEFB4A24625A62000BAD82 /* TONGLINETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TONGLINETEST_1.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				21DBB6B423BEC7CC00D73536 /* MARKETUPDOWN_1.swift */,
 				971816D123BDC51C0085A3E6 /* MOREPRICE_1.swift */,
 				971816D623BDC51C0085A3E6 /* MOREPRICE_2.swift */,
+				418F5B1E256362C4008838C5 /* MOREPRICE_3.swift */,
 				971816DE23BDC51C0085A3E6 /* MOREVOLUMETEST_1.swift */,
 				21DBB6A523BEC7CA00D73536 /* OFFERQUOTE_1.swift */,
 				21DBB66023BEC7C300D73536 /* OFFERQUOTE_2.swift */,
@@ -1161,6 +1164,7 @@
 				21DBB70C23BEC7D000D73536 /* F10_STOCKNEWS_1.swift in Sources */,
 				21DBB74B23BEC7D000D73536 /* DRLINKQUOTE_1.swift in Sources */,
 				21DBB72523BEC7D000D73536 /* OHLCV3_4.swift in Sources */,
+				418F5B1F256362C4008838C5 /* MOREPRICE_3.swift in Sources */,
 				21DBB6F623BEC7D000D73536 /* F10_FUNDVALUE_1.swift in Sources */,
 				A1F7BF432313D4D800687389 /* BaseTestCase.swift in Sources */,
 				21DBB6DF23BEC7D000D73536 /* HOLIDAY_1.swift in Sources */,

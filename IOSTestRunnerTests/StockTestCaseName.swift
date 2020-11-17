@@ -71,6 +71,7 @@ enum StockTestCaseName: String, CaseIterable {
     case ORDERQUANTITY_2 = "ORDERQUANTITY_2" 
     case MOREPRICE_1 = "MOREPRICE_1"
     case MOREPRICE_2 = "MOREPRICE_2"
+    case MOREPRICE_3 = "MOREPRICE_3"   
     case EventTestCase = "EventTestCase"
     case OPTIONTQUOTE_1 = "OPTIONTQUOTE_1"
     case OPTIONQUOTE_1 = "OPTIONQUOTE_1"

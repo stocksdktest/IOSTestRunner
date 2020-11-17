@@ -35,18 +35,18 @@ class RunnerSetup {
     public let resultCollector: TestResultCollector
     
     private init() throws {
-//        var infoDict: [String: Any]
-//        if Bundle.main.infoDictionary == nil {
-//            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
-//        } else {
-//            infoDict = Bundle.main.infoDictionary!
-//            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
-//                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
-//                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
-//            }
-//        }
-//        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
-        let cfgStr = "CgRUSi0xEipSVU4tQS02NDVjY2RkYy01ZmJjLTQyOGYtOGFjZi04YjcwZmZkMzk3OGEaqQYKLEo2SVBsazVBRVUrMi9ZaTU5cmZZbnNGUXRkdE9nQW85R0F6eXN4OGNpT009EixWVlcwRm5vN0JFWnQxYS95NktMTTM2dWo5cWNqdzdDQUhEd1daS0RsV0RzPRokCgNoazESHQobaHR0cDovLzExNC44MC4xNTUuMTMzOjIyMDE2GiUKBGhrYTESHQobaHR0cDovLzExNC44MC4xNTUuMTMzOjIyMDE2GiMKAnBiEh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNhojCgJiahIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYaJAoDaGs1Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNhojCgJjZhIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYaPwoCc3oSOQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDE2Chp0Y3A6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNxolCgRoa2F6Eh0KG2h0dHA6Ly8xMTQuODAuMTU1LjEzMzoyMjAxNhokCgRzaGwyEhwKGmh0dHA6Ly8xMTQuODAuMTU1LjYyOjIyMDE2GiQKBHN6bDISHAoaaHR0cDovLzExNC44MC4xNTUuNDc6MjIwMTYaJQoEaGtkMRIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzk6MjIwMTYaJgoEaGsxMBIeChxodHRwOi8vMTIzLjEyNS4xMDguMjQ4OjIyMDE2Gj8KAnNoEjkKG2h0dHA6Ly8xMTQuODAuMTU1LjEzNDoyMjAxNgoadGNwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTcaJQoEaGtkehIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzk6MjIwMTYaIwoCZ2YSHQobaHR0cDovLzExNC44MC4xNTUuMTM0OjIyMDEzGiIKAm5mEhwKGmh0dHA6Ly8xMTQuODAuMTU1LjU4OjIyMDEzGiQKA2NmZhIdChtodHRwOi8vMTE0LjgwLjE1NS4xMzQ6MjIwMTYiDwoBMkoEaGsxMEoEaGthMSJKCgZUSUNLXzIQARgDIjx7IkNPREUiOiAiNjg4MDY1LnNoIiwgInBhZ2UiOiAiMCwxMDAsLTEiLCAiU1VCVFlQRSI6ICIxMDA2In0qcQodbW9uZ29kYjovLzIyMS4yMjguNjYuODM6MzA2MTcSDHN0b2NrU2RrVGVzdBoLdGVzdF9yZXN1bHQiNWh0dHA6Ly9tb25nby1weXRob24tZXZlLnNkay10ZXN0LnN2Yy5jbHVzdGVyLmxvY2FsOjgw"
+        var infoDict: [String: Any]
+        if Bundle.main.infoDictionary == nil {
+            throw RunnerSetupError.InvalidConfigInfo("infoDictionary is nil")
+        } else {
+            infoDict = Bundle.main.infoDictionary!
+            if infoDict[RunnerSetup.RUNNER_CONFIG_ENV] == nil
+                || !(infoDict[RunnerSetup.RUNNER_CONFIG_ENV] is String) {
+                throw RunnerSetupError.InvalidConfigInfo("runner_config value is nil or invalid")
+            }
+        }
+        let cfgStr = infoDict[RunnerSetup.RUNNER_CONFIG_ENV]! as! String
+//        let cfgStr = ""
         do {
             runnerConfig = try StockTesting_RunnerConfig(serializedData: Data(base64Encoded: cfgStr)!)
         } catch {

@@ -72,11 +72,14 @@ class F10_NEWSHAREDETAIL_1: BaseTestCase {
                             "keyCode":item["KEYCODE"]!
                         ]
                         let update3: JSON = [
-                            "type":item["TYPE"] ?? "-",
-                            "profit":item["ISPROFIT"] ?? "-",
-                            "vote":item["ISDIFFVOTE"] ?? "-",
-                            "rie":item["ISVIEFRAME"] ?? "-",
-                            "issuanceSystem":item["ISSSYSTEM"] ?? "-",
+                            "type":item["TYPE"] ?? "isNull",
+                            "profit":item["ISPROFIT"] ?? "isNull",
+                            "vote":item["ISDIFFVOTE"] ?? "isNull",
+                            "rie":item["ISVIEFRAME"] ?? "isNull",
+                            "issuanceSystem":item["ISSSYSTEM"] ?? "isNull",
+                            "setype":item["SETYPE"] ?? "isNull",
+                            "stockcbx":item["STOCKCBX"] ?? "isNull",
+                            "cdrcby":item["CDRCBY"] ?? "isNull"
                         ]
                         do {
                             try resultJSON.merge(with: update1)
