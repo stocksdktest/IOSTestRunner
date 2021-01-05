@@ -10,7 +10,7 @@
 #if __has_extension(objc_generics)
 @class MTickItem, MTimeTickItem, MTimeTickDetailItem, MPriceVolumeItem, MStockItem, MOHLCItem, MAddValueItem,
 MOptionItem, MSectionRankingItem, MSectionSortingItem,
-MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoItem, MSubnewStockRankingItem,MSubnewBondRankingItem, MFQItem,MAHQuoteItem,MTradeItem,MTradeDateItem,MLinkItem,MDRQuoteItem,MUKItem,MBidItem,MPlateIndexItem,MUpdownsItem,MOfferItem,MCirculatingShareItem,MExpireMonthItem,MTongItem,MZTSortingItem,MKZZQuoteItem,MHKTQuotaItem;
+MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoItem, MSubnewStockRankingItem,MSubnewBondRankingItem, MFQItem,MAHQuoteItem,MTradeItem,MTradeDateItem,MLinkItem,MDRQuoteItem,MUKItem,MBidItem,MPlateIndexItem,MUpdownsItem,MOfferItem,MCirculatingShareItem,MExpireMonthItem,MTongItem,MZTSortingItem,MKZZQuoteItem,MHKTQuotaItem,MThousandsData,MThousandsItem,MABLinkItem;
 
 
 
@@ -45,6 +45,7 @@ MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoI
 #define MAPI_OBJ_HKT_TYPE             <MTongItem *>
 #define MAPI_OBJ_ZTSORTING_TYPE    <MZTSortingItem *>
 #define MAPI_OBJ_KZZQUOTE_TYPE    <MKZZQuoteItem *>
+#define MAPI_OBJ_ABQUOTE_TYPE    <MABLinkItem *>
 #else
 #define MAPI_OBJ_TICK_TYPE
 #define MAPI_OBJ_TIME_TICK_TYPE
@@ -76,7 +77,8 @@ MSearchResultItem, MBrokerSeatItem, MHKOddInfoItem, MStaticDataItem, MBoardInfoI
 #define MAPI_OBJ_CIRCULATING_SHARE_TYPE
 #define MAPI_OBJ_HKT_TYPE
 #define MAPI_OBJ_ZTSORTING_TYPE
-#define MAPI_OBJ_KZZQUOTE_TYPE  
+#define MAPI_OBJ_KZZQUOTE_TYPE
+#define MAPI_OBJ_ABQUOTE_TYPE
 #endif
 #endif
 
@@ -402,6 +404,13 @@ typedef NS_ENUM(NSInteger,MKZZQuoteListField) {
     MKZZQuoteListFieldPremiumRate = 14,
 };
 
+typedef NS_ENUM(NSInteger,MABQuoteListField) {
+    MABQuoteListFieldChangeRateA = 4,
+    MABQuoteListFieldChangeRateB = 10,
+    MABQuoteListFieldPremiumRateAB = 12,
+    MABQuoteListFieldPremiumRateBA = 13,
+};
+
 typedef NS_ENUM(NSInteger, MSubnewStockRankingField) {
     MSubnewStockRankingFieldCode = 0,
     MSubnewStockRankingFieldIPOPrice = 2,
@@ -594,6 +603,7 @@ typedef  NS_ENUM(NSInteger, MApiTcpSubscribeType) {
     MApiTcpSubscribeTypeYearK   = 1 << 14,
     MApiTcpSubscribeTypeYearFK   = 1 << 15,
     MApiTcpSubscribeTypeYearBK   = 1 << 16,
+    MApiTcpSubscribeTypeThousands   = 1 << 17,
     MApiTcpSubscribeTypeAll     = 0B1111111111111111111111111111111
 };
 
@@ -780,7 +790,7 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 
 @end
 
-#pragma mark 港、债券、沪伦通 联动
+#pragma mark 港、债券、沪伦通、AB股联动 联动
 
 /*! @brief AH联动 根据个股代码查对应港股行情 反之亦可
  */
@@ -797,10 +807,20 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 @property (nonatomic, copy) NSString *code;
 
 @end
+
 /*! @brief 沪伦通联动 根据个股代码查对应港股行情 反之亦可
  */
 @interface MDRLinkRequest : MRequest
 /** 股票代码(只可单笔查询), 如 600006.sh */
+@property (nonatomic, copy) NSString *code;
+
+@end
+
+
+/*! @brief AB股联动代码查询
+ */
+@interface MABQuoteRequet : MRequest
+/** 股票代码(只可单笔查询), 如 600612.sh */
 @property (nonatomic, copy) NSString *code;
 
 @end
@@ -825,6 +845,7 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 @end
 
 /*! @brief 历史分时数据
+ * 支持沪深港，不支持当日
  */
 @interface MHistoryChartRequest : MRequest
 /** 股票代码 */
@@ -891,7 +912,8 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 @end
 
 /*! @brief 历史行情(K线数据)请求类
- *  不支持 新三板、港股
+ *  不支持 新三板
+ *  港股不支持复权
  */
 @interface MOHLCRequestV2 : MRequest
 /** 股票代码 */
@@ -931,6 +953,24 @@ typedef NS_ENUM(NSInteger, MOfferQuoteListField) {
 @property (nonatomic, copy) NSString *code;
 /** 次类别 */
 @property (nonatomic, copy) NSString *subtype;
+
+/*! 沪深港新三板股票 新增param参数，此参数效果等同于index,pageSize,type参数；当param有值时，优先使用param的值，此时index,pageSize,type三个参数的值无效
+ 
+ 说明:param: num1,num2 和 num1,num2,num3 两种形式
+ 
+ 1,无num3的情况下  num1表示页码，num2表示每页条数，如0,20 表示第一页 每页二十条，返回20条
+
+ 2,有num3且当num3=-1时 ,num1为任意数字(建议给0)，num2为条数,如 0,20,-1 表示获取最新的20条
+
+ 3,有num3且当num3=0时,num1为下标，num2为条数，如 2.22373434E8,20,0，表示获取分笔下标为2.22373434E8之后的20条
+ 
+ 4,有num3且当num3=1时,num1为下标，num2为条数，如 2.22373434E8,20,1，表示获取分笔下标为2.22373434E8之前的20条
+
+ 5,有num3且当num3=2时,num1为时间，num2为条数，如 931,20,2，表示获取9:31分以后的20条（注意 9点之前的时间不带0，为 930，不能为 0930）
+
+ 关于上述的下标num1，为response中的startIndex和endIndex
+*/
+@property (nonatomic, copy) NSString *param;
 /** 开始索引 */
 @property (nonatomic, copy) NSString *index;
 /** 笔数 默认20笔*/
@@ -1098,6 +1138,17 @@ extern NSString * const MCategoryCFFSortingFieldUnderlyingSymbol;      //标的�
 @property (nonatomic, assign) NSInteger pageSize;
 /** 排序栏位,默认涨幅排序：MKZZQuoteListField */
 @property (nonatomic, assign) MKZZQuoteListField field;
+/** 排列顺序,默认NO */
+@property (nonatomic, assign) BOOL ascending;
+@end
+
+/*! @brief 获取AB行情列表，支持排序
+ */
+@interface MABQuoteListRequest : MListRequest
+/** 笔数,默认20 */
+@property (nonatomic, assign) NSInteger pageSize;
+/** 排序栏位,默认涨幅排序：MABQuoteListFieldChangeRateA */
+@property (nonatomic, assign) MABQuoteListField field;
 /** 排列顺序,默认NO */
 @property (nonatomic, assign) BOOL ascending;
 @end
@@ -1522,6 +1573,27 @@ __attribute__((deprecated("已弃用, 使用MHSAmountAllRequest")))
 @property (nonatomic, strong) NSArray MAPI_OBJ_LINK_TYPE *items;
 @end
 
+/*! @brief AB股联动应答类
+ */
+@interface MABQuoteResponse : MResponse
+/** 代码 */
+@property (nonatomic, copy) NSString *code;
+/** 名称 */
+@property (nonatomic, copy) NSString *name;
+/** 次类别 */
+@property (nonatomic, copy) NSString *subtype;
+/** 最新价 */
+@property (nonatomic, copy) NSString *lastPrice;
+/** 涨跌 */
+@property (nonatomic, copy) NSString *change;
+/** 涨幅 */
+@property (nonatomic, copy) NSString *changeRate;
+/** AB溢价率 */
+@property (nonatomic, copy) NSString *premiumRateAB;
+/** BA溢价率 */
+@property (nonatomic, copy) NSString *premiumRateBA;
+@end
+
 /*! @brief 沪伦通联动应答类
  */
 @interface MDRLinkResponse : MResponse
@@ -1562,6 +1634,13 @@ __attribute__((deprecated("已弃用, 使用MHSAmountAllRequest")))
 @interface MKZZQuoteListResponse : MResponse
 /** 可转债列表 */
 @property (nonatomic, strong) NSArray MAPI_OBJ_KZZQUOTE_TYPE *items;
+@end
+
+/*! @brief AB行情列表应答类
+ */
+@interface MABQuoteListResponse : MResponse
+/** AB列表 */
+@property (nonatomic, strong) NSArray MAPI_OBJ_ABQUOTE_TYPE *items;
 @end
 
 /*! @brief 指数成分股及沪深市场涨跌平家数应答类
@@ -2509,6 +2588,8 @@ __attribute__((deprecated("已弃用, 使用MHSAmountAllRequest")))
 @property (nonatomic, assign) MFlag CASFlag;
 /** 是否参与VCM */
 @property (nonatomic, assign) MFlag VCMFlag;
+/** 是否参与pos */
+@property (nonatomic, assign) MFlag POSFlag;
 /** 沪股通标识 */
 @property (nonatomic, assign) MFlag HGFlag;
 /** 深股通标识 */
@@ -4089,6 +4170,40 @@ __attribute__((deprecated("已弃用, 使用MHSAmountAllRequest")))
 
 @end
 
+/*! AB股联动行情
+ */
+@interface MABLinkItem : MBaseItem
+/** A股代码 */
+@property (nonatomic, copy) NSString *codeA;
+/** A股名称 */
+@property (nonatomic, copy) NSString *nameA;
+/** A股次类别 */
+@property (nonatomic, copy) NSString *subtypeA;
+/** A股最新价 */
+@property (nonatomic, copy) NSString *lastPriceA;
+/** A股涨幅 */
+@property (nonatomic, copy) NSString *changeRateA;
+/** B股代码 */
+@property (nonatomic, copy) NSString *codeB;
+/** B股名称 */
+@property (nonatomic, copy) NSString *nameB;
+/** B股次类别 */
+@property (nonatomic, copy) NSString *subtypeB;
+/** B股最新价 */
+@property (nonatomic, copy) NSString *lastPriceB;
+/** B股涨幅 */
+@property (nonatomic, copy) NSString *changeRateB;
+/** AB溢价率 */
+@property (nonatomic, copy) NSString *premiumRateAB;
+/** BA溢价率 */
+@property (nonatomic, copy) NSString *premiumRateBA;
+/** 涨跌 */
+@property (nonatomic, copy) NSString *changeB;
+/** 涨跌 */
+@property (nonatomic, copy) NSString *changeA;
+@end
+
+
 /*! 要约收购行情
  */
 @interface MOfferItem : MBaseItem
@@ -4164,6 +4279,27 @@ __attribute__((deprecated("已弃用, 使用MHSAmountAllRequest")))
 @property (nonatomic, copy) NSString *sgtTotalSellAmountN;
 /** 北向深股通买卖总成交额. */
 @property (nonatomic, copy) NSString *sgtBuySellTotalAmountN;
+@end
+
+/*! 千档行情数据
+ */
+@interface MThousandsData : MBaseItem
+/** 千档行情（买）*/
+@property (nonatomic, strong) NSMutableArray *buyItems;
+/** 千档行情（卖）*/
+@property (nonatomic, strong) NSMutableArray *sellItems;
+/** 股票代码 */
+@property (nonatomic, copy) NSString *code;
+@end
+
+@interface MThousandsItem : MBaseItem
+/** 委托价格 */
+@property (nonatomic, copy) NSString *price;
+/** 委托量 */
+@property (nonatomic, copy) NSString *volume;
+/** 笔数(委托单子数量) */
+@property (nonatomic, assign) NSUInteger count;
+
 @end
 
 

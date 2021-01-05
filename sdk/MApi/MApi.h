@@ -57,6 +57,9 @@ extern NSString * const MApiTcpDidReceivedDataKKey;
 extern NSString * const MApiTcpDidReceivedDataFQKey;
 /// 推送股本数据键值，值为NSArray
 extern NSString * const MApiTcpDidReceivedDataCSKey;
+/// 推送千档行情数据键值，值为MThousandsData
+extern NSString * const MApiTcpDidReceivedDataThousandsKey;
+
 
 
 /// 上海, ref: @"sh"
@@ -85,6 +88,8 @@ extern NSString * const MApiMarketFE;
 extern NSString * const MApiMarketUK;
 /// 板块指数, ref: @"bk"
 extern NSString * const MApiMarketBK;
+/// 中证指数, ref: @"csi"
+extern NSString * const MApiMarketCSI;
 
 typedef void (^MApiCompletionHandler)(MResponse *resp);
 typedef void (^MApTimeoutHandler)(MRequest *request, BOOL *reload);
@@ -211,7 +216,7 @@ typedef void (^MApiTcpReceiveBlock)(NSString *code, MApiTcpUpdateBlock update);
 /**
  *  取得全市场股票代码表
  *
- * @param markets  市场别 sh,sz,hk,hh,hz,bj,dce,czce,shfe,ine,fe,gi,gb,cff,bk 分别是沪股，深股，港股，沪港通，深港通，新三板市场,大商所，郑商所，上期所，上期所原油，外汇，全球指数(延时),全球指数(收盘),中金所,板块市场
+ * @param markets  市场别 sh,sz,hk,hh,hz,bj,dce,czce,shfe,ine,fe,gi,gb,cff,bk,csi 分别是沪股，深股，港股，沪港通，深港通，新三板市场,大商所，郑商所，上期所，上期所原油，外汇，全球指数(延时),全球指数(收盘),中金所,板块市场,上证指数
  * @param handler 下载完毕的回调
  */
 + (MStockTableRequest *)downloadStockTableWithMarkets:(NSArray *)markets completionHandler:(void (^)(NSError *error))handler;
