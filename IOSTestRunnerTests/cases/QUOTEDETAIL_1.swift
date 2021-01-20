@@ -1220,6 +1220,7 @@ class QUOTEDETAIL_1: BaseTestCase {
                 "mf": item.mfFlag.rawValue,
                 "rslf": item.rslfFlag.rawValue,
                 "mmf": item.mmfFlag.rawValue,
+                "POSFlag":item.posFlag.rawValue,
             ]
             if update15["mf"] == 0{
                 update15["mf"] = "N"

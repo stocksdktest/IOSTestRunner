@@ -199,8 +199,10 @@ class F10V2TEST_1: BaseTestCase {
                                         "PRETAXCASHMAXDVCNY":dic2["PRETAXCASHMAXDVCNY"]!,
                                         "EQURECORDDATE":dic2["EQURECORDDATE"]!,
                                         "XDRDATE":dic2["XDRDATE"]!,
+                                        "CASHDVARRBEGDATE":dic2["CASHDVARRBEGDATE"] ?? "-",
+                                        "CASHDVARRENDDATE":dic2["CASHDVARRENDDATE"] ?? "-",
                                     ]
-                                    resultJSON["\(dic2["DATETYPETIME"]!)"] = jsonarr2
+                                    resultJSON["\(dic2["DATETYPENAME"]!)"] = jsonarr2
                                 }
                             }
                     }

@@ -312,7 +312,9 @@ class F10V2TEST_3: BaseTestCase {
                                             "EQURECORDDATE":dic2["EQURECORDDATE"]!,
                                             "XDRDATE":dic2["XDRDATE"]!,
                                             "MOM": dic2["MOM"]!,
-                                            "ENDDATE":dic2["ENDDATE"]!
+                                            "ENDDATE":dic2["ENDDATE"]!,
+                                            "CASHDVARRBEGDATE":dic2["CASHDVARRBEGDATE"] ?? "-",
+                                            "CASHDVARRENDDATE":dic2["CASHDVARRENDDATE"] ?? "-",
                                         ]
                                         resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
                                     }

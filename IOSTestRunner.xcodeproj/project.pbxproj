@@ -140,6 +140,8 @@
 		41250547245FAB65003F7B33 /* libMApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41250546245FAB65003F7B33 /* libMApi.a */; };
 		41250548245FAB6E003F7B33 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C0CAE82418ECF10008E015 /* libc++.tbd */; };
 		413E22C1241B6AA20030E020 /* OPTIONEXPIRE_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */; };
+		4163422925B7E1CD0014A989 /* ABQUOTELISTTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163422825B7E1CD0014A989 /* ABQUOTELISTTEST_1.swift */; };
+		4163422B25B7E1DD0014A989 /* ABQUOTETEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163422A25B7E1DD0014A989 /* ABQUOTETEST_1.swift */; };
 		416AD3B724FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */; };
 		418F5B1F256362C4008838C5 /* MOREPRICE_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F5B1E256362C4008838C5 /* MOREPRICE_3.swift */; };
 		41BCAC9324FCA39700FFF846 /* F10V2CLSTEST_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */; };
@@ -344,6 +346,8 @@
 		3C750F670F572446A1C2D3D0 /* Pods_IOSTestRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSTestRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41250546245FAB65003F7B33 /* libMApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMApi.a; path = "../../../../../Downloads/SDK/IOS_北京水晶森林数码科技有限公司_全真v3.4.0.001/libMApi.a"; sourceTree = "<group>"; };
 		413E22C0241B6AA20030E020 /* OPTIONEXPIRE_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTIONEXPIRE_2.swift; sourceTree = "<group>"; };
+		4163422825B7E1CD0014A989 /* ABQUOTELISTTEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABQUOTELISTTEST_1.swift; sourceTree = "<group>"; };
+		4163422A25B7E1DD0014A989 /* ABQUOTETEST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABQUOTETEST_1.swift; sourceTree = "<group>"; };
 		416AD3B624FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONVERTIBLEDEBTLIST_1.swift; sourceTree = "<group>"; };
 		418F5B1E256362C4008838C5 /* MOREPRICE_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOREPRICE_3.swift; sourceTree = "<group>"; };
 		41BCAC9224FCA39700FFF846 /* F10V2CLSTEST_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F10V2CLSTEST_1.swift; sourceTree = "<group>"; };
@@ -630,6 +634,8 @@
 				21DBB6AC23BEC7CB00D73536 /* UKQUOTE_1.swift */,
 				21DBB66423BEC7C300D73536 /* UPDOWNS_1.swift */,
 				41CEFB4C24626C3C000BAD82 /* ZTSORTINGTEST_1.swift */,
+				4163422825B7E1CD0014A989 /* ABQUOTELISTTEST_1.swift */,
+				4163422A25B7E1DD0014A989 /* ABQUOTETEST_1.swift */,
 			);
 			path = cases;
 			sourceTree = "<group>";
@@ -1130,6 +1136,7 @@
 				21DBB6E623BEC7D000D73536 /* F10_FNDDIVIDEEND_1.swift in Sources */,
 				21DBB70D23BEC7D000D73536 /* TRADEQUOTE_1.swift in Sources */,
 				21DBB6E223BEC7D000D73536 /* F10_BNDINTERESTPAY_1.swift in Sources */,
+				4163422925B7E1CD0014A989 /* ABQUOTELISTTEST_1.swift in Sources */,
 				21DBB72623BEC7D000D73536 /* SEARTEST_3.swift in Sources */,
 				416AD3B724FE18C200174F35 /* CONVERTIBLEDEBTLIST_1.swift in Sources */,
 				21DBB71323BEC7D000D73536 /* F10_SHARESTRUCTURE_1.swift in Sources */,
@@ -1159,6 +1166,7 @@
 				21DBB73A23BEC7D000D73536 /* F10_COMPANYINFO_1.swift in Sources */,
 				21DBB6EC23BEC7D000D73536 /* TRADEDATE_1.swift in Sources */,
 				21DBB70A23BEC7D000D73536 /* CHARTV2TEST_6.swift in Sources */,
+				4163422B25B7E1DD0014A989 /* ABQUOTETEST_1.swift in Sources */,
 				21DBB71723BEC7D000D73536 /* CHARTV2TEST_2.swift in Sources */,
 				21DBB73823BEC7D000D73536 /* F10_NEWINDEX_1.swift in Sources */,
 				21DBB70C23BEC7D000D73536 /* F10_STOCKNEWS_1.swift in Sources */,

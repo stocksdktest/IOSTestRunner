@@ -193,6 +193,8 @@ enum StockTestCaseName: String, CaseIterable {
     case F10V2CLSTEST_1 = "F10V2CLSTEST_1"
     case CONVERTIBLEDEBTLIST_1 = "CONVERTIBLEDEBTLIST_1"
     case HSAMOUNTALL_1 = "HSAMOUNTALL_1"
+    case ABQUOTELISTTEST_1 = "ABQUOTELISTTEST_1"
+    case ABQUOTETEST_1 = "ABQUOTETEST_1"
     
     
     static func fromString(_ str: String) -> StockTestCaseName? {
