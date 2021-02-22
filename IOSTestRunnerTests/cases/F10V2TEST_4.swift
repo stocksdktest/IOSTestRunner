@@ -556,10 +556,11 @@ class F10V2TEST_4: BaseTestCase {
                 }
                 if mRequest.requestType == "newsinteractive"{
                     if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
-                        
+                        var i = 0
                         if let Lists: NSArray = dic1["List"] as!NSArray{
                             
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "TRADING":dic2["TRADING"]!,
@@ -571,7 +572,7 @@ class F10V2TEST_4: BaseTestCase {
                                         "NEWSSOURCE":dic2["NEWSSOURCE"]!,
                                         "INTERACTIVEID":dic2["PageNumber"]!,
                                     ]
-                                    resultJSON["\(dic2["TRADING"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }

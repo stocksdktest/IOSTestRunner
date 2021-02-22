@@ -484,17 +484,19 @@ class F10V2TEST_3: BaseTestCase {
                     }
                 }
                 if mRequest.requestType == "profinmainindex"{
+                    var i = 0
                     if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                         if param["quarterType"] != ""{
                             let paramI:NSArray = (param["quarterType"].string?.split(separator: "_") as! NSArray)
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "\(paramI[0])":dic2["\(paramI[0])"]!,
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
-                                    resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }else{
@@ -534,17 +536,19 @@ class F10V2TEST_3: BaseTestCase {
                     }
                 }
                 if mRequest.requestType == "proincstatementnew"{
+                    var i = 0
                     if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                         if param["quarterType"] != ""{
                             let paramI:NSArray = (param["quarterType"].string?.split(separator: "_") as! NSArray)
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "\(paramI[0])":dic2["\(paramI[0])"]!,
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
-                                    resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }else{
@@ -581,17 +585,19 @@ class F10V2TEST_3: BaseTestCase {
                     }
                 }
                 if mRequest.requestType == "probalsheetnew"{
+                    var i = 0
                     if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                         if param["quarterType"] != ""{
                             let paramI:NSArray = (param["quarterType"].string?.split(separator: "_") as! NSArray)
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "\(paramI[0])":dic2["\(paramI[0])"]!,
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
-                                    resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }else{
@@ -637,17 +643,19 @@ class F10V2TEST_3: BaseTestCase {
                     }
                 }
                 if mRequest.requestType == "procfstatementnew"{
+                    var i = 0
                     if let Lists:NSArray = f10Response.jsonObject as! NSArray{
                         if param["quarterType"] != ""{
                             let paramI:NSArray = (param["quarterType"].string?.split(separator: "_") as! NSArray)
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "\(paramI[0])":dic2["\(paramI[0])"]!,
                                         "MOM": dic2["MOM"]!,
                                         "ENDDATE":dic2["ENDDATE"]!
                                     ]
-                                    resultJSON["\(dic2["ENDDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }else{

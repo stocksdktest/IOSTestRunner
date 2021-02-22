@@ -464,8 +464,9 @@ class F10V2TEST_2: BaseTestCase {
                 }
                 if mRequest.requestType == "importnoticedate"{
                     if let Lists:NSArray = f10Response.jsonObject as! NSArray{
-                        
+                        var i = 0
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "REPTITLE":dic2["REPTITLE"]!,
@@ -473,7 +474,7 @@ class F10V2TEST_2: BaseTestCase {
                                         "TEXT":dic2["TEXT"]!
                                         
                                     ]
-                                    resultJSON["\(dic2["TRADEDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                     }
@@ -499,10 +500,11 @@ class F10V2TEST_2: BaseTestCase {
                 }
                 if mRequest.requestType == "exptperformance"{
                     if let dic1: NSDictionary = f10Response.jsonObject as! NSDictionary{
-                        
+                        var i = 0
                         if let Lists: NSArray = dic1["List"] as!NSArray{
                             
                             for List in Lists{
+                                i = i+1
                                 if let dic2 : NSDictionary = List as! NSDictionary{
                                     var jsonarr2: JSON = [
                                         "SESNAME":dic2["SESNAME"]!,
@@ -510,7 +512,7 @@ class F10V2TEST_2: BaseTestCase {
                                         "RETAMAXPROFITSMK":dic2["RETAMAXPROFITSMK"]!,
                                         "RETAMAXPROFITSINC":dic2["RETAMAXPROFITSINC"]!
                                     ]
-                                    resultJSON["\(dic2["PUBLISHDATE"]!)"] = jsonarr2
+                                    resultJSON["\(i)"] = jsonarr2
                                 }
                             }
                         }
